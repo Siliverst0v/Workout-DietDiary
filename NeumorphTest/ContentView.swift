@@ -8,11 +8,62 @@
 import SwiftUI
 
 struct ContentView: View {
+
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        ZStack{
+            VStack{
+            NeuromorphicRectangleCell()
+            NeuromorphicRectangleCell()
+            NeuromorphicRectangleCell()
+            NeuromorphicRectangleCell()
+            NeuromorphicRectangleCell()
+            NeuromorphicRectangleCell()
+            }
+        }
+        .ignoresSafeArea()
+        
     }
 }
+
+
+
+struct NeuromorphicRectangleCell: View {
+    
+    var body: some View {
+        ZStack{
+            Button( action: {
+            })
+            {
+                Text("Exercise for example to add to Workout Diary App")
+                    .fontWeight(.bold)
+            }
+            .buttonStyle(UnTappedButtonStyle())
+        }
+    }
+}
+
+
+struct UnTappedButtonStyle: ButtonStyle {
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .padding(30)
+            .font(.system(size: 17))
+            .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
+            .multilineTextAlignment(.trailing)
+            .frame(width: 370, height: 50)
+                .background(
+                    RoundedRectangle(cornerRadius: 11)
+                        .fill(.white)
+                        .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
+                        .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
+                )
+    }
+}
+
+
+
+
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
