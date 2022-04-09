@@ -10,8 +10,7 @@ import SwiftUI
 struct ContentView: View {
 
     var body: some View {
-        ZStack{
-            VStack{
+            ScrollView {
             NeuromorphicRectangleCell()
             NeuromorphicRectangleCell()
             NeuromorphicRectangleCell()
@@ -20,9 +19,8 @@ struct ContentView: View {
             NeuromorphicRectangleCell()
             }
         }
-        .ignoresSafeArea()
     }
-}
+
 
 
 
@@ -31,6 +29,7 @@ struct NeuromorphicRectangleCell: View {
     @State var title = "Exercise for example to add to Workout Diary App"
     @State var image = "CellChest"
     @State var test = "10"
+    
     var body: some View {
         ZStack{
             Button( action: {
@@ -72,21 +71,20 @@ struct ButtonContent: View {
         } else {
             HStack {
             VStack {
-            HStack {
+                HStack(alignment: .center, spacing: 1) {
                 Image(image)
                     .resizable()
                     .frame(width: 70, height: 36)
                 Text(title)
-                .fontWeight(.bold)
-                Button(action: {}) {
-                    Image(systemName: "trash")
-                }
+                    .fontWeight(.semibold)
+                    .frame(width: 200)
+
             }
             
                 HStack {
                     Text("Подходы")
                         .fontWeight(.semibold)
-                        .padding(.horizontal)
+                        .padding(.trailing, 10)
                         .foregroundColor(Color(red: 142/255, green: 51/255, blue: 46/255))
                     Text("Повторения")
                         .fontWeight(.semibold)
@@ -97,44 +95,62 @@ struct ButtonContent: View {
                         .foregroundColor(Color(red: 142/255, green: 51/255, blue: 46/255))
                         .padding(.horizontal, 1)
                 }
+                Spacer(minLength: 1)
                 HStack {
                     Text("1")
+                        .font(.system(size: 17))
                         .fontWeight(.semibold)
                         .foregroundColor(Color(red: 142/255, green: 51/255, blue: 46/255))
                         .padding(.horizontal, 50)
                     TextField("10", text: $test)
+                        .frame(width: 60, alignment: .center)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
                         .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
-                        .padding(.horizontal, 50)
+                        .padding(.horizontal)
                     TextField("10", text: $test)
+                        .frame(width: 60, alignment: .center)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
                         .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
                         .padding(.horizontal)
                 }
+                Spacer(minLength: 3)
                 HStack {
                     Text("2")
+                        .font(.system(size: 17))
                         .fontWeight(.semibold)
                         .foregroundColor(Color(red: 142/255, green: 51/255, blue: 46/255))
                         .padding(.horizontal, 50)
                     TextField("10", text: $test)
+                        .frame(width: 60, alignment: .center)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
                         .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
-                        .padding(.horizontal, 50)
+                        .padding(.horizontal)
                     TextField("10", text: $test)
+                        .frame(width: 60, alignment: .center)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
                         .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
                         .padding(.horizontal)
                 }
+                Spacer(minLength: 3)
                 HStack {
                     Text("3")
+                        .font(.system(size: 17))
                         .fontWeight(.semibold)
                         .foregroundColor(Color(red: 142/255, green: 51/255, blue: 46/255))
                         .padding(.horizontal, 50)
                     TextField("10", text: $test)
+                        .frame(width: 60, alignment: .center)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
                         .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
-                        .padding(.horizontal, 50)
+                        .padding(.horizontal)
                     TextField("10", text: $test)
+                        .frame(width: 60, alignment: .center)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
                         .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
                         .padding(.horizontal)
                 }
                 HStack {
-                Button(action: {}) {
+                Button(action: { print("+ tapped") }) {
                     Text("+")
                         .font(.system(size: 25))
                         .fontWeight(.semibold)
@@ -154,6 +170,7 @@ struct ButtonContent: View {
                             )
                     
                     )
+                    
                 .padding(.leading, 30)
                     Button(action: {}) {
                         Text("<")
@@ -161,9 +178,9 @@ struct ButtonContent: View {
                             .fontWeight(.semibold)
                             .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
                     }
+                    .frame(width: 88, height: 28, alignment: .init(horizontal: .center, vertical: .bottom) )
                     .font(.system(size: 17))
                     .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
-                    .frame(width: 88, height: 28, alignment: .init(horizontal: .center, vertical: .bottom) )
                     .background(
                                 RoundedRectangle(cornerRadius: 11)
                                         .fill(.white)
@@ -178,14 +195,13 @@ struct ButtonContent: View {
                     Spacer()
                 }
             }
+                VStack {
                 Button(action: {}) {
-                    Text("<")
-                        Image(systemName: "memories")
-                        .padding(.trailing,8)
+                    Image(systemName: "trash")
                 }
+                .frame(width: 40, height: 40, alignment: .center )
                 .font(.system(size: 17))
                 .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
-                .frame(width: 30, height: 105, alignment: .center )
                 .background(
                             RoundedRectangle(cornerRadius: 11)
                                     .fill(.white)
@@ -197,7 +213,29 @@ struct ButtonContent: View {
                             )
                     )
                 .padding(.trailing, 10)
-                .padding(.top, 40)
+                .padding(.top, 10)
+                Button(action: {}) {
+                        Image(systemName: "memories")
+                        .padding(.trailing, 1)
+                }
+                .frame(width: 30, height: 105, alignment: .center )
+                .font(.system(size: 17))
+                .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
+                .background(
+                            RoundedRectangle(cornerRadius: 11)
+                            .fill(.white)
+                            .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
+                            .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 11)
+                                    .stroke(Color.gray, lineWidth: 0.1)
+                            )
+                    )
+                .padding(.trailing, 10)
+                .padding(.top, 25)
+                    Spacer()
+                
+                }
             }
         }
     }
@@ -210,7 +248,7 @@ struct CustomButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         if didTapped {
         configuration.label
-            .font(.system(size: 17))
+            .font(.system(size: 14))
             .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
             .frame(width: 390, height: 50)
             .background(
@@ -227,10 +265,10 @@ struct CustomButtonStyle: ButtonStyle {
                 .padding(.vertical, 5)
         } else {
             configuration.label
-                .font(.system(size: 17))
+                .font(.system(size: 14))
                 .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
                 .padding(.vertical, 10)
-                .frame(width: 390, height: 250, alignment: .top)
+                .frame(width: 360, height: 250, alignment: .top)
                     .background(
                         RoundedRectangle(cornerRadius: 11)
                             .fill(.white)
