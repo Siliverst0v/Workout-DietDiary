@@ -14,7 +14,6 @@ struct ContentView: View {
             VStack{
             NeuromorphicRectangleCell()
             NeuromorphicRectangleCell()
-            TappedNeuromorphicRectangleCell()
             NeuromorphicRectangleCell()
             NeuromorphicRectangleCell()
             NeuromorphicRectangleCell()
@@ -28,56 +27,93 @@ struct ContentView: View {
 
 
 struct NeuromorphicRectangleCell: View {
+    @State var notTapped = true
+    @State var title = "Exercise for example to add to Workout Diary App"
+    @State var image = "CellChest"
     
     var body: some View {
         ZStack{
             Button( action: {
+                if notTapped {
+                    notTapped.toggle()
+                    
+                } else {
+                    notTapped.toggle()
+                }
             })
             {
+                if notTapped {
                 HStack {
-                    Image("CellChest")
+                    Image(image)
                         .resizable()
                         .frame(width: 70, height: 36)
-                Text("Exercise for example to add to Workout Diary App")
+                    Text(title)
                     .fontWeight(.bold)
+                    Button(action: {}) {
+                        Image(systemName: "pencil")
+                    }
+                }
+                } else {
+                    HStack {
+                        Image(image)
+                            .resizable()
+                            .frame(width: 70, height: 36)
+                        Text(title)
+                        .fontWeight(.bold)
+                        Button(action: {}) {
+                            Image(systemName: "trash")
+                        }
+                    }
                 }
             }
-            .buttonStyle(UnTappedButtonStyle())
+            .buttonStyle(CustomButtonStyle(didTapped: $notTapped))
         }
     }
 }
 
 
-struct TappedNeuromorphicRectangleCell: View {
+struct ButtonContent: View {
     
-    @State var didTapped = false
+    @Binding var tapValue: Bool
+    @Binding var image: String
+    @Binding var title: String
     
     var body: some View {
-        ZStack{
-            Button( action: { self.didTapped.toggle() })
-            {
-                HStack {
-                Image("CellChest")
-                        .resizable()
-                        .frame(width: 70, height: 36)
-                Text("Exercise for example to add to Workout Diary App")
-                    .fontWeight(.bold)
+        if tapValue {
+        HStack {
+            Image(image)
+                .resizable()
+                .frame(width: 70, height: 36)
+            Text(title)
+            .fontWeight(.bold)
+            Button(action: {}) {
+                Image(systemName: "stop")
+            }
+        }
+        } else {
+            HStack {
+                Image(image)
+                    .resizable()
+                    .frame(width: 70, height: 36)
+                Text(title)
+                .fontWeight(.bold)
+                Button(action: {}) {
+                    Image(systemName: "pencil")
                 }
             }
         }
-        .buttonStyle(TappedButtonStyle())
     }
-    
-
 }
 
 
-struct UnTappedButtonStyle: ButtonStyle {
+struct CustomButtonStyle: ButtonStyle {
+    @Binding var didTapped: Bool
+    
     func makeBody(configuration: Self.Configuration) -> some View {
+        if didTapped {
         configuration.label
             .font(.system(size: 17))
             .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
-            .multilineTextAlignment(.trailing)
             .frame(width: 390, height: 50)
             .background(
                         RoundedRectangle(cornerRadius: 11)
@@ -88,59 +124,41 @@ struct UnTappedButtonStyle: ButtonStyle {
                             RoundedRectangle(cornerRadius: 11)
                                 .stroke(Color.gray, lineWidth: 0.1)
                         )
+                
                 )
                 .padding(.vertical, 5)
-    }
-}
-
-//Circle()
-//    .fill(Color.offWhite)
-//    .overlay(
-//        Circle()
-//            .stroke(Color.gray, lineWidth: 4)
-//            .blur(radius: 4)
-//            .offset(x: 2, y: 2)
-//            .mask(Circle().fill(LinearGradient(Color.black, Color.clear)))
-//    )
-//    .overlay(
-//        Circle()
-//            .stroke(Color.white, lineWidth: 8)
-//            .blur(radius: 4)
-//            .offset(x: -2, y: -2)
-//            .mask(Circle().fill(LinearGradient(Color.clear, Color.black)))
-//    )
-
-struct TappedButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .font(.system(size: 17))
-            .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
-            .multilineTextAlignment(.trailing)
-            .frame(width: 390, height: 222)
-                .background(
-                    RoundedRectangle(cornerRadius: 11)
-                        .fill(.white)
-                        .overlay(
+        } else {
+            configuration.label
+                .font(.system(size: 17))
+                .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
+                .padding(.vertical, 10)
+                .frame(width: 390, height: 222, alignment: .top)
+                    .background(
+                        RoundedRectangle(cornerRadius: 11)
+                            .fill(.white)
+                            .overlay(
+                                    RoundedRectangle(cornerRadius: 11)
+                                        .stroke(Color.gray, lineWidth: 4)
+                                        .blur(radius: 8)
+                                        .offset(x: 2, y: 2)
+                                        .mask(RoundedRectangle(cornerRadius: 11).fill(LinearGradient(Color.black, Color.clear)))
+                                )
+                            .overlay(
+                                    RoundedRectangle(cornerRadius: 11)
+                                        .stroke(Color.gray, lineWidth: 4)
+                                        .blur(radius: 8)
+                                        .offset(x: -2, y: -2)
+                                        .mask(RoundedRectangle(cornerRadius: 11).fill(LinearGradient(Color.clear, Color.black)))
+                                )
+                            .overlay(
                                 RoundedRectangle(cornerRadius: 11)
-                                    .stroke(Color.gray, lineWidth: 4)
-                                    .blur(radius: 8)
-                                    .offset(x: 2, y: 2)
-                                    .mask(RoundedRectangle(cornerRadius: 11).fill(LinearGradient(Color.black, Color.clear)))
+                                    .stroke(Color.gray, lineWidth: 0.1)
                             )
-                        .overlay(
-                                RoundedRectangle(cornerRadius: 11)
-                                    .stroke(Color.gray, lineWidth: 4)
-                                    .blur(radius: 8)
-                                    .offset(x: -2, y: -2)
-                                    .mask(RoundedRectangle(cornerRadius: 11).fill(LinearGradient(Color.clear, Color.black)))
-                            )
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 11)
-                                .stroke(Color.gray, lineWidth: 0.1)
-                        )
-                        
-                )
-                .padding(.vertical, 5)
+                            
+                    )
+                    .padding(.vertical, 5)
+            
+        }
     }
 }
 
