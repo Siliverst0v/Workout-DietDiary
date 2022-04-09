@@ -25,7 +25,7 @@ struct ContentView: View {
 
 
 struct NeuromorphicRectangleCell: View {
-    @State var notTapped = false
+    @State var notTapped = true
     @State var title = "Exercise for example to add to Workout Diary App"
     @State var image = "CellChest"
     @State var test = "10"
@@ -62,10 +62,13 @@ struct ButtonContent: View {
             Image(image)
                 .resizable()
                 .frame(width: 70, height: 36)
+                .padding(.leading)
             Text(title)
-            .fontWeight(.bold)
+            .fontWeight(.semibold)
+            .padding(.trailing)
             Button(action: {}) {
-                Image(systemName: "pencil")
+                Image(systemName: "trash")
+                    .frame(width: 40, height: 40, alignment: .center)
             }
         }
         } else {
@@ -80,7 +83,6 @@ struct ButtonContent: View {
                     .frame(width: 200)
 
             }
-            
                 HStack {
                     Text("Подходы")
                         .fontWeight(.semibold)
@@ -150,7 +152,7 @@ struct ButtonContent: View {
                         .padding(.horizontal)
                 }
                 HStack {
-                Button(action: { print("+ tapped") }) {
+                Button(action: {  }) {
                     Text("+")
                         .font(.system(size: 25))
                         .fontWeight(.semibold)
@@ -200,7 +202,7 @@ struct ButtonContent: View {
                     Image(systemName: "trash")
                 }
                 .frame(width: 40, height: 40, alignment: .center )
-                .font(.system(size: 17))
+                .font(.system(size: 14))
                 .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
                 .background(
                             RoundedRectangle(cornerRadius: 11)
@@ -213,7 +215,7 @@ struct ButtonContent: View {
                             )
                     )
                 .padding(.trailing, 10)
-                .padding(.top, 10)
+//                .padding(.top)
                 Button(action: {}) {
                         Image(systemName: "memories")
                         .padding(.trailing, 1)
@@ -250,7 +252,7 @@ struct CustomButtonStyle: ButtonStyle {
         configuration.label
             .font(.system(size: 14))
             .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
-            .frame(width: 390, height: 50)
+            .frame(width: 360, height: 50)
             .background(
                         RoundedRectangle(cornerRadius: 11)
                                 .fill(.white)
