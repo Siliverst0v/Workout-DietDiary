@@ -28,14 +28,14 @@ struct NeuromorphicRectangleCell: View {
     @State var notTapped = true
     @State var title = "Exercise for example to add to Workout Diary App"
     @State var image = "CellChest"
-    @State var test = "10"
-    
+    @State var test = ""
+    @State var disable = false
     var body: some View {
         ZStack{
             Button( action: {
                 if notTapped {
                     notTapped.toggle()
-                    
+                    disable.toggle()
                 } else {
                     notTapped.toggle()
                 }
@@ -43,6 +43,7 @@ struct NeuromorphicRectangleCell: View {
             {
                 ButtonContent(tapValue: $notTapped, image: $image, title: $title, test: $test)
             }
+            .disabled(disable)
             .buttonStyle(CustomButtonStyle(didTapped: $notTapped))
         }
     }
@@ -67,7 +68,8 @@ struct ButtonContent: View {
             .fontWeight(.semibold)
             .padding(.trailing)
             Button(action: {}) {
-                Image(systemName: "trash")
+                Image(systemName: "checkmark")
+                    .font(.system(size: 20))
                     .frame(width: 40, height: 40, alignment: .center)
             }
         }
@@ -102,32 +104,34 @@ struct ButtonContent: View {
                     Text("1")
                         .font(.system(size: 17))
                         .fontWeight(.semibold)
-                        .foregroundColor(Color(red: 142/255, green: 51/255, blue: 46/255))
+                        .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
                         .padding(.horizontal, 50)
-                    TextField("10", text: $test)
+                    TextField("0", text: $test)
                         .frame(width: 60, alignment: .center)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
                         .padding(.horizontal)
-                    TextField("10", text: $test)
+                        .disabled(false)
+                    TextField("0", text: $test)
                         .frame(width: 60, alignment: .center)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
                         .padding(.horizontal)
+                        .disabled(false)
                 }
                 Spacer(minLength: 3)
                 HStack {
                     Text("2")
                         .font(.system(size: 17))
                         .fontWeight(.semibold)
-                        .foregroundColor(Color(red: 142/255, green: 51/255, blue: 46/255))
+                        .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
                         .padding(.horizontal, 50)
-                    TextField("10", text: $test)
+                    TextField("0", text: $test)
                         .frame(width: 60, alignment: .center)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
                         .padding(.horizontal)
-                    TextField("10", text: $test)
+                    TextField("0", text: $test)
                         .frame(width: 60, alignment: .center)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
@@ -138,14 +142,14 @@ struct ButtonContent: View {
                     Text("3")
                         .font(.system(size: 17))
                         .fontWeight(.semibold)
-                        .foregroundColor(Color(red: 142/255, green: 51/255, blue: 46/255))
+                        .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
                         .padding(.horizontal, 50)
-                    TextField("10", text: $test)
+                    TextField("0", text: $test)
                         .frame(width: 60, alignment: .center)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
                         .padding(.horizontal)
-                    TextField("10", text: $test)
+                    TextField("0", text: $test)
                         .frame(width: 60, alignment: .center)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
@@ -175,17 +179,17 @@ struct ButtonContent: View {
                     
                 .padding(.leading, 30)
                     Button(action: {}) {
-                        Text("<")
-                            .font(.system(size: 25))
-                            .fontWeight(.semibold)
-                            .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
+                        Image(systemName: "arrowtriangle.up.fill")
+                            .font(.system(size: 20))
+//                            .fontWeight(.semibold)
+                            .foregroundColor(Color(red: 142/255, green: 51/255, blue: 46/255))
                     }
-                    .frame(width: 88, height: 28, alignment: .init(horizontal: .center, vertical: .bottom) )
+                    .frame(width: 88, height: 28 )
                     .font(.system(size: 17))
                     .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
                     .background(
                                 RoundedRectangle(cornerRadius: 11)
-                                        .fill(.white)
+                                .fill(.white)
                                 .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
                                 .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
                                 .overlay(
@@ -199,14 +203,14 @@ struct ButtonContent: View {
             }
                 VStack {
                 Button(action: {}) {
-                    Image(systemName: "trash")
+                    Image(systemName: "checkmark")
                 }
                 .frame(width: 40, height: 40, alignment: .center )
-                .font(.system(size: 14))
+                .font(.system(size: 20))
                 .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
                 .background(
                             RoundedRectangle(cornerRadius: 11)
-                                    .fill(.white)
+                            .fill(.white)
                             .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
                             .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
                             .overlay(
@@ -215,7 +219,6 @@ struct ButtonContent: View {
                             )
                     )
                 .padding(.trailing, 10)
-//                .padding(.top)
                 Button(action: {}) {
                         Image(systemName: "memories")
                         .padding(.trailing, 1)
