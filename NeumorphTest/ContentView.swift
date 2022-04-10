@@ -63,12 +63,12 @@ struct TappedCell: View {
                 Image(image)
                     .resizable()
                     .frame(width: 70, height: 36)
+                    .padding(.trailing, 5)
                 Text(title)
                     .fontWeight(.semibold)
                     .frame(width: 220)
                     .lineLimit(3)
                     .scaledToFill()
-//                    .minimumScaleFactor()
                     .font(.system(size: 14))
                     .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
                 }
@@ -224,10 +224,11 @@ struct ButtonContent: View {
     
     var body: some View {
         if tapValue {
-            HStack(alignment: .center) {
+            HStack(alignment: .center, spacing: 5) {
             Image(image)
                 .resizable()
                 .frame(width: 70, height: 36)
+                .padding(.trailing, 1)
             Text(title)
             .fontWeight(.semibold)
             .lineLimit(3)
