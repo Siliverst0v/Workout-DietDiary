@@ -25,7 +25,7 @@ struct ContentView: View {
 
 
 struct NeuromorphicRectangleCell: View {
-    @State var notTapped = true
+    @State var notTapped = false
     @State var title = "Exercise for example to add to Workout Diary App"
     @State var image = "CellChest"
     @State var test = ""
@@ -43,7 +43,6 @@ struct NeuromorphicRectangleCell: View {
             {
                 ButtonContent(tapValue: $notTapped, image: $image, title: $title, test: $test)
             }
-            .disabled(disable)
             .buttonStyle(CustomButtonStyle(didTapped: $notTapped))
         }
     }
@@ -71,6 +70,7 @@ struct ButtonContent: View {
                 Image(systemName: "checkmark")
                     .font(.system(size: 20))
                     .frame(width: 40, height: 40, alignment: .center)
+                    .padding(.trailing, 8)
             }
         }
         } else {
@@ -181,7 +181,6 @@ struct ButtonContent: View {
                     Button(action: {}) {
                         Image(systemName: "arrowtriangle.up.fill")
                             .font(.system(size: 20))
-//                            .fontWeight(.semibold)
                             .foregroundColor(Color(red: 142/255, green: 51/255, blue: 46/255))
                     }
                     .frame(width: 88, height: 28 )
@@ -295,7 +294,6 @@ struct CustomButtonStyle: ButtonStyle {
                                 RoundedRectangle(cornerRadius: 11)
                                     .stroke(Color.gray, lineWidth: 0.1)
                             )
-                            
                     )
                     .padding(.vertical, 5)
         }
