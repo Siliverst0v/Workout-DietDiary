@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A4932EE9280375F70017E74B /* ButtonContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4932EE8280375F70017E74B /* ButtonContent.swift */; };
+		A4932EEB280376490017E74B /* OriginalTappedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4932EEA280376490017E74B /* OriginalTappedCell.swift */; };
 		A4E9374B27FE3BA0004A3650 /* NeumorphTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E9374A27FE3BA0004A3650 /* NeumorphTestApp.swift */; };
 		A4E9374D27FE3BA0004A3650 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E9374C27FE3BA0004A3650 /* ContentView.swift */; };
 		A4E9374F27FE3BA1004A3650 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4E9374E27FE3BA1004A3650 /* Assets.xcassets */; };
@@ -14,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A4932EE8280375F70017E74B /* ButtonContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonContent.swift; sourceTree = "<group>"; };
+		A4932EEA280376490017E74B /* OriginalTappedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OriginalTappedCell.swift; sourceTree = "<group>"; };
 		A4E9374727FE3BA0004A3650 /* NeumorphTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeumorphTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4E9374A27FE3BA0004A3650 /* NeumorphTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphTestApp.swift; sourceTree = "<group>"; };
 		A4E9374C27FE3BA0004A3650 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +57,8 @@
 			children = (
 				A4E9374A27FE3BA0004A3650 /* NeumorphTestApp.swift */,
 				A4E9374C27FE3BA0004A3650 /* ContentView.swift */,
+				A4932EEA280376490017E74B /* OriginalTappedCell.swift */,
+				A4932EE8280375F70017E74B /* ButtonContent.swift */,
 				A4E9374E27FE3BA1004A3650 /* Assets.xcassets */,
 				A4E9375027FE3BA1004A3650 /* Preview Content */,
 			);
@@ -137,6 +143,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4932EE9280375F70017E74B /* ButtonContent.swift in Sources */,
+				A4932EEB280376490017E74B /* OriginalTappedCell.swift in Sources */,
 				A4E9374D27FE3BA0004A3650 /* ContentView.swift in Sources */,
 				A4E9374B27FE3BA0004A3650 /* NeumorphTestApp.swift in Sources */,
 			);
