@@ -55,7 +55,7 @@ struct NeuromorphicRectangleCell: View {
                     }
                 }
             }
-            .buttonStyle(CustomButtonStyle(didTapped: $notTapped))
+            .buttonStyle(CustomButtonStyle())
             } else {
                 switch setsCount {
                 case 1:
@@ -276,66 +276,62 @@ struct TappedCell: View {
 
 
 
-struct CustomButtonStyle: ButtonStyle {
-    @Binding var didTapped: Bool
-    
-    func makeBody(configuration: Self.Configuration) -> some View {
-        if didTapped {
-        configuration.label
-            .font(.system(size: 14))
-            .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
-            .frame(width: 360, height: 70, alignment: .trailing)
-            .background(
-                        RoundedRectangle(cornerRadius: 11)
-                        .fill(.white)
-                        .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
-                        .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 11)
-                                .stroke(Color.gray, lineWidth: 0.1)
-                        )
-                
-                )
-                .padding(.vertical, 5)
-        } else {
-            configuration.label
-                .font(.system(size: 14))
-                .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
-                .padding(.vertical, 10)
-                .frame(width: 360, height: 250, alignment: .top)
-                    .background(
-                        RoundedRectangle(cornerRadius: 11)
-                            .fill(.white)
-                            .overlay(
-                                    RoundedRectangle(cornerRadius: 11)
-                                        .stroke(Color.gray, lineWidth: 4)
-                                        .blur(radius: 8)
-                                        .offset(x: 2, y: 2)
-                                        .mask(RoundedRectangle(cornerRadius: 11).fill(LinearGradient(Color.black, Color.clear)))
-                                )
-                            .overlay(
-                                    RoundedRectangle(cornerRadius: 11)
-                                        .stroke(Color.gray, lineWidth: 4)
-                                        .blur(radius: 8)
-                                        .offset(x: -2, y: -2)
-                                        .mask(RoundedRectangle(cornerRadius: 11).fill(LinearGradient(Color.clear, Color.black)))
-                                )
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 11)
-                                    .stroke(Color.gray, lineWidth: 0.1)
-                            )
-                    )
-                    .padding(.vertical, 5)
-        }
-    }
-}
+//struct CustomButtonStyle: ButtonStyle {
+//    @Binding var didTapped: Bool
+//    
+//    func makeBody(configuration: Self.Configuration) -> some View {
+//        if didTapped {
+//        configuration.label
+//            .font(.system(size: 14))
+//            .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
+//            .frame(width: 360, height: 70, alignment: .trailing)
+//            .background(
+//                        RoundedRectangle(cornerRadius: 11)
+//                        .fill(.white)
+//                        .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
+//                        .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
+//                        .overlay(
+//                            RoundedRectangle(cornerRadius: 11)
+//                                .stroke(Color.gray, lineWidth: 0.1)
+//                        )
+//                
+//                )
+//                .padding(.vertical, 5)
+//        } else {
+//            configuration.label
+//                .font(.system(size: 14))
+//                .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
+//                .padding(.vertical, 10)
+//                .frame(width: 360, height: 250, alignment: .top)
+//                    .background(
+//                        RoundedRectangle(cornerRadius: 11)
+//                            .fill(.white)
+//                            .overlay(
+//                                    RoundedRectangle(cornerRadius: 11)
+//                                        .stroke(Color.gray, lineWidth: 4)
+//                                        .blur(radius: 8)
+//                                        .offset(x: 2, y: 2)
+//                                        .mask(RoundedRectangle(cornerRadius: 11).fill(LinearGradient(Color.black, Color.clear)))
+//                                )
+//                            .overlay(
+//                                    RoundedRectangle(cornerRadius: 11)
+//                                        .stroke(Color.gray, lineWidth: 4)
+//                                        .blur(radius: 8)
+//                                        .offset(x: -2, y: -2)
+//                                        .mask(RoundedRectangle(cornerRadius: 11).fill(LinearGradient(Color.clear, Color.black)))
+//                                )
+//                            .overlay(
+//                                RoundedRectangle(cornerRadius: 11)
+//                                    .stroke(Color.gray, lineWidth: 0.1)
+//                            )
+//                    )
+//                    .padding(.vertical, 5)
+//        }
+//    }
+//}
+//
 
 
-extension LinearGradient {
-    init(_ colors: Color...) {
-        self.init(gradient: Gradient(colors: colors), startPoint: .topLeading, endPoint: .bottomTrailing)
-    }
-}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
