@@ -14,6 +14,7 @@ struct ExerciseButton: View {
     @State var test = ""
     @State var changeColorButton = true
     @State var setsCount = 3
+    @State var setCount = [1]
     let blueColor = Color(red: 46/255, green: 74/255, blue: 142/255)
     let redColor = Color(red: 142/255, green: 51/255, blue: 46/255)
     
@@ -47,10 +48,8 @@ struct ExerciseButton: View {
             .buttonStyle(CustomButtonStyle())
             }
         } else {
-            
-            
                 
-            ZStack(alignment: .topTrailing) {
+            ZStack {
             Image("TappedCell")
                 .resizable()
                 .frame(width: UIScreen.main.bounds.size.width - 40, height: 270)
@@ -86,33 +85,37 @@ struct ExerciseButton: View {
                             )
                 }
                     .offset(x: width - 45, y: 15)
-                    VStack {
+//                    VStack {
                     HStack {
                     Text("Подходы")
                         .fontWeight(.semibold)
                         .foregroundColor(redColor)
+                        .offset(x: width * 0.05 , y: height * 0.22)
                     Text("Повторения")
                         .fontWeight(.semibold)
                         .foregroundColor(redColor)
-                        .padding(.leading, 20)
+                        .offset(x: width * 0.07, y: height * 0.22)
                     Text("Вес(Кг)")
                         .fontWeight(.semibold)
                         .foregroundColor(redColor)
+                        .offset(x: width * 0.1, y: height * 0.22)
                     }
-                    .offset(x: 20, y: 60)
+                    .font(.system(size: 14))
                     HStack(alignment: .center) {
                     Text("1")
-                        .font(.system(size: 17))
                         .fontWeight(.semibold)
+                        .frame(width: 64)
+                        .font(.system(size: 17))
                         .foregroundColor(blueColor)
+                        .offset(x: width * 0.05, y: height * 0.3)
                     TextField("0", text: $test)
-                        .frame(width: 60, alignment: .center)
+                        .frame(width: 84, alignment: .center)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .offset(x: width * 0.07, y: height * 0.3)
                     TextField("0", text: $test)
-                        .frame(width: 60, alignment: .center)
+                        .frame(width: 53, alignment: .center)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                    }
-                    .offset(x: -15, y: 50)
+                        .offset(x: width * 0.1, y: height * 0.3)
                     }
                 }
                 .frame(width: UIScreen.main.bounds.size.width - 40, height: 270)
