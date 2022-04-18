@@ -11,12 +11,12 @@ struct ContentView: View {
 
     var body: some View {
             ScrollView {
-            NeuromorphicRectangleCell()
-            NeuromorphicRectangleCell()
-            NeuromorphicRectangleCell()
-            NeuromorphicRectangleCell()
-            NeuromorphicRectangleCell()
-            NeuromorphicRectangleCell()
+                ExerciseButton()
+                ExerciseButton()
+                ExerciseButton()
+                ExerciseButton()
+                ExerciseButton()
+                ExerciseButton()
             }
         }
     }

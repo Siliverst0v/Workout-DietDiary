@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct ExerciseButton: View {
-    @State var notTapped = false
+    @State var notTapped = true
     @State var title = "ExercisefjdshjfhskjdfhksjdhfksExercisefjdshjfhskjdfh"
     @State var image = "CellChest"
     @State var test = ""
     @State var changeColorButton = true
-    @State var setsCount = 3
-    @State var setCount = [1]
+    @State var setCount = 3
     let blueColor = Color(red: 46/255, green: 74/255, blue: 142/255)
     let redColor = Color(red: 142/255, green: 51/255, blue: 46/255)
     
@@ -24,7 +23,7 @@ struct ExerciseButton: View {
                 Button( action: { notTapped.toggle() } ) {
                     GeometryReader { geometry in
                         let width = geometry.size.width
-                        let height = geometry.size.height
+//                        let height = geometry.size.height
                         
                     Image(image)
                         .resizable()
@@ -55,8 +54,7 @@ struct ExerciseButton: View {
                 .frame(width: UIScreen.main.bounds.size.width - 40, height: 270)
                 GeometryReader { geometry in
                     let width = geometry.size.width
-                    let height = geometry.size.height
-
+//                    let height = geometry.size.height
                 Image(image)
                     .resizable()
                     .frame(width: 70, height: 40)
@@ -85,37 +83,98 @@ struct ExerciseButton: View {
                             )
                 }
                     .offset(x: width - 45, y: 15)
-//                    VStack {
+                    VStack {
                     HStack {
                     Text("Подходы")
                         .fontWeight(.semibold)
                         .foregroundColor(redColor)
-                        .offset(x: width * 0.05 , y: height * 0.22)
+                        .padding(.leading, 20)
                     Text("Повторения")
                         .fontWeight(.semibold)
                         .foregroundColor(redColor)
-                        .offset(x: width * 0.07, y: height * 0.22)
+                        .padding(.leading, 8)
                     Text("Вес(Кг)")
                         .fontWeight(.semibold)
                         .foregroundColor(redColor)
-                        .offset(x: width * 0.1, y: height * 0.22)
+                        .padding(.leading, 10)
                     }
                     .font(.system(size: 14))
-                    HStack(alignment: .center) {
-                    Text("1")
-                        .fontWeight(.semibold)
-                        .frame(width: 64)
-                        .font(.system(size: 17))
-                        .foregroundColor(blueColor)
-                        .offset(x: width * 0.05, y: height * 0.3)
-                    TextField("0", text: $test)
-                        .frame(width: 84, alignment: .center)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .offset(x: width * 0.07, y: height * 0.3)
-                    TextField("0", text: $test)
-                        .frame(width: 53, alignment: .center)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .offset(x: width * 0.1, y: height * 0.3)
+                    .padding(.top, 60)
+                        ForEach(1..<setCount, id: \.self) { setNumber in
+                            HStack(alignment: .center) {
+                                Text("\(setNumber)")
+                                    .fontWeight(.semibold)
+                                    .frame(width: 64)
+                                    .font(.system(size: 17))
+                                    .foregroundColor(blueColor)
+                                    .padding(.leading, 20)
+                                TextField("0", text: $test)
+                                    .frame(width: 84, alignment: .center)
+                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                                    .padding(.leading, 8)
+                                TextField("0", text: $test)
+                                    .frame(width: 53, alignment: .center)
+                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                                    .padding(.leading, 10)
+                            }
+                        }
+                        HStack {
+                            Button(action: { self.setCount += 1 }) {
+                                Text("+")
+                                    .font(.system(size: 25))
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
+                            }
+                            .font(.system(size: 17))
+                            .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
+                            .frame(width: 50, height: 28, alignment: .init(horizontal: .center, vertical: .bottom) )
+                            .background(
+                                RoundedRectangle(cornerRadius: 11)
+                                    .fill(.white)
+                                    .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
+                                    .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 11)
+                                            .stroke(Color.gray, lineWidth: 0.1)
+                                    )
+                            )
+                            Button(action: { self.setCount -= 1}) {
+                                Text("-")
+                                    .font(.system(size: 25))
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(Color(red: 142/255, green: 51/255, blue: 46/255))
+                            }
+                            .font(.system(size: 17))
+                            .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
+                            .frame(width: 50, height: 28, alignment: .init(horizontal: .center, vertical: .bottom) )
+                            .background(
+                                RoundedRectangle(cornerRadius: 11)
+                                    .fill(.white)
+                                    .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
+                                    .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 11)
+                                            .stroke(Color.gray, lineWidth: 0.1)
+                                    )
+                            )
+                            .padding(.trailing, 20)
+                            Button(action: { notTapped.toggle() }) {
+                                Image(systemName: "arrowtriangle.up.fill")
+                            }
+                            .frame(width: 100, height: 28, alignment: .center )
+                            .font(.system(size: 20))
+                            .foregroundColor(Color(red: 142/255, green: 51/255, blue: 46/255))
+                            .background(
+                                RoundedRectangle(cornerRadius: 11)
+                                    .fill(.white)
+                                    .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
+                                    .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 11)
+                                            .stroke(Color.gray, lineWidth: 0.1)
+                                    )
+                            )
+                        }
                     }
                 }
                 .frame(width: UIScreen.main.bounds.size.width - 40, height: 270)
@@ -129,6 +188,102 @@ struct ExerciseButton: View {
     }
 }
 
+//struct BottomButtons: View {
+//    @Binding var setCount: Int
+//    @Binding var notTapped: Bool
+//
+//    var body: some View {
+//        HStack {
+//            Button(action: { self.setCount += 1 }) {
+//                Text("+")
+//                    .font(.system(size: 25))
+//                    .fontWeight(.semibold)
+//                    .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
+//            }
+//            .font(.system(size: 17))
+//            .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
+//            .frame(width: 50, height: 28, alignment: .init(horizontal: .center, vertical: .bottom) )
+//            .background(
+//                RoundedRectangle(cornerRadius: 11)
+//                    .fill(.white)
+//                    .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
+//                    .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
+//                    .overlay(
+//                        RoundedRectangle(cornerRadius: 11)
+//                            .stroke(Color.gray, lineWidth: 0.1)
+//                    )
+//            )
+//            Button(action: { self.setCount -= 1}) {
+//                Text("-")
+//                    .font(.system(size: 25))
+//                    .fontWeight(.semibold)
+//                    .foregroundColor(Color(red: 142/255, green: 51/255, blue: 46/255))
+//            }
+//            .font(.system(size: 17))
+//            .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
+//            .frame(width: 50, height: 28, alignment: .init(horizontal: .center, vertical: .bottom) )
+//            .background(
+//                RoundedRectangle(cornerRadius: 11)
+//                    .fill(.white)
+//                    .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
+//                    .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
+//                    .overlay(
+//                        RoundedRectangle(cornerRadius: 11)
+//                            .stroke(Color.gray, lineWidth: 0.1)
+//                    )
+//            )
+//            .padding(.trailing, 20)
+//            Button(action: { notTapped.toggle() }) {
+//                Image(systemName: "arrowtriangle.up.fill")
+//            }
+//            .frame(width: 100, height: 28, alignment: .center )
+//            .font(.system(size: 20))
+//            .foregroundColor(Color(red: 142/255, green: 51/255, blue: 46/255))
+//            .background(
+//                RoundedRectangle(cornerRadius: 11)
+//                    .fill(.white)
+//                    .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
+//                    .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
+//                    .overlay(
+//                        RoundedRectangle(cornerRadius: 11)
+//                            .stroke(Color.gray, lineWidth: 0.1)
+//                    )
+//            )
+//        }
+//    }
+//
+//    private func changeSetCount(_ setCount: Binding<Int>) -> Int {
+//        $setCount.wrappedValue += 1
+//        return setCount.wrappedValue
+//    }
+//}
+
+//struct SetStack: View {
+//    @Binding var setCount: Int
+//    @Binding var test: String
+//    let blueColor = Color(red: 46/255, green: 74/255, blue: 142/255)
+//
+//    var body: some View {
+//        ForEach(1..<self.setCount) { setNumber in
+//            HStack(alignment: .center) {
+//                Text("\(setNumber)")
+//                    .fontWeight(.semibold)
+//                    .frame(width: 64)
+//                    .font(.system(size: 17))
+//                    .foregroundColor(blueColor)
+//                    .padding(.leading, 20)
+//                TextField("0", text: $test)
+//                    .frame(width: 84, alignment: .center)
+//                    .textFieldStyle(RoundedBorderTextFieldStyle())
+//                    .padding(.leading, 8)
+//                TextField("0", text: $test)
+//                    .frame(width: 53, alignment: .center)
+//                    .textFieldStyle(RoundedBorderTextFieldStyle())
+//                    .padding(.leading, 10)
+//            }
+//        }
+//    }
+//}
 
 struct CustomButtonStyle: ButtonStyle {
     let blueColor = Color(red: 46/255, green: 74/255, blue: 142/255)
