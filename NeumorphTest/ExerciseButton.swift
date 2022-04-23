@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ExerciseButton: View {
-    @State var notTapped = true
+    @State var notTapped = false
     @State var title = "ExercisefjdshjfhskjdfhksjdhfksExercisefjdshjfhskjdfh"
     @State var image = "CellChest"
     @State var test = ""
@@ -16,6 +16,7 @@ struct ExerciseButton: View {
     @State var setCount = 3
     let blueColor = Color(red: 46/255, green: 74/255, blue: 142/255)
     let redColor = Color(red: 142/255, green: 51/255, blue: 46/255)
+    @State var backgroundHeight: CGFloat = 270
     
     var body: some View {
         if notTapped {
@@ -51,7 +52,7 @@ struct ExerciseButton: View {
             ZStack {
             Image("TappedCell")
                 .resizable()
-                .frame(width: UIScreen.main.bounds.size.width - 40, height: 270)
+                .frame(width: UIScreen.main.bounds.size.width - 40, height: backgroundHeight)
                 GeometryReader { geometry in
                     let width = geometry.size.width
 //                    let height = geometry.size.height
@@ -100,7 +101,7 @@ struct ExerciseButton: View {
                     }
                     .font(.system(size: 14))
                     .padding(.top, 60)
-                        ForEach(1..<setCount, id: \.self) { setNumber in
+                        ForEach(1...setCount, id: \.self) { setNumber in
                             HStack(alignment: .center) {
                                 Text("\(setNumber)")
                                     .fontWeight(.semibold)
@@ -119,7 +120,7 @@ struct ExerciseButton: View {
                             }
                         }
                         HStack {
-                            Button(action: { self.setCount += 1 }) {
+                            Button(action: { plusButtonAction() }) {
                                 Text("+")
                                     .font(.system(size: 25))
                                     .fontWeight(.semibold)
@@ -138,7 +139,8 @@ struct ExerciseButton: View {
                                             .stroke(Color.gray, lineWidth: 0.1)
                                     )
                             )
-                            Button(action: { self.setCount -= 1}) {
+                            .disabled(setCount >= 10)
+                            Button(action: { minusButtonAction() }) {
                                 Text("-")
                                     .font(.system(size: 25))
                                     .fontWeight(.semibold)
@@ -157,6 +159,7 @@ struct ExerciseButton: View {
                                             .stroke(Color.gray, lineWidth: 0.1)
                                     )
                             )
+                            .disabled(setCount <= 1)
                             .padding(.trailing, 20)
                             Button(action: { notTapped.toggle() }) {
                                 Image(systemName: "arrowtriangle.up.fill")
@@ -176,8 +179,26 @@ struct ExerciseButton: View {
                             )
                         }
                     }
+                    Button(action: {}) {
+                            Image(systemName: "memories")
+                            .padding(.trailing, 1)
+                    }
+                    .frame(width: 30, height: 105, alignment: .center )
+                    .font(.system(size: 17))
+                    .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
+                    .background(
+                                RoundedRectangle(cornerRadius: 11)
+                                .fill(.white)
+                                .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
+                                .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 11)
+                                        .stroke(Color.gray, lineWidth: 0.1)
+                                )
+                        )
+                    .offset(x: width - 40, y: 100)
                 }
-                .frame(width: UIScreen.main.bounds.size.width - 40, height: 270)
+                .frame(width: UIScreen.main.bounds.size.width - 40, height: backgroundHeight)
             }
         }
     }
@@ -185,6 +206,16 @@ struct ExerciseButton: View {
     private func checkmarkButtonAction() {
         notTapped.toggle()
         changeColorButton.toggle()
+    }
+    
+    private func plusButtonAction() {
+        setCount += 1
+        backgroundHeight += 46
+    }
+    
+    private func minusButtonAction() {
+        setCount -= 1
+        backgroundHeight -= 46
     }
 }
 
