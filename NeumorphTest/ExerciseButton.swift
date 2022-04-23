@@ -55,7 +55,6 @@ struct ExerciseButton: View {
                 .frame(width: UIScreen.main.bounds.size.width - 40, height: backgroundHeight)
                 GeometryReader { geometry in
                     let width = geometry.size.width
-//                    let height = geometry.size.height
                 Image(image)
                     .resizable()
                     .frame(width: 70, height: 40)
@@ -84,37 +83,56 @@ struct ExerciseButton: View {
                             )
                 }
                     .offset(x: width - 45, y: 15)
-                    VStack {
+                    VStack(alignment: .leading) {
                     HStack {
+                        if width < 370 {
                     Text("Подходы")
                         .fontWeight(.semibold)
                         .foregroundColor(redColor)
                         .padding(.leading, 20)
-                    Text("Повторения")
-                        .fontWeight(.semibold)
-                        .foregroundColor(redColor)
-                        .padding(.leading, 8)
-                    Text("Вес(Кг)")
-                        .fontWeight(.semibold)
-                        .foregroundColor(redColor)
-                        .padding(.leading, 10)
+                        } else {
+                            Text("Подходы")
+                                .fontWeight(.semibold)
+                                .foregroundColor(redColor)
+                                .padding(.leading, 20)
+                                .padding(.trailing, 30)
+                        }
+                        Text("Повторения")
+                            .fontWeight(.semibold)
+                            .foregroundColor(redColor)
+                            .padding(.leading, 8)
+                        Text("Вес(Кг)")
+                            .fontWeight(.semibold)
+                            .foregroundColor(redColor)
+                            .padding(.leading, 15)
                     }
                     .font(.system(size: 14))
                     .padding(.top, 60)
                         ForEach(1...setCount, id: \.self) { setNumber in
                             HStack(alignment: .center) {
+                                if width < 370 {
                                 Text("\(setNumber)")
                                     .fontWeight(.semibold)
                                     .frame(width: 64)
                                     .font(.system(size: 17))
                                     .foregroundColor(blueColor)
                                     .padding(.leading, 20)
+
+                                } else {
+                                    Text("\(setNumber)")
+                                        .fontWeight(.semibold)
+                                        .frame(width: 64)
+                                        .font(.system(size: 17))
+                                        .foregroundColor(blueColor)
+                                        .padding(.leading, 20)
+                                        .padding(.trailing, 30)
+                                }
                                 TextField("0", text: $test)
                                     .frame(width: 84, alignment: .center)
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
                                     .padding(.leading, 8)
                                 TextField("0", text: $test)
-                                    .frame(width: 53, alignment: .center)
+                                    .frame(width: 60, alignment: .center)
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
                                     .padding(.leading, 10)
                             }
@@ -124,7 +142,7 @@ struct ExerciseButton: View {
                                 Text("+")
                                     .font(.system(size: 25))
                                     .fontWeight(.semibold)
-                                    .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
+                                    .foregroundColor(blueColor)
                             }
                             .font(.system(size: 17))
                             .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
@@ -144,7 +162,7 @@ struct ExerciseButton: View {
                                 Text("-")
                                     .font(.system(size: 25))
                                     .fontWeight(.semibold)
-                                    .foregroundColor(Color(red: 142/255, green: 51/255, blue: 46/255))
+                                    .foregroundColor(redColor)
                             }
                             .font(.system(size: 17))
                             .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
@@ -178,14 +196,15 @@ struct ExerciseButton: View {
                                     )
                             )
                         }
+                        .padding(.leading, 5)
                     }
                     Button(action: {}) {
                             Image(systemName: "memories")
                             .padding(.trailing, 1)
                     }
-                    .frame(width: 30, height: 105, alignment: .center )
+                    .frame(width: 30, height: changeButtonSize(), alignment: .center )
                     .font(.system(size: 17))
-                    .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
+                    .foregroundColor(blueColor)
                     .background(
                                 RoundedRectangle(cornerRadius: 11)
                                 .fill(.white)
@@ -196,7 +215,7 @@ struct ExerciseButton: View {
                                         .stroke(Color.gray, lineWidth: 0.1)
                                 )
                         )
-                    .offset(x: width - 40, y: 100)
+                    .offset(x: width - 40, y: backgroundHeight * 0.32)
                 }
                 .frame(width: UIScreen.main.bounds.size.width - 40, height: backgroundHeight)
             }
@@ -216,6 +235,16 @@ struct ExerciseButton: View {
     private func minusButtonAction() {
         setCount -= 1
         backgroundHeight -= 46
+    }
+    
+    private func changeButtonSize() -> CGFloat {
+        var buttonSize: CGFloat = 127
+        if setCount < 3 && setCount > 1 {
+            buttonSize = 83
+        } else if setCount == 1 {
+            buttonSize = 44
+        }
+        return buttonSize
     }
 }
 
