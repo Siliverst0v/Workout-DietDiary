@@ -8,15 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var exercises = Exercises.shared
 
     var body: some View {
             ScrollView {
-                ExerciseButton()
-                ExerciseButton()
-                ExerciseButton()
-                ExerciseButton()
-                ExerciseButton()
-                ExerciseButton()
+                ForEach($exercises.chestExercises, id: \.self) {exercise in
+                    ExerciseButton(title: exercise)
+                }
             }
         }
     }

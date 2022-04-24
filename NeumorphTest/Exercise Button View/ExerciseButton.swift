@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ExerciseButton: View {
-    @State var notTapped = false
-    @State var title = "ExercisefjdshjfhskjdfhksjdhfksExercisefjdshjfhskjdfh"
+    @State var notTapped = true
+    @Binding var title: String
     @State var image = "CellChest"
     @State var test = ""
     @State var changeColorButton = true
@@ -21,34 +21,15 @@ struct ExerciseButton: View {
     var body: some View {
         if notTapped {
             ZStack{
-                Button( action: { notTapped.toggle() } ) {
-                    GeometryReader { geometry in
-                        let width = geometry.size.width
-//                        let height = geometry.size.height
-                        
-                    Image(image)
-                        .resizable()
-                        .frame(width: 70, height: 40)
-                        .offset(x: 0, y: 15)
-                    Text(title)
-                    .fontWeight(.semibold)
-                    .lineLimit(3)
-                    .frame(width: width - 130, height: 60, alignment: .center)
-                    .offset(x: 75, y: 5)
-                        Button(action: { changeColorButton.toggle() }) {
-                        Image(systemName: "checkmark")
-                            .font(.system(size: 20))
-                            .foregroundColor(changeColorButton ? .gray : blueColor)
-                            .frame(width: 40, height: 40, alignment: .center)
-                    }
-                        .offset(x: width - 45, y: 15)
-                }
-                    .frame(width: UIScreen.main.bounds.size.width - 40, height: 70, alignment: .center)
-            }
+                NotPressedButtonView(
+                    pressed: $notTapped,
+                    changeColorButton: $changeColorButton,
+                    image: image,
+                    title: title
+                )
             .buttonStyle(CustomButtonStyle())
             }
         } else {
-                
             ZStack {
             Image("TappedCell")
                 .resizable()
@@ -215,7 +196,7 @@ struct ExerciseButton: View {
                                         .stroke(Color.gray, lineWidth: 0.1)
                                 )
                         )
-                    .offset(x: width - 40, y: backgroundHeight * 0.32)
+                    .offset(x: width - 40, y: changeMemoryButtonPosition())
                 }
                 .frame(width: UIScreen.main.bounds.size.width - 40, height: backgroundHeight)
             }
@@ -245,6 +226,16 @@ struct ExerciseButton: View {
             buttonSize = 44
         }
         return buttonSize
+    }
+    
+    private func changeMemoryButtonPosition() -> CGFloat {
+        var buttonPosition: CGFloat = backgroundHeight * 0.32
+        if setCount < 3 && setCount > 1 {
+            buttonPosition = backgroundHeight * 0.38
+        } else if setCount == 1 {
+            buttonPosition = backgroundHeight * 0.46
+        }
+        return buttonPosition
     }
 }
 
@@ -374,6 +365,6 @@ extension LinearGradient {
 
 struct ExerciseButton_Previews: PreviewProvider {
     static var previews: some View {
-        ExerciseButton()
+        ExerciseButton(title: .constant("Exercise for example"))
     }
 }
