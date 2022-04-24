@@ -19,6 +19,7 @@ struct NotPressedButtonView: View {
     let redColor = Color(red: 142/255, green: 51/255, blue: 46/255)
     
     var body: some View {
+        ZStack{
         Button( action: { pressed.toggle() } ) {
             GeometryReader { geometry in
                 let width = geometry.size.width
@@ -36,11 +37,12 @@ struct NotPressedButtonView: View {
                     .font(.system(size: 20))
                     .foregroundColor(changeColorButton ? .gray : blueColor)
                     .frame(width: 40, height: 40, alignment: .center)
-            }
+                }
                 .offset(x: width - 45, y: 15)
-        }
+            }
             .frame(width: UIScreen.main.bounds.size.width - 40, height: 70, alignment: .center)
-    }
+            }
+        }
     }
 }
 
