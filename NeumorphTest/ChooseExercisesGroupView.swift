@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct ChooseExercisesGroupView: View {
+    let columns = [GridItem(.adaptive(minimum: 130))]
+    let blueColor = Color(red: 46/255, green: 74/255, blue: 142/255)
+    @State var pressed = false
+    
     var body: some View {
         VStack {
+            LazyVGrid(columns: columns, spacing: 30) {
             ForEach(Exercises.shared.exerciseGroups, id: \.self) { group in
-            Button(action: {}) {
+                Button(action: { pressed.toggle() }) {
                 Text("\(group)")
+                    .foregroundColor(blueColor)
+                    .fontWeight(.medium)
+                    .padding()
             }
             .scaledToFit()
             .background(
@@ -24,12 +32,13 @@ struct ChooseExercisesGroupView: View {
                     RoundedRectangle(cornerRadius: 11)
                         .stroke(Color.gray, lineWidth: 0.1)
                 )
-        )
+                    )
+                }
             }
             Image("Body")
                 .resizable()
                 .frame(width: UIScreen.main.bounds.size.width - 40, height: 314, alignment: .center)
-                .offset(y: 160)
+                .padding(50)
         }
     }
 }

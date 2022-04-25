@@ -20,6 +20,8 @@ struct Exercises {
     var legs = [""]
     var abs = [""]
     var cardio = [""]
+    var forearms = [""]
+    var fitness = [""]
     
-    let exerciseGroups = ["Грудь", "Плечи", "Спина", "Бицепс", "Трицепс", "Ноги", "Пресс", "Кардио"]
+    let exerciseGroups = ["Грудь", "Плечи", "Спина", "Бицепс", "Трицепс", "Ноги", "Пресс", "Предплечья", "Кардио"]
 }
