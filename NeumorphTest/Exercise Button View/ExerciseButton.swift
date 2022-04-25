@@ -26,7 +26,7 @@ struct ExerciseButton: View {
                     image: image,
                     title: title
                 )
-            .buttonStyle(CustomButtonStyle())
+            .buttonStyle(ExerciseButtonStyle())
         } else {
             PressedButtonView(
                 backgroundHeight: $backgroundHeight,
