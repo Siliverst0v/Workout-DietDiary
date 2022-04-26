@@ -31,6 +31,9 @@ struct SimpleButton: View {
         if isPressed {
             muscleGroups.append(muscleGroup)
             print(muscleGroups)
+        } else {
+            guard let index = muscleGroups.firstIndex(of: muscleGroup) else {return}
+            muscleGroups.remove(at: index)
         }
     }
 }
