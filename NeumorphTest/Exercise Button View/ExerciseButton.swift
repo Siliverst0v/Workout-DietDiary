@@ -10,7 +10,7 @@ import SwiftUI
 struct ExerciseButton: View {
     @State var notTapped = true
     @Binding var title: String
-    @State var image = "CellChest"
+    @State var image = "Chest"
     @State var test = ""
     @State var changeColorButton = true
     @State var setCount = 3
