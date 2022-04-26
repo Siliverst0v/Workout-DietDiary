@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct ChooseExercisesGroupView: View {
-    @State var backIsHidden = false
-    @State var chestIsHidden = false
-    @State var bicepsIsHidden = false
-    @State var tricepsIsHidden = false
-    @State var absIsHidden = false
-    @State var forearmsIsHidden = false
-    @State var legsIsHidden = false
-    @State var shouldersIsHidden = false
-    @State var cardioIsHidden = false
+    @State var backIsVisible = false
+    @State var chestIsVisible = false
+    @State var bicepsIsVisible = false
+    @State var tricepsIsVisible = false
+    @State var absIsVisible = false
+    @State var forearmsIsVisible = false
+    @State var legsIsVisible = false
+    @State var shouldersIsVisible = false
+    @State var cardioIsVisible = false
 
     
     let columns = [GridItem(.adaptive(minimum: 100))]
@@ -30,15 +30,15 @@ struct ChooseExercisesGroupView: View {
                 .fontWeight(.bold)
                 .padding()
             LazyVGrid(columns: columns, spacing: 30) {
-                SimpleButton(isPressed: $chestIsHidden, title: "Грудь")
-                SimpleButton(isPressed: $shouldersIsHidden, title: "Плечи")
-                SimpleButton(isPressed: $backIsHidden, title: "Спина")
-                SimpleButton(isPressed: $bicepsIsHidden, title: "Бицепс")
-                SimpleButton(isPressed: $tricepsIsHidden, title: "Трицепс")
-                SimpleButton(isPressed: $legsIsHidden, title: "Ноги")
-                SimpleButton(isPressed: $absIsHidden, title: "Пресс")
-                SimpleButton(isPressed: $forearmsIsHidden, title: "Предплечья")
-                SimpleButton(isPressed: $cardioIsHidden, title: "Кардио")
+                SimpleButton(isPressed: $chestIsVisible, title: "Грудь")
+                SimpleButton(isPressed: $shouldersIsVisible, title: "Плечи")
+                SimpleButton(isPressed: $backIsVisible, title: "Спина")
+                SimpleButton(isPressed: $bicepsIsVisible, title: "Бицепс")
+                SimpleButton(isPressed: $tricepsIsVisible, title: "Трицепс")
+                SimpleButton(isPressed: $legsIsVisible, title: "Ноги")
+                SimpleButton(isPressed: $absIsVisible, title: "Пресс")
+                SimpleButton(isPressed: $forearmsIsVisible, title: "Предплечья")
+                SimpleButton(isPressed: $cardioIsVisible, title: "Кардио")
 
             }
             ZStack {
@@ -46,28 +46,28 @@ struct ChooseExercisesGroupView: View {
                     .resizable()
                 Image("Back")
                     .resizable()
-                    .opacity(backIsHidden ? 1 : 0)
+                    .opacity(backIsVisible ? 1 : 0)
                 Image("Chest")
                     .resizable()
-                    .opacity(chestIsHidden ? 1 : 0)
+                    .opacity(chestIsVisible ? 1 : 0)
                 Image("Biceps")
                     .resizable()
-                    .opacity(bicepsIsHidden ? 1 : 0)
+                    .opacity(bicepsIsVisible ? 1 : 0)
                 Image("Triceps")
                     .resizable()
-                    .opacity(tricepsIsHidden ? 1 : 0)
+                    .opacity(tricepsIsVisible ? 1 : 0)
                 Image("Abs")
                     .resizable()
-                    .opacity(absIsHidden ? 1 : 0)
+                    .opacity(absIsVisible ? 1 : 0)
                 Image("ForeArms")
                     .resizable()
-                    .opacity(forearmsIsHidden ? 1 : 0)
+                    .opacity(forearmsIsVisible ? 1 : 0)
                 Image("Legs")
                     .resizable()
-                    .opacity(legsIsHidden ? 1 : 0)
+                    .opacity(legsIsVisible ? 1 : 0)
                 Image("Shoulders")
                     .resizable()
-                    .opacity(shouldersIsHidden ? 1 : 0)
+                    .opacity(shouldersIsVisible ? 1 : 0)
             }
             .frame(width: UIScreen.main.bounds.size.width - 40, height: 314, alignment: .center)
             .padding(50)

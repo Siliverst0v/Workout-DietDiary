@@ -23,5 +23,4 @@ struct Exercises {
     var forearms = [""]
     var fitness = [""]
     
-//    let exerciseGroups = ["Грудь", "Плечи", "Спина", "Бицепс", "Трицепс", "Ноги", "Пресс", "Предплечья", "Кардио"]
 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State var exercises = Exercises.shared
-
+    
     var body: some View {
             ScrollView(.vertical, showsIndicators: false) {
                 ForEach($exercises.chest, id: \.self) {exercise in
