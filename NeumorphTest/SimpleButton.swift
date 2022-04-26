@@ -8,14 +8,13 @@
 import SwiftUI
 
 struct SimpleButton: View {
-    @State var isPressed = false
-    var action: () -> ()
+    @Binding var isPressed: Bool
     let title: String
     
     let blueColor = Color(red: 46/255, green: 74/255, blue: 142/255)
     
     var body: some View {
-        Button(action: { self.isPressed.toggle() }) {
+        Button(action: { isPressed.toggle() }) {
         Text("\(title)")
             .foregroundColor(blueColor)
             .fontWeight(.medium)
@@ -28,6 +27,6 @@ struct SimpleButton: View {
 
 struct test_Previews: PreviewProvider {
     static var previews: some View {
-        SimpleButton(action: {}, title: "")
+        SimpleButton(isPressed: .constant(false), title: "")
     }
 }
