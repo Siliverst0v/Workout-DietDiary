@@ -12,9 +12,10 @@ struct ContentView: View {
     
     var body: some View {
             ScrollView(.vertical, showsIndicators: false) {
-                ForEach($muscleGroups, id: \.self) {groups in
-                    ForEach(groups, id: \.self) { exercise in
-                        ExerciseButton(title: exercise)
+                ForEach($muscleGroups, id: \.self) {group in
+//                    let image = group[0]
+                    ForEach(group, id: \.self) { exercise in
+                        ExerciseButton(title: exercise, image: group.first!)
                     }
                 }
                 .padding(15)

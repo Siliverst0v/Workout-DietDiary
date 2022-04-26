@@ -8,6 +8,7 @@
 import Foundation
 
 struct Exercise {
+    
     let title: String
     let image: String
     let muscleGroup: String
