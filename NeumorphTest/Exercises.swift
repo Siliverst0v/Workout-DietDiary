@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Exercises {
+public class Exercises {
     
     static let shared = Exercises()
     

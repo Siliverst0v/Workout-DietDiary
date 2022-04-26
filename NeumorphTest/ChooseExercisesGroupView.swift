@@ -17,6 +17,9 @@ struct ChooseExercisesGroupView: View {
     @State var legsIsVisible = false
     @State var shouldersIsVisible = false
     @State var cardioIsVisible = false
+    
+    @Binding var muscleGroups: [[String]]
+    @State var muscleGroup = Exercises.shared
 
     
     let columns = [GridItem(.adaptive(minimum: 100))]
@@ -30,15 +33,51 @@ struct ChooseExercisesGroupView: View {
                 .fontWeight(.bold)
                 .padding()
             LazyVGrid(columns: columns, spacing: 30) {
-                SimpleButton(isPressed: $chestIsVisible, title: "Грудь")
-                SimpleButton(isPressed: $shouldersIsVisible, title: "Плечи")
-                SimpleButton(isPressed: $backIsVisible, title: "Спина")
-                SimpleButton(isPressed: $bicepsIsVisible, title: "Бицепс")
-                SimpleButton(isPressed: $tricepsIsVisible, title: "Трицепс")
-                SimpleButton(isPressed: $legsIsVisible, title: "Ноги")
-                SimpleButton(isPressed: $absIsVisible, title: "Пресс")
-                SimpleButton(isPressed: $forearmsIsVisible, title: "Предплечья")
-                SimpleButton(isPressed: $cardioIsVisible, title: "Кардио")
+                SimpleButton(
+                    muscleGroups: $muscleGroups,
+                    muscleGroup: $muscleGroup.chest,
+                    isPressed: $chestIsVisible,
+                    title: "Грудь")
+                SimpleButton(
+                    muscleGroups: $muscleGroups,
+                    muscleGroup: $muscleGroup.shoulders,
+                    isPressed: $shouldersIsVisible,
+                    title: "Плечи")
+                SimpleButton(
+                    muscleGroups: $muscleGroups,
+                    muscleGroup: $muscleGroup.back,
+                    isPressed: $backIsVisible,
+                    title: "Спина")
+                SimpleButton(
+                    muscleGroups: $muscleGroups,
+                    muscleGroup: $muscleGroup.biceps,
+                    isPressed: $bicepsIsVisible,
+                    title: "Бицепс")
+                SimpleButton(
+                    muscleGroups: $muscleGroups,
+                    muscleGroup: $muscleGroup.triceps,
+                    isPressed: $tricepsIsVisible,
+                    title: "Трицепс")
+                SimpleButton(
+                    muscleGroups: $muscleGroups,
+                    muscleGroup: $muscleGroup.legs,
+                    isPressed: $legsIsVisible,
+                    title: "Ноги")
+                SimpleButton(
+                    muscleGroups: $muscleGroups,
+                    muscleGroup: $muscleGroup.abs,
+                    isPressed: $absIsVisible,
+                    title: "Пресс")
+                SimpleButton(
+                    muscleGroups: $muscleGroups,
+                    muscleGroup: $muscleGroup.forearms,
+                    isPressed: $forearmsIsVisible,
+                    title: "Предплечья")
+                SimpleButton(
+                    muscleGroups: $muscleGroups,
+                    muscleGroup: $muscleGroup.cardio,
+                    isPressed: $cardioIsVisible,
+                    title: "Кардио")
 
             }
             ZStack {
@@ -77,7 +116,7 @@ struct ChooseExercisesGroupView: View {
 
 struct ChooseExercisesGroupView_Previews: PreviewProvider {
     static var previews: some View {
-        ChooseExercisesGroupView()
+        ChooseExercisesGroupView(muscleGroups: .constant([[""]]))
             .previewInterfaceOrientation(.portrait)
     }
 }
