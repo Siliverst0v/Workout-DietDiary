@@ -18,8 +18,8 @@ struct ChooseExercisesGroupView: View {
     @State var shouldersIsVisible = false
     @State var cardioIsVisible = false
     
-    @State var muscleGroups: [[String]]
-    @State var muscleGroup = Exercises.shared
+    @State var exercises: [[String]]
+    let muscleGroups = Exercises.shared
 
     
     let columns = [GridItem(.adaptive(minimum: 100))]
@@ -31,48 +31,48 @@ struct ChooseExercisesGroupView: View {
             VStack {
                 LazyVGrid(columns: columns, spacing: 30) {
                     SimpleButton(
-                        muscleGroups: $muscleGroups,
-                        muscleGroup: $muscleGroup.chest,
+                        muscleGroups: $exercises,
+                        muscleGroup: muscleGroups.chest,
                         isPressed: $chestIsVisible,
                         title: "Грудь")
                     SimpleButton(
-                        muscleGroups: $muscleGroups,
-                        muscleGroup: $muscleGroup.shoulders,
+                        muscleGroups: $exercises,
+                        muscleGroup: muscleGroups.shoulders,
                         isPressed: $shouldersIsVisible,
                         title: "Плечи")
                     SimpleButton(
-                        muscleGroups: $muscleGroups,
-                        muscleGroup: $muscleGroup.back,
+                        muscleGroups: $exercises,
+                        muscleGroup: muscleGroups.back,
                         isPressed: $backIsVisible,
                         title: "Спина")
                     SimpleButton(
-                        muscleGroups: $muscleGroups,
-                        muscleGroup: $muscleGroup.biceps,
+                        muscleGroups: $exercises,
+                        muscleGroup: muscleGroups.biceps,
                         isPressed: $bicepsIsVisible,
                         title: "Бицепс")
                     SimpleButton(
-                        muscleGroups: $muscleGroups,
-                        muscleGroup: $muscleGroup.triceps,
+                        muscleGroups: $exercises,
+                        muscleGroup: muscleGroups.triceps,
                         isPressed: $tricepsIsVisible,
                         title: "Трицепс")
                     SimpleButton(
-                        muscleGroups: $muscleGroups,
-                        muscleGroup: $muscleGroup.legs,
+                        muscleGroups: $exercises,
+                        muscleGroup: muscleGroups.legs,
                         isPressed: $legsIsVisible,
                         title: "Ноги")
                     SimpleButton(
-                        muscleGroups: $muscleGroups,
-                        muscleGroup: $muscleGroup.abs,
+                        muscleGroups: $exercises,
+                        muscleGroup: muscleGroups.abs,
                         isPressed: $absIsVisible,
                         title: "Пресс")
                     SimpleButton(
-                        muscleGroups: $muscleGroups,
-                        muscleGroup: $muscleGroup.forearms,
+                        muscleGroups: $exercises,
+                        muscleGroup: muscleGroups.forearms,
                         isPressed: $forearmsIsVisible,
                         title: "Предплечья")
                     SimpleButton(
-                        muscleGroups: $muscleGroups,
-                        muscleGroup: $muscleGroup.cardio,
+                        muscleGroups: $exercises,
+                        muscleGroup: muscleGroups.cardio,
                         isPressed: $cardioIsVisible,
                         title: "Кардио")
 
@@ -110,7 +110,7 @@ struct ChooseExercisesGroupView: View {
                 }
                 .frame(width: UIScreen.main.bounds.size.width - 40, height: 314, alignment: .center)
                 .padding(50)
-                NavigationLink(destination: ContentView(muscleGroups: muscleGroups)) {
+                NavigationLink(destination: ContentView(exercises: exercises)) {
                         Text("Next")
                 }
                 .buttonStyle(.bordered)
@@ -123,7 +123,7 @@ struct ChooseExercisesGroupView: View {
 
 struct ChooseExercisesGroupView_Previews: PreviewProvider {
     static var previews: some View {
-        ChooseExercisesGroupView(muscleGroups:([[]]))
+        ChooseExercisesGroupView(exercises:([[]]))
             .previewInterfaceOrientation(.portrait)
     }
 }

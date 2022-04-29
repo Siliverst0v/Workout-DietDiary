@@ -8,14 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var muscleGroups: [[String]]
-    
+    @State var exercises: [[String]]
     var body: some View {
             ScrollView(.vertical, showsIndicators: false) {
-                ForEach($muscleGroups, id: \.self) {group in
-//                    let image = group[0]
+                ForEach($exercises, id: \.self) {group in
                     ForEach(group, id: \.self) { exercise in
-                        ExerciseButton(title: exercise, image: group.first!)
+                        ExerciseButton(title: exercise, image: "chest")
                     }
                 }
                 .padding(15)
@@ -25,6 +23,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(muscleGroups: [[]])
+        ContentView(exercises: [[]])
     }
 }

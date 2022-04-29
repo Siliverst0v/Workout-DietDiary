@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SimpleButton: View {
     @Binding var muscleGroups: [[String]]
-    @Binding var muscleGroup: [String]
+    let muscleGroup: [String]
     @Binding var isPressed: Bool
     let title: String
     
@@ -40,6 +40,6 @@ struct SimpleButton: View {
 
 struct test_Previews: PreviewProvider {
     static var previews: some View {
-        SimpleButton( muscleGroups: .constant([[""]]), muscleGroup: .constant([""]) ,isPressed: .constant(false), title: "")
+        SimpleButton( muscleGroups: .constant([[""]]), muscleGroup: [""],isPressed: .constant(false), title: "")
     }
 }

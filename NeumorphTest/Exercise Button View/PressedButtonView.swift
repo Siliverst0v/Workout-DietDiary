@@ -40,7 +40,7 @@ struct PressedButtonView: View {
             .font(.system(size: 14))
             .foregroundColor(blueColor)
             .lineLimit(3)
-            .frame(width: width - 120, height: 60, alignment: .center)
+            .frame(width: width - 120, height: 60, alignment: .leading)
             .offset(x: 70, y: 5)
                 Button(action: { checkmarkButtonAction() }) {
                 Image(systemName: "checkmark")
@@ -241,7 +241,7 @@ struct PressedButtonView_Previews: PreviewProvider {
             setCount: .constant(3),
             test: .constant(""),
             changeColorButton: .constant(true),
-            image: "CellChest",
+            image: "chest",
             title: "Exercise for example"
         )
     }
