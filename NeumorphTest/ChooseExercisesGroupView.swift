@@ -129,8 +129,7 @@ struct ChooseExercisesGroupView: View {
                 .frame(width: UIScreen.main.bounds.size.width - 40, height: 314, alignment: .center)
                 .padding(50)
                 NavigationLink(destination: ContentView(
-                    exercises: exercises,
-                exercisesImages: exercisesImages)) {
+                    exercises: exercises)) {
                         Text("Next")
                 }
                 .buttonStyle(.bordered)
