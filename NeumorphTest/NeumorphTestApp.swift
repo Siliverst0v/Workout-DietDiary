@@ -11,7 +11,7 @@ import SwiftUI
 struct NeumorphTestApp: App {
     var body: some Scene {
         WindowGroup {
-            ChooseExercisesGroupView(exercises: [[]])
+            ChooseExercisesGroupView(exercises: [[]], exercisesImages: [])
         }
     }
 }

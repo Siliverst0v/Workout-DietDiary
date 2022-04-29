@@ -6,13 +6,13 @@
 //
 
 import Combine
+import Foundation
 
-struct Exercise: Identifiable {
+struct Exercise: Identifiable, Equatable {
     
-    let id: Int
-    let title: String
+    let id: UUID = UUID()
+    let header: String
     let image: String
-    let muscleGroup: [String]
-    let setCount = 3
+    let muscleGroup: String
     
 }
