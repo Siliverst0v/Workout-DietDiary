@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ChooseExercisesGroupView: View {
+struct ChooseExercisesView: View {
     @State var backIsVisible = false
     @State var chestIsVisible = false
     @State var bicepsIsVisible = false
@@ -19,6 +19,7 @@ struct ChooseExercisesGroupView: View {
     @State var cardioIsVisible = false
     
     @State var exercises: [Exercise]
+    @State private var date = Date()
     
     let muscleGroups = Exercises.shared
     
@@ -29,6 +30,13 @@ struct ChooseExercisesGroupView: View {
     var body: some View {
         NavigationView {
             VStack {
+                DatePicker("Выбери дату", selection: $date, displayedComponents: .date)
+                    .id(date)
+                    .environment(\.locale, Locale.init(identifier: "ru"))
+                    .datePickerStyle(.compact)
+                    .foregroundColor(redColor)
+                    .font(.headline)
+                    .padding()
                 LazyVGrid(columns: columns, spacing: 30) {
                     SimpleButton(
                         exercises: $exercises,
@@ -136,7 +144,7 @@ struct ChooseExercisesGroupView: View {
                 }
                 .frame(width: UIScreen.main.bounds.size.width - 40, height: 314, alignment: .center)
                 .padding(50)
-                NavigationLink(destination: ContentView(
+                NavigationLink(destination: ExercisesView(
                     exercises: $exercises)) {
                         Text("Далее ")
                             .foregroundColor(redColor)
@@ -152,7 +160,7 @@ struct ChooseExercisesGroupView: View {
 
 struct ChooseExercisesGroupView_Previews: PreviewProvider {
     static var previews: some View {
-        ChooseExercisesGroupView(exercises: [])
+        ChooseExercisesView(exercises: [])
             .previewInterfaceOrientation(.portrait)
     }
 }

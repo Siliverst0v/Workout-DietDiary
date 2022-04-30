@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ExercisesView: View {
     @Binding var exercises: [Exercise]
     
     let redColor = Color(red: 142/255, green: 51/255, blue: 46/255)
 
     var body: some View {
-        NavigationView{
+
             ScrollView(.vertical, showsIndicators: false) {
                 ForEach($exercises, id: \.id) {exerciseGroup in
                     TextField("", text: exerciseGroup.header)
@@ -25,16 +25,12 @@ struct ContentView: View {
                         ExerciseButton(title: exercise, image: exerciseGroup.icon)
                     }
                 }
-//                .padding(15)
-            }
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarHidden(true)
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(exercises: .constant(Exercise.getExercises()))
+        ExercisesView(exercises: .constant(Exercise.getExercises()))
     }
 }
