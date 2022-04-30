@@ -18,10 +18,9 @@ struct ChooseExercisesGroupView: View {
     @State var shouldersIsVisible = false
     @State var cardioIsVisible = false
     
-    @State var exercises: [[String]]
-    @State var exercisesImages: [String]
+    @State var exercises: [Exercise]
+    
     let muscleGroups = Exercises.shared
-
     
     let columns = [GridItem(.adaptive(minimum: 100))]
     let blueColor = Color(red: 46/255, green: 74/255, blue: 142/255)
@@ -31,68 +30,77 @@ struct ChooseExercisesGroupView: View {
             VStack {
                 LazyVGrid(columns: columns, spacing: 30) {
                     SimpleButton(
-                        muscleGroups: $exercises,
-                        muscleGroup: muscleGroups.chest,
+                        exercises: $exercises,
                         isPressed: $chestIsVisible,
-                        title: "Грудь",
-                        imageName: "chest",
-                        imageNames: $exercisesImages)
+                        exercise: Exercise(
+                            header: "Грудь",
+                            icon: "chest",
+                            exercises: muscleGroups.chest),
+                        title: "Грудь")
                     SimpleButton(
-                        muscleGroups: $exercises,
-                        muscleGroup: muscleGroups.shoulders,
+                        exercises: $exercises,
                         isPressed: $shouldersIsVisible,
-                        title: "Плечи",
-                        imageName: "chest",
-                        imageNames: $exercisesImages)
+                        exercise: Exercise(
+                            header: "Плечи",
+                            icon: "shoulders",
+                            exercises: muscleGroups.shoulders),
+                        title: "Плечи")
                     SimpleButton(
-                        muscleGroups: $exercises,
-                        muscleGroup: muscleGroups.back,
+                        exercises: $exercises,
                         isPressed: $backIsVisible,
-                        title: "Спина",
-                        imageName: "back",
-                        imageNames: $exercisesImages)
+                        exercise: Exercise(
+                            header: "Спина",
+                            icon: "back",
+                            exercises: muscleGroups.back),
+                        title: "Спина")
                     SimpleButton(
-                        muscleGroups: $exercises,
-                        muscleGroup: muscleGroups.biceps,
+                        exercises: $exercises,
                         isPressed: $bicepsIsVisible,
-                        title: "Бицепс",
-                        imageName: "biceps",
-                        imageNames: $exercisesImages)
+                        exercise: Exercise(
+                            header: "Бицепс",
+                            icon: "biceps",
+                            exercises: muscleGroups.biceps),
+                        title: "Бицепс")
                     SimpleButton(
-                        muscleGroups: $exercises,
-                        muscleGroup: muscleGroups.triceps,
+                        exercises: $exercises,
                         isPressed: $tricepsIsVisible,
-                        title: "Трицепс",
-                        imageName: "triceps",
-                        imageNames: $exercisesImages)
+                        exercise: Exercise(
+                            header: "Трицепс",
+                            icon: "triceps",
+                            exercises: muscleGroups.triceps),
+                        title: "Трицепс")
                     SimpleButton(
-                        muscleGroups: $exercises,
-                        muscleGroup: muscleGroups.legs,
+                        exercises: $exercises,
                         isPressed: $legsIsVisible,
-                        title: "Ноги",
-                        imageName: "legs",
-                        imageNames: $exercisesImages)
+                        exercise: Exercise(
+                            header: "Ноги",
+                            icon: "legs",
+                            exercises: muscleGroups.legs),
+                        title: "Ноги")
                     SimpleButton(
-                        muscleGroups: $exercises,
-                        muscleGroup: muscleGroups.abs,
+                        exercises: $exercises,
                         isPressed: $absIsVisible,
-                        title: "Пресс",
-                        imageName: "abs",
-                        imageNames: $exercisesImages)
+                        exercise: Exercise(
+                            header: "Пресс",
+                            icon: "abs",
+                            exercises: muscleGroups.abs),
+                        title: "Пресс")
                     SimpleButton(
-                        muscleGroups: $exercises,
-                        muscleGroup: muscleGroups.forearms,
+                        exercises: $exercises,
                         isPressed: $forearmsIsVisible,
-                        title: "Предплечья",
-                        imageName: "forearms",
-                        imageNames: $exercisesImages)
+                        exercise: Exercise(
+                            header: "Предплечья",
+                            icon: "forearms",
+                            exercises: muscleGroups.forearms),
+                        title: "Предплечья")
                     SimpleButton(
-                        muscleGroups: $exercises,
-                        muscleGroup: muscleGroups.cardio,
+                        exercises: $exercises,
                         isPressed: $cardioIsVisible,
-                        title: "Кардио",
-                        imageName: "cardio",
-                        imageNames: $exercisesImages)
+                        exercise: Exercise(
+                            header: "Кардио",
+                            icon: "cardio",
+                            exercises: muscleGroups.cardio),
+                        title: "Кардио")
 
                 }
                 ZStack {
@@ -129,7 +137,7 @@ struct ChooseExercisesGroupView: View {
                 .frame(width: UIScreen.main.bounds.size.width - 40, height: 314, alignment: .center)
                 .padding(50)
                 NavigationLink(destination: ContentView(
-                    exercises: exercises)) {
+                    exercises: $exercises)) {
                         Text("Next")
                 }
                 .buttonStyle(.bordered)
@@ -142,7 +150,7 @@ struct ChooseExercisesGroupView: View {
 
 struct ChooseExercisesGroupView_Previews: PreviewProvider {
     static var previews: some View {
-        ChooseExercisesGroupView(exercises:([[]]), exercisesImages: [])
+        ChooseExercisesGroupView(exercises: [])
             .previewInterfaceOrientation(.portrait)
     }
 }

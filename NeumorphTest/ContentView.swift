@@ -8,15 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var exercises: [[String]]
+    @Binding var exercises: [Exercise]
+    
+    let redColor = Color(red: 142/255, green: 51/255, blue: 46/255)
+
     var body: some View {
             ScrollView(.vertical, showsIndicators: false) {
-                ForEach($exercises, id: \.self) {group in
-                    
-                    ForEach(group, id: \.self) { exercise in
-                        ExerciseButton(title: exercise, image: "chest")
+                ForEach($exercises, id: \.id) {exerciseGroup in
+                    TextField("", text: exerciseGroup.header)
+                        .font(.title)
+                        .foregroundColor(redColor)
+                        .disabled(true)
+                        .padding()
+                    ForEach(exerciseGroup.exercises, id: \.self) {exercise in
+                        ExerciseButton(title: exercise, image: exerciseGroup.icon)
                     }
-                    
                 }
                 .padding(15)
             }
@@ -25,6 +31,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(exercises: [[]])
+        ContentView(exercises: .constant(Exercise.getExercises()))
     }
 }

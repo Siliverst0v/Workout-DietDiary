@@ -10,7 +10,7 @@ import SwiftUI
 struct ExerciseButton: View {
     @State var notTapped = true
     @Binding var title: String
-    let image: String
+    @Binding var image: String
     @State var test = ""
     @State var changeColorButton = true
     @State var setCount = 3
@@ -43,6 +43,6 @@ struct ExerciseButton: View {
 
 struct ExerciseButton_Previews: PreviewProvider {
     static var previews: some View {
-        ExerciseButton(title: .constant("Exercise for example"), image: "legs")
+        ExerciseButton(title: .constant("Exercise for example"), image: .constant("legs"))
     }
 }
