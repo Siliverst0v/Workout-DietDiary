@@ -31,7 +31,6 @@ struct SimpleButton: View {
         isPressed.toggle()
         if isPressed {
             exercises.append(exercise)
-            print(exercises)
         } else {
             exercises.removeAll(where: {$0.exercises == exercise.exercises})
         }
