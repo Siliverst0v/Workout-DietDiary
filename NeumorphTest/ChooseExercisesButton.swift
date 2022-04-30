@@ -14,16 +14,17 @@ struct SimpleButton: View {
     let exercise: Exercise
     let title: String
     let blueColor = Color(red: 46/255, green: 74/255, blue: 142/255)
-
+    let redColor = Color(red: 142/255, green: 51/255, blue: 46/255)
+    
     var body: some View {
         Button(action: { addingGroup() }) {
         Text("\(title)")
-            .foregroundColor(blueColor)
-            .fontWeight(.medium)
-            .padding()
+                .foregroundColor(isPressed ? redColor : blueColor)
+                .fontWeight(.medium)
+                .padding()
     }
     .scaledToFit()
-    .buttonStyle(SimpleButtonStyle(isPressed: $isPressed))
+    .buttonStyle(ChooseExerciseButtonStyle(isPressed: $isPressed))
     }
 
     func addingGroup() {

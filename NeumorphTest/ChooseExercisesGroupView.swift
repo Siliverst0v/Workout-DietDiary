@@ -24,6 +24,7 @@ struct ChooseExercisesGroupView: View {
     
     let columns = [GridItem(.adaptive(minimum: 100))]
     let blueColor = Color(red: 46/255, green: 74/255, blue: 142/255)
+    let redColor = Color(red: 142/255, green: 51/255, blue: 46/255)
     
     var body: some View {
         NavigationView {
@@ -101,7 +102,6 @@ struct ChooseExercisesGroupView: View {
                             icon: "cardio",
                             exercises: muscleGroups.cardio),
                         title: "Кардио")
-
                 }
                 ZStack {
                     Image("Body")
@@ -138,12 +138,14 @@ struct ChooseExercisesGroupView: View {
                 .padding(50)
                 NavigationLink(destination: ContentView(
                     exercises: $exercises)) {
-                        Text("Next")
+                        Text("Далее ")
+                            .foregroundColor(redColor)
+                            .padding()
                 }
-                .buttonStyle(.bordered)
+                    .scaledToFit()
+                    .buttonStyle(SimpleButtonStyle())
             }
-            .navigationTitle(
-                Text("Выбери группу мыщц"))
+            .navigationBarHidden(true)
         }
     }
 }
