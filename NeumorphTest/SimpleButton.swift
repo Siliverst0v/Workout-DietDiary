@@ -33,9 +33,7 @@ struct SimpleButton: View {
             exercises.append(exercise)
             print(exercises)
         } else {
-            guard let index = exercises.firstIndex(of: exercise) else {return}
-            exercises.remove(at: index)
-            print(index)
+            exercises.removeAll(where: {$0.exercises == exercise.exercises})
         }
     }
 }
