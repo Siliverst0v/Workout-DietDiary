@@ -26,7 +26,9 @@ struct SimpleButton: View {
     .scaledToFit()
     .buttonStyle(ChooseExerciseButtonStyle(isPressed: $isPressed))
     }
+}
 
+extension SimpleButton {
     func addingGroup() {
         
         isPressed.toggle()
