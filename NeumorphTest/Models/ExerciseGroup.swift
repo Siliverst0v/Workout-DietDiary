@@ -9,7 +9,8 @@ import Foundation
 
 struct ExerciseGroup: Identifiable, Equatable, Hashable {
     let id = UUID()
-    var header: String
+    var date: Date
+    var exerciseGroupName: String
     var icon: String
     var exercises: [String]
 }
@@ -18,12 +19,14 @@ extension ExerciseGroup {
     static func getExercises() -> [ExerciseGroup] {
         return [
             ExerciseGroup(
-                header: "Грудь",
+                date: Date(),
+                exerciseGroupName: "Грудь",
                 icon: "chest",
                 exercises: Exercise.shared.chest
             ),
             ExerciseGroup(
-                header: "Спина",
+                date: Date(),
+                exerciseGroupName: "Спина",
                 icon: "back",
                 exercises: Exercise.shared.back
             )

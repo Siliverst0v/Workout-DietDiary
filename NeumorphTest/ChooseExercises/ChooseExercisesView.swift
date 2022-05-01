@@ -44,7 +44,8 @@ struct ChooseExercisesView: View {
                         exercises: $exercises,
                         isPressed: $chestIsVisible,
                         exercise: ExerciseGroup(
-                            header: "Грудь",
+                            date: date,
+                            exerciseGroupName: "Грудь",
                             icon: "chest",
                             exercises: muscleGroups.chest),
                         title: "Грудь")
@@ -52,7 +53,8 @@ struct ChooseExercisesView: View {
                         exercises: $exercises,
                         isPressed: $shouldersIsVisible,
                         exercise: ExerciseGroup(
-                            header: "Плечи",
+                            date: date,
+                            exerciseGroupName: "Плечи",
                             icon: "shoulders",
                             exercises: muscleGroups.shoulders),
                         title: "Плечи")
@@ -60,7 +62,8 @@ struct ChooseExercisesView: View {
                         exercises: $exercises,
                         isPressed: $backIsVisible,
                         exercise: ExerciseGroup(
-                            header: "Спина",
+                            date: date,
+                            exerciseGroupName: "Спина",
                             icon: "back",
                             exercises: muscleGroups.back),
                         title: "Спина")
@@ -68,7 +71,8 @@ struct ChooseExercisesView: View {
                         exercises: $exercises,
                         isPressed: $bicepsIsVisible,
                         exercise: ExerciseGroup(
-                            header: "Бицепс",
+                            date: date,
+                            exerciseGroupName: "Бицепс",
                             icon: "biceps",
                             exercises: muscleGroups.biceps),
                         title: "Бицепс")
@@ -76,7 +80,8 @@ struct ChooseExercisesView: View {
                         exercises: $exercises,
                         isPressed: $tricepsIsVisible,
                         exercise: ExerciseGroup(
-                            header: "Трицепс",
+                            date: date,
+                            exerciseGroupName: "Трицепс",
                             icon: "triceps",
                             exercises: muscleGroups.triceps),
                         title: "Трицепс")
@@ -84,7 +89,8 @@ struct ChooseExercisesView: View {
                         exercises: $exercises,
                         isPressed: $legsIsVisible,
                         exercise: ExerciseGroup(
-                            header: "Ноги",
+                            date: date,
+                            exerciseGroupName: "Ноги",
                             icon: "legs",
                             exercises: muscleGroups.legs),
                         title: "Ноги")
@@ -92,7 +98,8 @@ struct ChooseExercisesView: View {
                         exercises: $exercises,
                         isPressed: $absIsVisible,
                         exercise: ExerciseGroup(
-                            header: "Пресс",
+                            date: date,
+                            exerciseGroupName: "Пресс",
                             icon: "abs",
                             exercises: muscleGroups.abs),
                         title: "Пресс")
@@ -100,7 +107,8 @@ struct ChooseExercisesView: View {
                         exercises: $exercises,
                         isPressed: $forearmsIsVisible,
                         exercise: ExerciseGroup(
-                            header: "Предплечья",
+                            date: date,
+                            exerciseGroupName: "Предплечья",
                             icon: "forearms",
                             exercises: muscleGroups.forearms),
                         title: "Предплечья")
@@ -108,7 +116,8 @@ struct ChooseExercisesView: View {
                         exercises: $exercises,
                         isPressed: $cardioIsVisible,
                         exercise: ExerciseGroup(
-                            header: "Кардио",
+                            date: date,
+                            exerciseGroupName: "Кардио",
                             icon: "cardio",
                             exercises: muscleGroups.cardio),
                         title: "Кардио")

@@ -44,7 +44,8 @@ struct test_Previews: PreviewProvider {
             exercises: .constant([]),
             isPressed: .constant(false),
             exercise: ExerciseGroup(
-                header: "",
+                date: Date(),
+                exerciseGroupName: "",
                 icon: "",
                 exercises: []),
             title: "Exercise 1")

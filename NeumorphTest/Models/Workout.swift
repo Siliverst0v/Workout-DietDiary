@@ -11,13 +11,14 @@ struct Workout: Identifiable, Equatable, Hashable {
     
     let id: UUID = UUID()
     let date: Date
-    let muscleGroups: [String]
+    let exerciseGroupName: [String]
+//    var choosenExercises: [Exercise]?
 }
 
 extension Workout {
     static func getWorkout() -> Workout {
         return Workout(
             date: Date(),
-            muscleGroups: ["Спина", "Грудь"])
+            exerciseGroupName: ["Спина", "Грудь"])
     }
 }

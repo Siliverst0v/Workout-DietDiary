@@ -18,11 +18,10 @@ struct PressedButtonView: View {
     
 //TODO: - Заменить это свойство на добавление в массив упражнений
     @Binding var changeColorButton: Bool
+    @State var choosenExercises: [String]
     
     let image: String
     let title: String
-    let blueColor = Color(red: 46/255, green: 74/255, blue: 142/255)
-    let redColor = Color(red: 142/255, green: 51/255, blue: 46/255)
     
     var body: some View {
         ZStack {
@@ -38,14 +37,14 @@ struct PressedButtonView: View {
             Text(title)
             .fontWeight(.semibold)
             .font(.system(size: 14))
-            .foregroundColor(blueColor)
+            .foregroundColor(.customBlue)
             .lineLimit(3)
             .frame(width: width - 130, height: 60, alignment: .leading)
             .offset(x: 85, y: 5)
                 Button(action: { checkmarkButtonAction() }) {
                 Image(systemName: "checkmark")
                     .font(.system(size: 20))
-                    .foregroundColor(changeColorButton ? .gray : blueColor)
+                    .foregroundColor(changeColorButton ? .customBlue : .gray)
                     .frame(width: 40, height: 40, alignment: .center)
                     .background(
                                 RoundedRectangle(cornerRadius: 11)
@@ -64,22 +63,22 @@ struct PressedButtonView: View {
                     if width < 370 {
                 Text("Подходы")
                     .fontWeight(.semibold)
-                    .foregroundColor(redColor)
+                    .foregroundColor(.customRed)
                     .padding(.leading, 20)
                     } else {
                         Text("Подходы")
                             .fontWeight(.semibold)
-                            .foregroundColor(redColor)
+                            .foregroundColor(.customRed)
                             .padding(.leading, 20)
                             .padding(.trailing, 30)
                     }
                     Text("Повторения")
                         .fontWeight(.semibold)
-                        .foregroundColor(redColor)
+                        .foregroundColor(.customRed)
                         .padding(.leading, 8)
                     Text("Вес(Кг)")
                         .fontWeight(.semibold)
-                        .foregroundColor(redColor)
+                        .foregroundColor(.customRed)
                         .padding(.leading, 15)
                 }
                 .font(.system(size: 14))
@@ -91,7 +90,7 @@ struct PressedButtonView: View {
                                 .fontWeight(.semibold)
                                 .frame(width: 64)
                                 .font(.system(size: 17))
-                                .foregroundColor(blueColor)
+                                .foregroundColor(.customBlue)
                                 .padding(.leading, 20)
 
                             } else {
@@ -99,7 +98,7 @@ struct PressedButtonView: View {
                                     .fontWeight(.semibold)
                                     .frame(width: 64)
                                     .font(.system(size: 17))
-                                    .foregroundColor(blueColor)
+                                    .foregroundColor(.customBlue)
                                     .padding(.leading, 20)
                                     .padding(.trailing, 30)
                             }
@@ -118,7 +117,7 @@ struct PressedButtonView: View {
                             Text("+")
                                 .font(.system(size: 25))
                                 .fontWeight(.semibold)
-                                .foregroundColor(blueColor)
+                                .foregroundColor(.customBlue)
                         }
                         .font(.system(size: 17))
                         .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
@@ -138,7 +137,7 @@ struct PressedButtonView: View {
                             Text("-")
                                 .font(.system(size: 25))
                                 .fontWeight(.semibold)
-                                .foregroundColor(redColor)
+                                .foregroundColor(.customRed)
                         }
                         .font(.system(size: 17))
                         .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
@@ -180,7 +179,7 @@ struct PressedButtonView: View {
                 }
                 .frame(width: 30, height: changeButtonSize(), alignment: .center )
                 .font(.system(size: 17))
-                .foregroundColor(blueColor)
+                .foregroundColor(.customBlue)
                 .background(
                             RoundedRectangle(cornerRadius: 11)
                             .fill(.white)
@@ -197,9 +196,17 @@ struct PressedButtonView: View {
         }
     }
     
-    private func checkmarkButtonAction() {
-        pressed.toggle()
+    func checkmarkButtonAction() {
+//        pressed.toggle()
         changeColorButton.toggle()
+        
+        if changeColorButton {
+        choosenExercises.append(title)
+            print(choosenExercises)
+        } else {
+            choosenExercises.removeAll(where: {$0 == title})
+            print(choosenExercises)
+        }
     }
     
     private func plusButtonAction() {
@@ -241,6 +248,7 @@ struct PressedButtonView_Previews: PreviewProvider {
             setCount: .constant(3),
             test: .constant(""),
             changeColorButton: .constant(true),
+            choosenExercises: [],
             image: "chest",
             title: "Exercise for example"
         )
