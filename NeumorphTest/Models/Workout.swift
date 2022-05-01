@@ -13,3 +13,11 @@ struct Workout: Identifiable, Equatable, Hashable {
     let date: Date
     let muscleGroups: [String]
 }
+
+extension Workout {
+    static func getWorkout() -> Workout {
+        return Workout(
+            date: Date(),
+            muscleGroups: ["Спина", "Грудь"])
+    }
+}

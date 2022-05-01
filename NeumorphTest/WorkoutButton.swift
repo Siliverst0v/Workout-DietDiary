@@ -8,32 +8,58 @@
 import SwiftUI
 
 struct WorkoutButton: View {
-    let date: Date
-    let muscleGroups: [String]
+    let workout: Workout
     
-    let blueColor = Color(red: 46/255, green: 74/255, blue: 142/255)
-    let redColor = Color(red: 142/255, green: 51/255, blue: 46/255)
     var body: some View {
         Button(action: {}) {
             HStack {
                 VStack{
-                    Text(date, style: .date)
+                    Text(workout.date, style: .date)
                         .environment(\.locale, Locale.init(identifier: "ru"))
-                        .foregroundColor(redColor)
+                        .foregroundColor(.customRed)
                         .font(.headline)
                         .padding(5)
-                    ForEach(muscleGroups, id: \.self) { muscleGroups in
+                    ForEach(workout.muscleGroups, id: \.self) { muscleGroups in
                     Text(muscleGroups)
-                        .foregroundColor(blueColor)
+                            .foregroundColor(.customBlue)
                         .font(.headline)
                         .padding(5)
                     }
                 }
                 .padding()
-                Image("Body")
-                    .resizable()
-                    .frame(height: 160)
-                    .padding()
+                ZStack {
+                    Image("Body")
+                        .resizable()
+                    Image("BackBody")
+                        .resizable()
+                        .opacity(workout.muscleGroups.contains("Спина") ? 1 : 0)
+                    Image("ChestBody")
+                        .resizable()
+                        .opacity(workout.muscleGroups.contains("Грудь") ? 1 : 0)
+                    Image("BicepsBody")
+                        .resizable()
+                        .opacity(workout.muscleGroups.contains("Бицепс") ? 1 : 0)
+                    Image("TricepsBody")
+                        .resizable()
+                        .opacity(workout.muscleGroups.contains("Трицепс") ? 1 : 0)
+                    Image("AbsBody")
+                        .resizable()
+                        .opacity(workout.muscleGroups.contains("Пресс") ? 1 : 0)
+                    Image("ForeArmsBody")
+                        .resizable()
+                        .opacity(workout.muscleGroups.contains("Предплечья") ? 1 : 0)
+                    Image("LegsBody")
+                        .resizable()
+                        .opacity(workout.muscleGroups.contains("Ноги") ? 1 : 0)
+                    Image("ShouldersBody")
+                        .resizable()
+                        .opacity(workout.muscleGroups.contains("Плечи") ? 1 : 0)
+                    Image("CardioBody")
+                        .resizable()
+                        .opacity(workout.muscleGroups.contains("Кардио") ? 1 : 0)
+                }
+                .frame(height: 160)
+                .padding()
             }
         }
         .scaledToFit()
@@ -43,6 +69,6 @@ struct WorkoutButton: View {
 
 struct WorkoutsView_Previews: PreviewProvider {
     static var previews: some View {
-        WorkoutButton(date: Date(), muscleGroups: ["Спина", "Грудь"])
+        WorkoutButton(workout: Workout.getWorkout())
     }
 }

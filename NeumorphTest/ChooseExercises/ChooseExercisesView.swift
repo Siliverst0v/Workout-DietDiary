@@ -18,14 +18,12 @@ struct ChooseExercisesView: View {
     @State var shouldersIsVisible = false
     @State var cardioIsVisible = false
     
-    @State var exercises: [Exercise]
-    @State private var date = Date()
+    @State var exercises: [ExerciseGroup]
+    @State var date: Date
     
-    let muscleGroups = Exercises.shared
+    let muscleGroups = Exercise.shared
     
     let columns = [GridItem(.adaptive(minimum: 100))]
-    let blueColor = Color(red: 46/255, green: 74/255, blue: 142/255)
-    let redColor = Color(red: 142/255, green: 51/255, blue: 46/255)
     
     var body: some View {
         NavigationView {
@@ -34,17 +32,18 @@ struct ChooseExercisesView: View {
                     .id(date)
                     .environment(\.locale, Locale.init(identifier: "ru"))
                     .datePickerStyle(.compact)
-                    .foregroundColor(redColor)
+                    .foregroundColor(.customRed)
                     .font(.headline)
-                    .padding()
+                    .padding(.horizontal)
                 Text("Выбери группу упражнений")
-                    .foregroundColor(redColor)
+                    .foregroundColor(.customRed)
                     .fontWeight(.semibold)
+                    .padding()
                 LazyVGrid(columns: columns, spacing: 30) {
                     SimpleButton(
                         exercises: $exercises,
                         isPressed: $chestIsVisible,
-                        exercise: Exercise(
+                        exercise: ExerciseGroup(
                             header: "Грудь",
                             icon: "chest",
                             exercises: muscleGroups.chest),
@@ -52,7 +51,7 @@ struct ChooseExercisesView: View {
                     SimpleButton(
                         exercises: $exercises,
                         isPressed: $shouldersIsVisible,
-                        exercise: Exercise(
+                        exercise: ExerciseGroup(
                             header: "Плечи",
                             icon: "shoulders",
                             exercises: muscleGroups.shoulders),
@@ -60,7 +59,7 @@ struct ChooseExercisesView: View {
                     SimpleButton(
                         exercises: $exercises,
                         isPressed: $backIsVisible,
-                        exercise: Exercise(
+                        exercise: ExerciseGroup(
                             header: "Спина",
                             icon: "back",
                             exercises: muscleGroups.back),
@@ -68,7 +67,7 @@ struct ChooseExercisesView: View {
                     SimpleButton(
                         exercises: $exercises,
                         isPressed: $bicepsIsVisible,
-                        exercise: Exercise(
+                        exercise: ExerciseGroup(
                             header: "Бицепс",
                             icon: "biceps",
                             exercises: muscleGroups.biceps),
@@ -76,7 +75,7 @@ struct ChooseExercisesView: View {
                     SimpleButton(
                         exercises: $exercises,
                         isPressed: $tricepsIsVisible,
-                        exercise: Exercise(
+                        exercise: ExerciseGroup(
                             header: "Трицепс",
                             icon: "triceps",
                             exercises: muscleGroups.triceps),
@@ -84,7 +83,7 @@ struct ChooseExercisesView: View {
                     SimpleButton(
                         exercises: $exercises,
                         isPressed: $legsIsVisible,
-                        exercise: Exercise(
+                        exercise: ExerciseGroup(
                             header: "Ноги",
                             icon: "legs",
                             exercises: muscleGroups.legs),
@@ -92,7 +91,7 @@ struct ChooseExercisesView: View {
                     SimpleButton(
                         exercises: $exercises,
                         isPressed: $absIsVisible,
-                        exercise: Exercise(
+                        exercise: ExerciseGroup(
                             header: "Пресс",
                             icon: "abs",
                             exercises: muscleGroups.abs),
@@ -100,7 +99,7 @@ struct ChooseExercisesView: View {
                     SimpleButton(
                         exercises: $exercises,
                         isPressed: $forearmsIsVisible,
-                        exercise: Exercise(
+                        exercise: ExerciseGroup(
                             header: "Предплечья",
                             icon: "forearms",
                             exercises: muscleGroups.forearms),
@@ -108,7 +107,7 @@ struct ChooseExercisesView: View {
                     SimpleButton(
                         exercises: $exercises,
                         isPressed: $cardioIsVisible,
-                        exercise: Exercise(
+                        exercise: ExerciseGroup(
                             header: "Кардио",
                             icon: "cardio",
                             exercises: muscleGroups.cardio),
@@ -150,7 +149,7 @@ struct ChooseExercisesView: View {
                 NavigationLink(destination: ExercisesView(
                     exercises: $exercises)) {
                         Text("Далее ")
-                            .foregroundColor(redColor)
+                            .foregroundColor(.customRed)
                             .padding()
                 }
                     .scaledToFit()
@@ -165,7 +164,7 @@ struct ChooseExercisesView: View {
 
 struct ChooseExercisesGroupView_Previews: PreviewProvider {
     static var previews: some View {
-        ChooseExercisesView(exercises: [])
+        ChooseExercisesView(exercises: [], date: Date())
             .previewInterfaceOrientation(.portrait)
     }
 }

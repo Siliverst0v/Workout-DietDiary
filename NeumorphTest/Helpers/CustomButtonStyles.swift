@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct ExerciseButtonStyle: ButtonStyle {
-    let blueColor = Color(red: 46/255, green: 74/255, blue: 142/255)
     
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .font(.system(size: 14))
-            .foregroundColor(blueColor)
+            .foregroundColor(.customBlue)
             .frame(width: UIScreen.main.bounds.size.width - 40, height: 70, alignment: .center)
             .background(
                         RoundedRectangle(cornerRadius: 11)
@@ -172,4 +171,9 @@ extension LinearGradient {
     init(_ colors: Color...) {
         self.init(gradient: Gradient(colors: colors), startPoint: .topLeading, endPoint: .bottomTrailing)
     }
+}
+
+extension Color {
+    static let customBlue = Color(red: 46/255, green: 74/255, blue: 142/255)
+    static let customRed = Color(red: 142/255, green: 51/255, blue: 46/255)
 }

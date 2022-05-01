@@ -8,18 +8,16 @@
 import SwiftUI
 
 struct SimpleButton: View {
-    @Binding var exercises: [Exercise]
+    @Binding var exercises: [ExerciseGroup]
     @Binding var isPressed: Bool
 
-    let exercise: Exercise
+    let exercise: ExerciseGroup
     let title: String
-    let blueColor = Color(red: 46/255, green: 74/255, blue: 142/255)
-    let redColor = Color(red: 142/255, green: 51/255, blue: 46/255)
     
     var body: some View {
         Button(action: { addingGroup() }) {
         Text("\(title)")
-                .foregroundColor(isPressed ? redColor : blueColor)
+                .foregroundColor(isPressed ? Color.customRed : Color.customBlue)
                 .fontWeight(.medium)
                 .padding()
     }
@@ -45,7 +43,7 @@ struct test_Previews: PreviewProvider {
         SimpleButton(
             exercises: .constant([]),
             isPressed: .constant(false),
-            exercise: Exercise(
+            exercise: ExerciseGroup(
                 header: "",
                 icon: "",
                 exercises: []),
