@@ -48,14 +48,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A498B3C52816031F00038BE9 /* Exercise Button View */ = {
+		A498B3C52816031F00038BE9 /* Exercise Button */ = {
 			isa = PBXGroup;
 			children = (
 				A4F2F656280CAE7B00061441 /* ExerciseButton.swift */,
 				A498B3C32816010A00038BE9 /* NotPressedButtonView.swift */,
 				A498B3C6281603C200038BE9 /* PressedButtonView.swift */,
 			);
-			path = "Exercise Button View";
+			path = "Exercise Button";
 			sourceTree = "<group>";
 		};
 		A498B3CA2816077300038BE9 /* Models */ = {
@@ -75,13 +75,13 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		A4BC7617281DE58300D55496 /* StartView */ = {
+		A4BC7617281DE58300D55496 /* ChooseExercises */ = {
 			isa = PBXGroup;
 			children = (
 				A4DE42CF2816E5A700F4D4DC /* ChooseExercisesView.swift */,
 				A458AA8C28173C3E00618405 /* ChooseExercisesButton.swift */,
 			);
-			path = StartView;
+			path = ChooseExercises;
 			sourceTree = "<group>";
 		};
 		A4E9373E27FE3BA0004A3650 = {
@@ -104,8 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				A4E9374A27FE3BA0004A3650 /* NeumorphTestApp.swift */,
-				A4BC7617281DE58300D55496 /* StartView */,
-				A498B3C52816031F00038BE9 /* Exercise Button View */,
+				A4BC7617281DE58300D55496 /* ChooseExercises */,
+				A498B3C52816031F00038BE9 /* Exercise Button */,
 				A4E9374C27FE3BA0004A3650 /* ExercisesView.swift */,
 				A498B3CA2816077300038BE9 /* Models */,
 				A4BC7616281DE56500D55496 /* Helpers */,

@@ -30,13 +30,16 @@ struct ChooseExercisesView: View {
     var body: some View {
         NavigationView {
             VStack {
-                DatePicker("Выбери дату", selection: $date, displayedComponents: .date)
+                DatePicker("Выбери дату тренировки", selection: $date, displayedComponents: .date)
                     .id(date)
                     .environment(\.locale, Locale.init(identifier: "ru"))
                     .datePickerStyle(.compact)
                     .foregroundColor(redColor)
                     .font(.headline)
                     .padding()
+                Text("Выбери группу упражнений")
+                    .foregroundColor(redColor)
+                    .fontWeight(.semibold)
                 LazyVGrid(columns: columns, spacing: 30) {
                     SimpleButton(
                         exercises: $exercises,
@@ -152,6 +155,8 @@ struct ChooseExercisesView: View {
                 }
                     .scaledToFit()
                     .buttonStyle(SimpleButtonStyle())
+                    .opacity(exercises.isEmpty ? 0 : 1)
+                    .disabled(exercises.isEmpty)
             }
             .navigationBarHidden(true)
         }
