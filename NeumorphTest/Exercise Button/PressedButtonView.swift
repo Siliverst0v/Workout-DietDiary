@@ -42,7 +42,7 @@ struct PressedButtonView: View {
             .frame(width: width - 130, height: 60, alignment: .leading)
             .offset(x: 85, y: 5)
                 Button(action: { addExercise() }) {
-                Image(systemName: "checkmark")
+                Image(systemName: "checkmark.square")
                     .font(.system(size: 20))
                     .foregroundColor(changeColorButton ? .customBlue : .gray)
                     .frame(width: 40, height: 40, alignment: .center)
@@ -155,7 +155,7 @@ struct PressedButtonView: View {
                         .disabled(setCount <= 1)
                         .padding(.trailing, 20)
                         Button(action: { pressed.toggle() }) {
-                            Image(systemName: "arrowtriangle.up.fill")
+                            Image(systemName: "chevron.up")
                         }
                         .frame(width: 100, height: 28, alignment: .center )
                         .font(.system(size: 20))

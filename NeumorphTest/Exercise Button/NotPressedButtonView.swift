@@ -31,7 +31,7 @@ struct NotPressedButtonView: View {
             .frame(width: width - 130, height: 60, alignment: .leading)
             .offset(x: 85, y: 5)
                 Button(action: { addExercise() }) {
-                Image(systemName: "checkmark")
+                Image(systemName: "checkmark.square")
                     .font(.system(size: 20))
                     .foregroundColor(changeColorButton ? .customBlue : .gray)
                     .frame(width: 40, height: 40, alignment: .center)
