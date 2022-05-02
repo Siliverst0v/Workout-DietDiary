@@ -16,9 +16,13 @@ struct Workout: Identifiable, Equatable, Hashable {
 }
 
 extension Workout {
-    static func getWorkout() -> Workout {
-        return Workout(
-            date: Date(),
-            exerciseGroupName: ["Спина", "Грудь"])
+    static func getWorkout() -> [Workout] {
+        return [Workout(
+                    date: Date(),
+                    exerciseGroupName: ["Спина", "Грудь"]),
+                Workout(
+                    date: Date(),
+                    exerciseGroupName: ["Плечи", "Трицепс"])
+                ]
     }
 }

@@ -177,7 +177,7 @@ struct ChooseExercisesView: View {
                 NavigationLink(destination: ExercisesView(
                     exercises: $exercises,
                     exerciseGroupsNames: $exerciseGroups,
-                    date: date)) {
+                    date: date, workouts: [])) {
                         Text("Далее ")
                             .foregroundColor(.customRed)
                             .padding()

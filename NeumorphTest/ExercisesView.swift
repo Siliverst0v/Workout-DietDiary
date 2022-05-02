@@ -11,12 +11,11 @@ struct ExercisesView: View {
     @Binding var exercises: [ExerciseGroup]
     @State var choosenExercises: [String] = []
     @Binding var exerciseGroupsNames: [String]
-//    @State var exerciseGroups: [String]
     @State var date: Date
+    @State var workouts: [Workout]
     
     var body: some View {
 
-        NavigationView{
             ScrollView(.vertical, showsIndicators: false) {
                 ForEach($exercises, id: \.id) {exerciseGroup in
 
@@ -34,16 +33,17 @@ struct ExercisesView: View {
                     }
                 }
             }
-            .navigationTitle("Welcome")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink("Далее") {
-                        WorkoutButton(workout: Workout(
+                        Workouts(workouts: workouts)
+                    }
+                    .simultaneousGesture(TapGesture().onEnded{
+                        workouts.append(Workout(
                             date: date,
                             exerciseGroupName: exerciseGroupsNames,
                             choosenExercises: choosenExercises))
-                    }
-                }
+                })
             }
         }
     }
@@ -51,6 +51,6 @@ struct ExercisesView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ExercisesView(exercises: .constant(ExerciseGroup.getExercises()), exerciseGroupsNames: .constant([]), date: Date())
+        ExercisesView(exercises: .constant(ExerciseGroup.getExercises()), exerciseGroupsNames: .constant([]), date: Date(), workouts: Workout.getWorkout())
     }
 }

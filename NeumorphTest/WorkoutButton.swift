@@ -69,6 +69,6 @@ struct WorkoutButton: View {
 
 struct WorkoutsView_Previews: PreviewProvider {
     static var previews: some View {
-        WorkoutButton(workout: Workout.getWorkout())
+        WorkoutButton(workout: Workout(date: Date(), exerciseGroupName: []))
     }
 }
