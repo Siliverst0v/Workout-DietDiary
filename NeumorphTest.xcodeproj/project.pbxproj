@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		A404FFA2281F166300525B9D /* WorkoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A404FFA1281F166300525B9D /* WorkoutButton.swift */; };
 		A404FFA4281F19E600525B9D /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A404FFA3281F19E600525B9D /* Workout.swift */; };
-		A42167BF282089F900DF1439 /* Workouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42167BE282089F900DF1439 /* Workouts.swift */; };
+		A42167BF282089F900DF1439 /* WorkoutsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42167BE282089F900DF1439 /* WorkoutsView.swift */; };
 		A458AA8D28173C3E00618405 /* ChooseExercisesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A458AA8C28173C3E00618405 /* ChooseExercisesButton.swift */; };
 		A498B3C02815F75D00038BE9 /* ExerciseGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A498B3BF2815F75D00038BE9 /* ExerciseGroup.swift */; };
 		A498B3C22815FB1700038BE9 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = A498B3C12815FB1700038BE9 /* Exercise.swift */; };
@@ -27,7 +27,7 @@
 /* Begin PBXFileReference section */
 		A404FFA1281F166300525B9D /* WorkoutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutButton.swift; sourceTree = "<group>"; };
 		A404FFA3281F19E600525B9D /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
-		A42167BE282089F900DF1439 /* Workouts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workouts.swift; sourceTree = "<group>"; };
+		A42167BE282089F900DF1439 /* WorkoutsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsView.swift; sourceTree = "<group>"; };
 		A458AA8C28173C3E00618405 /* ChooseExercisesButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseExercisesButton.swift; sourceTree = "<group>"; };
 		A498B3BF2815F75D00038BE9 /* ExerciseGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseGroup.swift; sourceTree = "<group>"; };
 		A498B3C12815FB1700038BE9 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
@@ -54,6 +54,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A42167C028208FC700DF1439 /* Workouts */ = {
+			isa = PBXGroup;
+			children = (
+				A404FFA1281F166300525B9D /* WorkoutButton.swift */,
+				A42167BE282089F900DF1439 /* WorkoutsView.swift */,
+			);
+			path = Workouts;
+			sourceTree = "<group>";
+		};
 		A498B3C52816031F00038BE9 /* Exercise Button */ = {
 			isa = PBXGroup;
 			children = (
@@ -111,8 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				A4E9374A27FE3BA0004A3650 /* NeumorphTestApp.swift */,
-				A404FFA1281F166300525B9D /* WorkoutButton.swift */,
-				A42167BE282089F900DF1439 /* Workouts.swift */,
+				A42167C028208FC700DF1439 /* Workouts */,
 				A4BC7617281DE58300D55496 /* ChooseExercises */,
 				A498B3C52816031F00038BE9 /* Exercise Button */,
 				A4E9374C27FE3BA0004A3650 /* ExercisesView.swift */,
@@ -204,7 +212,7 @@
 			files = (
 				A498B3C92816066E00038BE9 /* CustomButtonStyles.swift in Sources */,
 				A498B3C42816010A00038BE9 /* NotPressedButtonView.swift in Sources */,
-				A42167BF282089F900DF1439 /* Workouts.swift in Sources */,
+				A42167BF282089F900DF1439 /* WorkoutsView.swift in Sources */,
 				A498B3C22815FB1700038BE9 /* Exercise.swift in Sources */,
 				A458AA8D28173C3E00618405 /* ChooseExercisesButton.swift in Sources */,
 				A498B3C02815F75D00038BE9 /* ExerciseGroup.swift in Sources */,
