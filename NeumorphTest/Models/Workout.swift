@@ -12,7 +12,7 @@ struct Workout: Identifiable, Equatable, Hashable {
     let id: UUID = UUID()
     let date: Date
     let exerciseGroupName: [String]
-//    var choosenExercises: [Exercise]?
+    var choosenExercises: [String]?
 }
 
 extension Workout {

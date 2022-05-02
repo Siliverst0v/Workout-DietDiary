@@ -10,7 +10,6 @@ import SwiftUI
 struct NotPressedButtonView: View {
     @Binding var pressed: Bool
     @Binding var choosenExercises: [String]
-//TODO: - Заменить это свойство на добавление в массив упражнений
     @Binding var changeColorButton: Bool
     
     let image: String
@@ -48,10 +47,8 @@ struct NotPressedButtonView: View {
         
         if changeColorButton {
         choosenExercises.append(title)
-            print(choosenExercises)
         } else {
             choosenExercises.removeAll(where: {$0 == title})
-            print(choosenExercises)
         }
     }
 }

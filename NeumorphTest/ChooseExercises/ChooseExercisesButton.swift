@@ -10,6 +10,8 @@ import SwiftUI
 struct SimpleButton: View {
     @Binding var exercises: [ExerciseGroup]
     @Binding var isPressed: Bool
+    @Binding var exerciseGroups: [String]
+    @Binding var date: Date
 
     let exercise: ExerciseGroup
     let title: String
@@ -32,8 +34,10 @@ extension SimpleButton {
         isPressed.toggle()
         if isPressed {
             exercises.append(exercise)
+            exerciseGroups.append(title)
         } else {
             exercises.removeAll(where: {$0.exercises == exercise.exercises})
+            exerciseGroups.removeAll(where: {$0 == title})
         }
     }
 }
@@ -43,6 +47,8 @@ struct test_Previews: PreviewProvider {
         SimpleButton(
             exercises: .constant([]),
             isPressed: .constant(false),
+            exerciseGroups: .constant([]),
+            date: .constant(Date()),
             exercise: ExerciseGroup(
                 date: Date(),
                 exerciseGroupName: "",

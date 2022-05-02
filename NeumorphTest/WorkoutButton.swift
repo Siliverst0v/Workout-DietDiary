@@ -19,8 +19,8 @@ struct WorkoutButton: View {
                         .foregroundColor(.customRed)
                         .font(.headline)
                         .padding(5)
-                    ForEach(workout.exerciseGroupName, id: \.self) { muscleGroups in
-                    Text(muscleGroups)
+                    ForEach(workout.exerciseGroupName, id: \.self) { exerciseGroupName in
+                    Text(exerciseGroupName)
                             .foregroundColor(.customBlue)
                         .font(.headline)
                         .padding(5)

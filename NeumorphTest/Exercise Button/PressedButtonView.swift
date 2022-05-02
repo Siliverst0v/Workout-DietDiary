@@ -16,7 +16,6 @@ struct PressedButtonView: View {
 //TODO: - Заменить это свойство на получение значения для каждого ТП
     @Binding var test: String
     
-//TODO: - Заменить это свойство на добавление в массив упражнений
     @Binding var changeColorButton: Bool
     @Binding var choosenExercises: [String]
     
@@ -201,10 +200,8 @@ struct PressedButtonView: View {
         
         if changeColorButton {
         choosenExercises.append(title)
-            print(choosenExercises)
         } else {
             choosenExercises.removeAll(where: {$0 == title})
-            print(choosenExercises)
         }
     }
     
