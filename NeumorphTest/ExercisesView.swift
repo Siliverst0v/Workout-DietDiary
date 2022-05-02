@@ -24,7 +24,7 @@ struct ExercisesView: View {
                         ExerciseButton(
                             title: exercise,
                             image: exerciseGroup.icon,
-                            choosenExercises: choosenExercises)
+                            choosenExercises: $choosenExercises)
                     }
                 }
         }
@@ -33,6 +33,6 @@ struct ExercisesView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ExercisesView(exercises: .constant(ExerciseGroup.getExercises()), choosenExercises: [])
+        ExercisesView(exercises: .constant(ExerciseGroup.getExercises()))
     }
 }

@@ -18,7 +18,7 @@ struct PressedButtonView: View {
     
 //TODO: - Заменить это свойство на добавление в массив упражнений
     @Binding var changeColorButton: Bool
-    @State var choosenExercises: [String]
+    @Binding var choosenExercises: [String]
     
     let image: String
     let title: String
@@ -41,7 +41,7 @@ struct PressedButtonView: View {
             .lineLimit(3)
             .frame(width: width - 130, height: 60, alignment: .leading)
             .offset(x: 85, y: 5)
-                Button(action: { checkmarkButtonAction() }) {
+                Button(action: { addExercise() }) {
                 Image(systemName: "checkmark")
                     .font(.system(size: 20))
                     .foregroundColor(changeColorButton ? .customBlue : .gray)
@@ -113,7 +113,7 @@ struct PressedButtonView: View {
                         }
                     }
                     HStack {
-                        Button(action: { plusButtonAction() }) {
+                        Button(action: { addSet() }) {
                             Text("+")
                                 .font(.system(size: 25))
                                 .fontWeight(.semibold)
@@ -133,7 +133,7 @@ struct PressedButtonView: View {
                                 )
                         )
                         .disabled(setCount >= 10)
-                        Button(action: { minusButtonAction() }) {
+                        Button(action: { deleteSet() }) {
                             Text("-")
                                 .font(.system(size: 25))
                                 .fontWeight(.semibold)
@@ -196,8 +196,7 @@ struct PressedButtonView: View {
         }
     }
     
-    func checkmarkButtonAction() {
-//        pressed.toggle()
+    private func addExercise() {
         changeColorButton.toggle()
         
         if changeColorButton {
@@ -209,12 +208,12 @@ struct PressedButtonView: View {
         }
     }
     
-    private func plusButtonAction() {
+    private func addSet() {
         setCount += 1
         backgroundHeight += 46
     }
     
-    private func minusButtonAction() {
+    private func deleteSet() {
         setCount -= 1
         backgroundHeight -= 46
     }
@@ -247,8 +246,8 @@ struct PressedButtonView_Previews: PreviewProvider {
             pressed: .constant(true),
             setCount: .constant(3),
             test: .constant(""),
-            changeColorButton: .constant(true),
-            choosenExercises: [],
+            changeColorButton: .constant(false),
+            choosenExercises: .constant([]),
             image: "chest",
             title: "Exercise for example"
         )

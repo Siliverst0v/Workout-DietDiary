@@ -16,13 +16,13 @@ struct ExerciseButton: View {
     @State var setCount = 3
 
     @State var backgroundHeight: CGFloat = 270
-    @State var choosenExercises: [String]
+    @Binding var choosenExercises: [String]
     
     var body: some View {
         if notTapped {
                 NotPressedButtonView(
                     pressed: $notTapped,
-                    choosenExercises: choosenExercises,
+                    choosenExercises: $choosenExercises,
                     changeColorButton: $changeColorButton,
                     image: image,
                     title: title
@@ -35,7 +35,7 @@ struct ExerciseButton: View {
                 setCount: $setCount,
                 test: $test,
                 changeColorButton: $changeColorButton,
-                choosenExercises: choosenExercises,
+                choosenExercises: $choosenExercises,
                 image: image,
                 title: title
             )
@@ -45,6 +45,6 @@ struct ExerciseButton: View {
 
 struct ExerciseButton_Previews: PreviewProvider {
     static var previews: some View {
-        ExerciseButton(title: .constant("Exercise for example"), image: .constant("legs"), choosenExercises: [])
+        ExerciseButton(title: .constant("Exercise for example"), image: .constant("legs"), choosenExercises: .constant([]))
     }
 }

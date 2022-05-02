@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NotPressedButtonView: View {
     @Binding var pressed: Bool
-    @State var choosenExercises: [String]
+    @Binding var choosenExercises: [String]
 //TODO: - Заменить это свойство на добавление в массив упражнений
     @Binding var changeColorButton: Bool
     
@@ -30,7 +30,7 @@ struct NotPressedButtonView: View {
             .lineLimit(3)
             .frame(width: width - 130, height: 60, alignment: .leading)
             .offset(x: 85, y: 5)
-                Button(action: { checkmarkButtonAction() }) {
+                Button(action: { addExercise() }) {
                 Image(systemName: "checkmark")
                     .font(.system(size: 20))
                     .foregroundColor(changeColorButton ? .customBlue : .gray)
@@ -43,8 +43,7 @@ struct NotPressedButtonView: View {
         }
     }
     
-    func checkmarkButtonAction() {
-//        pressed.toggle()
+    func addExercise() {
         changeColorButton.toggle()
         
         if changeColorButton {
@@ -60,7 +59,7 @@ struct NotPressedButtonView: View {
 struct NotPressedButtonView_Previews: PreviewProvider {
     static var previews: some View {
         NotPressedButtonView(
-            pressed: .constant(true), choosenExercises: [],
+            pressed: .constant(true), choosenExercises: .constant([]),
             changeColorButton: .constant(true),
             image: "CellChest",
             title: "Exercise"
