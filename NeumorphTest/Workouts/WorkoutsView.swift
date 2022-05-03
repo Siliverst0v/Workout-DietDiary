@@ -9,7 +9,9 @@ import SwiftUI
 
 struct WorkoutsView: View {
     @State var workouts: [Workout]
-    
+    @Environment(\.dismiss) var dismiss
+//    @Binding var isNavigationBarHidden: Bool
+
     var body: some View {
         ScrollView(showsIndicators: false) {
         ForEach(workouts, id: \.id) {workout in
@@ -22,6 +24,10 @@ struct WorkoutsView: View {
                 NavigationLink("+") {
                     ChooseExercisesView()
                 }
+                .onTapGesture {
+                    dismiss.callAsFunction()
+                }
+               
         }
     }
     }

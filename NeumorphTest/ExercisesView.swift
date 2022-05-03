@@ -13,7 +13,8 @@ struct ExercisesView: View {
     @Binding var exerciseGroupsNames: [String]
     @State var date: Date
     @State var workouts = [Workout]()
-    
+    @Environment(\.dismiss) var dismiss
+
     var body: some View {
 
             ScrollView(.vertical, showsIndicators: false) {
@@ -38,12 +39,15 @@ struct ExercisesView: View {
                     NavigationLink("Далее") {
                         WorkoutsView(workouts: workouts)
                     }
+                    .onTapGesture {
+                        dismiss.callAsFunction()
+                    }
                     .simultaneousGesture(TapGesture().onEnded{
                         workouts.append(Workout(
                             date: date,
                             exerciseGroupNames: exerciseGroupsNames,
                             choosenExercises: choosenExercises))
-                        print(workouts)
+
                 })
             }
         }
