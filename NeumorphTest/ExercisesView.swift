@@ -12,7 +12,7 @@ struct ExercisesView: View {
     @State var choosenExercises: [String] = []
     @Binding var exerciseGroupsNames: [String]
     @State var date: Date
-    @State var workouts: [Workout]
+    @State var workouts = [Workout]()
     
     var body: some View {
 
@@ -36,13 +36,14 @@ struct ExercisesView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink("Далее") {
-                        Workouts(workouts: workouts)
+                        WorkoutsView(workouts: workouts)
                     }
                     .simultaneousGesture(TapGesture().onEnded{
                         workouts.append(Workout(
                             date: date,
-                            exerciseGroupName: exerciseGroupsNames,
+                            exerciseGroupNames: exerciseGroupsNames,
                             choosenExercises: choosenExercises))
+                        print(workouts)
                 })
             }
         }

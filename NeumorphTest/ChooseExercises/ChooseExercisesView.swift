@@ -19,8 +19,10 @@ struct ChooseExercisesView: View {
     @State var cardioIsVisible = false
     
     @State var exercises: [ExerciseGroup] = []
-    @State var exerciseGroups: [String] = []
+    @State var exerciseGroupNames: [String] = []
     @State var date: Date = Date()
+    @Environment(\.dismiss) var dismiss
+
     
     let muscleGroups = Exercise.shared
     
@@ -44,7 +46,7 @@ struct ChooseExercisesView: View {
                     SimpleButton(
                         exercises: $exercises,
                         isPressed: $chestIsVisible,
-                        exerciseGroups: $exerciseGroups,
+                        exerciseGroups: $exerciseGroupNames,
                         date: $date,
                         exercise: ExerciseGroup(
                             date: date,
@@ -55,7 +57,7 @@ struct ChooseExercisesView: View {
                     SimpleButton(
                         exercises: $exercises,
                         isPressed: $shouldersIsVisible,
-                        exerciseGroups: $exerciseGroups,
+                        exerciseGroups: $exerciseGroupNames,
                         date: $date,
                         exercise: ExerciseGroup(
                             date: date,
@@ -66,7 +68,7 @@ struct ChooseExercisesView: View {
                     SimpleButton(
                         exercises: $exercises,
                         isPressed: $backIsVisible,
-                        exerciseGroups: $exerciseGroups,
+                        exerciseGroups: $exerciseGroupNames,
                         date: $date,
                         exercise: ExerciseGroup(
                             date: date,
@@ -77,7 +79,7 @@ struct ChooseExercisesView: View {
                     SimpleButton(
                         exercises: $exercises,
                         isPressed: $bicepsIsVisible,
-                        exerciseGroups: $exerciseGroups,
+                        exerciseGroups: $exerciseGroupNames,
                         date: $date,
                         exercise: ExerciseGroup(
                             date: date,
@@ -88,7 +90,7 @@ struct ChooseExercisesView: View {
                     SimpleButton(
                         exercises: $exercises,
                         isPressed: $tricepsIsVisible,
-                        exerciseGroups: $exerciseGroups,
+                        exerciseGroups: $exerciseGroupNames,
                         date: $date,
                         exercise: ExerciseGroup(
                             date: date,
@@ -99,7 +101,7 @@ struct ChooseExercisesView: View {
                     SimpleButton(
                         exercises: $exercises,
                         isPressed: $legsIsVisible,
-                        exerciseGroups: $exerciseGroups,
+                        exerciseGroups: $exerciseGroupNames,
                         date: $date,
                         exercise: ExerciseGroup(
                             date: date,
@@ -110,7 +112,7 @@ struct ChooseExercisesView: View {
                     SimpleButton(
                         exercises: $exercises,
                         isPressed: $absIsVisible,
-                        exerciseGroups: $exerciseGroups,
+                        exerciseGroups: $exerciseGroupNames,
                         date: $date,
                         exercise: ExerciseGroup(
                             date: date,
@@ -121,7 +123,7 @@ struct ChooseExercisesView: View {
                     SimpleButton(
                         exercises: $exercises,
                         isPressed: $forearmsIsVisible,
-                        exerciseGroups: $exerciseGroups,
+                        exerciseGroups: $exerciseGroupNames,
                         date: $date,
                         exercise: ExerciseGroup(
                             date: date,
@@ -132,7 +134,7 @@ struct ChooseExercisesView: View {
                     SimpleButton(
                         exercises: $exercises,
                         isPressed: $cardioIsVisible,
-                        exerciseGroups: $exerciseGroups,
+                        exerciseGroups: $exerciseGroupNames,
                         date: $date,
                         exercise: ExerciseGroup(
                             date: date,
@@ -176,9 +178,9 @@ struct ChooseExercisesView: View {
                 .padding(50)
                 NavigationLink(destination: ExercisesView(
                     exercises: $exercises,
-                    exerciseGroupsNames: $exerciseGroups,
+                    exerciseGroupsNames: $exerciseGroupNames,
                     date: date, workouts: [])) {
-                        Text("Далее ")
+                        Text("Далее")
                             .foregroundColor(.customRed)
                             .padding()
                 }
@@ -186,6 +188,7 @@ struct ChooseExercisesView: View {
                     .buttonStyle(SimpleButtonStyle())
                     .opacity(exercises.isEmpty ? 0 : 1)
                     .disabled(exercises.isEmpty)
+                    
             }
             .navigationBarHidden(true)
         }
@@ -194,7 +197,7 @@ struct ChooseExercisesView: View {
 
 struct ChooseExercisesGroupView_Previews: PreviewProvider {
     static var previews: some View {
-        ChooseExercisesView(exercises: [], exerciseGroups: [], date: Date())
+        ChooseExercisesView(exercises: [], exerciseGroupNames: [], date: Date())
             .previewInterfaceOrientation(.portrait)
     }
 }

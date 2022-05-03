@@ -11,7 +11,8 @@ struct WorkoutButton: View {
     let workout: Workout
     
     var body: some View {
-        Button(action: {}) {
+        Button(action: {
+        }) {
             HStack {
                 VStack{
                     Text(workout.date, style: .date)
@@ -19,7 +20,7 @@ struct WorkoutButton: View {
                         .foregroundColor(.customRed)
                         .font(.headline)
                         .padding(5)
-                    ForEach(workout.exerciseGroupName, id: \.self) { exerciseGroupName in
+                    ForEach(workout.exerciseGroupNames, id: \.self) { exerciseGroupName in
                     Text(exerciseGroupName)
                             .foregroundColor(.customBlue)
                         .font(.headline)
@@ -32,31 +33,31 @@ struct WorkoutButton: View {
                         .resizable()
                     Image("BackBody")
                         .resizable()
-                        .opacity(workout.exerciseGroupName.contains("Спина") ? 1 : 0)
+                        .opacity(workout.exerciseGroupNames.contains("Спина") ? 1 : 0)
                     Image("ChestBody")
                         .resizable()
-                        .opacity(workout.exerciseGroupName.contains("Грудь") ? 1 : 0)
+                        .opacity(workout.exerciseGroupNames.contains("Грудь") ? 1 : 0)
                     Image("BicepsBody")
                         .resizable()
-                        .opacity(workout.exerciseGroupName.contains("Бицепс") ? 1 : 0)
+                        .opacity(workout.exerciseGroupNames.contains("Бицепс") ? 1 : 0)
                     Image("TricepsBody")
                         .resizable()
-                        .opacity(workout.exerciseGroupName.contains("Трицепс") ? 1 : 0)
+                        .opacity(workout.exerciseGroupNames.contains("Трицепс") ? 1 : 0)
                     Image("AbsBody")
                         .resizable()
-                        .opacity(workout.exerciseGroupName.contains("Пресс") ? 1 : 0)
+                        .opacity(workout.exerciseGroupNames.contains("Пресс") ? 1 : 0)
                     Image("ForeArmsBody")
                         .resizable()
-                        .opacity(workout.exerciseGroupName.contains("Предплечья") ? 1 : 0)
+                        .opacity(workout.exerciseGroupNames.contains("Предплечья") ? 1 : 0)
                     Image("LegsBody")
                         .resizable()
-                        .opacity(workout.exerciseGroupName.contains("Ноги") ? 1 : 0)
+                        .opacity(workout.exerciseGroupNames.contains("Ноги") ? 1 : 0)
                     Image("ShouldersBody")
                         .resizable()
-                        .opacity(workout.exerciseGroupName.contains("Плечи") ? 1 : 0)
+                        .opacity(workout.exerciseGroupNames.contains("Плечи") ? 1 : 0)
                     Image("CardioBody")
                         .resizable()
-                        .opacity(workout.exerciseGroupName.contains("Кардио") ? 1 : 0)
+                        .opacity(workout.exerciseGroupNames.contains("Кардио") ? 1 : 0)
                 }
                 .frame(height: 160)
                 .padding()
@@ -69,6 +70,6 @@ struct WorkoutButton: View {
 
 struct WorkoutsView_Previews: PreviewProvider {
     static var previews: some View {
-        WorkoutButton(workout: Workout(date: Date(), exerciseGroupName: []))
+        WorkoutButton(workout: Workout(date: Date(), exerciseGroupNames: []))
     }
 }

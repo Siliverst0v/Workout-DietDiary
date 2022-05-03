@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Workouts: View {
+struct WorkoutsView: View {
     @State var workouts: [Workout]
     
     var body: some View {
@@ -15,14 +15,20 @@ struct Workouts: View {
         ForEach(workouts, id: \.id) {workout in
             WorkoutButton(workout: workout)
             }
-        .padding()
+            .padding()
         }
-        .navigationBarHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink("+") {
+                    ChooseExercisesView()
+                }
+        }
+    }
     }
 }
 
 struct Workouts_Previews: PreviewProvider {
     static var previews: some View {
-        Workouts(workouts: Workout.getWorkout())
+        WorkoutsView(workouts: Workout.getWorkout())
     }
 }
