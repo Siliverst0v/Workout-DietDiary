@@ -12,8 +12,8 @@ struct ExercisesView: View {
     @State var choosenExercises: [String] = []
     @Binding var exerciseGroupsNames: [String]
     @State var date: Date
-    @State var workouts = [Workout]()
-    @Environment(\.dismiss) var dismiss
+    @ObservedObject var workouts: Workouts
+//    @Environment(\.dismiss) var dismiss
 
     var body: some View {
 
@@ -39,11 +39,8 @@ struct ExercisesView: View {
                     NavigationLink("Далее") {
                         WorkoutsView(workouts: workouts)
                     }
-                    .onTapGesture {
-                        dismiss.callAsFunction()
-                    }
                     .simultaneousGesture(TapGesture().onEnded{
-                        workouts.append(Workout(
+                        workouts.workouts.append(Workout(
                             date: date,
                             exerciseGroupNames: exerciseGroupsNames,
                             choosenExercises: choosenExercises))
@@ -56,6 +53,9 @@ struct ExercisesView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ExercisesView(exercises: .constant(ExerciseGroup.getExercises()), exerciseGroupsNames: .constant([]), date: Date(), workouts: Workout.getWorkout())
+        ExercisesView(
+            exercises: .constant(ExerciseGroup.getExercises()), exerciseGroupsNames: .constant([]),
+                      date: Date(),
+            workouts: Workouts.init(workouts: Workout.getWorkout()))
     }
 }

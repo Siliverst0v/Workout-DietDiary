@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct WorkoutsView: View {
-    @State var workouts: [Workout]
+    @StateObject var workouts = Workouts()
     @Environment(\.dismiss) var dismiss
 //    @Binding var isNavigationBarHidden: Bool
 
     var body: some View {
         ScrollView(showsIndicators: false) {
-        ForEach(workouts, id: \.id) {workout in
+            ForEach(workouts.workouts, id: \.id) {workout in
             WorkoutButton(workout: workout)
             }
             .padding()
@@ -35,6 +35,6 @@ struct WorkoutsView: View {
 
 struct Workouts_Previews: PreviewProvider {
     static var previews: some View {
-        WorkoutsView(workouts: Workout.getWorkout())
+        WorkoutsView(workouts: Workouts.init(workouts: Workout.getWorkout()))
     }
 }

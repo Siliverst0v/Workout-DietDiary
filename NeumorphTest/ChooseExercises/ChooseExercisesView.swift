@@ -21,8 +21,8 @@ struct ChooseExercisesView: View {
     @State var exercises: [ExerciseGroup] = []
     @State var exerciseGroupNames: [String] = []
     @State var date: Date = Date()
-    @State var isNavigationBarHidden: Bool = true
-    @Environment(\.dismiss) var dismiss
+    @State var isActive: Bool = true
+//    @Environment(\.dismiss) var dismiss
 
     
     let muscleGroups = Exercise.shared
@@ -180,23 +180,17 @@ struct ChooseExercisesView: View {
                 NavigationLink(destination: ExercisesView(
                     exercises: $exercises,
                     exerciseGroupsNames: $exerciseGroupNames,
-                    date: date, workouts: [])) {
+                    date: date, workouts: Workouts.init(workouts: []))) {
                         Text("Далее")
                             .foregroundColor(.customRed)
                             .padding()
                 }
-                    .onTapGesture {
-                        dismiss()
-                    }
+                    .navigationBarHidden(true)
                     .scaledToFit()
                     .buttonStyle(SimpleButtonStyle())
                     .opacity(exercises.isEmpty ? 0 : 1)
                     .disabled(exercises.isEmpty)
                     
-            }
-            .navigationBarHidden(isNavigationBarHidden)
-            .onAppear {
-                isNavigationBarHidden = true
             }
         }
     }
