@@ -13,7 +13,6 @@ struct ExercisesView: View {
     @Binding var exerciseGroupsNames: [String]
     @State var date: Date
     @ObservedObject var workouts: Workouts
-//    @Environment(\.dismiss) var dismiss
 
     var body: some View {
 

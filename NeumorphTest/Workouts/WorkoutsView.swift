@@ -9,27 +9,23 @@ import SwiftUI
 
 struct WorkoutsView: View {
     @StateObject var workouts = Workouts()
-    @Environment(\.dismiss) var dismiss
-//    @Binding var isNavigationBarHidden: Bool
 
     var body: some View {
-        ScrollView(showsIndicators: false) {
-            ForEach(workouts.workouts, id: \.id) {workout in
-            WorkoutButton(workout: workout)
+        NavigationView {
+            ScrollView(showsIndicators: false) {
+                ForEach(workouts.workouts, id: \.id) {workout in
+                WorkoutButton(workout: workout)
+                }
+                .padding()
             }
-            .padding()
-        }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink("+") {
-                    ChooseExercisesView()
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink("+") {
+                        ChooseExercisesView()
+                    }
                 }
-                .onTapGesture {
-                    dismiss.callAsFunction()
-                }
-               
+            }
         }
-    }
     }
 }
 

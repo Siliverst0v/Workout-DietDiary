@@ -21,16 +21,12 @@ struct ChooseExercisesView: View {
     @State var exercises: [ExerciseGroup] = []
     @State var exerciseGroupNames: [String] = []
     @State var date: Date = Date()
-    @State var isActive: Bool = true
-//    @Environment(\.dismiss) var dismiss
-
     
     let muscleGroups = Exercise.shared
     
     let columns = [GridItem(.adaptive(minimum: 100))]
     
     var body: some View {
-        NavigationView {
             VStack {
                 DatePicker("Выбери дату тренировки", selection: $date, displayedComponents: .date)
                     .id(date)
@@ -190,8 +186,6 @@ struct ChooseExercisesView: View {
                     .buttonStyle(SimpleButtonStyle())
                     .opacity(exercises.isEmpty ? 0 : 1)
                     .disabled(exercises.isEmpty)
-                    
-            }
         }
     }
 }
