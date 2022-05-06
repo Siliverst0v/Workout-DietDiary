@@ -55,20 +55,6 @@ struct ExercisesView: View {
 
                 }
             }
-//            .toolbar {
-//                ToolbarItem(placement: .navigationBarTrailing) {
-//                    NavigationLink("Далее") {
-//                        WorkoutsView(workouts: workouts)
-//                    }
-//                    .simultaneousGesture(TapGesture().onEnded{
-//                        workouts.workouts.append(Workout(
-//                            date: date,
-//                            exerciseGroupNames: exerciseGroupsNames,
-//                            choosenExercises: choosenExercises))
-//
-//                })
-//            }
-//        }
     }
 }
 

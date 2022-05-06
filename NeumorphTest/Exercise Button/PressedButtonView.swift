@@ -194,6 +194,9 @@ struct PressedButtonView: View {
             .frame(width: UIScreen.main.bounds.size.width - 40, height: backgroundHeight)
         }
     }
+}
+
+extension PressedButtonView {
     
     private func addExercise() {
         changeColorButton.toggle()

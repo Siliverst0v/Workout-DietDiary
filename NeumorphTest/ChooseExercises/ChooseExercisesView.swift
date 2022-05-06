@@ -142,55 +142,15 @@ struct ChooseExercisesView: View {
                             exercises: muscleGroups.cardio),
                         title: "Кардио")
                 }
-                ZStack {
-                    Image("Body")
-                        .resizable()
-                    Image("BackBody")
-                        .resizable()
-                        .opacity(backIsVisible ? 1 : 0)
-                    Image("ChestBody")
-                        .resizable()
-                        .opacity(chestIsVisible ? 1 : 0)
-                    Image("BicepsBody")
-                        .resizable()
-                        .opacity(bicepsIsVisible ? 1 : 0)
-                    Image("TricepsBody")
-                        .resizable()
-                        .opacity(tricepsIsVisible ? 1 : 0)
-                    Image("AbsBody")
-                        .resizable()
-                        .opacity(absIsVisible ? 1 : 0)
-                    Image("ForeArmsBody")
-                        .resizable()
-                        .opacity(forearmsIsVisible ? 1 : 0)
-                    Image("LegsBody")
-                        .resizable()
-                        .opacity(legsIsVisible ? 1 : 0)
-                    Image("ShouldersBody")
-                        .resizable()
-                        .opacity(shouldersIsVisible ? 1 : 0)
-                    Image("CardioBody")
-                        .resizable()
-                        .opacity(cardioIsVisible ? 1 : 0)
-                }
-                .frame(width: UIScreen.main.bounds.size.width - 40, height: 314, alignment: .center)
-                .padding(50)
-//                NavigationLink(destination:
-//                                ExercisesView(
-//                    exercises: $exercises,
-//                    exerciseGroupsNames: $exerciseGroupNames,
-//                    date: date, workouts: Workouts.init(workouts: []), workoutsIsActive: $workoutsIsActive))
-                
-//                {
-//                        Text("Далее")
-//                            .foregroundColor(.customRed)
-//                            .padding()
-//                }
-//                    .navigationBarHidden(true)
-//                    .scaledToFit()
-//                    .buttonStyle(SimpleButtonStyle())
-//                    .opacity(exercises.isEmpty ? 0 : 1)
-//                    .disabled(exercises.isEmpty)
+                BodyView(backIsVisible: $backIsVisible,
+                         chestIsVisible: $chestIsVisible,
+                         bicepsIsVisible: $bicepsIsVisible,
+                         tricepsIsVisible: $tricepsIsVisible,
+                         absIsVisible: $absIsVisible,
+                         forearmsIsVisible: $forearmsIsVisible,
+                         legsIsVisible: $legsIsVisible,
+                         shouldersIsVisible: $shouldersIsVisible,
+                         cardioIsVisible: $cardioIsVisible)
         }
             .background(
                 NavigationLink(isActive: $choosenIsActive, destination: {
