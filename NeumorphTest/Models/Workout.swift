@@ -8,7 +8,7 @@
 import Combine
 import Foundation
 
-class Workouts: ObservableObject {
+final class Workouts: ObservableObject {
     @Published var workouts = [Workout]()
     
     init() {}

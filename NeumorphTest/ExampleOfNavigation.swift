@@ -9,9 +9,7 @@ import SwiftUI
 
 struct ExampleOfNavigation: View {
     @State var array: [String] = []
-    // originalIsActive is your bottom card, and you will carry a reference
-    // through your views like a piece of twine.
-    @State var originalIsActive = false
+    @State var workoutsIsActive = false
     
     var body: some View {
         NavigationView{
@@ -21,22 +19,17 @@ struct ExampleOfNavigation: View {
                 }
             }
             .background(
-                // This is a programatic NavigationLink that triggers when originalIsActive
-                // becomes true. Placed in a background it sits and listens for originalIsActive.
-                NavigationLink(isActive: $originalIsActive, destination: {
-                    Details(array: $array, originalIsActive: $originalIsActive)
+                NavigationLink(isActive: $workoutsIsActive, destination: {
+                    Details(array: $array, workoutsIsActive: $workoutsIsActive)
                 }, label: {
-                    // This is simply a nothing view, so you can't see the NavigationLink.
                     EmptyView()
                 })
-                // Necessary to prevent link pop back after this NavigationLink
                 .isDetailLink(false)
             )
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        // This Button sets originalIsActive to true, activating the NavigationLink.
-                        originalIsActive = true
+                        workoutsIsActive = true
                     } label: {
                         Image(systemName: "plus")
                     }
@@ -48,27 +41,25 @@ struct ExampleOfNavigation: View {
 
 struct Details: View {
     @Binding var array: [String]
-    // Reference to originalIsActive
-    @Binding var originalIsActive: Bool
+    @Binding var workoutsIsActive: Bool
     
-    @State var detailsIsActive = false
+    @State var choosenIsActive = false
     
     var body: some View {
         Button(action: { array.append("First Element") }) {
             Text("Append First Element")
         }
         .background(
-            NavigationLink(isActive: $detailsIsActive, destination: {
-                MoreDetails(array: $array, originalIsActive: $originalIsActive)
+            NavigationLink(isActive: $choosenIsActive, destination: {
+                MoreDetails(array: $array, workoutsIsActive: $workoutsIsActive)
             }, label: {
                 EmptyView()
             })
-            // Necessary to prevent link pop back after this NavigationLink
             .isDetailLink(false)
         )
         .toolbar {
             Button {
-                detailsIsActive = true
+                choosenIsActive = true
             } label: {
                 Image(systemName: "plus")
             }
@@ -78,8 +69,7 @@ struct Details: View {
 
 struct MoreDetails: View {
     @Binding var array: [String]
-    // Reference to originalIsActive
-    @Binding var originalIsActive: Bool
+    @Binding var workoutsIsActive: Bool
 
     var body: some View {
         Button(action: { array.append("Second Element") }) {
@@ -88,9 +78,7 @@ struct MoreDetails: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    // By setting originalIsActive to false, you pull out the bottom card.
-                    // If the first link does not exist, none do.
-                    originalIsActive = false
+                    workoutsIsActive = false
                 } label: {
                     Text("Original")
                 }

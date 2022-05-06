@@ -21,7 +21,9 @@ struct ChooseExercisesView: View {
     @State var exercises: [ExerciseGroup] = []
     @State var exerciseGroupNames: [String] = []
     @State var date: Date = Date()
-    
+    @Binding var workoutsIsActive: Bool
+    @State var choosenIsActive = false
+        
     let muscleGroups = Exercise.shared
     
     let columns = [GridItem(.adaptive(minimum: 100))]
@@ -173,26 +175,54 @@ struct ChooseExercisesView: View {
                 }
                 .frame(width: UIScreen.main.bounds.size.width - 40, height: 314, alignment: .center)
                 .padding(50)
-                NavigationLink(destination: ExercisesView(
-                    exercises: $exercises,
-                    exerciseGroupsNames: $exerciseGroupNames,
-                    date: date, workouts: Workouts.init(workouts: []))) {
-                        Text("Далее")
-                            .foregroundColor(.customRed)
-                            .padding()
-                }
-                    .navigationBarHidden(true)
-                    .scaledToFit()
-                    .buttonStyle(SimpleButtonStyle())
-                    .opacity(exercises.isEmpty ? 0 : 1)
-                    .disabled(exercises.isEmpty)
+//                NavigationLink(destination:
+//                                ExercisesView(
+//                    exercises: $exercises,
+//                    exerciseGroupsNames: $exerciseGroupNames,
+//                    date: date, workouts: Workouts.init(workouts: []), workoutsIsActive: $workoutsIsActive))
+                
+//                {
+//                        Text("Далее")
+//                            .foregroundColor(.customRed)
+//                            .padding()
+//                }
+//                    .navigationBarHidden(true)
+//                    .scaledToFit()
+//                    .buttonStyle(SimpleButtonStyle())
+//                    .opacity(exercises.isEmpty ? 0 : 1)
+//                    .disabled(exercises.isEmpty)
         }
+            .background(
+                NavigationLink(isActive: $choosenIsActive, destination: {
+                    ExercisesView(
+                        exercises: $exercises,
+                        exerciseGroupsNames: $exerciseGroupNames,
+                        date: date, workouts: Workouts.init(workouts: []),
+                        workoutsIsActive: $workoutsIsActive)
+                }, label: {
+                    EmptyView()
+                })
+                .isDetailLink(false)
+            )
+            .toolbar {
+                Button {
+                    choosenIsActive = true
+                } label: {
+                    Text("Далее")
+                }
+                .opacity(exercises.isEmpty ? 0 : 1)
+                .disabled(exercises.isEmpty)
+            }
     }
 }
 
 struct ChooseExercisesGroupView_Previews: PreviewProvider {
     static var previews: some View {
-        ChooseExercisesView(exercises: [], exerciseGroupNames: [], date: Date())
+        ChooseExercisesView(
+            exercises: [],
+            exerciseGroupNames: [],
+            date: Date(),
+            workoutsIsActive: .constant(false))
             .previewInterfaceOrientation(.portrait)
     }
 }
