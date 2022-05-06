@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct WorkoutsView: View {
-    @StateObject var workouts = Workouts()
+    @EnvironmentObject var workouts: Workouts
     @State var workoutsIsActive = false
     
     var body: some View {
@@ -16,7 +16,6 @@ struct WorkoutsView: View {
             ScrollView(showsIndicators: false) {
                 ForEach(workouts.workouts, id: \.id) {workout in
                     WorkoutButton(workout: workout)
-                    
                 }
                 .padding()
                 }
@@ -41,6 +40,6 @@ struct WorkoutsView: View {
 
 struct Workouts_Previews: PreviewProvider {
     static var previews: some View {
-        WorkoutsView(workouts: Workouts.init(workouts: Workout.getWorkout()))
+        WorkoutsView()
     }
 }

@@ -197,7 +197,7 @@ struct ChooseExercisesView: View {
                     ExercisesView(
                         exercises: $exercises,
                         exerciseGroupsNames: $exerciseGroupNames,
-                        date: date, workouts: Workouts.init(workouts: []),
+                        date: date,
                         workoutsIsActive: $workoutsIsActive)
                 }, label: {
                     EmptyView()

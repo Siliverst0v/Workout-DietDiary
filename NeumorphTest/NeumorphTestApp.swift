@@ -12,6 +12,7 @@ struct NeumorphTestApp: App {
     var body: some Scene {
         WindowGroup {
             WorkoutsView()
+                .environmentObject(Workouts.init(workouts: []))
         }
     }
 }

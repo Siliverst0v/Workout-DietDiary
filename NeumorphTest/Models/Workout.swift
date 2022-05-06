@@ -9,7 +9,7 @@ import Combine
 import Foundation
 
 final class Workouts: ObservableObject {
-    @Published var workouts = [Workout]()
+    @Published var workouts: [Workout] = []
     
     init() {}
     

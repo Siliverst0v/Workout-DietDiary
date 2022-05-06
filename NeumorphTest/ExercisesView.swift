@@ -12,7 +12,7 @@ struct ExercisesView: View {
     @State var choosenExercises: [String] = []
     @Binding var exerciseGroupsNames: [String]
     @State var date: Date
-    @ObservedObject var workouts = Workouts()
+    @EnvironmentObject var workouts: Workouts
     @Binding var workoutsIsActive: Bool
         
     var body: some View {
@@ -75,9 +75,9 @@ struct ExercisesView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ExercisesView(
-            exercises: .constant(ExerciseGroup.getExercises()), exerciseGroupsNames: .constant([]),
-                      date: Date(),
-            workouts: Workouts.init(workouts: Workout.getWorkout()),
-            workoutsIsActive: .constant(false))
+                exercises: .constant(ExerciseGroup.getExercises()),
+                exerciseGroupsNames: .constant([]),
+                date: Date(),
+                workoutsIsActive: .constant(false))
     }
 }
