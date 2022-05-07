@@ -10,7 +10,7 @@ import SwiftUI
 struct DetailWorkoutView: View {
     @Binding var choosenExercises: [ChoosenExercise]
     @Binding var workoutsIsPresented: Bool
-    @State var detailWorkoutIsActive = false
+//    @State var detailWorkoutIsActive = false
     
     var body: some View {
 
@@ -26,11 +26,7 @@ struct DetailWorkoutView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-//                        workouts.workouts.append(Workout(
-//                            date: date,
-//                            exerciseGroupNames: exerciseGroupsNames,
-//                            choosenExercises: choosenExercises))
-//                        workoutsIsActive = false
+                     print(choosenExercises)
                     } label: {
                         Text("Готово")
                     }

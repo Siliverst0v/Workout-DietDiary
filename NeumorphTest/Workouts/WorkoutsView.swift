@@ -12,37 +12,48 @@ struct WorkoutsView: View {
     @State var workoutsIsActive = false
     @State var workoutsIsPresented = false
     @State var choosenExercises: [ChoosenExercise] = []
+    @State private var selection: String? = nil
     
     var body: some View {
         NavigationView {
             ScrollView(showsIndicators: false) {
                 ForEach(workouts.workouts, id: \.id) {workout in
+                    
                     WorkoutButton(workout: workout, workoutsIsPresented: $workoutsIsActive)
                 }
+                .simultaneousGesture(TapGesture().onEnded{
+                    workoutsIsPresented = true
+                    self.selection = "DetailWorkoutView"
+                })
                 .padding()
-                .background(
-                    NavigationLink("", isActive: $workoutsIsPresented) {
-                        DetailWorkoutView(choosenExercises: $choosenExercises, workoutsIsPresented: $workoutsIsPresented)
-                    }
-                    .isDetailLink(false)
-                    )
                 }
             .background(
-                NavigationLink("", isActive: $workoutsIsActive) {
-                    ChooseExercisesView(workoutsIsActive: $workoutsIsActive)
+                Group {
+                    NavigationLink("", tag: workoutsIsActive ? "ChooseExerciseView" : "", selection: $selection) {
+                        ChooseExercisesView(workoutsIsActive: $workoutsIsActive)
+                    }
+                    NavigationLink("", tag: workoutsIsPresented ? "DetailWorkoutView" : "", selection: $selection) {
+                        DetailWorkoutView(choosenExercises: $choosenExercises, workoutsIsPresented: $workoutsIsPresented)
+                    }
                 }
-                .isDetailLink(false)
             )
             .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
                             workoutsIsActive = true
+                            self.selection = "ChooseExerciseView"
                         } label: {
                             Image(systemName: "plus")
                     }
                 }
             }
         }
+    }
+}
+
+extension Binding {
+     func toUnwrapped<T>(defaultValue: T) -> Binding<T> where Value == Optional<T>  {
+        Binding<T>(get: { self.wrappedValue ?? defaultValue }, set: { self.wrappedValue = $0 })
     }
 }
 
