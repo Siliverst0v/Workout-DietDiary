@@ -10,6 +10,7 @@
 		A404FFA2281F166300525B9D /* WorkoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A404FFA1281F166300525B9D /* WorkoutButton.swift */; };
 		A404FFA4281F19E600525B9D /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A404FFA3281F19E600525B9D /* Workout.swift */; };
 		A42167BF282089F900DF1439 /* WorkoutsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42167BE282089F900DF1439 /* WorkoutsView.swift */; };
+		A42194002826A70F00E25015 /* DetailWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42193FF2826A70F00E25015 /* DetailWorkoutView.swift */; };
 		A4441A4F28248371000DFA40 /* ExampleOfNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4441A4E28248371000DFA40 /* ExampleOfNavigation.swift */; };
 		A458AA8D28173C3E00618405 /* ChooseExercisesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A458AA8C28173C3E00618405 /* ChooseExercisesButton.swift */; };
 		A487B87F2825D85700F9E852 /* BodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A487B87E2825D85700F9E852 /* BodyView.swift */; };
@@ -30,6 +31,7 @@
 		A404FFA1281F166300525B9D /* WorkoutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutButton.swift; sourceTree = "<group>"; };
 		A404FFA3281F19E600525B9D /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		A42167BE282089F900DF1439 /* WorkoutsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsView.swift; sourceTree = "<group>"; };
+		A42193FF2826A70F00E25015 /* DetailWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWorkoutView.swift; sourceTree = "<group>"; };
 		A4441A4E28248371000DFA40 /* ExampleOfNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleOfNavigation.swift; sourceTree = "<group>"; };
 		A458AA8C28173C3E00618405 /* ChooseExercisesButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseExercisesButton.swift; sourceTree = "<group>"; };
 		A487B87E2825D85700F9E852 /* BodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyView.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 			children = (
 				A404FFA1281F166300525B9D /* WorkoutButton.swift */,
 				A42167BE282089F900DF1439 /* WorkoutsView.swift */,
+				A42193FF2826A70F00E25015 /* DetailWorkoutView.swift */,
 			);
 			path = Workouts;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				A4F2F657280CAE7B00061441 /* ExerciseButton.swift in Sources */,
 				A4E9374D27FE3BA0004A3650 /* ExercisesView.swift in Sources */,
 				A4441A4F28248371000DFA40 /* ExampleOfNavigation.swift in Sources */,
+				A42194002826A70F00E25015 /* DetailWorkoutView.swift in Sources */,
 				A4E9374B27FE3BA0004A3650 /* NeumorphTestApp.swift in Sources */,
 				A4DE42D02816E5A700F4D4DC /* ChooseExercisesView.swift in Sources */,
 				A498B3C7281603C200038BE9 /* PressedButtonView.swift in Sources */,

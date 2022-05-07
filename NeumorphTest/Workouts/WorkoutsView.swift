@@ -10,15 +10,21 @@ import SwiftUI
 struct WorkoutsView: View {
     @EnvironmentObject var workouts: Workouts
     @State var workoutsIsActive = false
+    @State var workoutsIsPresented = false
     
     var body: some View {
         NavigationView {
             ScrollView(showsIndicators: false) {
                 ForEach(workouts.workouts, id: \.id) {workout in
-                    WorkoutButton(workout: workout, workoutIsActive: $workoutsIsActive)
-                        
+                    WorkoutButton(workout: workout, workoutsIsPresented: $workoutsIsActive)
                 }
                 .padding()
+                .background(
+                    NavigationLink("", isActive: $workoutsIsPresented) {
+                        
+                    }
+                    .isDetailLink(false)
+                    )
                 }
             .background(
                 NavigationLink("", isActive: $workoutsIsActive) {
