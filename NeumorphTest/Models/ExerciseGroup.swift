@@ -15,6 +15,12 @@ struct ExerciseGroup: Identifiable, Equatable, Hashable {
     var exercises: [String]
 }
 
+struct ChoosenExercise: Identifiable, Equatable, Hashable {
+    let id = UUID()
+    var icon: String
+    var exercise: String
+}
+
 extension ExerciseGroup {
     static func getExercises() -> [ExerciseGroup] {
         return [

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ExercisesView: View {
     @Binding var exercises: [ExerciseGroup]
-    @State var choosenExercises: [String] = []
+    @State var choosenExercises: [ChoosenExercise] = []
     @Binding var exerciseGroupsNames: [String]
     @State var date: Date
     @EnvironmentObject var workouts: Workouts
@@ -39,8 +39,7 @@ struct ExercisesView: View {
                     Button {
                         workouts.workouts.append(Workout(
                             date: date,
-                            exerciseGroupNames: exerciseGroupsNames,
-                            choosenExercises: choosenExercises))
+                            exerciseGroupNames: exerciseGroupsNames))
                         workoutsIsActive = false
                     } label: {
                         Text("Готово")

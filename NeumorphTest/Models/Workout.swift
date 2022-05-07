@@ -24,7 +24,6 @@ struct Workout: Identifiable, Equatable, Hashable {
     let id: UUID = UUID()
     let date: Date
     let exerciseGroupNames: [String]
-    var choosenExercises: [String]?
 }
 
 extension Workout {

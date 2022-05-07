@@ -11,6 +11,7 @@ struct WorkoutsView: View {
     @EnvironmentObject var workouts: Workouts
     @State var workoutsIsActive = false
     @State var workoutsIsPresented = false
+    @State var choosenExercises: [ChoosenExercise] = []
     
     var body: some View {
         NavigationView {
@@ -21,7 +22,7 @@ struct WorkoutsView: View {
                 .padding()
                 .background(
                     NavigationLink("", isActive: $workoutsIsPresented) {
-                        
+                        DetailWorkoutView(choosenExercises: $choosenExercises, workoutsIsPresented: $workoutsIsPresented)
                     }
                     .isDetailLink(false)
                     )

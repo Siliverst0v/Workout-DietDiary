@@ -16,7 +16,7 @@ struct ExerciseButton: View {
     @State var setCount = 3
 
     @State var backgroundHeight: CGFloat = 270
-    @Binding var choosenExercises: [String]
+    @Binding var choosenExercises: [ChoosenExercise]
     
     var body: some View {
         if notTapped {

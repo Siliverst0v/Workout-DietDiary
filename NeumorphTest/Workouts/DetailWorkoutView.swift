@@ -8,36 +8,29 @@
 import SwiftUI
 
 struct DetailWorkoutView: View {
-    @Binding var exerciseGroupNames: [String]
-    @Binding var choosenExercises: [String]
-        
+    @Binding var choosenExercises: [ChoosenExercise]
+    @Binding var workoutsIsPresented: Bool
+    @State var detailWorkoutIsActive = false
+    
     var body: some View {
 
             ScrollView(.vertical, showsIndicators: false) {
-                ForEach($exerciseGroupNames, id: \.self) {exerciseGroup in
-
-                    TextField("", text: exerciseGroup)
-                        .font(.title)
-                        .foregroundColor(.customRed)
-                        .disabled(true)
-                        .padding()
                     
-                    ForEach($choosenExercises, id: \.self) {exercise in
+                    ForEach($choosenExercises, id: \.id) {exercise in
                         ExerciseButton(
-                            title: exercise,
-                            image: exerciseGroup.icon,
+                            title: exercise.exercise,
+                            image: exercise.icon,
                             choosenExercises: $choosenExercises)
-                    }
                 }
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        workouts.workouts.append(Workout(
-                            date: date,
-                            exerciseGroupNames: exerciseGroupsNames,
-                            choosenExercises: choosenExercises))
-                        workoutsIsActive = false
+//                        workouts.workouts.append(Workout(
+//                            date: date,
+//                            exerciseGroupNames: exerciseGroupsNames,
+//                            choosenExercises: choosenExercises))
+//                        workoutsIsActive = false
                     } label: {
                         Text("Готово")
                     }
@@ -49,6 +42,6 @@ struct DetailWorkoutView: View {
 
 struct DetailWorkoutView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailWorkoutView()
+        DetailWorkoutView(choosenExercises: .constant([]), workoutsIsPresented: .constant(false))
     }
 }

@@ -12,7 +12,7 @@ struct WorkoutButton: View {
     @Binding var workoutsIsPresented: Bool
     
     var body: some View {
-        Button(action: { workoutsIsPresented = false }) {
+        Button(action: { workoutsIsPresented = true }) {
             HStack {
                 VStack{
                     Text(workout.date, style: .date)

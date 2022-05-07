@@ -17,7 +17,7 @@ struct PressedButtonView: View {
     @Binding var test: String
     
     @Binding var changeColorButton: Bool
-    @Binding var choosenExercises: [String]
+    @Binding var choosenExercises: [ChoosenExercise]
     
     let image: String
     let title: String
@@ -200,11 +200,15 @@ extension PressedButtonView {
     
     private func addExercise() {
         changeColorButton.toggle()
+        let choosenExercise = ChoosenExercise(
+            icon: image,
+            exercise: title)
         
         if changeColorButton {
-        choosenExercises.append(title)
+            
+        choosenExercises.append(choosenExercise)
         } else {
-            choosenExercises.removeAll(where: {$0 == title})
+            choosenExercises.removeAll(where: {$0.exercise == choosenExercise.exercise})
         }
     }
     

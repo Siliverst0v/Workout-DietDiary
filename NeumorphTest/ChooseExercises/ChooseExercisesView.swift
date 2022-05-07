@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct ChooseExercisesView: View {
-    @State var backIsVisible = false
-    @State var chestIsVisible = false
-    @State var bicepsIsVisible = false
-    @State var tricepsIsVisible = false
-    @State var absIsVisible = false
-    @State var forearmsIsVisible = false
-    @State var legsIsVisible = false
-    @State var shouldersIsVisible = false
-    @State var cardioIsVisible = false
+    @State private var backIsVisible = false
+    @State private var chestIsVisible = false
+    @State private var bicepsIsVisible = false
+    @State private var tricepsIsVisible = false
+    @State private var absIsVisible = false
+    @State private var forearmsIsVisible = false
+    @State private var legsIsVisible = false
+    @State private var shouldersIsVisible = false
+    @State private var cardioIsVisible = false
     
     @State var exercises: [ExerciseGroup] = []
     @State var exerciseGroupNames: [String] = []

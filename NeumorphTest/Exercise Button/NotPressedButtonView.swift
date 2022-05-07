@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NotPressedButtonView: View {
     @Binding var pressed: Bool
-    @Binding var choosenExercises: [String]
+    @Binding var choosenExercises: [ChoosenExercise]
     @Binding var changeColorButton: Bool
     
     let image: String
@@ -44,11 +44,15 @@ struct NotPressedButtonView: View {
     
     func addExercise() {
         changeColorButton.toggle()
+        let choosenExercise = ChoosenExercise(
+            icon: image,
+            exercise: title)
         
         if changeColorButton {
-        choosenExercises.append(title)
+            
+        choosenExercises.append(choosenExercise)
         } else {
-            choosenExercises.removeAll(where: {$0 == title})
+            choosenExercises.removeAll(where: {$0.exercise == choosenExercise.exercise})
         }
     }
 }
