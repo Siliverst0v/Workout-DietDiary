@@ -15,7 +15,8 @@ struct WorkoutsView: View {
         NavigationView {
             ScrollView(showsIndicators: false) {
                 ForEach(workouts.workouts, id: \.id) {workout in
-                    WorkoutButton(workout: workout)
+                    WorkoutButton(workout: workout, workoutIsActive: $workoutsIsActive)
+                        
                 }
                 .padding()
                 }

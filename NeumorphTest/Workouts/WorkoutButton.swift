@@ -9,10 +9,10 @@ import SwiftUI
 
 struct WorkoutButton: View {
     let workout: Workout
+    @Binding var workoutIsActive: Bool
     
     var body: some View {
-        Button(action: {
-        }) {
+        Button(action: { workoutIsActive = true }) {
             HStack {
                 VStack{
                     Text(workout.date, style: .date)
@@ -70,6 +70,6 @@ struct WorkoutButton: View {
 
 struct WorkoutsView_Previews: PreviewProvider {
     static var previews: some View {
-        WorkoutButton(workout: Workout(date: Date(), exerciseGroupNames: []))
+        WorkoutButton(workout: Workout(date: Date(), exerciseGroupNames: []), workoutIsActive: .constant(false))
     }
 }
