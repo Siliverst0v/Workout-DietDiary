@@ -34,13 +34,6 @@ struct ExercisesView: View {
                     }
                 }
             }
-        Button(action: {
-            workouts.workouts.append(Workout(
-                date: date,
-                exerciseGroupNames: exerciseGroupsNames,
-                choosenExercises: choosenExercises))  }) {
-                    Text("Append")
-                }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {

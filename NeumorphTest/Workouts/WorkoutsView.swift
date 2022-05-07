@@ -41,5 +41,6 @@ struct WorkoutsView: View {
 struct Workouts_Previews: PreviewProvider {
     static var previews: some View {
         WorkoutsView()
+            .environmentObject(Workouts.init(workouts: []))
     }
 }
