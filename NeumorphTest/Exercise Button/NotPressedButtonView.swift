@@ -9,8 +9,8 @@ import SwiftUI
 
 struct NotPressedButtonView: View {
     @Binding var pressed: Bool
-    @Binding var choosenExercises: [ChoosenExercise]
     @Binding var changeColorButton: Bool
+    @EnvironmentObject var test: ChoosenExercises
     
     let image: String
     let title: String
@@ -50,9 +50,10 @@ struct NotPressedButtonView: View {
         
         if changeColorButton {
             
-        choosenExercises.append(choosenExercise)
+//            choosenExercises.append(choosenExercise)
+            test.exercises.append(choosenExercise)
         } else {
-            choosenExercises.removeAll(where: {$0.exercise == choosenExercise.exercise})
+            test.exercises.removeAll(where: {$0.exercise == choosenExercise.exercise})
         }
     }
 }
@@ -60,7 +61,7 @@ struct NotPressedButtonView: View {
 struct NotPressedButtonView_Previews: PreviewProvider {
     static var previews: some View {
         NotPressedButtonView(
-            pressed: .constant(true), choosenExercises: .constant([]),
+            pressed: .constant(true),
             changeColorButton: .constant(true),
             image: "CellChest",
             title: "Exercise"

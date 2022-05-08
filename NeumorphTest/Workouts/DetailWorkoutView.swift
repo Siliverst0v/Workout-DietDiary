@@ -8,21 +8,18 @@
 import SwiftUI
 
 struct DetailWorkoutView: View {
-    @Binding var choosenExercises: [ChoosenExercise]
     @Binding var workoutsIsPresented: Bool
-//    @State var detailWorkoutIsActive = false
+    @EnvironmentObject var choosenExercises: ChoosenExercises
     
     var body: some View {
 
             ScrollView(.vertical, showsIndicators: false) {
                     
-                    ForEach($choosenExercises, id: \.id) {exercise in
-                        ExerciseButton(
-                            title: exercise.exercise,
-                            image: exercise.icon,
-                            choosenExercises: $choosenExercises)
+                ForEach($choosenExercises.exercises, id: \.id) {exercise in
+                    ChoosenExerciseButton(title: exercise.exercise, image: exercise.icon)
                 }
             }
+            .padding()
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
@@ -38,6 +35,7 @@ struct DetailWorkoutView: View {
 
 struct DetailWorkoutView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailWorkoutView(choosenExercises: .constant([]), workoutsIsPresented: .constant(false))
+        DetailWorkoutView(workoutsIsPresented: .constant(false))
+            .environmentObject(ChoosenExercises.init(choosenExercises: []))
     }
 }

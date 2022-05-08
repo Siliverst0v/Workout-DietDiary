@@ -8,12 +8,12 @@
 import Foundation
 
 final class ChoosenExercises: ObservableObject {
-    @Published var choosenExercises: [ChoosenExercise] = []
+    @Published var exercises: [ChoosenExercise] = []
     
     init() {}
     
     init(choosenExercises: [ChoosenExercise]) {
-        self.choosenExercises = choosenExercises
+        self.exercises = choosenExercises
     }
     
 }

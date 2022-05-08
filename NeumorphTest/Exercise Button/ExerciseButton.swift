@@ -22,7 +22,6 @@ struct ExerciseButton: View {
         if notTapped {
                 NotPressedButtonView(
                     pressed: $notTapped,
-                    choosenExercises: $choosenExercises,
                     changeColorButton: $changeColorButton,
                     image: image,
                     title: title
@@ -35,7 +34,6 @@ struct ExerciseButton: View {
                 setCount: $setCount,
                 test: $test,
                 changeColorButton: $changeColorButton,
-                choosenExercises: $choosenExercises,
                 image: image,
                 title: title
             )

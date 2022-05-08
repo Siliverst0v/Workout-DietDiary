@@ -33,7 +33,7 @@ struct WorkoutsView: View {
                         ChooseExercisesView(workoutsIsActive: $workoutsIsActive)
                     }
                     NavigationLink("", tag: workoutsIsPresented ? "DetailWorkoutView" : "", selection: $selection) {
-                        DetailWorkoutView(choosenExercises: $choosenExercises, workoutsIsPresented: $workoutsIsPresented)
+                        DetailWorkoutView(workoutsIsPresented: $workoutsIsPresented)
                     }
                 }
             )
