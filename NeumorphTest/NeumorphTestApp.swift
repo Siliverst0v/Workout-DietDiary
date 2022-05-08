@@ -13,7 +13,6 @@ struct NeumorphTestApp: App {
         WindowGroup {
             WorkoutsView()
                 .environmentObject(Workouts.init(workouts: []))
-                .environmentObject(ChoosenExercises.init(choosenExercises: []))
         }
     }
 }

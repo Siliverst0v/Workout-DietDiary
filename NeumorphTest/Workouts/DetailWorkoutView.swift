@@ -26,6 +26,5 @@ struct DetailWorkoutView: View {
 struct DetailWorkoutView_Previews: PreviewProvider {
     static var previews: some View {
         DetailWorkoutView(choosenExercises: .constant([]))
-            .environmentObject(ChoosenExercises.init(choosenExercises: []))
     }
 }
