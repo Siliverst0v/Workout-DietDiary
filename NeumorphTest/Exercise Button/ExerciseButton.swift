@@ -16,7 +16,6 @@ struct ExerciseButton: View {
     @State var setCount = 3
 
     @State var backgroundHeight: CGFloat = 270
-    @Binding var choosenExercises: [ChoosenExercise]
     
     var body: some View {
         if notTapped {
@@ -43,6 +42,8 @@ struct ExerciseButton: View {
 
 struct ExerciseButton_Previews: PreviewProvider {
     static var previews: some View {
-        ExerciseButton(title: .constant("Exercise for example"), image: .constant("legs"), choosenExercises: .constant([]))
+        ExerciseButton(
+            title: .constant("Exercise for example"),
+            image: .constant("legs"))
     }
 }

@@ -18,12 +18,11 @@ struct DetailWorkoutView: View {
                 ForEach($choosenExercises.exercises, id: \.id) {exercise in
                     ChoosenExerciseButton(title: exercise.exercise, image: exercise.icon)
                 }
+                .padding()
             }
-            .padding()
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                     print(choosenExercises)
                     } label: {
                         Text("Готово")
                     }

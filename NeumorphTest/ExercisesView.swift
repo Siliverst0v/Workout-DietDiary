@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ExercisesView: View {
     @Binding var exercises: [ExerciseGroup]
-    @State var choosenExercises: [ChoosenExercise] = []
     @Binding var exerciseGroupsNames: [String]
     @State var date: Date
     @EnvironmentObject var workouts: Workouts
@@ -29,8 +28,7 @@ struct ExercisesView: View {
                     ForEach(exerciseGroup.exercises, id: \.self) {exercise in
                         ExerciseButton(
                             title: exercise,
-                            image: exerciseGroup.icon,
-                            choosenExercises: $choosenExercises)
+                            image: exerciseGroup.icon)
                     }
                 }
             }
