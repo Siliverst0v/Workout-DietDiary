@@ -23,7 +23,6 @@ struct ChooseExercisesView: View {
     @State var date: Date = Date()
     @Binding var workoutsIsActive: Bool
     @State var choosenIsActive = false
-    @EnvironmentObject var choosenExercises: ChoosenExercises
         
     let muscleGroups = Exercise.shared
     
@@ -168,7 +167,6 @@ struct ChooseExercisesView: View {
             .toolbar {
                 Button {
                     choosenIsActive = true
-                    choosenExercises.exercises.removeAll()
                 } label: {
                     Text("Далее")
                 }

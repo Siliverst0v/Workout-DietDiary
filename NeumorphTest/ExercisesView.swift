@@ -13,6 +13,7 @@ struct ExercisesView: View {
     @State var date: Date
     @EnvironmentObject var workouts: Workouts
     @Binding var workoutsIsActive: Bool
+    @State var choosenExerises: [ChoosenExercise] = []
         
     var body: some View {
 
@@ -28,7 +29,8 @@ struct ExercisesView: View {
                     ForEach(exerciseGroup.exercises, id: \.self) {exercise in
                         ExerciseButton(
                             title: exercise,
-                            image: exerciseGroup.icon)
+                            image: exerciseGroup.icon,
+                            choosenExercises: $choosenExerises)
                     }
                 }
             }
@@ -37,9 +39,10 @@ struct ExercisesView: View {
                     Button {
                         workouts.workouts.append(Workout(
                             date: date,
-                            exerciseGroupNames: exerciseGroupsNames))
-                        workoutsIsActive = false
-                        
+                            exerciseGroupNames: exerciseGroupsNames,
+                            choosenExercises: choosenExerises))
+                            workoutsIsActive = false
+//                            choosenExerises.removeAll()
                     } label: {
                         Text("Готово")
                     }
@@ -55,6 +58,6 @@ struct ContentView_Previews: PreviewProvider {
                 exercises: .constant(ExerciseGroup.getExercises()),
                 exerciseGroupsNames: .constant([]),
                 date: Date(),
-                workoutsIsActive: .constant(false))
+                workoutsIsActive: .constant(false), choosenExerises: [])
     }
 }

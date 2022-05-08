@@ -17,7 +17,7 @@ struct PressedButtonView: View {
     @Binding var test: String
     
     @Binding var changeColorButton: Bool
-    @EnvironmentObject var choosenExercises: ChoosenExercises
+    @State var choosenExerises: [ChoosenExercise]
 
     let image: String
     let title: String
@@ -206,9 +206,9 @@ extension PressedButtonView {
         
         if changeColorButton {
             
-            choosenExercises.exercises.append(choosenExercise)
+            choosenExerises.append(choosenExercise)
         } else {
-            choosenExercises.exercises.removeAll(where: {$0.exercise == choosenExercise.exercise})
+            choosenExerises.removeAll(where: {$0.exercise == choosenExercise.exercise})
         }
     }
     
@@ -250,7 +250,7 @@ struct PressedButtonView_Previews: PreviewProvider {
             pressed: .constant(true),
             setCount: .constant(3),
             test: .constant(""),
-            changeColorButton: .constant(false),
+            changeColorButton: .constant(false), choosenExerises: [],
             image: "chest",
             title: "Exercise for example"
         )

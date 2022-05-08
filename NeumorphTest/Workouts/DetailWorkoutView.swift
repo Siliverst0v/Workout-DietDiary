@@ -8,17 +8,15 @@
 import SwiftUI
 
 struct DetailWorkoutView: View {
-    @Binding var workoutsIsPresented: Bool
-    @EnvironmentObject var choosenExercises: ChoosenExercises
+    @Binding var choosenExercises: [ChoosenExercise]
     
     var body: some View {
 
             ScrollView(.vertical, showsIndicators: false) {
-                    
-                ForEach($choosenExercises.exercises, id: \.id) {exercise in
-                    ChoosenExerciseButton(
-                        title: exercise.exercise,
-                        image: exercise.icon)
+                ForEach($choosenExercises, id: \.id) {exercise in
+                        ChoosenExerciseButton(
+                            title: exercise.exercise,
+                            image: exercise.icon)
                 }
                 .padding()
         }
@@ -27,7 +25,7 @@ struct DetailWorkoutView: View {
 
 struct DetailWorkoutView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailWorkoutView(workoutsIsPresented: .constant(false))
+        DetailWorkoutView(choosenExercises: .constant([]))
             .environmentObject(ChoosenExercises.init(choosenExercises: []))
     }
 }

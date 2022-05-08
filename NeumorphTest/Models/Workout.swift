@@ -24,16 +24,19 @@ struct Workout: Identifiable, Equatable, Hashable {
     let id: UUID = UUID()
     let date: Date
     let exerciseGroupNames: [String]
+    var choosenExercises: [ChoosenExercise]
 }
 
 extension Workout {
     static func getWorkout() -> [Workout] {
         return [Workout(
                     date: Date(),
-                    exerciseGroupNames: ["Спина", "Грудь"]),
+                    exerciseGroupNames: ["Спина", "Грудь"],
+                    choosenExercises: []),
                 Workout(
                     date: Date(),
-                    exerciseGroupNames: ["Плечи", "Трицепс"])
+                    exerciseGroupNames: ["Плечи", "Трицепс"],
+                    choosenExercises: [])
                 ]
     }
 }

@@ -10,30 +10,32 @@ import SwiftUI
 struct WorkoutsView: View {
     @EnvironmentObject var workouts: Workouts
     @State var workoutsIsActive = false
-    @State var workoutsIsPresented = false
-    @State var choosenExercises: [ChoosenExercise] = []
     @State private var selection: String? = nil
+    @State var choosenExercises: [ChoosenExercise] = []
+
         
     var body: some View {
         NavigationView {
             ScrollView(showsIndicators: false) {
                 ForEach(workouts.workouts, id: \.id) {workout in
+                    WorkoutButton(
+                        workout: workout,
+                        input: $choosenExercises,
+                        output: workout.choosenExercises)
                     
-                    WorkoutButton(workout: workout, workoutsIsPresented: $workoutsIsActive)
                 }
                 .simultaneousGesture(TapGesture().onEnded{
-                    workoutsIsPresented = true
                     self.selection = "DetailWorkoutView"
                 })
                 .padding()
                 }
-            .background(
+                .background(
                 Group {
                     NavigationLink("", tag: workoutsIsActive ? "ChooseExerciseView" : "", selection: $selection) {
                         ChooseExercisesView(workoutsIsActive: $workoutsIsActive)
                     }
-                    NavigationLink("", tag: workoutsIsPresented ? "DetailWorkoutView" : "", selection: $selection) {
-                        DetailWorkoutView(workoutsIsPresented: $workoutsIsPresented)
+                    NavigationLink("", tag: "DetailWorkoutView", selection: $selection) {
+                        DetailWorkoutView(choosenExercises: $choosenExercises)
                     }
                 }
             )
