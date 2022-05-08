@@ -16,19 +16,12 @@ struct DetailWorkoutView: View {
             ScrollView(.vertical, showsIndicators: false) {
                     
                 ForEach($choosenExercises.exercises, id: \.id) {exercise in
-                    ChoosenExerciseButton(title: exercise.exercise, image: exercise.icon)
+                    ChoosenExerciseButton(
+                        title: exercise.exercise,
+                        image: exercise.icon)
                 }
                 .padding()
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                    } label: {
-                        Text("Готово")
-                    }
-
-                }
-            }
+        }
     }
 }
 

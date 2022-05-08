@@ -13,7 +13,7 @@ struct WorkoutsView: View {
     @State var workoutsIsPresented = false
     @State var choosenExercises: [ChoosenExercise] = []
     @State private var selection: String? = nil
-    
+        
     var body: some View {
         NavigationView {
             ScrollView(showsIndicators: false) {
