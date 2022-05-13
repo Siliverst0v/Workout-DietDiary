@@ -30,7 +30,7 @@ struct ExerciseButton: View {
             PressedButtonView(
                 backgroundHeight: $backgroundHeight,
                 pressed: $notTapped,
-                changeColorButton: $changeColorButton,
+                changeCheckmarkColor: $changeColorButton,
                 choosenExercises: $choosenExercises,
                 image: image,
                 title: title

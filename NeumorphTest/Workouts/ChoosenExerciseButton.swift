@@ -39,7 +39,7 @@ struct ChoosenExerciseButton: View {
             ZStack {
             Image("TappedCell")
                 .resizable()
-                .frame(width: UIScreen.main.bounds.size.width - 40, height: backgroundHeight)
+                .frame(width: UIScreen.main.bounds.size.width - 40, height: sets.count <= 3 ? backgroundHeight : backgroundHeight + CGFloat(((sets.count - 3) * 46)))
                 GeometryReader { geometry in
                     let width = geometry.size.width
                 Image(image)
@@ -187,7 +187,7 @@ struct ChoosenExerciseButton: View {
                         )
                     .offset(x: width - 40, y: changeMemoryButtonPosition())
                 }
-                .frame(width: UIScreen.main.bounds.size.width - 40, height: backgroundHeight)
+                .frame(width: UIScreen.main.bounds.size.width - 40, height: sets.count <= 3 ? backgroundHeight : backgroundHeight + CGFloat(((sets.count - 3) * 46)))
             }
         }
     }

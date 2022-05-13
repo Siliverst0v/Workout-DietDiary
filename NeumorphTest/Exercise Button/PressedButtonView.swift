@@ -11,7 +11,7 @@ struct PressedButtonView: View {
     
     @Binding var backgroundHeight: CGFloat
     @Binding var pressed: Bool    
-    @Binding var changeColorButton: Bool
+    @Binding var changeCheckmarkColor: Bool
     @Binding var choosenExercises: [ChoosenExercise]
     @State var sets: [Set] = [Set(id: 1, repeats: "", weight: ""),Set(id: 2, repeats: "", weight: ""),Set(id: 3, repeats: "", weight: "")]
 
@@ -39,7 +39,7 @@ struct PressedButtonView: View {
                 Button(action: { addExercise() }) {
                 Image(systemName: "checkmark.square")
                     .font(.system(size: 20))
-                    .foregroundColor(changeColorButton ? .customBlue : .gray)
+                    .foregroundColor(changeCheckmarkColor ? .customBlue : .gray)
                     .frame(width: 40, height: 40, alignment: .center)
                     .background(
                                 RoundedRectangle(cornerRadius: 11)
@@ -195,14 +195,14 @@ struct PressedButtonView: View {
 extension PressedButtonView {
     
     private func addExercise() {
-        changeColorButton.toggle()
+        changeCheckmarkColor.toggle()
         
         let choosenExercise = ChoosenExercise(
             icon: image,
             title: title,
             sets: sets)
         
-        if changeColorButton {
+        if changeCheckmarkColor {
             choosenExercises.append(choosenExercise)
         } else {
             choosenExercises.removeAll(where: {$0.title == choosenExercise.title})
@@ -248,7 +248,7 @@ struct PressedButtonView_Previews: PreviewProvider {
         PressedButtonView(
             backgroundHeight: .constant(270),
             pressed: .constant(true),
-            changeColorButton: .constant(false),
+            changeCheckmarkColor: .constant(false),
             choosenExercises: .constant([]),
             sets: [Set(id: 1, repeats: "", weight: ""),
                    Set(id: 2, repeats: "", weight: ""),
