@@ -13,8 +13,10 @@ struct PressedButtonView: View {
     @Binding var pressed: Bool    
     @Binding var changeCheckmarkColor: Bool
     @Binding var choosenExercises: [ChoosenExercise]
-    @State var sets: [Set] = [Set(id: 1, repeats: "", weight: ""),Set(id: 2, repeats: "", weight: ""),Set(id: 3, repeats: "", weight: "")]
-
+    @State var sets: [Set] = [Set(id: 1, repeats: "", weight: ""),
+                              Set(id: 2, repeats: "", weight: ""),
+                              Set(id: 3, repeats: "", weight: "")]
+    
     let image: String
     let title: String
     
@@ -210,7 +212,10 @@ extension PressedButtonView {
     }
     
     private func addSet() {
-        let newSet = Set(id: sets.count + 1, repeats: "", weight: "")
+        let newSet = Set(
+                    id: sets.count + 1,
+                    repeats: "",
+                    weight: "")
         if sets.count <= 9 {
         sets.append(newSet)
         backgroundHeight += 46

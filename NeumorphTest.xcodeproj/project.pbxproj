@@ -77,14 +77,15 @@
 			path = Workouts;
 			sourceTree = "<group>";
 		};
-		A498B3C52816031F00038BE9 /* Exercise Button */ = {
+		A498B3C52816031F00038BE9 /* Exercises */ = {
 			isa = PBXGroup;
 			children = (
+				A4E9374C27FE3BA0004A3650 /* ExercisesView.swift */,
 				A4F2F656280CAE7B00061441 /* ExerciseButton.swift */,
 				A498B3C32816010A00038BE9 /* NotPressedButtonView.swift */,
 				A498B3C6281603C200038BE9 /* PressedButtonView.swift */,
 			);
-			path = "Exercise Button";
+			path = Exercises;
 			sourceTree = "<group>";
 		};
 		A498B3CA2816077300038BE9 /* Models */ = {
@@ -138,8 +139,7 @@
 				A4E9374A27FE3BA0004A3650 /* NeumorphTestApp.swift */,
 				A42167C028208FC700DF1439 /* Workouts */,
 				A4BC7617281DE58300D55496 /* ChooseExercises */,
-				A498B3C52816031F00038BE9 /* Exercise Button */,
-				A4E9374C27FE3BA0004A3650 /* ExercisesView.swift */,
+				A498B3C52816031F00038BE9 /* Exercises */,
 				A498B3CA2816077300038BE9 /* Models */,
 				A4BC7616281DE56500D55496 /* Helpers */,
 				A4E9374E27FE3BA1004A3650 /* Assets.xcassets */,
