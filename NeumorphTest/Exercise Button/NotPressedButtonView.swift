@@ -46,7 +46,10 @@ struct NotPressedButtonView: View {
         changeColorButton.toggle()
         let choosenExercise = ChoosenExercise(
             icon: image,
-            title: title)
+            title: title,
+            sets: [Set(id: 1, repeats: "", weight: ""),
+                   Set(id: 2, repeats: "", weight: ""),
+                   Set(id: 3, repeats: "", weight: "")])
         
         if changeColorButton {
             choosenExercises.append(choosenExercise)
@@ -60,7 +63,8 @@ struct NotPressedButtonView_Previews: PreviewProvider {
     static var previews: some View {
         NotPressedButtonView(
             pressed: .constant(true),
-            changeColorButton: .constant(true), choosenExercises: .constant([]),
+            changeColorButton: .constant(true),
+            choosenExercises: .constant([]),
             image: "CellChest",
             title: "Exercise"
         )

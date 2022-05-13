@@ -11,9 +11,7 @@ struct ExerciseButton: View {
     @State var notTapped = true
     @Binding var title: String
     @Binding var image: String
-    @State var test = ""
     @State var changeColorButton = false
-    @State var setCount = 3
     @Binding var choosenExercises: [ChoosenExercise]
     
     @State var backgroundHeight: CGFloat = 270
@@ -22,7 +20,8 @@ struct ExerciseButton: View {
         if notTapped {
                 NotPressedButtonView(
                     pressed: $notTapped,
-                    changeColorButton: $changeColorButton, choosenExercises: $choosenExercises,
+                    changeColorButton: $changeColorButton,
+                    choosenExercises: $choosenExercises,
                     image: image,
                     title: title
                 )
@@ -31,9 +30,8 @@ struct ExerciseButton: View {
             PressedButtonView(
                 backgroundHeight: $backgroundHeight,
                 pressed: $notTapped,
-                setCount: $setCount,
-                test: $test,
-                changeColorButton: $changeColorButton, choosenExerises: choosenExercises,
+                changeColorButton: $changeColorButton,
+                choosenExercises: $choosenExercises,
                 image: image,
                 title: title
             )

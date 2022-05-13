@@ -16,7 +16,8 @@ struct DetailWorkoutView: View {
                 ForEach($choosenExercises, id: \.id) {exercise in
                         ChoosenExerciseButton(
                             title: exercise.title,
-                            image: exercise.icon)
+                            image: exercise.icon,
+                            sets: exercise.sets)
                 }
                 .padding()
         }

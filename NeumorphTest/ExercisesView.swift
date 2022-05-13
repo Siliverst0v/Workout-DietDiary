@@ -42,7 +42,6 @@ struct ExercisesView: View {
                             exerciseGroupNames: exerciseGroupsNames,
                             choosenExercises: choosenExerises))
                             workoutsIsActive = false
-//                            choosenExerises.removeAll()
                     } label: {
                         Text("Готово")
                     }

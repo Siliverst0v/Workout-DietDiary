@@ -10,14 +10,9 @@ import SwiftUI
 struct PressedButtonView: View {
     
     @Binding var backgroundHeight: CGFloat
-    @Binding var pressed: Bool
-    @Binding var setCount: Int
-    
-//TODO: - Заменить это свойство на получение значения для каждого ТП
-    @Binding var test: String
-    
+    @Binding var pressed: Bool    
     @Binding var changeColorButton: Bool
-    @State var choosenExerises: [ChoosenExercise]
+    @Binding var choosenExercises: [ChoosenExercise]
     @State var sets: [Set] = [Set(id: 1, repeats: "", weight: ""),Set(id: 2, repeats: "", weight: ""),Set(id: 3, repeats: "", weight: "")]
 
     let image: String
@@ -132,7 +127,7 @@ struct PressedButtonView: View {
                                         .stroke(Color.gray, lineWidth: 0.1)
                                 )
                         )
-                        .disabled(setCount >= 10)
+                        .disabled(sets.count >= 10)
                         Button(action: { deleteSet() }) {
                             Text("-")
                                 .font(.system(size: 25))
@@ -152,7 +147,7 @@ struct PressedButtonView: View {
                                         .stroke(Color.gray, lineWidth: 0.1)
                                 )
                         )
-                        .disabled(setCount <= 1)
+                        .disabled(sets.count <= 1)
                         .padding(.trailing, 20)
                         Button(action: { pressed.toggle() }) {
                             Image(systemName: "chevron.up")
@@ -201,22 +196,25 @@ extension PressedButtonView {
     
     private func addExercise() {
         changeColorButton.toggle()
+        
         let choosenExercise = ChoosenExercise(
             icon: image,
-            title: title)
+            title: title,
+            sets: sets)
         
         if changeColorButton {
-            
-            choosenExerises.append(choosenExercise)
+            choosenExercises.append(choosenExercise)
         } else {
-            choosenExerises.removeAll(where: {$0.title == choosenExercise.title})
+            choosenExercises.removeAll(where: {$0.title == choosenExercise.title})
         }
     }
     
     private func addSet() {
         let newSet = Set(id: sets.count + 1, repeats: "", weight: "")
+        if sets.count <= 9 {
         sets.append(newSet)
         backgroundHeight += 46
+        }
     }
     
     private func deleteSet() {
@@ -226,9 +224,9 @@ extension PressedButtonView {
     
     private func changeButtonSize() -> CGFloat {
         var buttonSize: CGFloat = 127
-        if setCount < 3 && setCount > 1 {
+        if sets.count < 3 && sets.count > 1 {
             buttonSize = 83
-        } else if setCount == 1 {
+        } else if sets.count == 1 {
             buttonSize = 44
         }
         return buttonSize
@@ -236,9 +234,9 @@ extension PressedButtonView {
     
     private func changeMemoryButtonPosition() -> CGFloat {
         var buttonPosition: CGFloat = backgroundHeight * 0.32
-        if setCount < 3 && setCount > 1 {
+        if sets.count < 3 && sets.count > 1 {
             buttonPosition = backgroundHeight * 0.38
-        } else if setCount == 1 {
+        } else if sets.count == 1 {
             buttonPosition = backgroundHeight * 0.46
         }
         return buttonPosition
@@ -250,9 +248,11 @@ struct PressedButtonView_Previews: PreviewProvider {
         PressedButtonView(
             backgroundHeight: .constant(270),
             pressed: .constant(true),
-            setCount: .constant(3),
-            test: .constant(""),
-            changeColorButton: .constant(false), choosenExerises: [],
+            changeColorButton: .constant(false),
+            choosenExercises: .constant([]),
+            sets: [Set(id: 1, repeats: "", weight: ""),
+                   Set(id: 2, repeats: "", weight: ""),
+                   Set(id: 3, repeats: "", weight: "")],
             image: "chest",
             title: "Exercise for example"
         )

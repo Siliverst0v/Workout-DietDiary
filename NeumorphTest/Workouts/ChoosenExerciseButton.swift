@@ -11,8 +11,7 @@ struct ChoosenExerciseButton: View {
     @State var notTapped = true
     @Binding var title: String
     @Binding var image: String
-    @State var test = ""
-    @State var setCount = 3
+    @Binding var sets: [Set]
 
     @State var backgroundHeight: CGFloat = 270
     
@@ -79,10 +78,10 @@ struct ChoosenExerciseButton: View {
                     }
                     .font(.system(size: 14))
                     .padding(.top, 60)
-                        ForEach(1...setCount, id: \.self) { setNumber in
+                        ForEach($sets, id: \.id) { setNumber in
                             HStack(alignment: .center) {
                                 if width < 370 {
-                                Text("\(setNumber)")
+                                    Text("\(setNumber.id)")
                                     .fontWeight(.semibold)
                                     .frame(width: 64)
                                     .font(.system(size: 17))
@@ -90,7 +89,7 @@ struct ChoosenExerciseButton: View {
                                     .padding(.leading, 20)
 
                                 } else {
-                                    Text("\(setNumber)")
+                                    Text("\(setNumber.id)")
                                         .fontWeight(.semibold)
                                         .frame(width: 64)
                                         .font(.system(size: 17))
@@ -98,11 +97,11 @@ struct ChoosenExerciseButton: View {
                                         .padding(.leading, 20)
                                         .padding(.trailing, 30)
                                 }
-                                TextField("0", text: $test)
+                                TextField("0", text: setNumber.repeats)
                                     .frame(width: 84, alignment: .center)
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
                                     .padding(.leading, 8)
-                                TextField("0", text: $test)
+                                TextField("0", text: setNumber.weight)
                                     .frame(width: 60, alignment: .center)
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
                                     .padding(.leading, 10)
@@ -128,7 +127,7 @@ struct ChoosenExerciseButton: View {
                                             .stroke(Color.gray, lineWidth: 0.1)
                                     )
                             )
-                            .disabled(setCount >= 10)
+                            .disabled(sets.count >= 10)
                             Button(action: { deleteSet() }) {
                                 Text("-")
                                     .font(.system(size: 25))
@@ -148,7 +147,7 @@ struct ChoosenExerciseButton: View {
                                             .stroke(Color.gray, lineWidth: 0.1)
                                     )
                             )
-                            .disabled(setCount <= 1)
+                            .disabled(sets.count <= 1)
                             .padding(.trailing, 20)
                             Button(action: { notTapped.toggle() }) {
                                 Image(systemName: "chevron.up")
@@ -194,20 +193,23 @@ struct ChoosenExerciseButton: View {
     }
     
     private func addSet() {
-        setCount += 1
+        let newSet = Set(id: sets.count + 1, repeats: "", weight: "")
+        if sets.count <= 9 {
+        sets.append(newSet)
         backgroundHeight += 46
+        }
     }
     
     private func deleteSet() {
-        setCount -= 1
+        sets.removeLast()
         backgroundHeight -= 46
     }
     
     private func changeButtonSize() -> CGFloat {
         var buttonSize: CGFloat = 127
-        if setCount < 3 && setCount > 1 {
+        if sets.count < 3 && sets.count > 1 {
             buttonSize = 83
-        } else if setCount == 1 {
+        } else if sets.count == 1 {
             buttonSize = 44
         }
         return buttonSize
@@ -215,9 +217,9 @@ struct ChoosenExerciseButton: View {
     
     private func changeMemoryButtonPosition() -> CGFloat {
         var buttonPosition: CGFloat = backgroundHeight * 0.32
-        if setCount < 3 && setCount > 1 {
+        if sets.count < 3 && sets.count > 1 {
             buttonPosition = backgroundHeight * 0.38
-        } else if setCount == 1 {
+        } else if sets.count == 1 {
             buttonPosition = backgroundHeight * 0.46
         }
         return buttonPosition
@@ -226,6 +228,8 @@ struct ChoosenExerciseButton: View {
 
 struct ChoosenExerciseButton_Previews: PreviewProvider {
     static var previews: some View {
-        ChoosenExerciseButton(title: .constant("Exercise for example"), image: .constant("legs"))
+        ChoosenExerciseButton(
+            title: .constant("Exercise for example"),
+            image: .constant("legs"), sets: .constant([]))
     }
 }
