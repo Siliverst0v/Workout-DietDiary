@@ -15,7 +15,6 @@ struct ExerciseGroup: Identifiable, Equatable, Hashable {
     var exercises: [String]
 }
 
-
 extension ExerciseGroup {
     static func getExercises() -> [ExerciseGroup] {
         return [
@@ -23,13 +22,13 @@ extension ExerciseGroup {
                 date: Date(),
                 exerciseGroupName: "Грудь",
                 icon: "chest",
-                exercises: Exercise.shared.chest
+                exercises: Exercises.shared.chest
             ),
             ExerciseGroup(
                 date: Date(),
                 exerciseGroupName: "Спина",
                 icon: "back",
-                exercises: Exercise.shared.back
+                exercises: Exercises.shared.back
             )
         ]
     }

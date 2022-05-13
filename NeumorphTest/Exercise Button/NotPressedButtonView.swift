@@ -46,12 +46,12 @@ struct NotPressedButtonView: View {
         changeColorButton.toggle()
         let choosenExercise = ChoosenExercise(
             icon: image,
-            exercise: title)
+            title: title)
         
         if changeColorButton {
             choosenExercises.append(choosenExercise)
         } else {
-            choosenExercises.removeAll(where: {$0.exercise == choosenExercise.exercise})
+            choosenExercises.removeAll(where: {$0.title == choosenExercise.title})
         }
     }
 }

@@ -15,7 +15,7 @@ struct DetailWorkoutView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 ForEach($choosenExercises, id: \.id) {exercise in
                         ChoosenExerciseButton(
-                            title: exercise.exercise,
+                            title: exercise.title,
                             image: exercise.icon)
                 }
                 .padding()

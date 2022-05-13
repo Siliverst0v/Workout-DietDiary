@@ -18,6 +18,7 @@ struct PressedButtonView: View {
     
     @Binding var changeColorButton: Bool
     @State var choosenExerises: [ChoosenExercise]
+    @State var sets: [Set] = [Set(id: 1, repeats: "", weight: ""),Set(id: 2, repeats: "", weight: ""),Set(id: 3, repeats: "", weight: "")]
 
     let image: String
     let title: String
@@ -82,10 +83,10 @@ struct PressedButtonView: View {
                 }
                 .font(.system(size: 14))
                 .padding(.top, 60)
-                    ForEach(1...setCount, id: \.self) { setNumber in
+                    ForEach($sets, id: \.id) { setNumber in
                         HStack(alignment: .center) {
                             if width < 370 {
-                            Text("\(setNumber)")
+                                Text("\(setNumber.id)")
                                 .fontWeight(.semibold)
                                 .frame(width: 64)
                                 .font(.system(size: 17))
@@ -93,7 +94,7 @@ struct PressedButtonView: View {
                                 .padding(.leading, 20)
 
                             } else {
-                                Text("\(setNumber)")
+                                Text("\(setNumber.id)")
                                     .fontWeight(.semibold)
                                     .frame(width: 64)
                                     .font(.system(size: 17))
@@ -101,11 +102,11 @@ struct PressedButtonView: View {
                                     .padding(.leading, 20)
                                     .padding(.trailing, 30)
                             }
-                            TextField("0", text: $test)
+                            TextField("0", text: setNumber.repeats)
                                 .frame(width: 84, alignment: .center)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .padding(.leading, 8)
-                            TextField("0", text: $test)
+                            TextField("0", text: setNumber.weight)
                                 .frame(width: 60, alignment: .center)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .padding(.leading, 10)
@@ -202,23 +203,24 @@ extension PressedButtonView {
         changeColorButton.toggle()
         let choosenExercise = ChoosenExercise(
             icon: image,
-            exercise: title)
+            title: title)
         
         if changeColorButton {
             
             choosenExerises.append(choosenExercise)
         } else {
-            choosenExerises.removeAll(where: {$0.exercise == choosenExercise.exercise})
+            choosenExerises.removeAll(where: {$0.title == choosenExercise.title})
         }
     }
     
     private func addSet() {
-        setCount += 1
+        let newSet = Set(id: sets.count + 1, repeats: "", weight: "")
+        sets.append(newSet)
         backgroundHeight += 46
     }
     
     private func deleteSet() {
-        setCount -= 1
+        sets.removeLast()
         backgroundHeight -= 46
     }
     
