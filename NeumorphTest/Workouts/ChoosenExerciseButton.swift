@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct ChoosenExerciseButton: View {
-    @State var notTapped = true
+    @State var notTapped = false
     @Binding var choosenExercise: ChoosenExercise
 
-    @State var backgroundHeight: CGFloat = 270
+    @State var backgroundHeight: CGFloat = 178
     
     var body: some View {
         if notTapped {
@@ -37,7 +37,7 @@ struct ChoosenExerciseButton: View {
             ZStack {
             Image("TappedCell")
                 .resizable()
-                .frame(width: UIScreen.main.bounds.size.width - 40, height: choosenExercise.sets.count <= 3 ? backgroundHeight : backgroundHeight + CGFloat(((choosenExercise.sets.count - 3) * 46)))
+                .frame(width: UIScreen.main.bounds.size.width - 40, height: backgroundHeight + CGFloat(((choosenExercise.sets.count - 1) * 46)))
                 GeometryReader { geometry in
                     let width = geometry.size.width
                     Image(choosenExercise.icon)
@@ -185,7 +185,7 @@ struct ChoosenExerciseButton: View {
                         )
                     .offset(x: width - 40, y: changeMemoryButtonPosition())
                 }
-                .frame(width: UIScreen.main.bounds.size.width - 40, height: choosenExercise.sets.count <= 3 ? backgroundHeight : backgroundHeight + CGFloat(((choosenExercise.sets.count - 3) * 46)))
+                .frame(width: UIScreen.main.bounds.size.width - 40, height: backgroundHeight + CGFloat(((choosenExercise.sets.count - 1) * 46)))
             }
         }
     }
@@ -194,13 +194,13 @@ struct ChoosenExerciseButton: View {
         let newSet = Set(id: choosenExercise.sets.count + 1, repeats: "", weight: "")
         if choosenExercise.sets.count <= 9 {
             choosenExercise.sets.append(newSet)
-        backgroundHeight += 46
+//        backgroundHeight += 46
         }
     }
     
     private func deleteSet() {
         choosenExercise.sets.removeLast()
-        backgroundHeight -= 46
+//        backgroundHeight -= 46
     }
     
     private func changeButtonSize() -> CGFloat {
@@ -214,9 +214,9 @@ struct ChoosenExerciseButton: View {
     }
     
     private func changeMemoryButtonPosition() -> CGFloat {
-        var buttonPosition: CGFloat = backgroundHeight * 0.32
+        var buttonPosition: CGFloat = backgroundHeight * 0.48
         if choosenExercise.sets.count < 3 && choosenExercise.sets.count > 1 {
-            buttonPosition = backgroundHeight * 0.38
+            buttonPosition = backgroundHeight * 0.48
         } else if choosenExercise.sets.count == 1 {
             buttonPosition = backgroundHeight * 0.46
         }
