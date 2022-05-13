@@ -9,9 +9,7 @@ import SwiftUI
 
 struct ChoosenExerciseButton: View {
     @State var notTapped = true
-    @Binding var title: String
-    @Binding var image: String
-    @Binding var sets: [Set]
+    @Binding var choosenExercise: ChoosenExercise
 
     @State var backgroundHeight: CGFloat = 270
     
@@ -21,11 +19,11 @@ struct ChoosenExerciseButton: View {
             Button( action: { notTapped.toggle() } ) {
                 GeometryReader { geometry in
                     let width = geometry.size.width
-                Image(image)
+                    Image(choosenExercise.icon)
                     .resizable()
                     .frame(width: 70, height: 40)
                     .offset(x: 10, y: 15)
-                Text(title)
+                    Text(choosenExercise.title)
                 .fontWeight(.semibold)
                 .lineLimit(3)
                 .frame(width: width - 130, height: 60, alignment: .leading)
@@ -39,14 +37,14 @@ struct ChoosenExerciseButton: View {
             ZStack {
             Image("TappedCell")
                 .resizable()
-                .frame(width: UIScreen.main.bounds.size.width - 40, height: sets.count <= 3 ? backgroundHeight : backgroundHeight + CGFloat(((sets.count - 3) * 46)))
+                .frame(width: UIScreen.main.bounds.size.width - 40, height: choosenExercise.sets.count <= 3 ? backgroundHeight : backgroundHeight + CGFloat(((choosenExercise.sets.count - 3) * 46)))
                 GeometryReader { geometry in
                     let width = geometry.size.width
-                Image(image)
+                    Image(choosenExercise.icon)
                     .resizable()
                     .frame(width: 70, height: 40)
                     .offset(x: 10, y: 15)
-                Text(title)
+                    Text(choosenExercise.title)
                 .fontWeight(.semibold)
                 .font(.system(size: 14))
                 .foregroundColor(.customBlue)
@@ -78,7 +76,7 @@ struct ChoosenExerciseButton: View {
                     }
                     .font(.system(size: 14))
                     .padding(.top, 60)
-                        ForEach($sets, id: \.id) { setNumber in
+                        ForEach($choosenExercise.sets, id: \.id) { setNumber in
                             HStack(alignment: .center) {
                                 if width < 370 {
                                     Text("\(setNumber.id)")
@@ -127,7 +125,7 @@ struct ChoosenExerciseButton: View {
                                             .stroke(Color.gray, lineWidth: 0.1)
                                     )
                             )
-                            .disabled(sets.count >= 10)
+                            .disabled(choosenExercise.sets.count >= 10)
                             Button(action: { deleteSet() }) {
                                 Text("-")
                                     .font(.system(size: 25))
@@ -147,7 +145,7 @@ struct ChoosenExerciseButton: View {
                                             .stroke(Color.gray, lineWidth: 0.1)
                                     )
                             )
-                            .disabled(sets.count <= 1)
+                            .disabled(choosenExercise.sets.count <= 1)
                             .padding(.trailing, 20)
                             Button(action: { notTapped.toggle() }) {
                                 Image(systemName: "chevron.up")
@@ -187,29 +185,29 @@ struct ChoosenExerciseButton: View {
                         )
                     .offset(x: width - 40, y: changeMemoryButtonPosition())
                 }
-                .frame(width: UIScreen.main.bounds.size.width - 40, height: sets.count <= 3 ? backgroundHeight : backgroundHeight + CGFloat(((sets.count - 3) * 46)))
+                .frame(width: UIScreen.main.bounds.size.width - 40, height: choosenExercise.sets.count <= 3 ? backgroundHeight : backgroundHeight + CGFloat(((choosenExercise.sets.count - 3) * 46)))
             }
         }
     }
     
     private func addSet() {
-        let newSet = Set(id: sets.count + 1, repeats: "", weight: "")
-        if sets.count <= 9 {
-        sets.append(newSet)
+        let newSet = Set(id: choosenExercise.sets.count + 1, repeats: "", weight: "")
+        if choosenExercise.sets.count <= 9 {
+            choosenExercise.sets.append(newSet)
         backgroundHeight += 46
         }
     }
     
     private func deleteSet() {
-        sets.removeLast()
+        choosenExercise.sets.removeLast()
         backgroundHeight -= 46
     }
     
     private func changeButtonSize() -> CGFloat {
         var buttonSize: CGFloat = 127
-        if sets.count < 3 && sets.count > 1 {
+        if choosenExercise.sets.count < 3 && choosenExercise.sets.count > 1 {
             buttonSize = 83
-        } else if sets.count == 1 {
+        } else if choosenExercise.sets.count == 1 {
             buttonSize = 44
         }
         return buttonSize
@@ -217,9 +215,9 @@ struct ChoosenExerciseButton: View {
     
     private func changeMemoryButtonPosition() -> CGFloat {
         var buttonPosition: CGFloat = backgroundHeight * 0.32
-        if sets.count < 3 && sets.count > 1 {
+        if choosenExercise.sets.count < 3 && choosenExercise.sets.count > 1 {
             buttonPosition = backgroundHeight * 0.38
-        } else if sets.count == 1 {
+        } else if choosenExercise.sets.count == 1 {
             buttonPosition = backgroundHeight * 0.46
         }
         return buttonPosition
@@ -228,8 +226,11 @@ struct ChoosenExerciseButton: View {
 
 struct ChoosenExerciseButton_Previews: PreviewProvider {
     static var previews: some View {
-        ChoosenExerciseButton(
-            title: .constant("Exercise for example"),
-            image: .constant("legs"), sets: .constant([]))
+        ChoosenExerciseButton(choosenExercise: .constant(ChoosenExercise(
+            icon: "chest",
+            title: "Exercise for example",
+            sets: [Set(id: 1, repeats: "", weight: ""),
+                   Set(id: 2, repeats: "", weight: ""),
+                   Set(id: 3, repeats: "", weight: "")])))
     }
 }

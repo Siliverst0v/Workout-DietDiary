@@ -25,7 +25,6 @@ struct ChooseExercisesView: View {
     @State var choosenIsActive = false
         
     let muscleGroups = Exercises.shared
-    
     let columns = [GridItem(.adaptive(minimum: 100))]
     
     var body: some View {
