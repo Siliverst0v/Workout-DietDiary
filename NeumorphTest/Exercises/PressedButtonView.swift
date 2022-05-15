@@ -101,10 +101,12 @@ struct PressedButtonView: View {
                             }
                             TextField("0", text: setNumber.repeats)
                                 .frame(width: 84, alignment: .center)
+                                .keyboardType(.decimalPad)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .padding(.leading, 8)
                             TextField("0", text: setNumber.weight)
                                 .frame(width: 60, alignment: .center)
+                                .keyboardType(.decimalPad)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .padding(.leading, 10)
                         }

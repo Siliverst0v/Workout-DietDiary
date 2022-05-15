@@ -75,6 +75,12 @@ struct WorkoutButton: View {
 
 struct WorkoutsView_Previews: PreviewProvider {
     static var previews: some View {
-        WorkoutButton(workout: Workout(date: Date(), exerciseGroupNames: [], choosenExercises: []), input: .constant([]), output: [])
+        WorkoutButton(
+            workout: Workout(
+                    date: Date(),
+                    exerciseGroupNames: [],
+                    choosenExercises: []),
+                    input: .constant([]),
+                    output: [])
     }
 }

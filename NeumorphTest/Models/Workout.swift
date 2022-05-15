@@ -9,6 +9,7 @@ import Combine
 import Foundation
 
 final class Workouts: ObservableObject {
+    
     @Published var workouts: [Workout] = []
     
     init() {}
@@ -16,7 +17,6 @@ final class Workouts: ObservableObject {
     init(workouts: [Workout]) {
         self.workouts = workouts
     }
-    
 }
 
 struct Workout: Identifiable, Equatable, Hashable {

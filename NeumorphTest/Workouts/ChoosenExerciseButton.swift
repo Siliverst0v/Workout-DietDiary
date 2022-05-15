@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ChoosenExerciseButton: View {
-    @State var notTapped = false
+    @State private var notTapped = true
     @Binding var choosenExercise: ChoosenExercise
 
     @State var backgroundHeight: CGFloat = 178

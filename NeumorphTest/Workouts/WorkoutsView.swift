@@ -12,6 +12,7 @@ struct WorkoutsView: View {
     @State var workoutsIsActive = false
     @State private var selection: String? = nil
     @State var choosenExercises: [ChoosenExercise] = []
+    @State var showingAlert: Bool = false
 
         
     var body: some View {
@@ -22,8 +23,22 @@ struct WorkoutsView: View {
                         workout: workout,
                         input: $choosenExercises,
                         output: workout.choosenExercises)
-                    
+                    .simultaneousGesture(LongPressGesture().onEnded { _ in
+                        showingAlert = true
+                    })
+                    .alert(isPresented: $showingAlert) { () -> Alert in
+                    Alert(
+                        title: Text("Выберите действие"),
+                        message: Text(""),
+                        primaryButton: .default(Text("Редактировать"), action: {
+                                }),
+                        secondaryButton: .default(Text("Удалить"), action: {
+                            print(workout.id)
+                            workouts.workouts.removeAll(where: {$0.id == workout.id})
+                                }))
+                        }
                 }
+                .onDelete(perform: removeRows)
                 .simultaneousGesture(TapGesture().onEnded{
                     self.selection = "DetailWorkoutView"
                 })
@@ -49,6 +64,11 @@ struct WorkoutsView: View {
                     }
                 }
             }
+        }
+    }
+    func removeRows(at offsets: IndexSet) {
+        withAnimation {
+            workouts.workouts.remove(atOffsets: offsets)
         }
     }
 }
