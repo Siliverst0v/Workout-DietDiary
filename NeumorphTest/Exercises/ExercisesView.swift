@@ -42,7 +42,6 @@ struct ExercisesView: View {
                             date: date,
                             exerciseGroupNames: exerciseGroupsNames,
                             choosenExercises: choosenExerises))
-
                             workoutsIsActive = false
                     } label: {
                         Text("Готово")

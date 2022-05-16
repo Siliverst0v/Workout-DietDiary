@@ -86,4 +86,33 @@ class RealmManager: ObservableObject {
         }
     }
     
+    func addChoosenExercise(icon: String, title: String, sets: List<RealmSet>) {
+        if let localRealm = localRealm {
+            
+        do {
+            try localRealm.write {
+                let newChoosenExercise = RealmChoosenExercise(value: ["icon" : icon, "title": title, "sets": sets])
+                localRealm.add(newChoosenExercise)
+                print(newChoosenExercise)
+                }
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    func addSet(id: Int, repeats: String, weight: String) {
+        if let localRealm = localRealm {
+            
+        do {
+            try localRealm.write {
+                let newSet = RealmSet(value: ["id" : id, "repeats": repeats, "weight": weight])
+                localRealm.add(newSet)
+                print(newSet)
+                }
+            } catch {
+                print(error)
+            }
+        }
+    }
 }

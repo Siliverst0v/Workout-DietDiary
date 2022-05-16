@@ -32,6 +32,7 @@ struct ExerciseButton: View {
                 pressed: $notTapped,
                 changeCheckmarkColor: $changeColorButton,
                 choosenExercises: $choosenExercises,
+                choosenExerciseRealm: RealmChoosenExercise(),
                 image: image,
                 title: title
             )

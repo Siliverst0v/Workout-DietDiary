@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct PressedButtonView: View {
     
@@ -16,6 +17,8 @@ struct PressedButtonView: View {
     @State var sets: [Set] = [Set(id: 1, repeats: "", weight: ""),
                               Set(id: 2, repeats: "", weight: ""),
                               Set(id: 3, repeats: "", weight: "")]
+    @StateObject var realmManager = RealmManager()
+    @ObservedRealmObject var choosenExerciseRealm: RealmChoosenExercise
     
     let image: String
     let title: String
@@ -206,6 +209,11 @@ extension PressedButtonView {
             title: title,
             sets: sets)
         
+        let choosenExerciseRealm = RealmChoosenExercise(icon: image, title: title)
+        sets.forEach { sett in
+            choosenExerciseRealm.sets.append(RealmSet(id: sett.id, repeats: sett.repeats, weight: sett.weight))
+        }
+        
         if changeCheckmarkColor {
             choosenExercises.append(choosenExercise)
         } else {
@@ -260,6 +268,7 @@ struct PressedButtonView_Previews: PreviewProvider {
             sets: [Set(id: 1, repeats: "", weight: ""),
                    Set(id: 2, repeats: "", weight: ""),
                    Set(id: 3, repeats: "", weight: "")],
+            choosenExerciseRealm: RealmChoosenExercise(),
             image: "chest",
             title: "Exercise for example"
         )
