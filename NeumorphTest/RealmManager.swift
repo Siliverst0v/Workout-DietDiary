@@ -11,6 +11,7 @@ import RealmSwift
 class RealmManager: ObservableObject {
     private(set) var localRealm: Realm?
     @Published private(set) var workouts: [RealmWorkout] = []
+    @Published private(set) var choosenExercises: [RealmChoosenExercise] = []
     
     init() {
         openRealm()
@@ -86,9 +87,19 @@ class RealmManager: ObservableObject {
         }
     }
     
+    func getChoosenExercises() {
+        if let localRealm = localRealm {
+            let allChoosenExercises = localRealm.objects(RealmChoosenExercise.self).sorted(byKeyPath: "icon")
+            choosenExercises = []
+            allChoosenExercises.forEach { exercise in
+                choosenExercises.append(exercise)
+            }
+        }
+    }
+    
     func addChoosenExercise(icon: String, title: String, sets: List<RealmSet>) {
         if let localRealm = localRealm {
-            
+
         do {
             try localRealm.write {
                 let newChoosenExercise = RealmChoosenExercise(value: ["icon" : icon, "title": title, "sets": sets])
@@ -100,19 +111,19 @@ class RealmManager: ObservableObject {
             }
         }
     }
-    
-    func addSet(id: Int, repeats: String, weight: String) {
-        if let localRealm = localRealm {
-            
-        do {
-            try localRealm.write {
-                let newSet = RealmSet(value: ["id" : id, "repeats": repeats, "weight": weight])
-                localRealm.add(newSet)
-                print(newSet)
-                }
-            } catch {
-                print(error)
-            }
-        }
-    }
+//
+//    func addSet(id: Int, repeats: String, weight: String) {
+//        if let localRealm = localRealm {
+//
+//        do {
+//            try localRealm.write {
+//                let newSet = RealmSet(value: ["id" : id, "repeats": repeats, "weight": weight])
+//                localRealm.add(newSet)
+//                print(newSet)
+//                }
+//            } catch {
+//                print(error)
+//            }
+//        }
+//    }
 }

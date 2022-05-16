@@ -9,16 +9,14 @@ import SwiftUI
 import RealmSwift
 
 struct PressedButtonView: View {
-    
+    @EnvironmentObject var realmManager: RealmManager
+
     @Binding var backgroundHeight: CGFloat
     @Binding var pressed: Bool    
     @Binding var changeCheckmarkColor: Bool
     @Binding var choosenExercises: [ChoosenExercise]
-    @State var sets: [Set] = [Set(id: 1, repeats: "", weight: ""),
-                              Set(id: 2, repeats: "", weight: ""),
-                              Set(id: 3, repeats: "", weight: "")]
-    @StateObject var realmManager = RealmManager()
-    @ObservedRealmObject var choosenExerciseRealm: RealmChoosenExercise
+    @Binding var sets: [Set]
+//    @EnvironmentObject var choosenExerciseRealm: RealmChoosenExercise
     
     let image: String
     let title: String
@@ -265,10 +263,10 @@ struct PressedButtonView_Previews: PreviewProvider {
             pressed: .constant(true),
             changeCheckmarkColor: .constant(false),
             choosenExercises: .constant([]),
-            sets: [Set(id: 1, repeats: "", weight: ""),
+            sets: .constant([Set(id: 1, repeats: "", weight: ""),
                    Set(id: 2, repeats: "", weight: ""),
-                   Set(id: 3, repeats: "", weight: "")],
-            choosenExerciseRealm: RealmChoosenExercise(),
+                   Set(id: 3, repeats: "", weight: "")]),
+//            choosenExerciseRealm: RealmChoosenExercise(),
             image: "chest",
             title: "Exercise for example"
         )

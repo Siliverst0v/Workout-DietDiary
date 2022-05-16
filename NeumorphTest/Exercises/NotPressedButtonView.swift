@@ -11,6 +11,7 @@ struct NotPressedButtonView: View {
     @Binding var pressed: Bool
     @Binding var changeColorButton: Bool
     @Binding var choosenExercises: [ChoosenExercise]
+    @Binding var sets: [Set] 
     
     let image: String
     let title: String
@@ -47,9 +48,12 @@ struct NotPressedButtonView: View {
         let choosenExercise = ChoosenExercise(
             icon: image,
             title: title,
-            sets: [Set(id: 1, repeats: "", weight: ""),
-                   Set(id: 2, repeats: "", weight: ""),
-                   Set(id: 3, repeats: "", weight: "")])
+            sets: sets)
+        
+        let choosenExerciseRealm = RealmChoosenExercise(icon: image, title: title)
+        sets.forEach { sett in
+            choosenExerciseRealm.sets.append(RealmSet(id: sett.id, repeats: sett.repeats, weight: sett.weight))
+        }
         
         if changeColorButton {
             choosenExercises.append(choosenExercise)
@@ -65,6 +69,10 @@ struct NotPressedButtonView_Previews: PreviewProvider {
             pressed: .constant(true),
             changeColorButton: .constant(true),
             choosenExercises: .constant([]),
+            sets: .constant([
+                Set(id: 1, repeats: "", weight: ""),
+                Set(id: 2, repeats: "", weight: ""),
+                Set(id: 3, repeats: "", weight: "")]),
             image: "CellChest",
             title: "Exercise"
         )

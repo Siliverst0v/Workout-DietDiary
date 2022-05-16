@@ -13,6 +13,9 @@ struct ExerciseButton: View {
     @Binding var image: String
     @State var changeColorButton = false
     @Binding var choosenExercises: [ChoosenExercise]
+    @State var sets: [Set] = [Set(id: 1, repeats: "", weight: ""),
+                              Set(id: 2, repeats: "", weight: ""),
+                              Set(id: 3, repeats: "", weight: "")]
     
     @State var backgroundHeight: CGFloat = 270
     
@@ -22,6 +25,7 @@ struct ExerciseButton: View {
                     pressed: $notTapped,
                     changeColorButton: $changeColorButton,
                     choosenExercises: $choosenExercises,
+                    sets: $sets,
                     image: image,
                     title: title
                 )
@@ -32,7 +36,8 @@ struct ExerciseButton: View {
                 pressed: $notTapped,
                 changeCheckmarkColor: $changeColorButton,
                 choosenExercises: $choosenExercises,
-                choosenExerciseRealm: RealmChoosenExercise(),
+                sets: $sets,
+//                choosenExerciseRealm: RealmChoosenExercise(),
                 image: image,
                 title: title
             )
