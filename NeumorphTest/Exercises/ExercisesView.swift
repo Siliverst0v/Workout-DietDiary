@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ExercisesView: View {
+    @EnvironmentObject var realmManager: RealmManager
     @Binding var exercises: [ExerciseGroup]
     @Binding var exerciseGroupsNames: [String]
     @State var date: Date
@@ -41,6 +42,7 @@ struct ExercisesView: View {
                             date: date,
                             exerciseGroupNames: exerciseGroupsNames,
                             choosenExercises: choosenExerises))
+
                             workoutsIsActive = false
                     } label: {
                         Text("Готово")
@@ -58,5 +60,6 @@ struct ContentView_Previews: PreviewProvider {
                 exerciseGroupsNames: .constant([]),
                 date: Date(),
                 workoutsIsActive: .constant(false), choosenExerises: [])
+        .environmentObject(RealmManager())
     }
 }

@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct WorkoutsView: View {
+    @StateObject var realmManager = RealmManager()
     @EnvironmentObject var workouts: Workouts
     @State var workoutsIsActive = false
     @State private var selection: String? = nil

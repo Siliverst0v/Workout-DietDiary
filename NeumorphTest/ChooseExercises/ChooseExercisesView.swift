@@ -41,7 +41,7 @@ struct ChooseExercisesView: View {
                     .fontWeight(.semibold)
                     .padding()
                 LazyVGrid(columns: columns, spacing: 30) {
-                    SimpleButton(
+                    ChooseExerciseButton(
                         exercises: $exercises,
                         isPressed: $chestIsVisible,
                         exerciseGroups: $exerciseGroupNames,
@@ -52,7 +52,7 @@ struct ChooseExercisesView: View {
                             icon: "chest",
                             exercises: muscleGroups.chest),
                         title: "Грудь")
-                    SimpleButton(
+                    ChooseExerciseButton(
                         exercises: $exercises,
                         isPressed: $shouldersIsVisible,
                         exerciseGroups: $exerciseGroupNames,
@@ -63,7 +63,7 @@ struct ChooseExercisesView: View {
                             icon: "shoulders",
                             exercises: muscleGroups.shoulders),
                         title: "Плечи")
-                    SimpleButton(
+                    ChooseExerciseButton(
                         exercises: $exercises,
                         isPressed: $backIsVisible,
                         exerciseGroups: $exerciseGroupNames,
@@ -74,7 +74,7 @@ struct ChooseExercisesView: View {
                             icon: "back",
                             exercises: muscleGroups.back),
                         title: "Спина")
-                    SimpleButton(
+                    ChooseExerciseButton(
                         exercises: $exercises,
                         isPressed: $bicepsIsVisible,
                         exerciseGroups: $exerciseGroupNames,
@@ -85,7 +85,7 @@ struct ChooseExercisesView: View {
                             icon: "biceps",
                             exercises: muscleGroups.biceps),
                         title: "Бицепс")
-                    SimpleButton(
+                    ChooseExerciseButton(
                         exercises: $exercises,
                         isPressed: $tricepsIsVisible,
                         exerciseGroups: $exerciseGroupNames,
@@ -96,7 +96,7 @@ struct ChooseExercisesView: View {
                             icon: "triceps",
                             exercises: muscleGroups.triceps),
                         title: "Трицепс")
-                    SimpleButton(
+                    ChooseExerciseButton(
                         exercises: $exercises,
                         isPressed: $legsIsVisible,
                         exerciseGroups: $exerciseGroupNames,
@@ -107,7 +107,7 @@ struct ChooseExercisesView: View {
                             icon: "legs",
                             exercises: muscleGroups.legs),
                         title: "Ноги")
-                    SimpleButton(
+                    ChooseExerciseButton(
                         exercises: $exercises,
                         isPressed: $absIsVisible,
                         exerciseGroups: $exerciseGroupNames,
@@ -118,7 +118,7 @@ struct ChooseExercisesView: View {
                             icon: "abs",
                             exercises: muscleGroups.abs),
                         title: "Пресс")
-                    SimpleButton(
+                    ChooseExerciseButton(
                         exercises: $exercises,
                         isPressed: $forearmsIsVisible,
                         exerciseGroups: $exerciseGroupNames,
@@ -129,7 +129,7 @@ struct ChooseExercisesView: View {
                             icon: "forearms",
                             exercises: muscleGroups.forearms),
                         title: "Предплечья")
-                    SimpleButton(
+                    ChooseExerciseButton(
                         exercises: $exercises,
                         isPressed: $cardioIsVisible,
                         exerciseGroups: $exerciseGroupNames,

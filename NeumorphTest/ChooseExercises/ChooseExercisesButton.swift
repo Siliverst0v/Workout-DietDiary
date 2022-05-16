@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SimpleButton: View {
+struct ChooseExerciseButton: View {
     @Binding var exercises: [ExerciseGroup]
     @Binding var isPressed: Bool
     @Binding var exerciseGroups: [String]
@@ -28,7 +28,7 @@ struct SimpleButton: View {
     }
 }
 
-extension SimpleButton {
+extension ChooseExerciseButton {
     func addingGroup() {
         
         isPressed.toggle()
@@ -44,7 +44,7 @@ extension SimpleButton {
 
 struct test_Previews: PreviewProvider {
     static var previews: some View {
-        SimpleButton(
+        ChooseExerciseButton(
             exercises: .constant([]),
             isPressed: .constant(false),
             exerciseGroups: .constant([]),
