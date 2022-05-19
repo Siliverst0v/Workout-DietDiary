@@ -16,7 +16,8 @@ struct PressedButtonView: View {
     @Binding var changeCheckmarkColor: Bool
     @Binding var choosenExercises: [ChoosenExercise]
     @Binding var sets: [Set]
-//    @EnvironmentObject var choosenExerciseRealm: RealmChoosenExercise
+    @Binding var realmChoosenExerises: [RealmChoosenExercise]
+
     
     let image: String
     let title: String
@@ -214,7 +215,9 @@ extension PressedButtonView {
         
         if changeCheckmarkColor {
             choosenExercises.append(choosenExercise)
+            realmChoosenExerises.append(choosenExerciseRealm)
         } else {
+            realmChoosenExerises.removeAll(where: {$0.title == choosenExerciseRealm.title})
             choosenExercises.removeAll(where: {$0.title == choosenExercise.title})
         }
     }
@@ -266,7 +269,7 @@ struct PressedButtonView_Previews: PreviewProvider {
             sets: .constant([Set(id: 1, repeats: "", weight: ""),
                    Set(id: 2, repeats: "", weight: ""),
                    Set(id: 3, repeats: "", weight: "")]),
-//            choosenExerciseRealm: RealmChoosenExercise(),
+            realmChoosenExerises: .constant([]),
             image: "chest",
             title: "Exercise for example"
         )

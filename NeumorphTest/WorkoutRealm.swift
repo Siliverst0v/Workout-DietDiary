@@ -13,6 +13,11 @@ class RealmWorkout: Object, ObjectKeyIdentifiable {
     @Persisted var date: Date
     @Persisted var exerciseGroups: List<String>
     @Persisted var choosenExercises: List<RealmChoosenExercise>
+    
+    convenience init(date: Date) {
+        self.init()
+        self.date = date
+    }
 }
 
 class RealmChoosenExercise: Object, ObjectKeyIdentifiable {
