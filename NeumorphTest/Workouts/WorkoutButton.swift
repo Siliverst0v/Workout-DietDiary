@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct WorkoutButton: View {
-    var workout: RealmWorkout
-//    let workout: Workout
-   @Binding var input: [RealmChoosenExercise]
-//    @State var output: RealmWorkout
+    @State var workout: RealmWorkout
+    @Binding var input: [RealmChoosenExercise]
     
     var body: some View {
         Button(action: { replaceChoosenExercises() }) {
@@ -24,7 +22,7 @@ struct WorkoutButton: View {
                         .padding(5)
                     ForEach(workout.exerciseGroups, id: \.self) { exerciseGroupName in
                     Text(exerciseGroupName)
-                            .foregroundColor(.customBlue)
+                        .foregroundColor(.customBlue)
                         .font(.headline)
                         .padding(5)
                     }
@@ -70,8 +68,10 @@ struct WorkoutButton: View {
     }
     
     func replaceChoosenExercises() {
-//        self.input = self.output
-        workout.choosenExercises.append(objectsIn: input)
+        input = []
+        workout.choosenExercises.forEach { exercise in
+            input.append(exercise)
+        }
         
     }
 }
@@ -79,8 +79,8 @@ struct WorkoutButton: View {
 struct WorkoutsView_Previews: PreviewProvider {
     static var previews: some View {
         WorkoutButton(
-            workout: RealmWorkout(),
-                    input: .constant([])
+            workout: RealmWorkout(), input: .constant([])
+//                    input: .constant([])
 //            output: RealmWorkout())
         )
     }
