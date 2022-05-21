@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct ChoosenExerciseButton: View {
+    @EnvironmentObject var realmManager: RealmManager
+    
     @State private var notTapped = true
     @Binding var choosenExercise: RealmChoosenExercise
 
@@ -193,14 +196,14 @@ struct ChoosenExerciseButton: View {
     private func addSet() {
         let newSet = RealmSet(id: choosenExercise.sets.count + 1, repeats: "", weight: "")
         if choosenExercise.sets.count <= 9 {
-            choosenExercise.sets.append(newSet)
-//        backgroundHeight += 46
+            realmManager.addSet(set: newSet)
+//            realmManager.getSets()
         }
     }
     
     private func deleteSet() {
         choosenExercise.sets.removeLast()
-//        backgroundHeight -= 46
+        
     }
     
     private func changeButtonSize() -> CGFloat {

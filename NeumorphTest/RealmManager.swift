@@ -12,6 +12,8 @@ class RealmManager: ObservableObject {
     private(set) var localRealm: Realm?
     @Published private(set) var workouts: [RealmWorkout] = []
     @Published private(set) var choosenExercises: [RealmChoosenExercise] = []
+    @Published private(set) var sets: [RealmSet] = []
+
     
     init() {
         openRealm()
@@ -107,6 +109,46 @@ class RealmManager: ObservableObject {
                 print(newChoosenExercise)
                 }
             } catch {
+                print(error)
+            }
+        }
+    }
+    
+    func deleteChoosenExercise(id: ObjectId) {
+        if let localRealm = localRealm {
+            do {
+                let choosenExerciseToDelete = localRealm.objects(RealmChoosenExercise.self).filter(NSPredicate(format: "id == %@", id))
+                guard !choosenExerciseToDelete.isEmpty else {return}
+                
+                try localRealm.write {
+                    localRealm.delete(choosenExerciseToDelete)
+                    getChoosenExercises()
+                }
+            } catch  {
+                print(error)
+            }
+        }
+    }
+    
+    func getSets() {
+        if let localRealm = localRealm {
+            let allSets = localRealm.objects(RealmSet.self).sorted(byKeyPath: "id")
+            sets = []
+            allSets.forEach { sett in
+                sets.append(sett)
+            }
+        }
+    }
+    
+    func addSet(set: RealmSet) {
+        if let localRealm = localRealm {
+            do {
+                
+                try localRealm.write {
+                    localRealm.add(set)
+                    
+                }
+            } catch  {
                 print(error)
             }
         }

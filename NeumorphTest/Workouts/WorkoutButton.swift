@@ -80,8 +80,6 @@ struct WorkoutsView_Previews: PreviewProvider {
     static var previews: some View {
         WorkoutButton(
             workout: RealmWorkout(), input: .constant([])
-//                    input: .constant([])
-//            output: RealmWorkout())
         )
     }
 }
