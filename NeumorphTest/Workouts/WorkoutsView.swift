@@ -35,8 +35,7 @@ struct WorkoutsView: View {
                         primaryButton: .default(Text("Редактировать"), action: {
                                 }),
                         secondaryButton: .default(Text("Удалить"), action: {
-//                            print(workout.id)
-//                            workouts.workouts.removeAll(where: {$0.id == workout.id})
+                            realmManager.deleteWorkout(id: workout.id)
                                 }))
                         }
                 }
@@ -46,6 +45,7 @@ struct WorkoutsView: View {
                 })
                 .padding()
                 }
+            .onAppear(perform: realmManager.getWorkouts)
                 .background(
                 Group {
                     NavigationLink("", tag: workoutsIsActive ? "ChooseExerciseView" : "", selection: $selection) {

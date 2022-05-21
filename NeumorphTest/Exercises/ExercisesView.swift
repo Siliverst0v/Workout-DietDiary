@@ -15,7 +15,6 @@ struct ExercisesView: View {
     @Binding var exercises: [ExerciseGroup]
     @Binding var exerciseGroupsNames: [String]
     @State var date: Date
-//    @EnvironmentObject var workouts: Workouts
     @Binding var workoutsIsActive: Bool
     @State var choosenExerises: [ChoosenExercise] = []
     @State var realmWorkout = RealmWorkout()
@@ -46,15 +45,9 @@ struct ExercisesView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-//                        workouts.workouts.append(Workout(
-//                            date: date,
-//                            exerciseGroupNames: exerciseGroupsNames,
-//                            choosenExercises: choosenExerises))
-                        
                         realmWorkout.exerciseGroups.append(objectsIn: exerciseGroupsNames)
                         realmWorkout.choosenExercises.append(objectsIn: realmChoosenExerises)
                         realmManager.addWorkout(date: date, exerciseGroups: realmWorkout.exerciseGroups, choosenExercises: realmWorkout.choosenExercises)
-                        realmManager.getWorkouts()
                         
                             workoutsIsActive = false
                     } label: {
