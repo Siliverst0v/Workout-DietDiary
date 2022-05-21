@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ChoosenExerciseButton: View {
     @State private var notTapped = true
-    @Binding var choosenExercise: ChoosenExercise
+    @Binding var choosenExercise: RealmChoosenExercise
 
     @State var backgroundHeight: CGFloat = 178
     
@@ -79,7 +79,7 @@ struct ChoosenExerciseButton: View {
                         ForEach($choosenExercise.sets, id: \.id) { setNumber in
                             HStack(alignment: .center) {
                                 if width < 370 {
-                                    Text("\(setNumber.id)")
+                                    Text("\(setNumber.id.wrappedValue)")
                                     .fontWeight(.semibold)
                                     .frame(width: 64)
                                     .font(.system(size: 17))
@@ -87,7 +87,7 @@ struct ChoosenExerciseButton: View {
                                     .padding(.leading, 20)
 
                                 } else {
-                                    Text("\(setNumber.id)")
+                                    Text("\(setNumber.id.wrappedValue)")
                                         .fontWeight(.semibold)
                                         .frame(width: 64)
                                         .font(.system(size: 17))
@@ -191,7 +191,7 @@ struct ChoosenExerciseButton: View {
     }
     
     private func addSet() {
-        let newSet = Set(id: choosenExercise.sets.count + 1, repeats: "", weight: "")
+        let newSet = RealmSet(id: choosenExercise.sets.count + 1, repeats: "", weight: "")
         if choosenExercise.sets.count <= 9 {
             choosenExercise.sets.append(newSet)
 //        backgroundHeight += 46
@@ -226,11 +226,8 @@ struct ChoosenExerciseButton: View {
 
 struct ChoosenExerciseButton_Previews: PreviewProvider {
     static var previews: some View {
-        ChoosenExerciseButton(choosenExercise: .constant(ChoosenExercise(
+        ChoosenExerciseButton(choosenExercise: .constant(RealmChoosenExercise(
             icon: "chest",
-            title: "Exercise for example",
-            sets: [Set(id: 1, repeats: "", weight: ""),
-                   Set(id: 2, repeats: "", weight: ""),
-                   Set(id: 3, repeats: "", weight: "")])))
+            title: "Exercise for example")))
     }
 }

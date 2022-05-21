@@ -10,21 +10,21 @@ import RealmSwift
 
 struct WorkoutsView: View {
     @StateObject var realmManager = RealmManager()
-    @EnvironmentObject var workouts: Workouts
+//    @EnvironmentObject var workouts: Workouts
     @State var workoutsIsActive = false
     @State private var selection: String? = nil
-    @State var choosenExercises: [ChoosenExercise] = []
+    @State var choosenExercises: [RealmChoosenExercise] = []
     @State var showingAlert: Bool = false
 
         
     var body: some View {
         NavigationView {
             ScrollView(showsIndicators: false) {
-                ForEach(workouts.workouts, id: \.id) {workout in
+                ForEach(realmManager.workouts, id: \.id) {workout in
                     WorkoutButton(
                         workout: workout,
-                        input: $choosenExercises,
-                        output: workout.choosenExercises)
+                        input: $choosenExercises)
+                    .environmentObject(realmManager)
                     .simultaneousGesture(LongPressGesture().onEnded { _ in
                         showingAlert = true
                     })
@@ -35,8 +35,8 @@ struct WorkoutsView: View {
                         primaryButton: .default(Text("Редактировать"), action: {
                                 }),
                         secondaryButton: .default(Text("Удалить"), action: {
-                            print(workout.id)
-                            workouts.workouts.removeAll(where: {$0.id == workout.id})
+//                            print(workout.id)
+//                            workouts.workouts.removeAll(where: {$0.id == workout.id})
                                 }))
                         }
                 }
@@ -53,6 +53,7 @@ struct WorkoutsView: View {
                     }
                     NavigationLink("", tag: "DetailWorkoutView", selection: $selection) {
                         DetailWorkoutView(choosenExercises: $choosenExercises)
+                            .environmentObject(realmManager)
                     }
                 }
             )
@@ -70,20 +71,15 @@ struct WorkoutsView: View {
     }
     func removeRows(at offsets: IndexSet) {
         withAnimation {
-            workouts.workouts.remove(atOffsets: offsets)
+//            workouts.workouts.remove(atOffsets: offsets)
         }
-    }
-}
-
-extension Binding {
-     func toUnwrapped<T>(defaultValue: T) -> Binding<T> where Value == Optional<T>  {
-        Binding<T>(get: { self.wrappedValue ?? defaultValue }, set: { self.wrappedValue = $0 })
     }
 }
 
 struct Workouts_Previews: PreviewProvider {
     static var previews: some View {
         WorkoutsView()
-            .environmentObject(Workouts.init(workouts: []))
+            .environmentObject(RealmManager())
+//            .environmentObject(Workouts.init(workouts: []))
     }
 }

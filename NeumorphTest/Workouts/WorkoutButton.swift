@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct WorkoutButton: View {
-    let workout: Workout
-   @Binding var input: [ChoosenExercise]
-   @State var output: [ChoosenExercise]
+    var workout: RealmWorkout
+//    let workout: Workout
+   @Binding var input: [RealmChoosenExercise]
+//    @State var output: RealmWorkout
     
     var body: some View {
         Button(action: { replaceChoosenExercises() }) {
@@ -21,7 +22,7 @@ struct WorkoutButton: View {
                         .foregroundColor(.customRed)
                         .font(.headline)
                         .padding(5)
-                    ForEach(workout.exerciseGroupNames, id: \.self) { exerciseGroupName in
+                    ForEach(workout.exerciseGroups, id: \.self) { exerciseGroupName in
                     Text(exerciseGroupName)
                             .foregroundColor(.customBlue)
                         .font(.headline)
@@ -34,31 +35,31 @@ struct WorkoutButton: View {
                         .resizable()
                     Image("BackBody")
                         .resizable()
-                        .opacity(workout.exerciseGroupNames.contains("Спина") ? 1 : 0)
+                        .opacity(workout.exerciseGroups.contains("Спина") ? 1 : 0)
                     Image("ChestBody")
                         .resizable()
-                        .opacity(workout.exerciseGroupNames.contains("Грудь") ? 1 : 0)
+                        .opacity(workout.exerciseGroups.contains("Грудь") ? 1 : 0)
                     Image("BicepsBody")
                         .resizable()
-                        .opacity(workout.exerciseGroupNames.contains("Бицепс") ? 1 : 0)
+                        .opacity(workout.exerciseGroups.contains("Бицепс") ? 1 : 0)
                     Image("TricepsBody")
                         .resizable()
-                        .opacity(workout.exerciseGroupNames.contains("Трицепс") ? 1 : 0)
+                        .opacity(workout.exerciseGroups.contains("Трицепс") ? 1 : 0)
                     Image("AbsBody")
                         .resizable()
-                        .opacity(workout.exerciseGroupNames.contains("Пресс") ? 1 : 0)
+                        .opacity(workout.exerciseGroups.contains("Пресс") ? 1 : 0)
                     Image("ForeArmsBody")
                         .resizable()
-                        .opacity(workout.exerciseGroupNames.contains("Предплечья") ? 1 : 0)
+                        .opacity(workout.exerciseGroups.contains("Предплечья") ? 1 : 0)
                     Image("LegsBody")
                         .resizable()
-                        .opacity(workout.exerciseGroupNames.contains("Ноги") ? 1 : 0)
+                        .opacity(workout.exerciseGroups.contains("Ноги") ? 1 : 0)
                     Image("ShouldersBody")
                         .resizable()
-                        .opacity(workout.exerciseGroupNames.contains("Плечи") ? 1 : 0)
+                        .opacity(workout.exerciseGroups.contains("Плечи") ? 1 : 0)
                     Image("CardioBody")
                         .resizable()
-                        .opacity(workout.exerciseGroupNames.contains("Кардио") ? 1 : 0)
+                        .opacity(workout.exerciseGroups.contains("Кардио") ? 1 : 0)
                 }
                 .frame(height: 160)
                 .padding()
@@ -69,18 +70,18 @@ struct WorkoutButton: View {
     }
     
     func replaceChoosenExercises() {
-        self.input = self.output
+//        self.input = self.output
+        workout.choosenExercises.append(objectsIn: input)
+        
     }
 }
 
 struct WorkoutsView_Previews: PreviewProvider {
     static var previews: some View {
         WorkoutButton(
-            workout: Workout(
-                    date: Date(),
-                    exerciseGroupNames: [],
-                    choosenExercises: []),
-                    input: .constant([]),
-                    output: [])
+            workout: RealmWorkout(),
+                    input: .constant([])
+//            output: RealmWorkout())
+        )
     }
 }

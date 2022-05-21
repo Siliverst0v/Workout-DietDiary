@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DetailWorkoutView: View {
-    @Binding var choosenExercises: [ChoosenExercise]
+    @Binding var choosenExercises: [RealmChoosenExercise]
     
     var body: some View {
 

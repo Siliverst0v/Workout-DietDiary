@@ -6,16 +6,19 @@
 //
 
 import SwiftUI
+import RealmSwift
+
 
 struct ExercisesView: View {
     @EnvironmentObject var realmManager: RealmManager
+    
     @Binding var exercises: [ExerciseGroup]
     @Binding var exerciseGroupsNames: [String]
     @State var date: Date
-    @EnvironmentObject var workouts: Workouts
+//    @EnvironmentObject var workouts: Workouts
     @Binding var workoutsIsActive: Bool
     @State var choosenExerises: [ChoosenExercise] = []
-    @StateObject var realmWorkout = RealmWorkout()
+    @State var realmWorkout = RealmWorkout()
     @State var realmChoosenExerises: [RealmChoosenExercise] = []
 
         
@@ -36,16 +39,17 @@ struct ExercisesView: View {
                             image: exerciseGroup.icon,
                             choosenExercises: $choosenExerises,
                             realmChoosenExerises: $realmChoosenExerises)
+                        .environmentObject(realmManager)
                     }
                 }
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        workouts.workouts.append(Workout(
-                            date: date,
-                            exerciseGroupNames: exerciseGroupsNames,
-                            choosenExercises: choosenExerises))
+//                        workouts.workouts.append(Workout(
+//                            date: date,
+//                            exerciseGroupNames: exerciseGroupsNames,
+//                            choosenExercises: choosenExerises))
                         
                         realmWorkout.exerciseGroups.append(objectsIn: exerciseGroupsNames)
                         realmWorkout.choosenExercises.append(objectsIn: realmChoosenExerises)

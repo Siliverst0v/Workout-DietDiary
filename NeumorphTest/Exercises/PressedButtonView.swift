@@ -273,5 +273,6 @@ struct PressedButtonView_Previews: PreviewProvider {
             image: "chest",
             title: "Exercise for example"
         )
+        .environmentObject(RealmManager())
     }
 }
