@@ -198,14 +198,20 @@ struct ChoosenExerciseButton: View {
 //        let newSet = RealmSet(id: choosenExercise.sets.count + 1, repeats: "", weight: "")
         if choosenExercise.sets.count <= 9 {
 //            realmManager.addSet(set: newSet)
-            realmManager.updateChoosenExercise(
+            realmManager.addSet(
                 id: choosenExercise.id,
                 choosenExercise: choosenExercise)
         }
     }
     
     private func deleteSet() {
-        choosenExercise.sets.removeLast()
+        realmManager.deleteSet(
+            id: choosenExercise.id,
+            choosenExercise: choosenExercise)
+        
+        guard let setToDelete = choosenExercise.sets.last else {return}
+        realmManager.delete(set: setToDelete)
+//        choosenExercise.sets.removeLast()
         
     }
     
