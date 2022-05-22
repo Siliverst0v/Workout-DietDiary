@@ -114,6 +114,23 @@ class RealmManager: ObservableObject {
         }
     }
     
+    func updateChoosenExercise(id: ObjectId, choosenExercise: RealmChoosenExercise) {
+        if let localRealm = localRealm {
+            do {
+                let choosenExerciseToUpdate = localRealm.objects(RealmChoosenExercise.self).filter(NSPredicate(format: "id == %@", id))
+                guard !choosenExerciseToUpdate.isEmpty else {return}
+                
+                try localRealm.write {
+                    choosenExercise.sets.append(RealmSet(id: choosenExercise.sets.count + 1, repeats: "", weight: ""))
+//                    choosenExerciseToUpdate[0].sets = sets
+                    getChoosenExercises()
+                }
+            } catch  {
+                print(error)
+            }
+        }
+    }
+    
     func deleteChoosenExercise(id: ObjectId) {
         if let localRealm = localRealm {
             do {
@@ -146,7 +163,7 @@ class RealmManager: ObservableObject {
                 
                 try localRealm.write {
                     localRealm.add(set)
-                    
+                    getSets()
                 }
             } catch  {
                 print(error)

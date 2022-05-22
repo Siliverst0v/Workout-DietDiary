@@ -190,14 +190,17 @@ struct ChoosenExerciseButton: View {
                 }
                 .frame(width: UIScreen.main.bounds.size.width - 40, height: backgroundHeight + CGFloat(((choosenExercise.sets.count - 1) * 46)))
             }
+            .onAppear(perform: realmManager.getSets)
         }
     }
     
     private func addSet() {
-        let newSet = RealmSet(id: choosenExercise.sets.count + 1, repeats: "", weight: "")
+//        let newSet = RealmSet(id: choosenExercise.sets.count + 1, repeats: "", weight: "")
         if choosenExercise.sets.count <= 9 {
-            realmManager.addSet(set: newSet)
-//            realmManager.getSets()
+//            realmManager.addSet(set: newSet)
+            realmManager.updateChoosenExercise(
+                id: choosenExercise.id,
+                choosenExercise: choosenExercise)
         }
     }
     
@@ -232,5 +235,6 @@ struct ChoosenExerciseButton_Previews: PreviewProvider {
         ChoosenExerciseButton(choosenExercise: .constant(RealmChoosenExercise(
             icon: "chest",
             title: "Exercise for example")))
+        .environmentObject(RealmManager())
     }
 }

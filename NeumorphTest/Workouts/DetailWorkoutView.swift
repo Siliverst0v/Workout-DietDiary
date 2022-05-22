@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DetailWorkoutView: View {
+    @EnvironmentObject var realmManager: RealmManager
     @Binding var choosenExercises: [RealmChoosenExercise]
     
     var body: some View {
@@ -15,6 +16,7 @@ struct DetailWorkoutView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 ForEach($choosenExercises, id: \.id) {exercise in
                         ChoosenExerciseButton(choosenExercise: exercise)
+                        .environmentObject(realmManager)
                 }
                 .padding()
         }
