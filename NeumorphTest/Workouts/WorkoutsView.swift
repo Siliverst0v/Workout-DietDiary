@@ -34,14 +34,15 @@ struct WorkoutsView: View {
                         primaryButton: .default(Text("Редактировать"), action: {
                                 }),
                         secondaryButton: .default(Text("Удалить"), action: {
-                            workout.choosenExercises.forEach { exercise in
-                                exercise.sets.forEach { sett in
-                                    realmManager.delete(set: sett)
-                                }
-                                realmManager.deleteChoosenExercise(id: exercise.id)
-                            }
-                            realmManager.deleteWorkout(
-                                id: workout.id)
+                            deleteWorkout(workout: workout)
+//                            workout.choosenExercises.forEach { exercise in
+//                                exercise.sets.forEach { sett in
+//                                    realmManager.delete(set: sett)
+//                                }
+//                                realmManager.deleteChoosenExercise(id: exercise.id)
+//                            }
+//                            realmManager.deleteWorkout(
+//                                id: workout.id)
 
                                 }))
                         }
@@ -80,6 +81,19 @@ struct WorkoutsView: View {
         withAnimation {
 //            workouts.workouts.remove(atOffsets: offsets)
         }
+    }
+}
+
+extension WorkoutsView {
+    private func deleteWorkout(workout: RealmWorkout) {
+        workout.choosenExercises.forEach { exercise in
+            exercise.sets.forEach { sett in
+                realmManager.delete(set: sett)
+            }
+            realmManager.deleteChoosenExercise(id: exercise.id)
+        }
+        realmManager.deleteWorkout(
+            id: workout.id)
     }
 }
 
