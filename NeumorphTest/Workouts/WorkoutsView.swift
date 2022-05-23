@@ -35,19 +35,10 @@ struct WorkoutsView: View {
                                 }),
                         secondaryButton: .default(Text("Удалить"), action: {
                             deleteWorkout(workout: workout)
-//                            workout.choosenExercises.forEach { exercise in
-//                                exercise.sets.forEach { sett in
-//                                    realmManager.delete(set: sett)
-//                                }
-//                                realmManager.deleteChoosenExercise(id: exercise.id)
-//                            }
-//                            realmManager.deleteWorkout(
-//                                id: workout.id)
-
+                            realmManager.getWorkouts()
                                 }))
                         }
                 }
-                .onDelete(perform: removeRows)
                 .simultaneousGesture(TapGesture().onEnded{
                     self.selection = "DetailWorkoutView"
                 })
@@ -77,10 +68,11 @@ struct WorkoutsView: View {
             }
         }
     }
-    func removeRows(at offsets: IndexSet) {
-        withAnimation {
-//            workouts.workouts.remove(atOffsets: offsets)
-        }
+    
+    func delete(at index: Int) {
+            let deletes = saving[index]
+            self.moc.delete(deletes)
+        try! self.moc.save()
     }
 }
 
@@ -101,6 +93,5 @@ struct Workouts_Previews: PreviewProvider {
     static var previews: some View {
         WorkoutsView()
             .environmentObject(RealmManager())
-//            .environmentObject(Workouts.init(workouts: []))
     }
 }

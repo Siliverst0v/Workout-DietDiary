@@ -166,7 +166,6 @@ class RealmManager: ObservableObject {
                 guard !choosenExerciseToUpdate.isEmpty else {return}
                 
                 try localRealm.write {
-//                    choosenExercise.sets.removeLast()
                     getChoosenExercises()
                 }
             } catch  {
