@@ -35,7 +35,6 @@ struct WorkoutsView: View {
                                 }),
                         secondaryButton: .default(Text("Удалить"), action: {
                             deleteWorkout(workout: workout)
-                            realmManager.getWorkouts()
                                 }))
                         }
                 }
@@ -67,12 +66,6 @@ struct WorkoutsView: View {
                 }
             }
         }
-    }
-    
-    func delete(at index: Int) {
-            let deletes = saving[index]
-            self.moc.delete(deletes)
-        try! self.moc.save()
     }
 }
 
