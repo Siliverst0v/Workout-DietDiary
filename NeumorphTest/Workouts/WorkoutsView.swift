@@ -34,7 +34,15 @@ struct WorkoutsView: View {
                         primaryButton: .default(Text("Редактировать"), action: {
                                 }),
                         secondaryButton: .default(Text("Удалить"), action: {
-                            realmManager.deleteWorkout(id: workout.id)
+                            workout.choosenExercises.forEach { exercise in
+                                exercise.sets.forEach { sett in
+                                    realmManager.delete(set: sett)
+                                }
+                                realmManager.deleteChoosenExercise(id: exercise.id)
+                            }
+                            realmManager.deleteWorkout(
+                                id: workout.id)
+
                                 }))
                         }
                 }
