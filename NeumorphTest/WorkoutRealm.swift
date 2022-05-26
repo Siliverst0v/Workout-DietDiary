@@ -14,6 +14,7 @@ class RealmWorkout: Object, ObjectKeyIdentifiable {
     @Persisted var exerciseGroups: List<String>
     @Persisted var choosenExercises: List<RealmChoosenExercise>
     
+    
     convenience init(date: Date) {
         self.init()
         self.date = date
@@ -25,6 +26,7 @@ class RealmChoosenExercise: Object, ObjectKeyIdentifiable {
     @Persisted var icon: String
     @Persisted var title: String
     @Persisted var sets: List<RealmSet>
+    @Persisted(originProperty: "choosenExercises") var realmWorkout: LinkingObjects<RealmWorkout>
     
     convenience init(icon: String, title: String) {
         self.init()
@@ -37,6 +39,7 @@ class RealmSet: Object {
     @Persisted var id: Int
     @Persisted var repeats: String
     @Persisted var weight: String
+    @Persisted(originProperty: "sets") var realmChoosenExercises: LinkingObjects<RealmChoosenExercise>
     
     convenience init(id: Int, repeats: String, weight: String) {
         self.init()

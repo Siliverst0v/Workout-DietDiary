@@ -10,9 +10,9 @@ import RealmSwift
 
 class RealmManager: ObservableObject {
     private(set) var localRealm: Realm?
-    @Published private(set) var workouts: [RealmWorkout] = []
-    @Published private(set) var choosenExercises: [RealmChoosenExercise] = []
-    @Published private(set) var sets: [RealmSet] = []
+    @Published private(set) var workouts = RealmSwift.List<RealmWorkout>()
+    @Published private(set) var choosenExercises = RealmSwift.List<RealmChoosenExercise>()
+    @Published private(set) var sets = RealmSwift.List<RealmSet>()
 
     
     init() {
@@ -49,7 +49,7 @@ class RealmManager: ObservableObject {
     func getWorkouts() {
         if let localRealm = localRealm {
             let allWorkouts = localRealm.objects(RealmWorkout.self).sorted(byKeyPath: "date")
-            workouts = []
+            workouts.removeAll()
             allWorkouts.forEach { workout in
                 workouts.append(workout)
             }
@@ -92,7 +92,7 @@ class RealmManager: ObservableObject {
     func getChoosenExercises() {
         if let localRealm = localRealm {
             let allChoosenExercises = localRealm.objects(RealmChoosenExercise.self).sorted(byKeyPath: "icon")
-            choosenExercises = []
+            choosenExercises.removeAll()
             allChoosenExercises.forEach { exercise in
                 choosenExercises.append(exercise)
             }
@@ -135,7 +135,7 @@ class RealmManager: ObservableObject {
     func getSets() {
         if let localRealm = localRealm {
             let allSets = localRealm.objects(RealmSet.self).sorted(byKeyPath: "id")
-            sets = []
+            sets.removeAll()
             allSets.forEach { sett in
                 sets.append(sett)
             }

@@ -10,6 +10,7 @@ import RealmSwift
 
 struct WorkoutsView: View {
     @StateObject var realmManager = RealmManager()
+    @State private var workouts: [RealmWorkout] = []
     @State var workoutsIsActive = false
     @State private var selection: String? = nil
     @State var choosenExercises: [RealmChoosenExercise] = []
@@ -18,12 +19,13 @@ struct WorkoutsView: View {
         
     var body: some View {
         NavigationView {
-            ScrollView(showsIndicators: false) {
-                ForEach(realmManager.workouts, id: \.id) {workout in
+                List {
+                ForEach(workouts, id: \.id) {workout in
                     WorkoutButton(
                         workout: workout,
                         input: $choosenExercises)
                     .environmentObject(realmManager)
+                    .listRowSeparator(.hidden)
                     .simultaneousGesture(LongPressGesture().onEnded { _ in
                         showingAlert = true
                     })
@@ -34,16 +36,20 @@ struct WorkoutsView: View {
                         primaryButton: .default(Text("Редактировать"), action: {
                                 }),
                         secondaryButton: .default(Text("Удалить"), action: {
-                            deleteWorkout(workout: workout)
-                                }))
+                            
+                        }))
                         }
                 }
+                .onDelete(perform: delete)
                 .simultaneousGesture(TapGesture().onEnded{
                     self.selection = "DetailWorkoutView"
                 })
-                .padding()
                 }
-            .onAppear(perform: realmManager.getWorkouts)
+                .listStyle(.plain)
+                .toolbar {
+                    EditButton()
+                }
+                .onAppear(perform: fetchWorkouts)
                 .background(
                 Group {
                     NavigationLink("", tag: workoutsIsActive ? "ChooseExerciseView" : "", selection: $selection) {
@@ -67,10 +73,15 @@ struct WorkoutsView: View {
             }
         }
     }
+    
+
 }
 
 extension WorkoutsView {
-    private func deleteWorkout(workout: RealmWorkout) {
+    private func delete(at offsets: IndexSet) {
+        workouts.remove(atOffsets: offsets)
+        let result = realmManager.workouts.filter { !workouts.contains($0) }
+        result.forEach { workout in
         workout.choosenExercises.forEach { exercise in
             exercise.sets.forEach { sett in
                 realmManager.delete(set: sett)
@@ -79,6 +90,15 @@ extension WorkoutsView {
         }
         realmManager.deleteWorkout(
             id: workout.id)
+        }
+    }
+    
+    private func fetchWorkouts() {
+        realmManager.getWorkouts()
+        let result = realmManager.workouts.filter { !workouts.contains($0) }
+        result.forEach { workout in
+            workouts.append(workout)
+        }
     }
 }
 

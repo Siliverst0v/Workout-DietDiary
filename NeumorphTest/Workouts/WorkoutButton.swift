@@ -63,7 +63,7 @@ struct WorkoutButton: View {
                 .padding()
             }
         }
-        .scaledToFit()
+//        .scaledToFit()
         .buttonStyle(WorkoutButtonStyle())
     }
     
