@@ -26,19 +26,6 @@ struct WorkoutsView: View {
                         input: $choosenExercises)
                     .environmentObject(realmManager)
                     .listRowSeparator(.hidden)
-                    .simultaneousGesture(LongPressGesture().onEnded { _ in
-                        showingAlert = true
-                    })
-                    .alert(isPresented: $showingAlert) { () -> Alert in
-                    Alert(
-                        title: Text("Выберите действие"),
-                        message: Text(""),
-                        primaryButton: .default(Text("Редактировать"), action: {
-                                }),
-                        secondaryButton: .default(Text("Удалить"), action: {
-                            
-                        }))
-                        }
                 }
                 .onDelete(perform: delete)
                 .simultaneousGesture(TapGesture().onEnded{
@@ -46,9 +33,6 @@ struct WorkoutsView: View {
                 })
                 }
                 .listStyle(.plain)
-                .toolbar {
-                    EditButton()
-                }
                 .onAppear(perform: fetchWorkouts)
                 .background(
                 Group {
@@ -73,8 +57,6 @@ struct WorkoutsView: View {
             }
         }
     }
-    
-
 }
 
 extension WorkoutsView {
