@@ -95,7 +95,7 @@ struct ChoosenExerciseButton: View {
                     }
                     .font(.system(size: 14))
                     .padding(.top, 60)
-                        ForEach($sets, id: \.self) { setNumber in
+                        ForEach($sets, id: \.id) { setNumber in
                             HStack(alignment: .center) {
                                 if width < 370 {
                                     Text("\(setNumber.id.wrappedValue)")
@@ -212,9 +212,8 @@ struct ChoosenExerciseButton: View {
     
     private func fetchSets() {
         realmManager.getSets()
-        let result = realmManager.sets.filter { !sets.contains($0) }
         sets = []
-        result.forEach { sett in
+        choosenExercise.sets.forEach { sett in
             sets.append(sett)
         }
     }

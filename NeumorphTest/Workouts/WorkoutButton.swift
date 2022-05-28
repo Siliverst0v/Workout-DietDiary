@@ -9,7 +9,6 @@ import SwiftUI
 
 struct WorkoutButton: View {
     @State var workout: RealmWorkout
-    @Binding var selection: String?
     @Binding var output: [RealmChoosenExercise]
 
     
@@ -69,7 +68,6 @@ struct WorkoutButton: View {
     }
     
     func replaceChoosenExercises() {
-        self.selection = "DetailWorkoutView"
         output = []
         workout.choosenExercises.forEach { exercise in
             output.append(exercise)
@@ -81,7 +79,6 @@ struct WorkoutsView_Previews: PreviewProvider {
     static var previews: some View {
         WorkoutButton(
             workout: RealmWorkout(),
-            selection: .constant(""),
             output: .constant([])
         )
     }

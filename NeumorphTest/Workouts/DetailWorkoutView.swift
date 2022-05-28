@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DetailWorkoutView: View {
     @EnvironmentObject var realmManager: RealmManager
-    @State var choosenExercises: [RealmChoosenExercise]
+    @Binding var choosenExercises: [RealmChoosenExercise]
     
     var body: some View {
 
@@ -49,6 +49,6 @@ extension DetailWorkoutView {
 
 struct DetailWorkoutView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailWorkoutView(choosenExercises: [])
+        DetailWorkoutView(choosenExercises: .constant([]))
     }
 }

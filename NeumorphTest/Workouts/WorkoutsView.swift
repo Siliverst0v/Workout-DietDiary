@@ -23,12 +23,14 @@ struct WorkoutsView: View {
                 ForEach(workouts, id: \.id) {workout in
                     WorkoutButton(
                         workout: workout,
-                        selection: $selection,
                         output: $choosenExercises)
                     .environmentObject(realmManager)
                     .listRowSeparator(.hidden)
                 }
                 .onDelete(perform: delete)
+                .simultaneousGesture(TapGesture().onEnded({ _ in
+                    self.selection = "DetailWorkoutView"
+                }))
                 }
                 .listStyle(.plain)
                 .onAppear(perform: fetchWorkouts)
@@ -38,7 +40,7 @@ struct WorkoutsView: View {
                         ChooseExercisesView(workoutsIsActive: $workoutsIsActive)
                     }
                     NavigationLink("", tag: "DetailWorkoutView", selection: $selection) {
-                        DetailWorkoutView(choosenExercises: choosenExercises)
+                        DetailWorkoutView(choosenExercises: $choosenExercises)
                             .environmentObject(realmManager)
                     }
                 }
