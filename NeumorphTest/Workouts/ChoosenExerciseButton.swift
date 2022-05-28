@@ -13,7 +13,8 @@ struct ChoosenExerciseButton: View {
     
     @State private var notTapped = true
     @Binding var choosenExercise: RealmChoosenExercise
-
+    var action: () -> Void
+    
     @State var backgroundHeight: CGFloat = 178
     
     var body: some View {
@@ -31,6 +32,13 @@ struct ChoosenExerciseButton: View {
                 .lineLimit(3)
                 .frame(width: width - 130, height: 60, alignment: .leading)
                 .offset(x: 85, y: 5)
+                    Button(action: { self.action() }) {
+                    Image(systemName: "clear")
+                        .font(.system(size: 20))
+                        .foregroundColor(.customRed)
+                        .frame(width: 40, height: 40, alignment: .center)
+                    }
+                    .offset(x: width - 45, y: 15)
                 }
                 .frame(width: UIScreen.main.bounds.size.width - 40, height: 70, alignment: .center)
                 }
@@ -54,6 +62,13 @@ struct ChoosenExerciseButton: View {
                 .lineLimit(3)
                 .frame(width: width - 130, height: 60, alignment: .leading)
                 .offset(x: 85, y: 5)
+                    Button(action: { self.action() }) {
+                    Image(systemName: "clear")
+                        .font(.system(size: 20))
+                        .foregroundColor(.customRed)
+                        .frame(width: 40, height: 40, alignment: .center)
+                    }
+                    .offset(x: width - 45, y: 15)
                     VStack(alignment: .leading) {
                     HStack {
                         if width < 370 {
@@ -194,10 +209,9 @@ struct ChoosenExerciseButton: View {
         }
     }
     
+    
     private func addSet() {
-//        let newSet = RealmSet(id: choosenExercise.sets.count + 1, repeats: "", weight: "")
         if choosenExercise.sets.count <= 9 {
-//            realmManager.addSet(set: newSet)
             realmManager.addSet(
                 id: choosenExercise.id,
                 choosenExercise: choosenExercise)
@@ -211,7 +225,6 @@ struct ChoosenExerciseButton: View {
         
         guard let setToDelete = choosenExercise.sets.last else {return}
         realmManager.delete(set: setToDelete)
-//        choosenExercise.sets.removeLast()
         
     }
     
@@ -240,7 +253,7 @@ struct ChoosenExerciseButton_Previews: PreviewProvider {
     static var previews: some View {
         ChoosenExerciseButton(choosenExercise: .constant(RealmChoosenExercise(
             icon: "chest",
-            title: "Exercise for example")))
+            title: "Exercise for example")), action: {})
         .environmentObject(RealmManager())
     }
 }

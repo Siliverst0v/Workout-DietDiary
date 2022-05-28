@@ -9,10 +9,10 @@ import SwiftUI
 
 struct WorkoutButton: View {
     @State var workout: RealmWorkout
-    @Binding var input: [RealmChoosenExercise]
+//    @Binding var input: [RealmChoosenExercise]
     
     var body: some View {
-        Button(action: { replaceChoosenExercises() }) {
+        Button(action: { }) {
             HStack {
                 VStack{
                     Text(workout.date, style: .date)
@@ -63,23 +63,22 @@ struct WorkoutButton: View {
                 .padding()
             }
         }
-//        .scaledToFit()
         .buttonStyle(WorkoutButtonStyle())
     }
     
-    func replaceChoosenExercises() {
-        input = []
-        workout.choosenExercises.forEach { exercise in
-            input.append(exercise)
-        }
-        
-    }
+//    func replaceChoosenExercises() {
+//        input = []
+//        workout.choosenExercises.forEach { exercise in
+//            input.append(exercise)
+//        }
+//
+//    }
 }
 
 struct WorkoutsView_Previews: PreviewProvider {
     static var previews: some View {
         WorkoutButton(
-            workout: RealmWorkout(), input: .constant([])
+            workout: RealmWorkout()
         )
     }
 }

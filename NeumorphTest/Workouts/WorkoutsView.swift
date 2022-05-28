@@ -13,7 +13,7 @@ struct WorkoutsView: View {
     @State private var workouts: [RealmWorkout] = []
     @State var workoutsIsActive = false
     @State private var selection: String? = nil
-    @State var choosenExercises: [RealmChoosenExercise] = []
+//    @State var choosenExercises: [RealmChoosenExercise] = []
     @State var showingAlert: Bool = false
 
         
@@ -22,8 +22,7 @@ struct WorkoutsView: View {
                 List {
                 ForEach(workouts, id: \.id) {workout in
                     WorkoutButton(
-                        workout: workout,
-                        input: $choosenExercises)
+                        workout: workout)
                     .environmentObject(realmManager)
                     .listRowSeparator(.hidden)
                 }
@@ -40,7 +39,7 @@ struct WorkoutsView: View {
                         ChooseExercisesView(workoutsIsActive: $workoutsIsActive)
                     }
                     NavigationLink("", tag: "DetailWorkoutView", selection: $selection) {
-                        DetailWorkoutView(choosenExercises: $choosenExercises)
+                        DetailWorkoutView()
                             .environmentObject(realmManager)
                     }
                 }
