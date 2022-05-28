@@ -22,6 +22,7 @@ struct DetailWorkoutView: View {
                         .environmentObject(realmManager)
                         .listRowSeparator(.hidden)
                 }
+                .padding()
         }
             .onAppear(perform: fetchChoosenExercises)
     }

@@ -13,6 +13,7 @@ struct ChoosenExerciseButton: View {
     
     @State private var notTapped = true
     @Binding var choosenExercise: RealmChoosenExercise
+    @State private var sets: [RealmSet] = []
     var action: () -> Void
     
     @State var backgroundHeight: CGFloat = 178
@@ -94,7 +95,7 @@ struct ChoosenExerciseButton: View {
                     }
                     .font(.system(size: 14))
                     .padding(.top, 60)
-                        ForEach($choosenExercise.sets, id: \.id) { setNumber in
+                        ForEach($sets, id: \.self) { setNumber in
                             HStack(alignment: .center) {
                                 if width < 370 {
                                     Text("\(setNumber.id.wrappedValue)")
@@ -205,26 +206,37 @@ struct ChoosenExerciseButton: View {
                 }
                 .frame(width: UIScreen.main.bounds.size.width - 40, height: backgroundHeight + CGFloat(((choosenExercise.sets.count - 1) * 46)))
             }
-            .onAppear(perform: realmManager.getSets)
+            .onAppear(perform: fetchSets)
         }
     }
     
+    private func fetchSets() {
+        realmManager.getSets()
+        let result = realmManager.sets.filter { !sets.contains($0) }
+        sets = []
+        result.forEach { sett in
+            sets.append(sett)
+        }
+    }
     
     private func addSet() {
+        let newSet = RealmSet(
+            id: choosenExercise.sets.count + 1,
+                    repeats: "",
+                    weight: "")
         if choosenExercise.sets.count <= 9 {
             realmManager.addSet(
                 id: choosenExercise.id,
                 choosenExercise: choosenExercise)
+            sets.append(newSet)
         }
     }
     
     private func deleteSet() {
-        realmManager.deleteSet(
-            id: choosenExercise.id,
-            choosenExercise: choosenExercise)
         
         guard let setToDelete = choosenExercise.sets.last else {return}
         realmManager.delete(set: setToDelete)
+        sets.removeLast()
         
     }
     
