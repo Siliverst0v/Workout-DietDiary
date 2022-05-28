@@ -13,7 +13,7 @@ struct ChoosenExerciseButton: View {
     
     @State private var notTapped = true
     @Binding var choosenExercise: RealmChoosenExercise
-    @State private var sets: [RealmSet] = []
+    @State var sets: [RealmSet] = []
     var action: () -> Void
     
     @State var backgroundHeight: CGFloat = 178
@@ -116,10 +116,12 @@ struct ChoosenExerciseButton: View {
                                 }
                                 TextField("0", text: setNumber.repeats)
                                     .frame(width: 84, alignment: .center)
+                                    .keyboardType(.decimalPad)
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
                                     .padding(.leading, 8)
                                 TextField("0", text: setNumber.weight)
                                     .frame(width: 60, alignment: .center)
+                                    .keyboardType(.decimalPad)
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
                                     .padding(.leading, 10)
                             }
@@ -211,7 +213,6 @@ struct ChoosenExerciseButton: View {
     }
     
     private func fetchSets() {
-        realmManager.getSets()
         sets = []
         choosenExercise.sets.forEach { sett in
             sets.append(sett)
