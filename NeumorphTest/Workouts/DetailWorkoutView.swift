@@ -29,14 +29,13 @@ struct DetailWorkoutView: View {
 
 extension DetailWorkoutView {
     private func deleteChoosenExercise(index: Int) {
+        let exerciseToDelete = choosenExercises[index]
         choosenExercises.remove(at: index)
-        let result = realmManager.choosenExercises.filter { !choosenExercises.contains($0) }
-        result.forEach { exercise in
-            exercise.sets.forEach { sett in
-                realmManager.delete(set: sett)
-            }
-            realmManager.deleteChoosenExercise(id: exercise.id)
+        
+        exerciseToDelete.sets.forEach { sett in
+            realmManager.delete(set: sett)
         }
+            realmManager.deleteChoosenExercise(id: exerciseToDelete.id)
     }
     
     private func fetchChoosenExercises() {

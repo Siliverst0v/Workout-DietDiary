@@ -13,7 +13,6 @@ struct NeumorphTestApp: App {
         WindowGroup {
             WorkoutsView()
                 .environmentObject(RealmManager())
-//                .environmentObject(Workouts.init(workouts: []))
         }
     }
 }
