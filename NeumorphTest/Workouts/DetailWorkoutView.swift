@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DetailWorkoutView: View {
     @EnvironmentObject var realmManager: RealmManager
-    @State var choosenExercises: [RealmChoosenExercise] = []
+    @State var choosenExercises: [RealmChoosenExercise]
     
     var body: some View {
 
@@ -24,7 +24,6 @@ struct DetailWorkoutView: View {
                 }
                 .padding()
         }
-            .onAppear(perform: fetchChoosenExercises)
     }
 }
 

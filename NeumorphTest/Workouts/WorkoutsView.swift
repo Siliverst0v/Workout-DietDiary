@@ -11,9 +11,9 @@ import RealmSwift
 struct WorkoutsView: View {
     @StateObject var realmManager = RealmManager()
     @State private var workouts: [RealmWorkout] = []
+    @State var choosenExercises: [RealmChoosenExercise] = []
     @State var workoutsIsActive = false
-    @State private var selection: String? = nil
-//    @State var choosenExercises: [RealmChoosenExercise] = []
+    @State var selection: String? = nil
     @State var showingAlert: Bool = false
 
         
@@ -22,14 +22,13 @@ struct WorkoutsView: View {
                 List {
                 ForEach(workouts, id: \.id) {workout in
                     WorkoutButton(
-                        workout: workout)
+                        workout: workout,
+                        selection: $selection,
+                        output: $choosenExercises)
                     .environmentObject(realmManager)
                     .listRowSeparator(.hidden)
                 }
                 .onDelete(perform: delete)
-                .simultaneousGesture(TapGesture().onEnded{
-                    self.selection = "DetailWorkoutView"
-                })
                 }
                 .listStyle(.plain)
                 .onAppear(perform: fetchWorkouts)
@@ -39,7 +38,7 @@ struct WorkoutsView: View {
                         ChooseExercisesView(workoutsIsActive: $workoutsIsActive)
                     }
                     NavigationLink("", tag: "DetailWorkoutView", selection: $selection) {
-                        DetailWorkoutView()
+                        DetailWorkoutView(choosenExercises: choosenExercises)
                             .environmentObject(realmManager)
                     }
                 }
