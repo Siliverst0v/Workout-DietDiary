@@ -15,6 +15,7 @@ struct ChoosenExerciseButton: View {
     @Binding var choosenExercise: RealmChoosenExercise
     @State var sets: [RealmSet] = []
     var action: () -> Void
+    @StateObject var testSets = TestSets()
     
     @State var backgroundHeight: CGFloat = 178
     
@@ -95,7 +96,7 @@ struct ChoosenExerciseButton: View {
                     }
                     .font(.system(size: 14))
                     .padding(.top, 60)
-                        ForEach($sets, id: \.id) { setNumber in
+                        ForEach($testSets.sets, id: \.id) { setNumber in
                             HStack(alignment: .center) {
                                 if width < 370 {
                                     Text("\(setNumber.id.wrappedValue)")
@@ -168,7 +169,7 @@ struct ChoosenExerciseButton: View {
                             )
                             .disabled(choosenExercise.sets.count <= 1)
                             .padding(.trailing, 20)
-                            Button(action: { notTapped.toggle() }) {
+                            Button(action: { saveSets() }) {
                                 Image(systemName: "chevron.up")
                             }
                             .frame(width: 100, height: 28, alignment: .center )
@@ -212,10 +213,28 @@ struct ChoosenExerciseButton: View {
         }
     }
     
+    private func saveSets() {
+        notTapped.toggle()
+        var test: [RealmSet] = []
+            choosenExercise.sets.forEach { setToDelete in
+                        realmManager.delete(set: setToDelete)
+                }
+//                print(testSets.sets)
+        testSets.sets.forEach { sett in
+            let newRealmSet = RealmSet(id: sett.id, repeats: sett.repeats, weight: sett.weight)
+            test.append(newRealmSet)
+        }
+        realmManager.updateChoosenExercise(id: choosenExercise.id, sets: test)
+
+//        fetchSets()
+    }
+    
     private func fetchSets() {
-        sets = []
+//        sets = []
+        testSets.sets = []
         choosenExercise.sets.forEach { sett in
-            sets.append(sett)
+            let newTestSet = TestSet(id: sett.id, repeats: sett.repeats, weight: sett.weight)
+                testSets.sets.append(newTestSet)
         }
     }
     

@@ -48,3 +48,19 @@ class RealmSet: Object {
         self.weight = weight
     }
 }
+
+class TestSets: ObservableObject {
+    @Published var sets: [TestSet] = []
+    
+    init() {}
+    
+    init(sets: [TestSet]) {
+        self.sets = sets
+    }
+}
+
+struct TestSet: Equatable {
+    var id: Int
+    var repeats: String
+    var weight: String
+}
