@@ -123,7 +123,6 @@ class RealmManager: ObservableObject {
                 try localRealm.write {
                     sets.forEach { newSet in
                         exerciseToUpdate[0].sets.append(newSet)
-                        print(newSet)
                     }
                     getChoosenExercises()
                 }

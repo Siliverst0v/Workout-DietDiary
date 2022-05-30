@@ -16,6 +16,7 @@ struct ChoosenExerciseButton: View {
     @State var sets: [RealmSet] = []
     var action: () -> Void
     @StateObject var testSets = TestSets()
+    @State var showAlert = false
     
     @State var backgroundHeight: CGFloat = 178
     
@@ -64,13 +65,6 @@ struct ChoosenExerciseButton: View {
                 .lineLimit(3)
                 .frame(width: width - 130, height: 60, alignment: .leading)
                 .offset(x: 85, y: 5)
-                    Button(action: { self.action() }) {
-                    Image(systemName: "clear")
-                        .font(.system(size: 20))
-                        .foregroundColor(.customRed)
-                        .frame(width: 40, height: 40, alignment: .center)
-                    }
-                    .offset(x: width - 45, y: 15)
                     VStack(alignment: .leading) {
                     HStack {
                         if width < 370 {
