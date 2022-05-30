@@ -219,18 +219,14 @@ struct ChoosenExerciseButton: View {
             choosenExercise.sets.forEach { setToDelete in
                         realmManager.delete(set: setToDelete)
                 }
-//                print(testSets.sets)
         testSets.sets.forEach { sett in
             let newRealmSet = RealmSet(id: sett.id, repeats: sett.repeats, weight: sett.weight)
             test.append(newRealmSet)
         }
         realmManager.updateChoosenExercise(id: choosenExercise.id, sets: test)
-
-//        fetchSets()
     }
     
     private func fetchSets() {
-//        sets = []
         testSets.sets = []
         choosenExercise.sets.forEach { sett in
             let newTestSet = TestSet(id: sett.id, repeats: sett.repeats, weight: sett.weight)
@@ -239,7 +235,7 @@ struct ChoosenExerciseButton: View {
     }
     
     private func addSet() {
-        let newSet = RealmSet(
+        let newSet = TestSet(
             id: choosenExercise.sets.count + 1,
                     repeats: "",
                     weight: "")
@@ -247,7 +243,7 @@ struct ChoosenExerciseButton: View {
             realmManager.addSet(
                 id: choosenExercise.id,
                 choosenExercise: choosenExercise)
-            sets.append(newSet)
+            testSets.sets.append(newSet)
         }
     }
     
@@ -255,7 +251,7 @@ struct ChoosenExerciseButton: View {
         
         guard let setToDelete = choosenExercise.sets.last else {return}
         realmManager.delete(set: setToDelete)
-        sets.removeLast()
+        testSets.sets.removeLast()
         
     }
     
