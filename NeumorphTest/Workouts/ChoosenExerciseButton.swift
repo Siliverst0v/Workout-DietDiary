@@ -13,7 +13,6 @@ struct ChoosenExerciseButton: View {
     
     @State private var notTapped = true
     @Binding var choosenExercise: RealmChoosenExercise
-    @State var sets: [RealmSet] = []
     var action: () -> Void
     @StateObject var testSets = TestSets()
     @State var showAlert = false

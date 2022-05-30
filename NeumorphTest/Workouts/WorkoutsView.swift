@@ -20,7 +20,7 @@ struct WorkoutsView: View {
     var body: some View {
         NavigationView {
                 List {
-                ForEach(workouts, id: \.id) {workout in
+                    ForEach(workouts, id: \.id) {workout in
                     WorkoutButton(
                         workout: workout,
                         output: $choosenExercises)
@@ -81,6 +81,7 @@ extension WorkoutsView {
         result.forEach { workout in
             workouts.append(workout)
         }
+        workouts.sort(by: {$0.date.compare($1.date) == .orderedAscending})
     }
 }
 
