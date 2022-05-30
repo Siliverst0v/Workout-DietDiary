@@ -37,14 +37,6 @@ extension DetailWorkoutView {
         }
             realmManager.deleteChoosenExercise(id: exerciseToDelete.id)
     }
-    
-    private func fetchChoosenExercises() {
-        realmManager.getChoosenExercises()
-        let result = realmManager.choosenExercises.filter { !choosenExercises.contains($0) }
-        result.forEach { exercise in
-            choosenExercises.append(exercise)
-        }
-    }
 }
 
 struct DetailWorkoutView_Previews: PreviewProvider {

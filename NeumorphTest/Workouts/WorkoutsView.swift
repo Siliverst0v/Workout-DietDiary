@@ -14,8 +14,6 @@ struct WorkoutsView: View {
     @State var choosenExercises: [RealmChoosenExercise] = []
     @State var workoutsIsActive = false
     @State var selection: String? = nil
-    @State var showingAlert: Bool = false
-
         
     var body: some View {
         NavigationView {

@@ -16,6 +16,7 @@ struct ChoosenExerciseButton: View {
     var action: () -> Void
     @StateObject var testSets = TestSets()
     @State var showAlert = false
+    @State var lastSets: [RealmSet] = []
     
     @State var backgroundHeight: CGFloat = 178
     
@@ -181,7 +182,7 @@ struct ChoosenExerciseButton: View {
                         }
                         .padding(.leading, 5)
                     }
-                    Button(action: {}) {
+                    Button(action: { self.fetchLastSets() }) {
                             Image(systemName: "memories")
                             .padding(.trailing, 1)
                     }
@@ -205,6 +206,8 @@ struct ChoosenExerciseButton: View {
             .onAppear(perform: fetchSets)
         }
     }
+    
+
     
     private func saveSets() {
         notTapped.toggle()
@@ -266,6 +269,27 @@ struct ChoosenExerciseButton: View {
             buttonPosition = backgroundHeight * 0.46
         }
         return buttonPosition
+    }
+}
+
+extension ChoosenExerciseButton {
+    
+    private func fetchLastSets() {
+        realmManager.getWorkouts()
+        let title = choosenExercise.title
+        var exercisesTest: [RealmChoosenExercise] = []
+        let result = realmManager.workouts.sorted(by: {$0.date.compare($1.date) == .orderedAscending})
+        result.forEach { exercises in
+            print(exercises.date)
+            exercises.choosenExercises.forEach { exercise in
+                if exercise.title == title {
+                exercisesTest.append(exercise)
+                }
+            }
+        }
+        
+        print(exercisesTest)
+        
     }
 }
 
