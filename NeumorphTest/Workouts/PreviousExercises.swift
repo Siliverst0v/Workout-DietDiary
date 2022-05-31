@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct PreviousExercises: View {
-    @Binding var choosenExercises: [RealmChoosenExercise]
+    @State var previousExercises: [PreviousExercise]
     
     var body: some View {
 
             ScrollView {
-                ForEach($choosenExercises, id: \.id) {exercise in
-                    PreviousExercisesButton(choosenExercise: exercise)
+                ForEach(previousExercises, id: \.self) {exercise in
+                    Text(exercise.date, style: .date)
+                        .foregroundColor(.customRed)
+                        .padding(.top)
+                    PreviousExercisesButton(choosenExercise: exercise.previousExercise)
                 }
                 .padding()
         }
@@ -23,6 +26,6 @@ struct PreviousExercises: View {
 
 struct PreviousExercises_Previews: PreviewProvider {
     static var previews: some View {
-        PreviousExercises(choosenExercises: .constant([]))
+        PreviousExercises(previousExercises: [])
     }
 }

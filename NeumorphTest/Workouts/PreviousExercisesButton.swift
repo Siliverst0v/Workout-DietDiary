@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PreviousExercisesButton: View {
-    @Binding var choosenExercise: RealmChoosenExercise
+    @State var choosenExercise: RealmChoosenExercise
     
     @State var backgroundHeight: CGFloat = 178
 
@@ -105,6 +105,6 @@ struct PreviousExercisesButton: View {
 
 struct PreviousExercisesButton_Previews: PreviewProvider {
     static var previews: some View {
-        PreviousExercisesButton(choosenExercise: .constant(RealmChoosenExercise(icon: "", title: "")))
+        PreviousExercisesButton(choosenExercise: RealmChoosenExercise(icon: "", title: ""))
     }
 }
