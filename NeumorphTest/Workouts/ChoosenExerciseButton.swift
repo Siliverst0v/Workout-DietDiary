@@ -17,6 +17,7 @@ struct ChoosenExerciseButton: View {
     @StateObject var testSets = TestSets()
     @State var showAlert = false
     @State var lastSets: [RealmSet] = []
+    @State private var showingSheet = false
     
     @State var backgroundHeight: CGFloat = 178
     
@@ -186,6 +187,9 @@ struct ChoosenExerciseButton: View {
                             Image(systemName: "memories")
                             .padding(.trailing, 1)
                     }
+                    .sheet(isPresented: $showingSheet, content: {
+                        PreviousExercises(choosenExercise: choosenExercise)
+                    })
                     .frame(width: 30, height: changeButtonSize(), alignment: .center )
                     .font(.system(size: 17))
                     .foregroundColor(.customBlue)
@@ -275,21 +279,21 @@ struct ChoosenExerciseButton: View {
 extension ChoosenExerciseButton {
     
     private func fetchLastSets() {
+        showingSheet.toggle()
         realmManager.getWorkouts()
         let title = choosenExercise.title
         var exercisesTest: [RealmChoosenExercise] = []
         let result = realmManager.workouts.sorted(by: {$0.date.compare($1.date) == .orderedAscending})
-        result.forEach { exercises in
-            print(exercises.date)
-            exercises.choosenExercises.forEach { exercise in
+        result.forEach { workout in
+            let date = workout.date
+            workout.choosenExercises.forEach { exercise in
                 if exercise.title == title {
+                    print(date)
+                    print(exercise)
                 exercisesTest.append(exercise)
                 }
             }
         }
-        
-        print(exercisesTest)
-        
     }
 }
 
