@@ -10,7 +10,6 @@ import SwiftUI
 struct NotPressedButtonView: View {
     @Binding var pressed: Bool
     @Binding var changeColorButton: Bool
-    @Binding var choosenExercises: [ChoosenExercise]
     @Binding var sets: [Set]
     @Binding var realmChoosenExerises: [RealmChoosenExercise]
 
@@ -47,10 +46,6 @@ struct NotPressedButtonView: View {
     
     func addExercise() {
         changeColorButton.toggle()
-        let choosenExercise = ChoosenExercise(
-            icon: image,
-            title: title,
-            sets: sets)
         
         let choosenExerciseRealm = RealmChoosenExercise(icon: image, title: title)
         sets.forEach { sett in
@@ -58,11 +53,9 @@ struct NotPressedButtonView: View {
         }
         
         if changeColorButton {
-            choosenExercises.append(choosenExercise)
             realmChoosenExerises.append(choosenExerciseRealm)
         } else {
             realmChoosenExerises.removeAll(where: {$0.title == choosenExerciseRealm.title})
-            choosenExercises.removeAll(where: {$0.title == choosenExercise.title})
         }
     }
 }
@@ -72,7 +65,6 @@ struct NotPressedButtonView_Previews: PreviewProvider {
         NotPressedButtonView(
             pressed: .constant(true),
             changeColorButton: .constant(true),
-            choosenExercises: .constant([]),
             sets: .constant([
                 Set(id: 1, repeats: "", weight: ""),
                 Set(id: 2, repeats: "", weight: ""),

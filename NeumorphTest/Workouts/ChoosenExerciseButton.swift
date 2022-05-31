@@ -227,6 +227,7 @@ extension ChoosenExerciseButton {
                 }
             }
         }
+//        print(previousExercises)
         showingSheet.toggle()
     }
     

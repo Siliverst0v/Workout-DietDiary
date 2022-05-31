@@ -13,6 +13,7 @@ struct PreviousExercises: View {
     var body: some View {
 
             ScrollView {
+                if !previousExercises.isEmpty {
                 ForEach(previousExercises, id: \.self) {exercise in
                     Text(exercise.date, style: .date)
                         .environment(\.locale, Locale.init(identifier: "ru"))
@@ -20,8 +21,13 @@ struct PreviousExercises: View {
                         .font(.headline)
                         .padding(.top)
                     PreviousExercisesButton(choosenExercise: exercise.previousExercise)
-                }
-                .padding()
+                        }
+                    } else {
+                    Text("Тренировки с таким упражнением не найдены")
+                        .foregroundColor(.customRed)
+                        .font(.title)
+                        .padding()
+            }
         }
     }
 }

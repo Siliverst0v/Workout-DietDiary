@@ -14,7 +14,6 @@ struct PressedButtonView: View {
     @Binding var backgroundHeight: CGFloat
     @Binding var pressed: Bool    
     @Binding var changeCheckmarkColor: Bool
-    @Binding var choosenExercises: [ChoosenExercise]
     @Binding var sets: [Set]
     @Binding var realmChoosenExerises: [RealmChoosenExercise]
     @State private var showingSheet = false
@@ -241,22 +240,15 @@ extension PressedButtonView {
     private func addExercise() {
         changeCheckmarkColor.toggle()
         
-        let choosenExercise = ChoosenExercise(
-            icon: image,
-            title: title,
-            sets: sets)
-        
         let choosenExerciseRealm = RealmChoosenExercise(icon: image, title: title)
         sets.forEach { sett in
             choosenExerciseRealm.sets.append(RealmSet(id: sett.id, repeats: sett.repeats, weight: sett.weight))
         }
         
         if changeCheckmarkColor {
-            choosenExercises.append(choosenExercise)
             realmChoosenExerises.append(choosenExerciseRealm)
         } else {
             realmChoosenExerises.removeAll(where: {$0.title == choosenExerciseRealm.title})
-            choosenExercises.removeAll(where: {$0.title == choosenExercise.title})
         }
     }
     
@@ -303,7 +295,6 @@ struct PressedButtonView_Previews: PreviewProvider {
             backgroundHeight: .constant(270),
             pressed: .constant(true),
             changeCheckmarkColor: .constant(false),
-            choosenExercises: .constant([]),
             sets: .constant([Set(id: 1, repeats: "", weight: ""),
                    Set(id: 2, repeats: "", weight: ""),
                    Set(id: 3, repeats: "", weight: "")]),

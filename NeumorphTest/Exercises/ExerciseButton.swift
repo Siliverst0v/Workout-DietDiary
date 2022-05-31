@@ -12,7 +12,6 @@ struct ExerciseButton: View {
     @Binding var title: String
     @Binding var image: String
     @State var changeColorButton = false
-    @Binding var choosenExercises: [ChoosenExercise]
     @Binding var realmChoosenExerises: [RealmChoosenExercise]
 
     @State var sets: [Set] = [Set(id: 1, repeats: "", weight: ""),
@@ -26,7 +25,6 @@ struct ExerciseButton: View {
                 NotPressedButtonView(
                     pressed: $notTapped,
                     changeColorButton: $changeColorButton,
-                    choosenExercises: $choosenExercises,
                     sets: $sets, realmChoosenExerises: $realmChoosenExerises,
                     image: image,
                     title: title
@@ -37,7 +35,6 @@ struct ExerciseButton: View {
                 backgroundHeight: $backgroundHeight,
                 pressed: $notTapped,
                 changeCheckmarkColor: $changeColorButton,
-                choosenExercises: $choosenExercises,
                 sets: $sets,
                 realmChoosenExerises: $realmChoosenExerises,
                 image: image,
@@ -51,6 +48,6 @@ struct ExerciseButton_Previews: PreviewProvider {
     static var previews: some View {
         ExerciseButton(
             title: .constant("Exercise for example"),
-            image: .constant("legs"), choosenExercises: .constant([]), realmChoosenExerises: .constant([]))
+            image: .constant("legs"), realmChoosenExerises: .constant([]))
     }
 }
