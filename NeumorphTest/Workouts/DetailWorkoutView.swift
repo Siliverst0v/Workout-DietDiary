@@ -20,7 +20,6 @@ struct DetailWorkoutView: View {
                         action: {deleteChoosenExercise(index: index)}
                     )
                         .environmentObject(realmManager)
-                        .listRowSeparator(.hidden)
                 }
                 .padding()
         }
