@@ -282,11 +282,11 @@ extension ChoosenExerciseButton {
         realmManager.getWorkouts()
         let title = choosenExercise.title
         previousExercises = []
-        let result = realmManager.workouts.sorted(by: {$0.date.compare($1.date) == .orderedAscending})
+        let result = realmManager.workouts.sorted(by: {$0.date.compare($1.date) == .orderedDescending})
         result.forEach { workout in
             let date = workout.date
             workout.choosenExercises.forEach { exercise in
-                if exercise.title == title {
+                if exercise.title == title && exercise.id != choosenExercise.id {
                     let previousExercise = PreviousExercise(previousExercise: exercise, date: date)
                     previousExercises.append(previousExercise)
                 }
