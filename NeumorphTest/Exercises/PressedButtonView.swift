@@ -196,6 +196,23 @@ struct PressedButtonView: View {
                             )
                     )
                 .offset(x: width - 40, y: changeMemoryButtonPosition())
+                Button(action: {  }) {
+                Image(systemName: "square.and.pencil")
+                    .font(.system(size: 20))
+                    .foregroundColor(.customBlue)
+                    .frame(width: 40, height: 40, alignment: .center)
+                    .background(
+                                RoundedRectangle(cornerRadius: 11)
+                                .fill(.white)
+                                .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
+                                .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 11)
+                                        .stroke(Color.gray, lineWidth: 0.1)
+                                )
+                        )
+            }
+                .offset(x: width - 45, y: 220)
             }
             .frame(width: UIScreen.main.bounds.size.width - 40, height: backgroundHeight)
         }
