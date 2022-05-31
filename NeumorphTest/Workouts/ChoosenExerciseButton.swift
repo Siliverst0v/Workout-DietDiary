@@ -17,7 +17,6 @@ struct ChoosenExerciseButton: View {
     @StateObject var testSets = TestSets()
     @State private var showingSheet = false
     @State var previousExercises: [PreviousExercise] = []
-    @State var previousExercisesDates: [Date] = []
     
     @State var backgroundHeight: CGFloat = 178
     
@@ -210,8 +209,26 @@ struct ChoosenExerciseButton: View {
             .onAppear(perform: fetchSets)
         }
     }
-    
+}
 
+extension ChoosenExerciseButton {
+    
+    private func fetchLastSets() {
+        realmManager.getWorkouts()
+        let title = choosenExercise.title
+        previousExercises = []
+        let result = realmManager.workouts.sorted(by: {$0.date.compare($1.date) == .orderedDescending})
+        result.forEach { workout in
+            let date = workout.date
+            workout.choosenExercises.forEach { exercise in
+                if exercise.title == title && exercise.id != choosenExercise.id {
+                    let previousExercise = PreviousExercise(previousExercise: exercise, date: date)
+                    previousExercises.append(previousExercise)
+                }
+            }
+        }
+        showingSheet.toggle()
+    }
     
     private func saveSets() {
         notTapped.toggle()
@@ -273,26 +290,6 @@ struct ChoosenExerciseButton: View {
             buttonPosition = backgroundHeight * 0.46
         }
         return buttonPosition
-    }
-}
-
-extension ChoosenExerciseButton {
-    
-    private func fetchLastSets() {
-        realmManager.getWorkouts()
-        let title = choosenExercise.title
-        previousExercises = []
-        let result = realmManager.workouts.sorted(by: {$0.date.compare($1.date) == .orderedDescending})
-        result.forEach { workout in
-            let date = workout.date
-            workout.choosenExercises.forEach { exercise in
-                if exercise.title == title && exercise.id != choosenExercise.id {
-                    let previousExercise = PreviousExercise(previousExercise: exercise, date: date)
-                    previousExercises.append(previousExercise)
-                }
-            }
-        }
-        showingSheet.toggle()
     }
 }
 

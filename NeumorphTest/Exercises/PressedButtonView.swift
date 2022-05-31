@@ -17,7 +17,8 @@ struct PressedButtonView: View {
     @Binding var choosenExercises: [ChoosenExercise]
     @Binding var sets: [Set]
     @Binding var realmChoosenExerises: [RealmChoosenExercise]
-
+    @State private var showingSheet = false
+    @State var previousExercises: [PreviousExercise] = []
     
     let image: String
     let title: String
@@ -174,10 +175,13 @@ struct PressedButtonView: View {
                     }
                     .padding(.leading, 5)
                 }
-                Button(action: {}) {
+                Button(action: { fetchLastSets() }) {
                         Image(systemName: "memories")
                         .padding(.trailing, 1)
                 }
+                .sheet(isPresented: $showingSheet, content: {
+                    PreviousExercises(previousExercises: previousExercises)
+                })
                 .frame(width: 30, height: changeButtonSize(), alignment: .center )
                 .font(.system(size: 17))
                 .foregroundColor(.customBlue)
@@ -199,6 +203,23 @@ struct PressedButtonView: View {
 }
 
 extension PressedButtonView {
+    
+    private func fetchLastSets() {
+        realmManager.getWorkouts()
+        previousExercises = []
+        let result = realmManager.workouts.sorted(by: {$0.date.compare($1.date) == .orderedDescending})
+        result.forEach { workout in
+            let date = workout.date
+            workout.choosenExercises.forEach { exercise in
+                if exercise.title == self.title {
+                    let previousExercise = PreviousExercise(previousExercise: exercise, date: date)
+                    previousExercises.append(previousExercise)
+                }
+            }
+        }
+        print(previousExercises)
+        showingSheet.toggle()
+    }
     
     private func addExercise() {
         changeCheckmarkColor.toggle()

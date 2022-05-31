@@ -15,6 +15,7 @@ struct PreviousExercises: View {
             ScrollView {
                 ForEach(previousExercises, id: \.self) {exercise in
                     Text(exercise.date, style: .date)
+                        .environment(\.locale, Locale.init(identifier: "ru"))
                         .foregroundColor(.customRed)
                         .font(.headline)
                         .padding(.top)
