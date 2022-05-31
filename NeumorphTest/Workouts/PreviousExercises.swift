@@ -16,6 +16,7 @@ struct PreviousExercises: View {
                 ForEach(previousExercises, id: \.self) {exercise in
                     Text(exercise.date, style: .date)
                         .foregroundColor(.customRed)
+                        .font(.headline)
                         .padding(.top)
                     PreviousExercisesButton(choosenExercise: exercise.previousExercise)
                 }
