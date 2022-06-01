@@ -16,6 +16,7 @@ struct ChoosenExerciseButton: View {
     var action: () -> Void
     @StateObject var testSets = TestSets()
     @State private var showingSheet = false
+    @State private var showingNote = false
     @State var previousExercises: [PreviousExercise] = []
     
     @State var backgroundHeight: CGFloat = 178
@@ -203,6 +204,28 @@ struct ChoosenExerciseButton: View {
                                 )
                         )
                     .offset(x: width - 40, y: changeMemoryButtonPosition())
+                    Button(action: {  }) {
+                    Image(systemName: "square.and.pencil")
+                        .font(.system(size: 20))
+                        .foregroundColor(.customBlue)
+                        .frame(width: 40, height: 40, alignment: .center)
+                        .background(
+                                    RoundedRectangle(cornerRadius: 11)
+                                    .fill(.white)
+                                    .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
+                                    .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 11)
+                                            .stroke(Color.gray, lineWidth: 0.1)
+                                    )
+                            )
+                }
+                    .sheet(isPresented: $showingNote, content: {
+                        TextField("Заметка", text: $choosenExercise.note )
+                            .frame(width: 150, alignment: .center)
+                            .keyboardType(.decimalPad)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())                    })
+                    .offset(x: width - 45, y: 220)
                 }
                 .frame(width: UIScreen.main.bounds.size.width - 40, height: backgroundHeight + CGFloat(((choosenExercise.sets.count - 1) * 46)))
             }
@@ -298,7 +321,7 @@ struct ChoosenExerciseButton_Previews: PreviewProvider {
     static var previews: some View {
         ChoosenExerciseButton(choosenExercise: .constant(RealmChoosenExercise(
             icon: "chest",
-            title: "Exercise for example")), action: {})
+            title: "Exercise for example", note: "")), action: {})
         .environmentObject(RealmManager())
     }
 }

@@ -16,7 +16,6 @@ struct ExercisesView: View {
     @Binding var exerciseGroupsNames: [String]
     @State var date: Date
     @Binding var workoutsIsActive: Bool
-    @State var choosenExerises: [ChoosenExercise] = []
     @State var realmWorkout = RealmWorkout()
     @State var realmChoosenExerises: [RealmChoosenExercise] = []
 
@@ -47,7 +46,6 @@ struct ExercisesView: View {
                         realmWorkout.exerciseGroups.append(objectsIn: exerciseGroupsNames)
                         realmWorkout.choosenExercises.append(objectsIn: realmChoosenExerises)
                         realmManager.addWorkout(date: date, exerciseGroups: realmWorkout.exerciseGroups, choosenExercises: realmWorkout.choosenExercises)
-                        
                             workoutsIsActive = false
                     } label: {
                         Text("Готово")
@@ -64,7 +62,7 @@ struct ContentView_Previews: PreviewProvider {
                 exercises: .constant(ExerciseGroup.getExercises()),
                 exerciseGroupsNames: .constant([]),
                 date: Date(),
-                workoutsIsActive: .constant(false), choosenExerises: [])
+                workoutsIsActive: .constant(false))
         .environmentObject(RealmManager())
     }
 }

@@ -22,7 +22,9 @@ class RealmManager: ObservableObject {
     
     func openRealm() {
         do {
-            let config = Realm.Configuration(schemaVersion: 1)
+            let config = Realm.Configuration(schemaVersion: 2) { migration, oldSchemaVersion in
+
+            }
             Realm.Configuration.defaultConfiguration = config
             localRealm = try Realm()
             getWorkouts()
@@ -99,12 +101,12 @@ class RealmManager: ObservableObject {
         }
     }
     
-    func addChoosenExercise(icon: String, title: String, sets: List<RealmSet>) {
+    func addChoosenExercise(icon: String, title: String, note: String, sets: List<RealmSet>) {
         if let localRealm = localRealm {
 
         do {
             try localRealm.write {
-                let newChoosenExercise = RealmChoosenExercise(value: ["icon" : icon, "title": title, "sets": sets])
+                let newChoosenExercise = RealmChoosenExercise(value: ["icon" : icon, "title": title, "note": note, "sets": sets])
                 localRealm.add(newChoosenExercise)
                 print(newChoosenExercise)
                 }
@@ -203,19 +205,4 @@ class RealmManager: ObservableObject {
             }
         }
     }
-//
-//    func addSet(id: Int, repeats: String, weight: String) {
-//        if let localRealm = localRealm {
-//
-//        do {
-//            try localRealm.write {
-//                let newSet = RealmSet(value: ["id" : id, "repeats": repeats, "weight": weight])
-//                localRealm.add(newSet)
-//                print(newSet)
-//                }
-//            } catch {
-//                print(error)
-//            }
-//        }
-//    }
 }

@@ -25,13 +25,15 @@ class RealmChoosenExercise: Object, ObjectKeyIdentifiable {
     @Persisted(primaryKey: true) var id: ObjectId
     @Persisted var icon: String
     @Persisted var title: String
+    @Persisted var note: String
     @Persisted var sets: List<RealmSet>
     @Persisted(originProperty: "choosenExercises") var realmWorkout: LinkingObjects<RealmWorkout>
     
-    convenience init(icon: String, title: String) {
+    convenience init(icon: String, title: String, note: String) {
         self.init()
         self.icon = icon
         self.title = title
+        self.note = note
     }
 }
 

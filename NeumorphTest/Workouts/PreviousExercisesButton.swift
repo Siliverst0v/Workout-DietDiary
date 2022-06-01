@@ -105,6 +105,6 @@ struct PreviousExercisesButton: View {
 
 struct PreviousExercisesButton_Previews: PreviewProvider {
     static var previews: some View {
-        PreviousExercisesButton(choosenExercise: RealmChoosenExercise(icon: "", title: ""))
+        PreviousExercisesButton(choosenExercise: RealmChoosenExercise(icon: "", title: "", note: ""))
     }
 }

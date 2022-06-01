@@ -80,6 +80,7 @@ extension WorkoutsView {
             workouts.append(workout)
         }
         workouts.sort(by: {$0.date.compare($1.date) == .orderedAscending})
+        print(workouts)
     }
 }
 
