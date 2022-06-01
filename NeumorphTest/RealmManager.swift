@@ -22,7 +22,7 @@ class RealmManager: ObservableObject {
     
     func openRealm() {
         do {
-            let config = Realm.Configuration(schemaVersion: 2) { migration, oldSchemaVersion in
+            let config = Realm.Configuration(schemaVersion: 3) { migration, oldSchemaVersion in
 
             }
             Realm.Configuration.defaultConfiguration = config
@@ -101,12 +101,12 @@ class RealmManager: ObservableObject {
         }
     }
     
-    func addChoosenExercise(icon: String, title: String, note: String, sets: List<RealmSet>) {
+    func addChoosenExercise(icon: String, title: String, note: String, date: Date, sets: List<RealmSet>) {
         if let localRealm = localRealm {
 
         do {
             try localRealm.write {
-                let newChoosenExercise = RealmChoosenExercise(value: ["icon" : icon, "title": title, "note": note, "sets": sets])
+                let newChoosenExercise = RealmChoosenExercise(value: ["icon" : icon, "title": title, "note": note, "date": date, "sets": sets])
                 localRealm.add(newChoosenExercise)
                 print(newChoosenExercise)
                 }

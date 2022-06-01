@@ -17,7 +17,8 @@ struct PressedButtonView: View {
     @Binding var sets: [Set]
     @Binding var realmChoosenExerises: [RealmChoosenExercise]
     @State private var showingSheet = false
-    @State var previousExercises: [PreviousExercise] = []
+    @State var previousExercises: [RealmChoosenExercise] = []
+    @Binding var date: Date
     
     let image: String
     let title: String
@@ -213,26 +214,22 @@ struct PressedButtonView: View {
 extension PressedButtonView {
     
     private func fetchLastSets() {
-        realmManager.getWorkouts()
+        realmManager.getChoosenExercises()
+        let title = title
         previousExercises = []
-        let result = realmManager.workouts.sorted(by: {$0.date.compare($1.date) == .orderedDescending})
-        result.forEach { workout in
-            let date = workout.date
-            workout.choosenExercises.forEach { exercise in
-                if exercise.title == self.title {
-                    let previousExercise = PreviousExercise(previousExercise: exercise, date: date)
-                    previousExercises.append(previousExercise)
-                }
+        let result = realmManager.choosenExercises.sorted(by: {$0.date.compare($1.date) == .orderedDescending})
+        result.forEach { exercise in
+                if exercise.title == title {
+                    previousExercises.append(exercise)
             }
         }
-        print(previousExercises)
         showingSheet.toggle()
     }
     
     private func addExercise() {
         changeCheckmarkColor.toggle()
         
-        let choosenExerciseRealm = RealmChoosenExercise(icon: image, title: title, note: note)
+        let choosenExerciseRealm = RealmChoosenExercise(icon: image, title: title, note: note, date: date)
         sets.forEach { sett in
             choosenExerciseRealm.sets.append(RealmSet(id: sett.id, repeats: sett.repeats, weight: sett.weight))
         }
@@ -291,8 +288,10 @@ struct PressedButtonView_Previews: PreviewProvider {
                    Set(id: 2, repeats: "", weight: ""),
                    Set(id: 3, repeats: "", weight: "")]),
             realmChoosenExerises: .constant([]),
+            date: .constant(Date()),
             image: "chest",
-            title: "Exercise for example", note: .constant("...")
+            title: "Exercise for example",
+            note: .constant("...")
         )
         .environmentObject(RealmManager())
     }

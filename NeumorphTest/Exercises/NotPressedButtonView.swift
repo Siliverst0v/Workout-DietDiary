@@ -12,6 +12,7 @@ struct NotPressedButtonView: View {
     @Binding var changeColorButton: Bool
     @Binding var sets: [Set]
     @Binding var realmChoosenExerises: [RealmChoosenExercise]
+    @Binding var date: Date
 
     
     let image: String
@@ -48,7 +49,7 @@ struct NotPressedButtonView: View {
     func addExercise() {
         changeColorButton.toggle()
         
-        let choosenExerciseRealm = RealmChoosenExercise(icon: image, title: title, note: "")
+        let choosenExerciseRealm = RealmChoosenExercise(icon: image, title: title, note: "", date: date)
         sets.forEach { sett in
             choosenExerciseRealm.sets.append(RealmSet(id: sett.id, repeats: sett.repeats, weight: sett.weight))
         }
@@ -70,7 +71,7 @@ struct NotPressedButtonView_Previews: PreviewProvider {
                 Set(id: 1, repeats: "", weight: ""),
                 Set(id: 2, repeats: "", weight: ""),
                 Set(id: 3, repeats: "", weight: "")]),
-            realmChoosenExerises: .constant([]),
+            realmChoosenExerises: .constant([]), date: .constant(Date()),
             image: "CellChest",
             title: "Exercise",
             note: .constant("...")

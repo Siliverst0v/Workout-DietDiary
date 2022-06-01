@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PreviousExercises: View {
-    @State var previousExercises: [PreviousExercise]
+    @State var previousExercises: [RealmChoosenExercise]
     
     var body: some View {
 
@@ -20,7 +20,7 @@ struct PreviousExercises: View {
                         .foregroundColor(.customRed)
                         .font(.headline)
                         .padding(.top)
-                    PreviousExercisesButton(choosenExercise: exercise.previousExercise)
+                    PreviousExercisesButton(choosenExercise: exercise)
                         }
                     } else {
                     Text("Тренировки с таким упражнением не найдены")

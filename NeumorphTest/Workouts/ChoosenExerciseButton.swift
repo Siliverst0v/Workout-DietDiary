@@ -17,7 +17,7 @@ struct ChoosenExerciseButton: View {
     @StateObject var testSets = TestSets()
     @State private var showingSheet = false
     @State private var showingNote = false
-    @State var previousExercises: [PreviousExercise] = []
+    @State var previousExercises: [RealmChoosenExercise] = []
     
     @State var backgroundHeight: CGFloat = 263
     
@@ -223,17 +223,13 @@ struct ChoosenExerciseButton: View {
 extension ChoosenExerciseButton {
     
     private func fetchLastSets() {
-        realmManager.getWorkouts()
+        realmManager.getChoosenExercises()
         let title = choosenExercise.title
         previousExercises = []
-        let result = realmManager.workouts.sorted(by: {$0.date.compare($1.date) == .orderedDescending})
-        result.forEach { workout in
-            let date = workout.date
-            workout.choosenExercises.forEach { exercise in
+        let result = realmManager.choosenExercises.sorted(by: {$0.date.compare($1.date) == .orderedDescending})
+        result.forEach { exercise in
                 if exercise.title == title && exercise.id != choosenExercise.id {
-                    let previousExercise = PreviousExercise(previousExercise: exercise, date: date)
-                    previousExercises.append(previousExercise)
-                }
+                    previousExercises.append(exercise)
             }
         }
         showingSheet.toggle()

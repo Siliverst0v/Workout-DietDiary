@@ -35,7 +35,8 @@ struct ExercisesView: View {
                         ExerciseButton(
                             title: exercise,
                             image: exerciseGroup.icon,
-                            realmChoosenExerises: $realmChoosenExerises)
+                            realmChoosenExerises: $realmChoosenExerises,
+                            date: $date)
                         .environmentObject(realmManager)
                     }
                 }
