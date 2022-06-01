@@ -10,7 +10,7 @@ import SwiftUI
 struct PreviousExercisesButton: View {
     @State var choosenExercise: RealmChoosenExercise
     
-    @State var backgroundHeight: CGFloat = 178
+    @State var backgroundHeight: CGFloat = 238
 
     var body: some View {
         ZStack {
@@ -86,6 +86,12 @@ struct PreviousExercisesButton: View {
                                 .padding(.leading, 10)
                         }
                     }
+                    TextEditor(text: $choosenExercise.note)
+                        .foregroundColor(.customBlue)
+                        .lineLimit(2)
+                        .frame(width: UIScreen.main.bounds.size.width - 60, height: 80)
+                        .cornerRadius(10)
+                        .offset(x: 10)
                 }
             }
             .frame(width: UIScreen.main.bounds.size.width - 40, height: backgroundHeight + CGFloat(((choosenExercise.sets.count - 1) * 42)))
@@ -105,6 +111,6 @@ struct PreviousExercisesButton: View {
 
 struct PreviousExercisesButton_Previews: PreviewProvider {
     static var previews: some View {
-        PreviousExercisesButton(choosenExercise: RealmChoosenExercise(icon: "", title: "", note: ""))
+        PreviousExercisesButton(choosenExercise: Exercises.shared.getMocExercise())
     }
 }

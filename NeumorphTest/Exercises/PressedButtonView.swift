@@ -232,7 +232,7 @@ extension PressedButtonView {
     private func addExercise() {
         changeCheckmarkColor.toggle()
         
-        let choosenExerciseRealm = RealmChoosenExercise(icon: image, title: title, note: "")
+        let choosenExerciseRealm = RealmChoosenExercise(icon: image, title: title, note: note)
         sets.forEach { sett in
             choosenExerciseRealm.sets.append(RealmSet(id: sett.id, repeats: sett.repeats, weight: sett.weight))
         }

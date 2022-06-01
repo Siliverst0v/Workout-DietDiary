@@ -11,7 +11,7 @@ import RealmSwift
 struct ChoosenExerciseButton: View {
     @EnvironmentObject var realmManager: RealmManager
     
-    @State private var notTapped = false
+    @State private var notTapped = true
     @Binding var choosenExercise: RealmChoosenExercise
     var action: () -> Void
     @StateObject var testSets = TestSets()
