@@ -21,12 +21,13 @@ struct PressedButtonView: View {
     
     let image: String
     let title: String
+    @Binding var note: String
     
     var body: some View {
         ZStack {
         Image("TappedCell")
             .resizable()
-            .frame(width: UIScreen.main.bounds.size.width - 40, height: backgroundHeight)
+            .frame(width: UIScreen.main.bounds.size.width - 40, height: backgroundHeight + CGFloat(((sets.count - 1) * 46)))
             GeometryReader { geometry in
                 let width = geometry.size.width
             Image(image)
@@ -113,66 +114,74 @@ struct PressedButtonView: View {
                                 .padding(.leading, 10)
                         }
                     }
-                    HStack {
-                        Button(action: { addSet() }) {
-                            Text("+")
-                                .font(.system(size: 25))
-                                .fontWeight(.semibold)
-                                .foregroundColor(.customBlue)
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Button(action: { addSet() }) {
+                                Text("+")
+                                    .font(.system(size: 25))
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.customBlue)
+                            }
+                            .font(.system(size: 17))
+                            .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
+                            .frame(width: 50, height: 28, alignment: .init(horizontal: .center, vertical: .bottom) )
+                            .background(
+                                RoundedRectangle(cornerRadius: 11)
+                                    .fill(.white)
+                                    .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
+                                    .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 11)
+                                            .stroke(Color.gray, lineWidth: 0.1)
+                                    )
+                            )
+                            .disabled(sets.count >= 10)
+                            Button(action: { deleteSet() }) {
+                                Text("-")
+                                    .font(.system(size: 25))
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.customRed)
+                            }
+                            .font(.system(size: 17))
+                            .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
+                            .frame(width: 50, height: 28, alignment: .init(horizontal: .center, vertical: .bottom) )
+                            .background(
+                                RoundedRectangle(cornerRadius: 11)
+                                    .fill(.white)
+                                    .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
+                                    .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 11)
+                                            .stroke(Color.gray, lineWidth: 0.1)
+                                    )
+                            )
+                            .disabled(sets.count <= 1)
+                            .padding(.trailing, 20)
+                            Button(action: { pressed.toggle() }) {
+                                Image(systemName: "chevron.up")
+                            }
+                            .frame(width: 100, height: 28, alignment: .center )
+                            .font(.system(size: 20))
+                            .foregroundColor(Color(red: 142/255, green: 51/255, blue: 46/255))
+                            .background(
+                                RoundedRectangle(cornerRadius: 11)
+                                    .fill(.white)
+                                    .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
+                                    .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 11)
+                                            .stroke(Color.gray, lineWidth: 0.1)
+                                    )
+                            )
                         }
-                        .font(.system(size: 17))
-                        .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
-                        .frame(width: 50, height: 28, alignment: .init(horizontal: .center, vertical: .bottom) )
-                        .background(
-                            RoundedRectangle(cornerRadius: 11)
-                                .fill(.white)
-                                .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
-                                .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 11)
-                                        .stroke(Color.gray, lineWidth: 0.1)
-                                )
-                        )
-                        .disabled(sets.count >= 10)
-                        Button(action: { deleteSet() }) {
-                            Text("-")
-                                .font(.system(size: 25))
-                                .fontWeight(.semibold)
-                                .foregroundColor(.customRed)
-                        }
-                        .font(.system(size: 17))
-                        .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
-                        .frame(width: 50, height: 28, alignment: .init(horizontal: .center, vertical: .bottom) )
-                        .background(
-                            RoundedRectangle(cornerRadius: 11)
-                                .fill(.white)
-                                .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
-                                .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 11)
-                                        .stroke(Color.gray, lineWidth: 0.1)
-                                )
-                        )
-                        .disabled(sets.count <= 1)
-                        .padding(.trailing, 20)
-                        Button(action: { pressed.toggle() }) {
-                            Image(systemName: "chevron.up")
-                        }
-                        .frame(width: 100, height: 28, alignment: .center )
-                        .font(.system(size: 20))
-                        .foregroundColor(Color(red: 142/255, green: 51/255, blue: 46/255))
-                        .background(
-                            RoundedRectangle(cornerRadius: 11)
-                                .fill(.white)
-                                .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
-                                .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 11)
-                                        .stroke(Color.gray, lineWidth: 0.1)
-                                )
-                        )
+                        .padding(.leading, 5)
+                        TextEditor(text: $note)
+                            .foregroundColor(.customBlue)
+                            .lineLimit(2)
+                            .frame(width: UIScreen.main.bounds.size.width - 60, height: 80)
+                            .cornerRadius(10)
+                            .offset(x: 10)
                     }
-                    .padding(.leading, 5)
                 }
                 Button(action: { fetchLastSets() }) {
                         Image(systemName: "memories")
@@ -181,7 +190,7 @@ struct PressedButtonView: View {
                 .sheet(isPresented: $showingSheet, content: {
                     PreviousExercises(previousExercises: previousExercises)
                 })
-                .frame(width: 30, height: changeButtonSize(), alignment: .center )
+                .frame(width: 30, height: changeMemoryButtonSize(), alignment: .center )
                 .font(.system(size: 17))
                 .foregroundColor(.customBlue)
                 .background(
@@ -196,7 +205,7 @@ struct PressedButtonView: View {
                     )
                 .offset(x: width - 40, y: changeMemoryButtonPosition())
             }
-            .frame(width: UIScreen.main.bounds.size.width - 40, height: backgroundHeight)
+            .frame(width: UIScreen.main.bounds.size.width - 40, height: backgroundHeight + CGFloat(((sets.count - 1) * 46)))
         }
     }
 }
@@ -242,16 +251,16 @@ extension PressedButtonView {
                     weight: "")
         if sets.count <= 9 {
         sets.append(newSet)
-        backgroundHeight += 46
+//        backgroundHeight += 46
         }
     }
     
     private func deleteSet() {
         sets.removeLast()
-        backgroundHeight -= 46
+//        backgroundHeight -= 46
     }
     
-    private func changeButtonSize() -> CGFloat {
+    private func changeMemoryButtonSize() -> CGFloat {
         var buttonSize: CGFloat = 127
         if sets.count < 3 && sets.count > 1 {
             buttonSize = 83
@@ -283,7 +292,7 @@ struct PressedButtonView_Previews: PreviewProvider {
                    Set(id: 3, repeats: "", weight: "")]),
             realmChoosenExerises: .constant([]),
             image: "chest",
-            title: "Exercise for example"
+            title: "Exercise for example", note: .constant("...")
         )
         .environmentObject(RealmManager())
     }

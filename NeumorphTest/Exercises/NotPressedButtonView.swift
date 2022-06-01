@@ -16,6 +16,7 @@ struct NotPressedButtonView: View {
     
     let image: String
     let title: String
+    @Binding var note: String
 
     var body: some View {
         ZStack{
@@ -71,7 +72,8 @@ struct NotPressedButtonView_Previews: PreviewProvider {
                 Set(id: 3, repeats: "", weight: "")]),
             realmChoosenExerises: .constant([]),
             image: "CellChest",
-            title: "Exercise"
+            title: "Exercise",
+            note: .constant("...")
         )
     }
 }

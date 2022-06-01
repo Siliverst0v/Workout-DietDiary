@@ -19,7 +19,7 @@ struct ChoosenExerciseButton: View {
     @State private var showingNote = false
     @State var previousExercises: [PreviousExercise] = []
     
-    @State var backgroundHeight: CGFloat = 278
+    @State var backgroundHeight: CGFloat = 263
     
     var body: some View {
         if notTapped {
@@ -184,8 +184,10 @@ struct ChoosenExerciseButton: View {
                             }
                             .padding(.leading, 5)
                             TextEditor(text: $choosenExercise.note)
+                                .foregroundColor(.customBlue)
                                 .lineLimit(2)
-                                .frame(width: UIScreen.main.bounds.size.width - 60)
+                                .frame(width: UIScreen.main.bounds.size.width - 60, height: 80)
+                                .cornerRadius(10)
                                 .offset(x: 10)
                         }
                     }
