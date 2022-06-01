@@ -15,8 +15,8 @@ struct NotPressedButtonView: View {
     @Binding var date: Date
 
     
-    let image: String
-    let title: String
+    @Binding var image: String
+    @Binding var title: String
     @Binding var note: String
 
     var body: some View {
@@ -72,8 +72,8 @@ struct NotPressedButtonView_Previews: PreviewProvider {
                 Set(id: 2, repeats: "", weight: ""),
                 Set(id: 3, repeats: "", weight: "")]),
             realmChoosenExerises: .constant([]), date: .constant(Date()),
-            image: "CellChest",
-            title: "Exercise",
+            image: .constant("CellChest"),
+            title: .constant("Exercise"),
             note: .constant("...")
         )
     }

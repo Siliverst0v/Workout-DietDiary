@@ -32,8 +32,8 @@ struct ExerciseButton: View {
                     sets: $sets,
                     realmChoosenExerises: $realmChoosenExerises,
                     date: $date,
-                    image: image,
-                    title: title,
+                    image: $image,
+                    title: $title,
                     note: $note
                 )
             .buttonStyle(ExerciseButtonStyle())
@@ -45,8 +45,8 @@ struct ExerciseButton: View {
                 sets: $sets,
                 realmChoosenExerises: $realmChoosenExerises,
                 date: $date,
-                image: image,
-                title: title,
+                image: $image,
+                title: $title,
                 note: $note
             )
             .environmentObject(realmManager)

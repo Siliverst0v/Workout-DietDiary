@@ -20,8 +20,8 @@ struct PressedButtonView: View {
     @State var previousExercises: [RealmChoosenExercise] = []
     @Binding var date: Date
     
-    let image: String
-    let title: String
+    @Binding var image: String
+    @Binding var title: String
     @Binding var note: String
     
     var body: some View {
@@ -211,7 +211,6 @@ extension PressedButtonView {
     
     private func fetchPreviousExercises() {
         realmManager.getChoosenExercises()
-        let title = title
         previousExercises = []
         let result = realmManager.choosenExercises.sorted(by: {$0.date.compare($1.date) == .orderedDescending})
         result.forEach { exercise in
@@ -283,8 +282,8 @@ struct PressedButtonView_Previews: PreviewProvider {
                    Set(id: 3, repeats: "", weight: "")]),
             realmChoosenExerises: .constant([]),
             date: .constant(Date()),
-            image: "chest",
-            title: "Exercise for example",
+            image: .constant("chest"),
+            title: .constant("Exercise for example"),
             note: .constant("...")
         )
         .environmentObject(RealmManager())
