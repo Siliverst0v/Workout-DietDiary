@@ -36,6 +36,7 @@ struct WorkoutsView: View {
                 Group {
                     NavigationLink("", tag: workoutsIsActive ? "ChooseExerciseView" : "", selection: $selection) {
                         ChooseExercisesView(workoutsIsActive: $workoutsIsActive)
+                            .environmentObject(realmManager)
                     }
                     NavigationLink("", tag: "DetailWorkoutView", selection: $selection) {
                         DetailWorkoutView(choosenExercises: $choosenExercises)

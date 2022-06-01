@@ -191,7 +191,7 @@ struct ChoosenExerciseButton: View {
                                 .offset(x: 10)
                         }
                     }
-                    Button(action: { self.fetchLastSets() }) {
+                    Button(action: { self.fetchPreviousExercises() }) {
                             Image(systemName: "memories")
                             .padding(.trailing, 1)
                     }
@@ -222,7 +222,7 @@ struct ChoosenExerciseButton: View {
 
 extension ChoosenExerciseButton {
     
-    private func fetchLastSets() {
+    private func fetchPreviousExercises() {
         realmManager.getChoosenExercises()
         let title = choosenExercise.title
         previousExercises = []

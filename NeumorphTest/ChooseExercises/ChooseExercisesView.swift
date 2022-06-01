@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ChooseExercisesView: View {
+    @EnvironmentObject var realmManager: RealmManager
+
     @State private var backIsVisible = false
     @State private var chestIsVisible = false
     @State private var bicepsIsVisible = false
@@ -158,6 +160,7 @@ struct ChooseExercisesView: View {
                         exerciseGroupsNames: $exerciseGroupNames,
                         date: date,
                         workoutsIsActive: $workoutsIsActive)
+                    .environmentObject(realmManager)
                 }, label: {
                     EmptyView()
                 })

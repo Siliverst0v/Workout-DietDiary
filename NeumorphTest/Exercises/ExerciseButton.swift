@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ExerciseButton: View {
+    @EnvironmentObject var realmManager: RealmManager
+
     @State var notTapped = true
     @Binding var title: String
     @Binding var image: String
@@ -47,6 +49,7 @@ struct ExerciseButton: View {
                 title: title,
                 note: $note
             )
+            .environmentObject(realmManager)
         }
     }
 }

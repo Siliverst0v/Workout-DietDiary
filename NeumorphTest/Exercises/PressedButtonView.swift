@@ -184,7 +184,7 @@ struct PressedButtonView: View {
                             .offset(x: 10)
                     }
                 }
-                Button(action: { fetchLastSets() }) {
+                Button(action: { self.fetchPreviousExercises() }) {
                         Image(systemName: "memories")
                         .padding(.trailing, 1)
                 }
@@ -213,7 +213,7 @@ struct PressedButtonView: View {
 
 extension PressedButtonView {
     
-    private func fetchLastSets() {
+    private func fetchPreviousExercises() {
         realmManager.getChoosenExercises()
         let title = title
         previousExercises = []
@@ -248,13 +248,11 @@ extension PressedButtonView {
                     weight: "")
         if sets.count <= 9 {
         sets.append(newSet)
-//        backgroundHeight += 46
         }
     }
     
     private func deleteSet() {
         sets.removeLast()
-//        backgroundHeight -= 46
     }
     
     private func changeMemoryButtonSize() -> CGFloat {

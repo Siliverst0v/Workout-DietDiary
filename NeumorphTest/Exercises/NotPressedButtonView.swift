@@ -49,7 +49,7 @@ struct NotPressedButtonView: View {
     func addExercise() {
         changeColorButton.toggle()
         
-        let choosenExerciseRealm = RealmChoosenExercise(icon: image, title: title, note: "", date: date)
+        let choosenExerciseRealm = RealmChoosenExercise(icon: image, title: title, note: note, date: date)
         sets.forEach { sett in
             choosenExerciseRealm.sets.append(RealmSet(id: sett.id, repeats: sett.repeats, weight: sett.weight))
         }
