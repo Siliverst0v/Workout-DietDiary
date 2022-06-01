@@ -11,7 +11,7 @@ import RealmSwift
 struct ChoosenExerciseButton: View {
     @EnvironmentObject var realmManager: RealmManager
     
-    @State private var notTapped = true
+    @State private var notTapped = false
     @Binding var choosenExercise: RealmChoosenExercise
     var action: () -> Void
     @StateObject var testSets = TestSets()
@@ -19,7 +19,7 @@ struct ChoosenExerciseButton: View {
     @State private var showingNote = false
     @State var previousExercises: [PreviousExercise] = []
     
-    @State var backgroundHeight: CGFloat = 178
+    @State var backgroundHeight: CGFloat = 278
     
     var body: some View {
         if notTapped {
@@ -122,66 +122,72 @@ struct ChoosenExerciseButton: View {
                                     .padding(.leading, 10)
                             }
                         }
-                        HStack {
-                            Button(action: { addSet() }) {
-                                Text("+")
-                                    .font(.system(size: 25))
-                                    .fontWeight(.semibold)
-                                    .foregroundColor(.customBlue)
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Button(action: { addSet() }) {
+                                    Text("+")
+                                        .font(.system(size: 25))
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(.customBlue)
+                                }
+                                .font(.system(size: 17))
+                                .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
+                                .frame(width: 50, height: 28, alignment: .init(horizontal: .center, vertical: .bottom) )
+                                .background(
+                                    RoundedRectangle(cornerRadius: 11)
+                                        .fill(.white)
+                                        .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
+                                        .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 11)
+                                                .stroke(Color.gray, lineWidth: 0.1)
+                                        )
+                                )
+                                .disabled(choosenExercise.sets.count >= 10)
+                                Button(action: { deleteSet() }) {
+                                    Text("-")
+                                        .font(.system(size: 25))
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(.customRed)
+                                }
+                                .font(.system(size: 17))
+                                .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
+                                .frame(width: 50, height: 28, alignment: .init(horizontal: .center, vertical: .bottom) )
+                                .background(
+                                    RoundedRectangle(cornerRadius: 11)
+                                        .fill(.white)
+                                        .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
+                                        .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 11)
+                                                .stroke(Color.gray, lineWidth: 0.1)
+                                        )
+                                )
+                                .disabled(choosenExercise.sets.count <= 1)
+                                .padding(.trailing, 20)
+                                Button(action: { saveSets() }) {
+                                    Image(systemName: "chevron.up")
+                                }
+                                .frame(width: 100, height: 28, alignment: .center )
+                                .font(.system(size: 20))
+                                .foregroundColor(Color(red: 142/255, green: 51/255, blue: 46/255))
+                                .background(
+                                    RoundedRectangle(cornerRadius: 11)
+                                        .fill(.white)
+                                        .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
+                                        .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 11)
+                                                .stroke(Color.gray, lineWidth: 0.1)
+                                        )
+                                )
                             }
-                            .font(.system(size: 17))
-                            .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
-                            .frame(width: 50, height: 28, alignment: .init(horizontal: .center, vertical: .bottom) )
-                            .background(
-                                RoundedRectangle(cornerRadius: 11)
-                                    .fill(.white)
-                                    .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
-                                    .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 11)
-                                            .stroke(Color.gray, lineWidth: 0.1)
-                                    )
-                            )
-                            .disabled(choosenExercise.sets.count >= 10)
-                            Button(action: { deleteSet() }) {
-                                Text("-")
-                                    .font(.system(size: 25))
-                                    .fontWeight(.semibold)
-                                    .foregroundColor(.customRed)
-                            }
-                            .font(.system(size: 17))
-                            .foregroundColor(Color(red: 46/255, green: 74/255, blue: 142/255))
-                            .frame(width: 50, height: 28, alignment: .init(horizontal: .center, vertical: .bottom) )
-                            .background(
-                                RoundedRectangle(cornerRadius: 11)
-                                    .fill(.white)
-                                    .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
-                                    .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 11)
-                                            .stroke(Color.gray, lineWidth: 0.1)
-                                    )
-                            )
-                            .disabled(choosenExercise.sets.count <= 1)
-                            .padding(.trailing, 20)
-                            Button(action: { saveSets() }) {
-                                Image(systemName: "chevron.up")
-                            }
-                            .frame(width: 100, height: 28, alignment: .center )
-                            .font(.system(size: 20))
-                            .foregroundColor(Color(red: 142/255, green: 51/255, blue: 46/255))
-                            .background(
-                                RoundedRectangle(cornerRadius: 11)
-                                    .fill(.white)
-                                    .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
-                                    .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 11)
-                                            .stroke(Color.gray, lineWidth: 0.1)
-                                    )
-                            )
+                            .padding(.leading, 5)
+                            TextEditor(text: $choosenExercise.note)
+                                .lineLimit(2)
+                                .frame(width: UIScreen.main.bounds.size.width - 60)
+                                .offset(x: 10)
                         }
-                        .padding(.leading, 5)
                     }
                     Button(action: { self.fetchLastSets() }) {
                             Image(systemName: "memories")
@@ -204,28 +210,6 @@ struct ChoosenExerciseButton: View {
                                 )
                         )
                     .offset(x: width - 40, y: changeMemoryButtonPosition())
-                    Button(action: {  }) {
-                    Image(systemName: "square.and.pencil")
-                        .font(.system(size: 20))
-                        .foregroundColor(.customBlue)
-                        .frame(width: 40, height: 40, alignment: .center)
-                        .background(
-                                    RoundedRectangle(cornerRadius: 11)
-                                    .fill(.white)
-                                    .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
-                                    .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 11)
-                                            .stroke(Color.gray, lineWidth: 0.1)
-                                    )
-                            )
-                }
-                    .sheet(isPresented: $showingNote, content: {
-                        TextField("Заметка", text: $choosenExercise.note )
-                            .frame(width: 150, alignment: .center)
-                            .keyboardType(.decimalPad)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())                    })
-                    .offset(x: width - 45, y: 220)
                 }
                 .frame(width: UIScreen.main.bounds.size.width - 40, height: backgroundHeight + CGFloat(((choosenExercise.sets.count - 1) * 46)))
             }
@@ -250,7 +234,6 @@ extension ChoosenExerciseButton {
                 }
             }
         }
-//        print(previousExercises)
         showingSheet.toggle()
     }
     
@@ -307,11 +290,11 @@ extension ChoosenExerciseButton {
     }
     
     private func changeMemoryButtonPosition() -> CGFloat {
-        var buttonPosition: CGFloat = backgroundHeight * 0.48
+        var buttonPosition: CGFloat = backgroundHeight * 0.32
         if choosenExercise.sets.count < 3 && choosenExercise.sets.count > 1 {
-            buttonPosition = backgroundHeight * 0.48
+            buttonPosition = backgroundHeight * 0.32
         } else if choosenExercise.sets.count == 1 {
-            buttonPosition = backgroundHeight * 0.46
+            buttonPosition = backgroundHeight * 0.30
         }
         return buttonPosition
     }
@@ -319,9 +302,8 @@ extension ChoosenExerciseButton {
 
 struct ChoosenExerciseButton_Previews: PreviewProvider {
     static var previews: some View {
-        ChoosenExerciseButton(choosenExercise: .constant(RealmChoosenExercise(
-            icon: "chest",
-            title: "Exercise for example", note: "")), action: {})
+        ChoosenExerciseButton(choosenExercise: .constant(Exercises.shared.getMocExercise()),
+                              action: {})
         .environmentObject(RealmManager())
     }
 }

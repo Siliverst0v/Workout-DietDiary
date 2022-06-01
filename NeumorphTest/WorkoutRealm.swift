@@ -35,6 +35,8 @@ class RealmChoosenExercise: Object, ObjectKeyIdentifiable {
         self.title = title
         self.note = note
     }
+    
+
 }
 
 class RealmSet: Object {
