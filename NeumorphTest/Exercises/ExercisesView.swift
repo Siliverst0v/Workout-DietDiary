@@ -39,6 +39,7 @@ struct ExercisesView: View {
                             date: $date)
                         .environmentObject(realmManager)
                     }
+                    AddCustomExerciseButton(icon: exerciseGroup.icon)
                 }
             }
             .toolbar {

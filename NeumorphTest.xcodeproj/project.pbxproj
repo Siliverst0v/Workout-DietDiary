@@ -26,6 +26,7 @@
 		A498B3C42816010A00038BE9 /* NotPressedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A498B3C32816010A00038BE9 /* NotPressedButtonView.swift */; };
 		A498B3C7281603C200038BE9 /* PressedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A498B3C6281603C200038BE9 /* PressedButtonView.swift */; };
 		A498B3C92816066E00038BE9 /* CustomButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A498B3C82816066E00038BE9 /* CustomButtonStyles.swift */; };
+		A4C1BFDE28495FDF006EC8C6 /* AddCustomExerciseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C1BFDD28495FDF006EC8C6 /* AddCustomExerciseButton.swift */; };
 		A4DE42D02816E5A700F4D4DC /* ChooseExercisesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DE42CF2816E5A700F4D4DC /* ChooseExercisesView.swift */; };
 		A4E9374B27FE3BA0004A3650 /* NeumorphTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E9374A27FE3BA0004A3650 /* NeumorphTestApp.swift */; };
 		A4E9374D27FE3BA0004A3650 /* ExercisesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E9374C27FE3BA0004A3650 /* ExercisesView.swift */; };
@@ -54,6 +55,7 @@
 		A498B3C32816010A00038BE9 /* NotPressedButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotPressedButtonView.swift; sourceTree = "<group>"; };
 		A498B3C6281603C200038BE9 /* PressedButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressedButtonView.swift; sourceTree = "<group>"; };
 		A498B3C82816066E00038BE9 /* CustomButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonStyles.swift; sourceTree = "<group>"; };
+		A4C1BFDD28495FDF006EC8C6 /* AddCustomExerciseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomExerciseButton.swift; sourceTree = "<group>"; };
 		A4DE42CF2816E5A700F4D4DC /* ChooseExercisesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseExercisesView.swift; sourceTree = "<group>"; };
 		A4E9374727FE3BA0004A3650 /* NeumorphTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeumorphTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4E9374A27FE3BA0004A3650 /* NeumorphTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphTestApp.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				A4F2F656280CAE7B00061441 /* ExerciseButton.swift */,
 				A498B3C32816010A00038BE9 /* NotPressedButtonView.swift */,
 				A498B3C6281603C200038BE9 /* PressedButtonView.swift */,
+				A4C1BFDD28495FDF006EC8C6 /* AddCustomExerciseButton.swift */,
 			);
 			path = Exercises;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				A4DE42D02816E5A700F4D4DC /* ChooseExercisesView.swift in Sources */,
 				A427FF5F28280E5D00FD3648 /* ChoosenExerciseButton.swift in Sources */,
 				A498B3C7281603C200038BE9 /* PressedButtonView.swift in Sources */,
+				A4C1BFDE28495FDF006EC8C6 /* AddCustomExerciseButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
