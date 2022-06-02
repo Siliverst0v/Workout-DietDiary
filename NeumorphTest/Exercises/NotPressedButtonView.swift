@@ -24,34 +24,51 @@ struct NotPressedButtonView: View {
         Button( action: { pressed.toggle() } ) {
             GeometryReader { geometry in
                 let width = geometry.size.width
-            Image(image)
-                .resizable()
-                .frame(width: 70, height: 40)
-                .offset(x: 10, y: 15)
-            Text(title)
-            .fontWeight(.semibold)
-            .lineLimit(3)
-            .frame(width: width - 130, height: 60, alignment: .leading)
-            .offset(x: 85, y: 5)
+                HStack {
+                    Image(image)
+                        .resizable()
+                        .frame(width: 70, height: 40)
+                    Text(title)
+                        .fontWeight(.semibold)
+                        .lineLimit(3)
+                        .frame(width: width - 160,
+                               height: 60,
+                               alignment: .leading)
+                        .padding(.leading)
+                    }
+                    .padding(.init(top: 5,
+                                   leading: 16,
+                                   bottom: 0,
+                                   trailing: 0))
+                
                 Button(action: { addExercise() }) {
-                Image(systemName: "checkmark.square")
-                    .font(.system(size: 20))
-                    .foregroundColor(changeColorButton ? .customBlue : .gray)
-                    .frame(width: 40, height: 40, alignment: .center)
+                    Image(systemName: "checkmark.square")
+                        .font(.system(size: 20))
+                        .foregroundColor(changeColorButton ? .customBlue : .gray)
+                        .frame(width: 40,
+                               height: 40,
+                               alignment: .center)
+                    }
+                    .offset(x: width - 45, y: 15)
                 }
-                .offset(x: width - 45, y: 15)
+                .frame(width:UIScreen.main.bounds.size.width - 40,
+                       height: 70, alignment: .center)
             }
-            .frame(width: UIScreen.main.bounds.size.width - 40, height: 70, alignment: .center)
-            }
+            .buttonStyle(ExerciseButtonStyle())
         }
     }
     
     func addExercise() {
         changeColorButton.toggle()
         
-        let choosenExerciseRealm = RealmChoosenExercise(icon: image, title: title, note: note, date: date)
+        let choosenExerciseRealm = RealmChoosenExercise(icon: image,
+                                                        title: title,
+                                                        note: note,
+                                                        date: date)
         sets.forEach { sett in
-            choosenExerciseRealm.sets.append(RealmSet(id: sett.id, repeats: sett.repeats, weight: sett.weight))
+            choosenExerciseRealm.sets.append(RealmSet(id: sett.id,
+                                                      repeats: sett.repeats,
+                                                      weight: sett.weight))
         }
         
         if changeColorButton {
@@ -71,8 +88,9 @@ struct NotPressedButtonView_Previews: PreviewProvider {
                 Set(id: 1, repeats: "", weight: ""),
                 Set(id: 2, repeats: "", weight: ""),
                 Set(id: 3, repeats: "", weight: "")]),
-            realmChoosenExerises: .constant([]), date: .constant(Date()),
-            image: .constant("CellChest"),
+            realmChoosenExerises: .constant([]),
+            date: .constant(Date()),
+            image: .constant("chest"),
             title: .constant("Exercise"),
             note: .constant("...")
         )

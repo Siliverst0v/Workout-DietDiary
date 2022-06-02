@@ -36,7 +36,6 @@ struct ExerciseButton: View {
                     title: $title,
                     note: $note
                 )
-            .buttonStyle(ExerciseButtonStyle())
         } else {
             PressedButtonView(
                 backgroundHeight: $backgroundHeight,

@@ -16,20 +16,29 @@ struct PreviousExercisesButton: View {
         ZStack {
         Image("TappedCell")
             .resizable()
-            .frame(width: UIScreen.main.bounds.size.width - 40, height: backgroundHeight + CGFloat(((choosenExercise.sets.count - 1) * 42)))
+            .frame(width: UIScreen.main.bounds.size.width - 40,
+                   height: backgroundHeight + CGFloat(((choosenExercise.sets.count - 1) * 42)))
             GeometryReader { geometry in
                 let width = geometry.size.width
+                HStack(alignment: .center) {
                 Image(choosenExercise.icon)
-                .resizable()
-                .frame(width: 70, height: 40)
-                .offset(x: 10, y: 15)
+                        .resizable()
+                        .frame(width: 70, height: 40)
                 Text(choosenExercise.title)
-            .fontWeight(.semibold)
-            .font(.system(size: 14))
-            .foregroundColor(.customBlue)
-            .lineLimit(3)
-            .frame(width: width - 130, height: 60, alignment: .leading)
-            .offset(x: 85, y: 5)
+                        .fontWeight(.semibold)
+                        .font(.system(size: 14))
+                        .foregroundColor(.customBlue)
+                        .lineLimit(3)
+                        .frame(width: width - 130,
+                               height: 60,
+                               alignment: .leading)
+                        .padding(.leading)
+                }
+                .padding(.init(top: 5,
+                               leading: 16,
+                               bottom: 0,
+                               trailing: 0))
+                
                 VStack(alignment: .leading) {
                 HStack {
                     if width < 370 {
@@ -41,8 +50,10 @@ struct PreviousExercisesButton: View {
                         Text("Подходы")
                             .fontWeight(.semibold)
                             .foregroundColor(.customRed)
-                            .padding(.leading, 20)
-                            .padding(.trailing, 30)
+                            .padding(.init(top: 0,
+                                           leading: 20,
+                                           bottom: 0,
+                                           trailing: 30))
                     }
                     Text("Повторения")
                         .fontWeight(.semibold)
@@ -55,6 +66,7 @@ struct PreviousExercisesButton: View {
                 }
                 .font(.system(size: 14))
                 .padding(.top, 60)
+                    
                     ForEach($choosenExercise.sets, id: \.id) { setNumber in
                         HStack(alignment: .center) {
                             if width < 370 {
@@ -71,30 +83,38 @@ struct PreviousExercisesButton: View {
                                     .frame(width: 64)
                                     .font(.system(size: 17))
                                     .foregroundColor(.customBlue)
-                                    .padding(.leading, 20)
-                                    .padding(.trailing, 30)
+                                    .padding(.init(top: 0,
+                                                   leading: 20,
+                                                   bottom: 0,
+                                                   trailing: 30))
                             }
                             TextField("0", text: setNumber.repeats)
-                                .frame(width: 84, alignment: .center)
+                                .frame(width: 84,
+                                       alignment: .center)
                                 .keyboardType(.decimalPad)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .padding(.leading, 8)
+                                .disabled(true)
                             TextField("0", text: setNumber.weight)
-                                .frame(width: 60, alignment: .center)
+                                .frame(width: 60,
+                                       alignment: .center)
                                 .keyboardType(.decimalPad)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .padding(.leading, 10)
+                                .disabled(true)
                         }
                     }
                     TextEditor(text: $choosenExercise.note)
                         .foregroundColor(.customBlue)
                         .lineLimit(2)
-                        .frame(width: UIScreen.main.bounds.size.width - 60, height: 80)
+                        .frame(width: UIScreen.main.bounds.size.width - 60,
+                               height: 80)
                         .cornerRadius(10)
                         .offset(x: 10)
                 }
             }
-            .frame(width: UIScreen.main.bounds.size.width - 40, height: backgroundHeight + CGFloat(((choosenExercise.sets.count - 1) * 42)))
+            .frame(width: UIScreen.main.bounds.size.width - 40,
+                   height: backgroundHeight + CGFloat(((choosenExercise.sets.count - 1) * 42)))
         }
     }
     

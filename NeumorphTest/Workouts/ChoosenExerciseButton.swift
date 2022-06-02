@@ -11,7 +11,7 @@ import RealmSwift
 struct ChoosenExerciseButton: View {
     @EnvironmentObject var realmManager: RealmManager
     
-    @State private var notTapped = false
+    @State private var notTapped = true
     @Binding var choosenExercise: RealmChoosenExercise
     var action: () -> Void
     @StateObject var testSets = TestSets()
@@ -27,24 +27,37 @@ struct ChoosenExerciseButton: View {
             Button( action: { notTapped.toggle() } ) {
                 GeometryReader { geometry in
                     let width = geometry.size.width
+                    HStack {
                     Image(choosenExercise.icon)
                     .resizable()
-                    .frame(width: 70, height: 40)
-                    .offset(x: 10, y: 15)
+                    .frame(width: 70,
+                           height: 40)
                     Text(choosenExercise.title)
-                .fontWeight(.semibold)
-                .lineLimit(3)
-                .frame(width: width - 130, height: 60, alignment: .leading)
-                .offset(x: 85, y: 5)
+                            .fontWeight(.semibold)
+                            .lineLimit(3)
+                            .frame(width: width - 160,
+                                   height: 60,
+                                   alignment: .leading)
+                            .padding(.leading)
+                    }
+                    .padding(.init(top: 5,
+                                   leading: 16,
+                                   bottom: 0,
+                                   trailing: 0))
+                    
                     Button(action: { self.action() }) {
                     Image(systemName: "clear")
                         .font(.system(size: 20))
                         .foregroundColor(.customRed)
-                        .frame(width: 40, height: 40, alignment: .center)
+                        .frame(width: 40,
+                               height: 40,
+                               alignment: .center)
                     }
-                    .offset(x: width - 45, y: 15)
+                    .offset(x: width - 45,
+                            y: 15)
                 }
-                .frame(width: UIScreen.main.bounds.size.width - 40, height: 70, alignment: .center)
+                .frame(width: UIScreen.main.bounds.size.width - 40,
+                       height: 70, alignment: .center)
                 }
             .buttonStyle(ExerciseButtonStyle())
             }
@@ -52,20 +65,29 @@ struct ChoosenExerciseButton: View {
             ZStack {
             Image("TappedCell")
                 .resizable()
-                .frame(width: UIScreen.main.bounds.size.width - 40, height: backgroundHeight + CGFloat(((choosenExercise.sets.count - 1) * 46)))
+                .frame(width: UIScreen.main.bounds.size.width - 40,
+                       height: backgroundHeight + CGFloat(((choosenExercise.sets.count - 1) * 46)))
                 GeometryReader { geometry in
                     let width = geometry.size.width
+                    HStack {
                     Image(choosenExercise.icon)
-                    .resizable()
-                    .frame(width: 70, height: 40)
-                    .offset(x: 10, y: 15)
+                            .resizable()
+                            .frame(width: 70, height: 40)
                     Text(choosenExercise.title)
-                .fontWeight(.semibold)
-                .font(.system(size: 14))
-                .foregroundColor(.customBlue)
-                .lineLimit(3)
-                .frame(width: width - 130, height: 60, alignment: .leading)
-                .offset(x: 85, y: 5)
+                            .fontWeight(.semibold)
+                            .font(.system(size: 14))
+                            .foregroundColor(.customBlue)
+                            .lineLimit(3)
+                            .frame(width: width - 130,
+                                   height: 60,
+                                   alignment: .leading)
+                            .padding(.leading)
+                    }
+                    .padding(.init(top: 5,
+                                   leading: 16,
+                                   bottom: 0,
+                                   trailing: 0))
+                    
                     VStack(alignment: .leading) {
                     HStack {
                         if width < 370 {
@@ -77,8 +99,10 @@ struct ChoosenExerciseButton: View {
                             Text("Подходы")
                                 .fontWeight(.semibold)
                                 .foregroundColor(.customRed)
-                                .padding(.leading, 20)
-                                .padding(.trailing, 30)
+                                .padding(.init(top: 0,
+                                               leading: 20,
+                                               bottom: 0,
+                                               trailing: 30))
                         }
                         Text("Повторения")
                             .fontWeight(.semibold)
@@ -107,16 +131,20 @@ struct ChoosenExerciseButton: View {
                                         .frame(width: 64)
                                         .font(.system(size: 17))
                                         .foregroundColor(.customBlue)
-                                        .padding(.leading, 20)
-                                        .padding(.trailing, 30)
+                                        .padding(.init(top: 0,
+                                                       leading: 20,
+                                                       bottom: 0,
+                                                       trailing: 30))
                                 }
                                 TextField("0", text: setNumber.repeats)
-                                    .frame(width: 84, alignment: .center)
+                                    .frame(width: 84,
+                                           alignment: .center)
                                     .keyboardType(.decimalPad)
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
                                     .padding(.leading, 8)
                                 TextField("0", text: setNumber.weight)
-                                    .frame(width: 60, alignment: .center)
+                                    .frame(width: 60,
+                                           alignment: .center)
                                     .keyboardType(.decimalPad)
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
                                     .padding(.leading, 10)
@@ -129,12 +157,17 @@ struct ChoosenExerciseButton: View {
                                         .font(.system(size: 25))
                                         .fontWeight(.semibold)
                                         .foregroundColor(.customBlue)
-                                        .frame(width: 50, height: 28, alignment: .init(horizontal: .center, vertical: .bottom) )
+                                        .frame(width: 50,
+                                               height: 28,
+                                               alignment: .init(horizontal: .center,
+                                                                vertical: .bottom) )
                                         .background(
                                             RoundedRectangle(cornerRadius: 11)
                                                 .fill(.white)
-                                                .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
-                                                .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
+                                                .shadow(color: .black.opacity(0.2),
+                                                        radius: 10, x: 5, y: 5)
+                                                .shadow(color: .white.opacity(0.7),
+                                                        radius: 10, x: -5, y: -5)
                                                 .overlay(
                                                     RoundedRectangle(cornerRadius: 11)
                                                         .stroke(Color.gray, lineWidth: 0.1)
@@ -147,12 +180,17 @@ struct ChoosenExerciseButton: View {
                                         .font(.system(size: 25))
                                         .fontWeight(.semibold)
                                         .foregroundColor(.customRed)
-                                        .frame(width: 50, height: 28, alignment: .init(horizontal: .center, vertical: .bottom) )
+                                        .frame(width: 50,
+                                               height: 28,
+                                               alignment: .init(horizontal: .center,
+                                                                vertical: .bottom) )
                                         .background(
                                         RoundedRectangle(cornerRadius: 11)
                                             .fill(.white)
-                                            .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
-                                            .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
+                                            .shadow(color: .black.opacity(0.2),
+                                                    radius: 10, x: 5, y: 5)
+                                            .shadow(color: .white.opacity(0.7),
+                                                    radius: 10, x: -5, y: -5)
                                             .overlay(
                                                 RoundedRectangle(cornerRadius: 11)
                                                     .stroke(Color.gray, lineWidth: 0.1)
@@ -163,14 +201,18 @@ struct ChoosenExerciseButton: View {
                                 .padding(.trailing, 20)
                                 Button(action: { saveSets() }) {
                                     Image(systemName: "chevron.up")
-                                    .frame(width: 140, height: 28, alignment: .center )
+                                    .frame(width: 140,
+                                           height: 28,
+                                           alignment: .center )
                                     .font(.system(size: 20))
                                     .foregroundColor(.customRed)
                                     .background(
                                         RoundedRectangle(cornerRadius: 11)
                                             .fill(.white)
-                                            .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
-                                            .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
+                                            .shadow(color: .black.opacity(0.2),
+                                                    radius: 10, x: 5, y: 5)
+                                            .shadow(color: .white.opacity(0.7),
+                                                    radius: 10, x: -5, y: -5)
                                             .overlay(
                                                 RoundedRectangle(cornerRadius: 11)
                                                     .stroke(Color.gray, lineWidth: 0.1)
@@ -182,7 +224,8 @@ struct ChoosenExerciseButton: View {
                             TextEditor(text: $choosenExercise.note)
                                 .foregroundColor(.customBlue)
                                 .lineLimit(2)
-                                .frame(width: UIScreen.main.bounds.size.width - 60, height: 80)
+                                .frame(width: UIScreen.main.bounds.size.width - 60,
+                                       height: 80)
                                 .cornerRadius(10)
                                 .offset(x: 10)
                         }
@@ -190,14 +233,18 @@ struct ChoosenExerciseButton: View {
                     Button(action: { self.fetchPreviousExercises() }) {
                             Image(systemName: "memories")
                             .padding(.trailing, 1)
-                            .frame(width: 30, height: changeButtonSize(), alignment: .center )
+                            .frame(width: 30,
+                                   height: changeButtonSize(),
+                                   alignment: .center )
                             .font(.system(size: 17))
                             .foregroundColor(.customBlue)
                             .background(
                                         RoundedRectangle(cornerRadius: 11)
                                         .fill(.white)
-                                        .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
-                                        .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
+                                        .shadow(color: .black.opacity(0.2),
+                                                radius: 10, x: 5, y: 5)
+                                        .shadow(color: .white.opacity(0.7),
+                                                radius: 10, x: -5, y: -5)
                                         .overlay(
                                             RoundedRectangle(cornerRadius: 11)
                                                 .stroke(Color.gray, lineWidth: 0.1)
@@ -207,9 +254,11 @@ struct ChoosenExerciseButton: View {
                     .sheet(isPresented: $showingSheet, content: {
                         PreviousExercises(previousExercises: previousExercises)
                     })
-                    .offset(x: width - 40, y: changeMemoryButtonPosition())
+                    .offset(x: width - 40,
+                            y: changeMemoryButtonPosition())
                 }
-                .frame(width: UIScreen.main.bounds.size.width - 40, height: backgroundHeight + CGFloat(((choosenExercise.sets.count - 1) * 46)))
+                .frame(width: UIScreen.main.bounds.size.width - 40,
+                       height: backgroundHeight + CGFloat(((choosenExercise.sets.count - 1) * 46)))
             }
             .onAppear(perform: fetchSets)
         }
@@ -238,16 +287,21 @@ extension ChoosenExerciseButton {
                         realmManager.delete(set: setToDelete)
                 }
         testSets.sets.forEach { sett in
-            let newRealmSet = RealmSet(id: sett.id, repeats: sett.repeats, weight: sett.weight)
+            let newRealmSet = RealmSet(id: sett.id,
+                                       repeats: sett.repeats,
+                                       weight: sett.weight)
             test.append(newRealmSet)
         }
-        realmManager.updateChoosenExercise(id: choosenExercise.id, sets: test)
+        realmManager.updateChoosenExercise(id: choosenExercise.id,
+                                           sets: test)
     }
     
     private func fetchSets() {
         testSets.sets = []
         choosenExercise.sets.forEach { sett in
-            let newTestSet = TestSet(id: sett.id, repeats: sett.repeats, weight: sett.weight)
+            let newTestSet = TestSet(id: sett.id,
+                                     repeats: sett.repeats,
+                                     weight: sett.weight)
                 testSets.sets.append(newTestSet)
         }
     }

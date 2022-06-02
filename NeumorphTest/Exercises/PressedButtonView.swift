@@ -31,17 +31,19 @@ struct PressedButtonView: View {
             .frame(width: UIScreen.main.bounds.size.width - 40, height: backgroundHeight + CGFloat(((sets.count - 1) * 46)))
             GeometryReader { geometry in
                 let width = geometry.size.width
-            Image(image)
-                .resizable()
-                .frame(width: 70, height: 40)
-                .offset(x: 10, y: 15)
-            Text(title)
-            .fontWeight(.semibold)
-            .font(.system(size: 14))
-            .foregroundColor(.customBlue)
-            .lineLimit(3)
-            .frame(width: width - 130, height: 60, alignment: .leading)
-            .offset(x: 85, y: 5)
+                HStack {
+                    Image(image)
+                        .resizable()
+                        .frame(width: 70, height: 40)
+                    Text(title)
+                        .fontWeight(.semibold)
+                        .font(.system(size: 14))
+                        .foregroundColor(.customBlue)
+                        .lineLimit(3)
+                        .frame(width: width - 160, height: 60, alignment: .leading)
+                        .padding(.leading)
+                    }
+                    .padding(.init(top: 5, leading: 16, bottom: 0, trailing: 0))
                 Button(action: { addExercise() }) {
                 Image(systemName: "checkmark.square")
                     .font(.system(size: 20))
@@ -70,8 +72,10 @@ struct PressedButtonView: View {
                         Text("Подходы")
                             .fontWeight(.semibold)
                             .foregroundColor(.customRed)
-                            .padding(.leading, 20)
-                            .padding(.trailing, 30)
+                            .padding(.init(top: 0,
+                                           leading: 20,
+                                           bottom: 0,
+                                           trailing: 30))
                     }
                     Text("Повторения")
                         .fontWeight(.semibold)
@@ -100,8 +104,10 @@ struct PressedButtonView: View {
                                     .frame(width: 64)
                                     .font(.system(size: 17))
                                     .foregroundColor(.customBlue)
-                                    .padding(.leading, 20)
-                                    .padding(.trailing, 30)
+                                    .padding(.init(top: 0,
+                                                   leading: 20,
+                                                   bottom: 0,
+                                                   trailing: 30))
                             }
                             TextField("0", text: setNumber.repeats)
                                 .frame(width: 84, alignment: .center)

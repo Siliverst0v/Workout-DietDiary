@@ -23,8 +23,6 @@ struct PreviousExercises: View {
                         .background(
                             RoundedRectangle(cornerRadius: 11)
                                 .fill(.white)
-//                                .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
-//                                .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 11)
                                         .stroke(Color.gray, lineWidth: 0.1)
@@ -47,8 +45,10 @@ struct PreviousExercises: View {
                 .background(
                     RoundedRectangle(cornerRadius: 11)
                         .fill(.white)
-                        .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
-                        .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
+                        .shadow(color: .black.opacity(0.2),
+                                radius: 10, x: 5, y: 5)
+                        .shadow(color: .white.opacity(0.7),
+                                radius: 10, x: -5, y: -5)
                         .overlay(
                             RoundedRectangle(cornerRadius: 11)
                                 .stroke(Color.gray, lineWidth: 0.1)
@@ -61,8 +61,10 @@ struct PreviousExercises: View {
                         .background(
                             RoundedRectangle(cornerRadius: 11)
                                 .fill(.white)
-                                .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
-                                .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
+                                .shadow(color: .black.opacity(0.2),
+                                        radius: 10, x: 5, y: 5)
+                                .shadow(color: .white.opacity(0.7),
+                                        radius: 10, x: -5, y: -5)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 11)
                                         .stroke(Color.gray, lineWidth: 0.1)

@@ -24,7 +24,7 @@ struct ChooseExercisesView: View {
     @State var exerciseGroupNames: [String] = []
     @State var date: Date = Date()
     @Binding var workoutsIsActive: Bool
-    @State var choosenIsActive = false
+    @State var chooseViewIsActive = false
         
     let muscleGroups = Exercises.shared
     let columns = [GridItem(.adaptive(minimum: 100))]
@@ -154,7 +154,7 @@ struct ChooseExercisesView: View {
                          cardioIsVisible: $cardioIsVisible)
         }
             .background(
-                NavigationLink(isActive: $choosenIsActive, destination: {
+                NavigationLink(isActive: $chooseViewIsActive, destination: {
                     ExercisesView(
                         exercises: $exercises,
                         exerciseGroupsNames: $exerciseGroupNames,
@@ -168,7 +168,7 @@ struct ChooseExercisesView: View {
             )
             .toolbar {
                 Button {
-                    choosenIsActive = true
+                    chooseViewIsActive = true
                 } label: {
                     Text("Далее")
                 }
@@ -185,6 +185,7 @@ struct ChooseExercisesGroupView_Previews: PreviewProvider {
             exerciseGroupNames: [],
             date: Date(),
             workoutsIsActive: .constant(false))
+        .environmentObject(RealmManager())
             .previewInterfaceOrientation(.portrait)
     }
 }
