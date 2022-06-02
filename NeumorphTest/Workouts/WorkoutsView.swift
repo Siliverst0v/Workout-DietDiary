@@ -9,6 +9,9 @@ import SwiftUI
 import RealmSwift
 
 struct WorkoutsView: View {
+    init() {
+        UITextView.appearance().backgroundColor = .clear
+    }
     @StateObject var realmManager = RealmManager()
     @State private var workouts: [RealmWorkout] = []
     @State var choosenExercises: [RealmChoosenExercise] = []

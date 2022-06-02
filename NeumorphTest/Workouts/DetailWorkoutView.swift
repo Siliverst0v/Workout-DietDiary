@@ -10,6 +10,7 @@ import SwiftUI
 struct DetailWorkoutView: View {
     @EnvironmentObject var realmManager: RealmManager
     @Binding var choosenExercises: [RealmChoosenExercise]
+    @State private var icon: String = ""
     
     var body: some View {
 

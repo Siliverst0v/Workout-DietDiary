@@ -8,7 +8,14 @@
 import SwiftUI
 
 struct AddCustomExerciseButton: View {
+    enum FocusField: Hashable {
+      case field
+    }
+    @FocusState private var focusedField: FocusField?
     @Binding var icon: String
+    @State private var isPressed = false
+    @State var newExerciseTitle: String = ""
+    
     var body: some View {
         ZStack{
             GeometryReader { geometry in
@@ -18,6 +25,23 @@ struct AddCustomExerciseButton: View {
                         .resizable()
                         .frame(width: 70, height: 40)
                         .foregroundColor(.customRed)
+                if isPressed {
+                    TextEditor(text: $newExerciseTitle)
+                        .foregroundColor(.customBlue)
+                        .lineLimit(2)
+                        .frame(width: width - 160,
+                               height: 60,
+                               alignment: .leading)
+                        .cornerRadius(10)
+                        .offset(x: 10)
+                        .onReceive(newExerciseTitle.publisher.collect()) {
+                                self.newExerciseTitle = String($0.prefix(60))
+                            }
+                        .focused($focusedField, equals: .field)
+                        .onAppear {
+                                    self.focusedField = .field
+                                }
+                        } else {
                     Text("Добавить свое упражнение")
                         .fontWeight(.semibold)
                         .lineLimit(3)
@@ -27,12 +51,13 @@ struct AddCustomExerciseButton: View {
                                height: 60,
                                alignment: .leading)
                         .padding(.leading)
+                        }
                     }
                     .padding(.init(top: 5,
                                    leading: 16,
                                    bottom: 0,
                                    trailing: 0))
-                Button(action: {  }) {
+                Button(action: { isPressed.toggle() }) {
                 Image(systemName: "plus.square")
                     .font(.system(size: 20))
                     .foregroundColor(.customRed)
@@ -82,6 +107,12 @@ struct AddCustomExerciseButton: View {
         )
     }
 }
+
+//extension AddCustomExerciseButton {
+//    private func setTitleNewExercise() {
+//
+//    }
+//}
 
 struct AddCustomExerciseButton_Previews: PreviewProvider {
     static var previews: some View {
