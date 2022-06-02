@@ -252,7 +252,7 @@ struct ChoosenExerciseButton: View {
                                 )
                     }
                     .sheet(isPresented: $showingSheet, content: {
-                        PreviousExercises(previousExercises: previousExercises)
+                        PreviousExercisesView(previousExercises: previousExercises)
                     })
                     .offset(x: width - 40,
                             y: changeMemoryButtonPosition())

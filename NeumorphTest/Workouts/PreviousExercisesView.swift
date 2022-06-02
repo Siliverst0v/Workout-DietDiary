@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PreviousExercises: View {
+struct PreviousExercisesView: View {
     @State var previousExercises: [RealmChoosenExercise]
     @Environment(\.dismiss) var dismiss
     
@@ -78,6 +78,6 @@ struct PreviousExercises: View {
 
 struct PreviousExercises_Previews: PreviewProvider {
     static var previews: some View {
-        PreviousExercises(previousExercises: [Exercises.shared.getMocExercise()])
+        PreviousExercisesView(previousExercises: [Exercises.shared.getMocExercise()])
     }
 }
