@@ -40,7 +40,7 @@ struct ExerciseButton: View {
             PressedButtonView(
                 backgroundHeight: $backgroundHeight,
                 pressed: $notTapped,
-                changeCheckmarkColor: $changeColorButton,
+                exerciseAdded: $changeColorButton,
                 sets: $sets,
                 realmChoosenExerises: $realmChoosenExerises,
                 date: $date,

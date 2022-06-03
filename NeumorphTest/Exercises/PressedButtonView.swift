@@ -13,7 +13,7 @@ struct PressedButtonView: View {
 
     @Binding var backgroundHeight: CGFloat
     @Binding var pressed: Bool    
-    @Binding var changeCheckmarkColor: Bool
+    @Binding var exerciseAdded: Bool
     @Binding var sets: [Set]
     @Binding var realmChoosenExerises: [RealmChoosenExercise]
     @State private var showingSheet = false
@@ -45,9 +45,9 @@ struct PressedButtonView: View {
                     }
                     .padding(.init(top: 5, leading: 16, bottom: 0, trailing: 0))
                 Button(action: { addExercise() }) {
-                Image(systemName: "checkmark.square")
+                    Image(systemName: exerciseAdded ? "checkmark.square" : "square")
                     .font(.system(size: 20))
-                    .foregroundColor(changeCheckmarkColor ? .customBlue : .gray)
+                    .foregroundColor(.customBlue)
                     .frame(width: 40, height: 40, alignment: .center)
                     .background(
                                 RoundedRectangle(cornerRadius: 11)
@@ -228,14 +228,14 @@ extension PressedButtonView {
     }
     
     private func addExercise() {
-        changeCheckmarkColor.toggle()
+        exerciseAdded.toggle()
         
         let choosenExerciseRealm = RealmChoosenExercise(icon: image, title: title, note: note, date: date)
         sets.forEach { sett in
             choosenExerciseRealm.sets.append(RealmSet(id: sett.id, repeats: sett.repeats, weight: sett.weight))
         }
         
-        if changeCheckmarkColor {
+        if exerciseAdded {
             realmChoosenExerises.append(choosenExerciseRealm)
         } else {
             realmChoosenExerises.removeAll(where: {$0.title == choosenExerciseRealm.title})
@@ -282,7 +282,7 @@ struct PressedButtonView_Previews: PreviewProvider {
         PressedButtonView(
             backgroundHeight: .constant(270),
             pressed: .constant(true),
-            changeCheckmarkColor: .constant(false),
+            exerciseAdded: .constant(false),
             sets: .constant([Set(id: 1, repeats: "", weight: ""),
                    Set(id: 2, repeats: "", weight: ""),
                    Set(id: 3, repeats: "", weight: "")]),
