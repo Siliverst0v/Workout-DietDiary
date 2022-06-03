@@ -44,7 +44,6 @@ struct ChoosenExerciseButton: View {
                                    leading: 16,
                                    bottom: 0,
                                    trailing: 0))
-                    
                     Button(action: { self.action() }) {
                     Image(systemName: "trash")
                         .font(.system(size: 20))
