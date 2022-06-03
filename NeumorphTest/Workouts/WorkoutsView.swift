@@ -37,11 +37,15 @@ struct WorkoutsView: View {
                 .onAppear(perform: fetchWorkouts)
                 .background(
                 Group {
-                    NavigationLink("", tag: workoutsIsActive ? "ChooseExerciseView" : "", selection: $selection) {
+                    NavigationLink("",
+                                   tag: workoutsIsActive ? "ChooseExerciseView" : "",
+                                   selection: $selection) {
                         ChooseExercisesView(workoutsIsActive: $workoutsIsActive)
                             .environmentObject(realmManager)
                     }
-                    NavigationLink("", tag: "DetailWorkoutView", selection: $selection) {
+                    NavigationLink("",
+                                   tag: "DetailWorkoutView",
+                                   selection: $selection) {
                         DetailWorkoutView(choosenExercises: $choosenExercises)
                             .environmentObject(realmManager)
                     }

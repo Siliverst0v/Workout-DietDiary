@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NotPressedButtonView: View {
     @Binding var pressed: Bool
-    @Binding var changeColorButton: Bool
+    @Binding var exerciseAdded: Bool
     @Binding var sets: [Set]
     @Binding var realmChoosenExerises: [RealmChoosenExercise]
     @Binding var date: Date
@@ -44,7 +44,7 @@ struct NotPressedButtonView: View {
                 Button(action: { addExercise() }) {
                     Image(systemName: "checkmark.square")
                         .font(.system(size: 20))
-                        .foregroundColor(changeColorButton ? .customBlue : .gray)
+                        .foregroundColor(.customBlue)
                         .frame(width: 40,
                                height: 40,
                                alignment: .center)
@@ -59,7 +59,7 @@ struct NotPressedButtonView: View {
     }
     
     func addExercise() {
-        changeColorButton.toggle()
+        exerciseAdded.toggle()
         
         let choosenExerciseRealm = RealmChoosenExercise(icon: image,
                                                         title: title,
@@ -71,7 +71,7 @@ struct NotPressedButtonView: View {
                                                       weight: sett.weight))
         }
         
-        if changeColorButton {
+        if exerciseAdded {
             realmChoosenExerises.append(choosenExerciseRealm)
         } else {
             realmChoosenExerises.removeAll(where: {$0.title == choosenExerciseRealm.title})
@@ -83,7 +83,7 @@ struct NotPressedButtonView_Previews: PreviewProvider {
     static var previews: some View {
         NotPressedButtonView(
             pressed: .constant(true),
-            changeColorButton: .constant(true),
+            exerciseAdded: .constant(true),
             sets: .constant([
                 Set(id: 1, repeats: "", weight: ""),
                 Set(id: 2, repeats: "", weight: ""),

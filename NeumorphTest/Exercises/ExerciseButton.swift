@@ -28,7 +28,7 @@ struct ExerciseButton: View {
         if notTapped {
                 NotPressedButtonView(
                     pressed: $notTapped,
-                    changeColorButton: $changeColorButton,
+                    exerciseAdded: $changeColorButton,
                     sets: $sets,
                     realmChoosenExerises: $realmChoosenExerises,
                     date: $date,

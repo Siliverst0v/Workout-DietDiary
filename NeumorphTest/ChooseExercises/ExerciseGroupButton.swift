@@ -24,7 +24,7 @@ struct ExerciseGroupButton: View {
                 .padding()
     }
     .scaledToFit()
-    .buttonStyle(ChooseExerciseButtonStyle(isPressed: $isPressed))
+    .buttonStyle(ExerciseGroupButtonStyle(isPressed: $isPressed))
     }
 }
 
