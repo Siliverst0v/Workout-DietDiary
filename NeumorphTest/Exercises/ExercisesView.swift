@@ -30,7 +30,8 @@ struct ExercisesView: View {
                         .foregroundColor(.customRed)
                         .disabled(true)
                         .padding()
-                    
+                    AddCustomExerciseButton(icon: exerciseGroup.icon)
+
                     ForEach(exerciseGroup.exercises, id: \.self) {exercise in
                         ExerciseButton(
                             title: exercise,
@@ -39,7 +40,6 @@ struct ExercisesView: View {
                             date: $date)
                         .environmentObject(realmManager)
                     }
-                    AddCustomExerciseButton(icon: exerciseGroup.icon)
                 }
             }
             .toolbar {
