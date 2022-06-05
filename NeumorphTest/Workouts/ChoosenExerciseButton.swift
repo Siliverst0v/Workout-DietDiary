@@ -17,6 +17,7 @@ struct ChoosenExerciseButton: View {
     @StateObject var testSets = TestSets()
     @State private var showingSheet = false
     @State private var showingNote = false
+    @State private var showingAlert = false
     @State var previousExercises: [RealmChoosenExercise] = []
     
     @State var backgroundHeight: CGFloat = 263
@@ -44,7 +45,7 @@ struct ChoosenExerciseButton: View {
                                    leading: 16,
                                    bottom: 0,
                                    trailing: 0))
-                    Button(action: { self.action() }) {
+                    Button(action: { showingAlert.toggle() }) {
                     Image(systemName: "trash")
                         .font(.system(size: 20))
                         .foregroundColor(.customRed)
@@ -52,6 +53,11 @@ struct ChoosenExerciseButton: View {
                                height: 40,
                                alignment: .center)
                     }
+//                    .confirmationDialog("", isPresented: $showingAlert, actions: {
+//                        Button("Delete all items?", role: .destructive) {
+//                            self.action()
+//                         }
+//                    })
                     .offset(x: width - 45,
                             y: 15)
                 }

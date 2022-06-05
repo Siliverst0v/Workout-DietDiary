@@ -42,7 +42,7 @@ struct AddCustomExerciseButton: View {
                                     self.focusedField = .field
                                 }
                         } else {
-                    Text("Добавить свое упражнение")
+                    Text("Добавить новое упражнение")
                         .fontWeight(.semibold)
                         .lineLimit(3)
                         .font(.system(size: 14))
@@ -57,7 +57,7 @@ struct AddCustomExerciseButton: View {
                                    leading: 16,
                                    bottom: 0,
                                    trailing: 0))
-                Button(action: { isPressed.toggle() }) {
+                Button(action: { setTitleNewExercise() }) {
                 Image(systemName: "plus.square")
                     .font(.system(size: 20))
                     .foregroundColor(.customRed)
@@ -108,11 +108,14 @@ struct AddCustomExerciseButton: View {
     }
 }
 
-//extension AddCustomExerciseButton {
-//    private func setTitleNewExercise() {
-//
-//    }
-//}
+extension AddCustomExerciseButton {
+    private func setTitleNewExercise() {
+        isPressed.toggle()
+        if isPressed == false {
+            Exercises.shared.back.append(newExerciseTitle)
+        }
+    }
+}
 
 struct AddCustomExerciseButton_Previews: PreviewProvider {
     static var previews: some View {
