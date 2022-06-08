@@ -55,6 +55,19 @@ class RealmSet: Object {
     }
 }
 
+class Exercise: Object {
+    @Persisted var title: String
+    @Persisted var icon: String
+    @Persisted var exerciseGroup: String
+    
+    convenience init(title: String, icon: String, exerciseGroup: String) {
+        self.init()
+        self.title = title
+        self.icon = icon
+        self.exerciseGroup = exerciseGroup
+    }
+}
+
 class TestSets: ObservableObject {
     @Published var sets: [TestSet] = []
     

@@ -13,7 +13,7 @@ class RealmManager: ObservableObject {
     @Published private(set) var workouts = RealmSwift.List<RealmWorkout>()
     @Published private(set) var choosenExercises = RealmSwift.List<RealmChoosenExercise>()
     @Published private(set) var sets = RealmSwift.List<RealmSet>()
-
+    @Published private(set) var exercises = RealmSwift.List<Exercise>()
     
     init() {
         openRealm()

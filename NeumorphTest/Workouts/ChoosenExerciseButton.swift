@@ -24,7 +24,7 @@ struct ChoosenExerciseButton: View {
     
     var body: some View {
         if notTapped {
-            ZStack{
+            ZStack {
             Button( action: { notTapped.toggle() } ) {
                 GeometryReader { geometry in
                     let width = geometry.size.width
@@ -45,26 +45,27 @@ struct ChoosenExerciseButton: View {
                                    leading: 16,
                                    bottom: 0,
                                    trailing: 0))
-                    Button(action: { showingAlert.toggle() }) {
-                    Image(systemName: "trash")
-                        .font(.system(size: 20))
-                        .foregroundColor(.customRed)
-                        .frame(width: 40,
-                               height: 40,
-                               alignment: .center)
-                    }
-//                    .confirmationDialog("", isPresented: $showingAlert, actions: {
-//                        Button("Delete all items?", role: .destructive) {
-//                            self.action()
-//                         }
-//                    })
-                    .offset(x: width - 45,
-                            y: 15)
+                   
                 }
                 .frame(width: UIScreen.main.bounds.size.width - 40,
                        height: 70, alignment: .center)
                 }
             .buttonStyle(ExerciseButtonStyle())
+                Button(action: { showingAlert = true }) {
+                Image(systemName: "trash")
+                    .font(.system(size: 20))
+                    .foregroundColor(.customRed)
+                    .frame(width: 40,
+                           height: 40,
+                           alignment: .center)
+                }
+                .confirmationDialog("", isPresented: $showingAlert, actions: {
+                     Button("Delete all items?", role: .destructive) {
+                        self.action()
+                     }
+                })
+                .offset(x: 155,
+                        y: 0)
             }
         } else {
             ZStack {
@@ -269,6 +270,12 @@ struct ChoosenExerciseButton: View {
         }
     }
 }
+
+//                    .confirmationDialog("", isPresented: $showingAlert, actions: {
+//                        Button("Delete all items?", role: .destructive) {
+//                            self.action()
+//                         }
+//                    })
 
 extension ChoosenExerciseButton {
     
