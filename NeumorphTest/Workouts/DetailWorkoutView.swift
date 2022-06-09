@@ -11,6 +11,7 @@ struct DetailWorkoutView: View {
     @EnvironmentObject var realmManager: RealmManager
     @Binding var choosenExercises: [RealmChoosenExercise]
     @State private var icon: String = ""
+    @State var deleteMode = false
     
     var body: some View {
 
@@ -18,9 +19,19 @@ struct DetailWorkoutView: View {
                 ForEach($choosenExercises.indices, id: \.self) {index in
                     ChoosenExerciseButton(
                         choosenExercise: $choosenExercises[index],
-                        action: {deleteChoosenExercise(index: index)}
+                        action: {deleteChoosenExercise(index: index)},
+                        deleteMode: $deleteMode
                     )
                         .environmentObject(realmManager)
+                }
+                .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button {
+                                deleteMode.toggle()
+                            } label: {
+                                Image(systemName: "trash")
+                        }
+                    }
                 }
                 .padding()
         }

@@ -19,6 +19,7 @@ struct ChoosenExerciseButton: View {
     @State private var showingNote = false
     @State private var showingAlert = false
     @State var previousExercises: [RealmChoosenExercise] = []
+    @Binding var deleteMode: Bool
     
     @State var backgroundHeight: CGFloat = 263
     
@@ -50,8 +51,9 @@ struct ChoosenExerciseButton: View {
                 .frame(width: UIScreen.main.bounds.size.width - 40,
                        height: 70, alignment: .center)
                 }
+            .disabled(deleteMode)
             .buttonStyle(ExerciseButtonStyle())
-                Button(action: { showingAlert = true }) {
+                Button(action: { self.action() }) {
                 Image(systemName: "trash")
                     .font(.system(size: 20))
                     .foregroundColor(.customRed)
@@ -59,11 +61,8 @@ struct ChoosenExerciseButton: View {
                            height: 40,
                            alignment: .center)
                 }
-                .confirmationDialog("", isPresented: $showingAlert, actions: {
-                     Button("Delete all items?", role: .destructive) {
-                        self.action()
-                     }
-                })
+                .opacity(deleteMode ? 1 : 0)
+                .disabled(!deleteMode)
                 .offset(x: 155,
                         y: 0)
             }
@@ -363,7 +362,7 @@ extension ChoosenExerciseButton {
 struct ChoosenExerciseButton_Previews: PreviewProvider {
     static var previews: some View {
         ChoosenExerciseButton(choosenExercise: .constant(Exercises.shared.getMocExercise()),
-                              action: {})
+                              action: {}, deleteMode: .constant(false))
         .environmentObject(RealmManager())
     }
 }
