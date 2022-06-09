@@ -10,7 +10,7 @@ import SwiftUI
 struct NotPressedButtonView: View {
     @Binding var pressed: Bool
     @Binding var exerciseAdded: Bool
-    @Binding var sets: [Set]
+    @Binding var sets: [MocSet]
     @Binding var realmChoosenExerises: [ChoosenExercise]
     @Binding var date: Date
 
@@ -85,9 +85,9 @@ struct NotPressedButtonView_Previews: PreviewProvider {
             pressed: .constant(true),
             exerciseAdded: .constant(true),
             sets: .constant([
-                Set(id: 1, repeats: "", weight: ""),
-                Set(id: 2, repeats: "", weight: ""),
-                Set(id: 3, repeats: "", weight: "")]),
+                MocSet(id: 1, repeats: "", weight: ""),
+                MocSet(id: 2, repeats: "", weight: ""),
+                MocSet(id: 3, repeats: "", weight: "")]),
             realmChoosenExerises: .constant([]),
             date: .constant(Date()),
             image: .constant("chest"),

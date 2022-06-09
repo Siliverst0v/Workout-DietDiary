@@ -55,8 +55,6 @@ class RealmSet: Object {
     }
 }
 
-
-
 class MocSets: ObservableObject {
     @Published var sets: [MocSet] = []
     
@@ -67,7 +65,7 @@ class MocSets: ObservableObject {
     }
 }
 
-struct MocSet: Equatable {
+struct MocSet: Equatable, Identifiable, Hashable {
     var id: Int
     var repeats: String
     var weight: String

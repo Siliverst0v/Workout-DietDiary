@@ -14,7 +14,7 @@ struct PressedButtonView: View {
     @Binding var backgroundHeight: CGFloat
     @Binding var pressed: Bool    
     @Binding var exerciseAdded: Bool
-    @Binding var sets: [Set]
+    @Binding var sets: [MocSet]
     @Binding var realmChoosenExerises: [ChoosenExercise]
     @State private var showingSheet = false
     @State var previousExercises: [ChoosenExercise] = []
@@ -243,7 +243,7 @@ extension PressedButtonView {
     }
     
     private func addSet() {
-        let newSet = Set(
+        let newSet = MocSet(
                     id: sets.count + 1,
                     repeats: "",
                     weight: "")
@@ -283,9 +283,9 @@ struct PressedButtonView_Previews: PreviewProvider {
             backgroundHeight: .constant(270),
             pressed: .constant(true),
             exerciseAdded: .constant(false),
-            sets: .constant([Set(id: 1, repeats: "", weight: ""),
-                   Set(id: 2, repeats: "", weight: ""),
-                   Set(id: 3, repeats: "", weight: "")]),
+            sets: .constant([MocSet(id: 1, repeats: "", weight: ""),
+                             MocSet(id: 2, repeats: "", weight: ""),
+                             MocSet(id: 3, repeats: "", weight: "")]),
             realmChoosenExerises: .constant([]),
             date: .constant(Date()),
             image: .constant("chest"),

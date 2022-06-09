@@ -17,9 +17,9 @@ struct ExerciseButton: View {
     @Binding var realmChoosenExerises: [ChoosenExercise]
     @Binding var date: Date
 
-    @State var sets: [Set] = [Set(id: 1, repeats: "", weight: ""),
-                              Set(id: 2, repeats: "", weight: ""),
-                              Set(id: 3, repeats: "", weight: "")]
+    @State var sets: [MocSet] = [MocSet(id: 1, repeats: "", weight: ""),
+                                 MocSet(id: 2, repeats: "", weight: ""),
+                                 MocSet(id: 3, repeats: "", weight: "")]
     @State var note: String = "..."
     
     @State var backgroundHeight: CGFloat = 263
