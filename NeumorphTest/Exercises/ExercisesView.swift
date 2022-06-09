@@ -45,7 +45,12 @@ struct ExercisesView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        addWorkout()
+                        realmWorkout.exerciseGroups.append(objectsIn: exerciseGroupsNames)
+                        realmWorkout.choosenExercises.append(objectsIn: realmChoosenExerises)
+                        realmManager.addWorkout(date: date,
+                                                exerciseGroups: realmWorkout.exerciseGroups,
+                                                choosenExercises: realmWorkout.choosenExercises)
+                            workoutsIsActive = false
                     } label: {
                         Text("Готово")
                     }
