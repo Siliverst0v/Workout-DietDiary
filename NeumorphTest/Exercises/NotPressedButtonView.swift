@@ -11,7 +11,7 @@ struct NotPressedButtonView: View {
     @Binding var pressed: Bool
     @Binding var exerciseAdded: Bool
     @Binding var sets: [Set]
-    @Binding var realmChoosenExerises: [RealmChoosenExercise]
+    @Binding var realmChoosenExerises: [ChoosenExercise]
     @Binding var date: Date
 
     
@@ -61,20 +61,20 @@ struct NotPressedButtonView: View {
     func addExercise() {
         exerciseAdded.toggle()
         
-        let choosenExerciseRealm = RealmChoosenExercise(icon: image,
+        let choosenExercise = ChoosenExercise(icon: image,
                                                         title: title,
                                                         note: note,
                                                         date: date)
         sets.forEach { sett in
-            choosenExerciseRealm.sets.append(RealmSet(id: sett.id,
+            choosenExercise.sets.append(RealmSet(id: sett.id,
                                                       repeats: sett.repeats,
                                                       weight: sett.weight))
         }
         
         if exerciseAdded {
-            realmChoosenExerises.append(choosenExerciseRealm)
+            realmChoosenExerises.append(choosenExercise)
         } else {
-            realmChoosenExerises.removeAll(where: {$0.title == choosenExerciseRealm.title})
+            realmChoosenExerises.removeAll(where: {$0.title == choosenExercise.title})
         }
     }
 }

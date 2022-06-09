@@ -16,8 +16,8 @@ struct ExercisesView: View {
     @Binding var exerciseGroupsNames: [String]
     @State var date: Date
     @Binding var workoutsIsActive: Bool
-    @State var realmWorkout = RealmWorkout()
-    @State var realmChoosenExerises: [RealmChoosenExercise] = []
+    @State var realmWorkout = Workout()
+    @State var realmChoosenExerises: [ChoosenExercise] = []
 
         
     var body: some View {

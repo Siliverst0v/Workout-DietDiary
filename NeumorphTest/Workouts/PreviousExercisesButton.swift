@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PreviousExercisesButton: View {
-    @State var choosenExercise: RealmChoosenExercise
+    @State var choosenExercise: ChoosenExercise
     
     @State var backgroundHeight: CGFloat = 238
 

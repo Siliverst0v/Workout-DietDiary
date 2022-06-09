@@ -14,7 +14,7 @@ struct ExerciseButton: View {
     @Binding var title: String
     @Binding var image: String
     @State var changeColorButton = false
-    @Binding var realmChoosenExerises: [RealmChoosenExercise]
+    @Binding var realmChoosenExerises: [ChoosenExercise]
     @Binding var date: Date
 
     @State var sets: [Set] = [Set(id: 1, repeats: "", weight: ""),

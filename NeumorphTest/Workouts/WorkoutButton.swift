@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct WorkoutButton: View {
-    @State var workout: RealmWorkout
-    @Binding var output: [RealmChoosenExercise]
+    @State var workout: Workout
+    @Binding var output: [ChoosenExercise]
 
     
     var body: some View {
@@ -78,7 +78,7 @@ struct WorkoutButton: View {
 struct WorkoutsView_Previews: PreviewProvider {
     static var previews: some View {
         WorkoutButton(
-            workout: RealmWorkout(),
+            workout: Workout(),
             output: .constant([])
         )
     }

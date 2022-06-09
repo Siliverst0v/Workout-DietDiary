@@ -13,8 +13,8 @@ struct WorkoutsView: View {
         UITextView.appearance().backgroundColor = .clear
     }
     @StateObject var realmManager = RealmManager()
-    @State private var workouts: [RealmWorkout] = []
-    @State var choosenExercises: [RealmChoosenExercise] = []
+    @State private var workouts: [Workout] = []
+    @State var choosenExercises: [ChoosenExercise] = []
     @State var workoutsIsActive = false
     @State var selection: String? = nil
         

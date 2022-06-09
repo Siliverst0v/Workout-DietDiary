@@ -7,12 +7,6 @@
 
 import Foundation
 
-struct ChoosenExercise: Identifiable, Equatable, Hashable {
-    let id = UUID()
-    var icon: String
-    var title: String
-    var sets: [Set]
-}
 
 struct Set:  Identifiable, Equatable, Hashable {
     let id: Int

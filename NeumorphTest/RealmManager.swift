@@ -10,10 +10,9 @@ import RealmSwift
 
 class RealmManager: ObservableObject {
     private(set) var localRealm: Realm?
-    @Published private(set) var workouts = RealmSwift.List<RealmWorkout>()
-    @Published private(set) var choosenExercises = RealmSwift.List<RealmChoosenExercise>()
+    @Published private(set) var workouts = RealmSwift.List<Workout>()
+    @Published private(set) var choosenExercises = RealmSwift.List<ChoosenExercise>()
     @Published private(set) var sets = RealmSwift.List<RealmSet>()
-    @Published private(set) var exercises = RealmSwift.List<Exercise>()
     
     init() {
         openRealm()
@@ -34,12 +33,12 @@ class RealmManager: ObservableObject {
         }
     }
     
-    func addWorkout(date: Date, exerciseGroups: List<String>, choosenExercises: List<RealmChoosenExercise>) {
+    func addWorkout(date: Date, exerciseGroups: List<String>, choosenExercises: List<ChoosenExercise>) {
         if let localRealm = localRealm {
             
         do {
             try localRealm.write {
-                let newWorkout = RealmWorkout(value: ["date" : date, "exerciseGroups": exerciseGroups, "choosenExercises": choosenExercises ])
+                let newWorkout = Workout(value: ["date" : date, "exerciseGroups": exerciseGroups, "choosenExercises": choosenExercises ])
                 localRealm.add(newWorkout)
                 }
             } catch {
@@ -50,7 +49,7 @@ class RealmManager: ObservableObject {
     
     func getWorkouts() {
         if let localRealm = localRealm {
-            let allWorkouts = localRealm.objects(RealmWorkout.self).sorted(byKeyPath: "date")
+            let allWorkouts = localRealm.objects(Workout.self).sorted(byKeyPath: "date")
             workouts.removeAll()
             allWorkouts.forEach { workout in
                 workouts.append(workout)
@@ -61,7 +60,7 @@ class RealmManager: ObservableObject {
     func updateWorkout(id: ObjectId, date: Date, exerciseGroups: List<String>) {
         if let localRealm = localRealm {
             do {
-                let workoutToUpdate = localRealm.objects(RealmWorkout.self).filter(NSPredicate(format: "id == %@", id))
+                let workoutToUpdate = localRealm.objects(Workout.self).filter(NSPredicate(format: "id == %@", id))
                 guard !workoutToUpdate.isEmpty else {return}
                 
                 try localRealm.write {
@@ -78,7 +77,7 @@ class RealmManager: ObservableObject {
     func deleteWorkout(id: ObjectId) {
         if let localRealm = localRealm {
             do {
-                let workoutToDelete = localRealm.objects(RealmWorkout.self).filter(NSPredicate(format: "id == %@", id))
+                let workoutToDelete = localRealm.objects(Workout.self).filter(NSPredicate(format: "id == %@", id))
                 guard !workoutToDelete.isEmpty else {return}
                 
                 try localRealm.write {
@@ -93,7 +92,7 @@ class RealmManager: ObservableObject {
     
     func getChoosenExercises() {
         if let localRealm = localRealm {
-            let allChoosenExercises = localRealm.objects(RealmChoosenExercise.self).sorted(byKeyPath: "icon")
+            let allChoosenExercises = localRealm.objects(ChoosenExercise.self).sorted(byKeyPath: "icon")
             choosenExercises.removeAll()
             allChoosenExercises.forEach { exercise in
                 choosenExercises.append(exercise)
@@ -106,7 +105,7 @@ class RealmManager: ObservableObject {
 
         do {
             try localRealm.write {
-                let newChoosenExercise = RealmChoosenExercise(value: ["icon" : icon, "title": title, "note": note, "date": date, "sets": sets])
+                let newChoosenExercise = ChoosenExercise(value: ["icon" : icon, "title": title, "note": note, "date": date, "sets": sets])
                 localRealm.add(newChoosenExercise)
                 print(newChoosenExercise)
                 }
@@ -119,7 +118,7 @@ class RealmManager: ObservableObject {
     func updateChoosenExercise(id: ObjectId, sets: [RealmSet]) {
         if let localRealm = localRealm {
             do {
-                let exerciseToUpdate = localRealm.objects(RealmChoosenExercise.self).filter(NSPredicate(format: "id == %@", id))
+                let exerciseToUpdate = localRealm.objects(ChoosenExercise.self).filter(NSPredicate(format: "id == %@", id))
                 guard !exerciseToUpdate.isEmpty else {return}
                 
                 try localRealm.write {
@@ -137,7 +136,7 @@ class RealmManager: ObservableObject {
     func deleteChoosenExercise(id: ObjectId) {
         if let localRealm = localRealm {
             do {
-                let choosenExerciseToDelete = localRealm.objects(RealmChoosenExercise.self).filter(NSPredicate(format: "id == %@", id))
+                let choosenExerciseToDelete = localRealm.objects(ChoosenExercise.self).filter(NSPredicate(format: "id == %@", id))
                 guard !choosenExerciseToDelete.isEmpty else {return}
                 
                 try localRealm.write {
@@ -161,10 +160,10 @@ class RealmManager: ObservableObject {
     }
     
     
-    func addSet(id: ObjectId, choosenExercise: RealmChoosenExercise) {
+    func addSet(id: ObjectId, choosenExercise: ChoosenExercise) {
         if let localRealm = localRealm {
             do {
-                let choosenExerciseToUpdate = localRealm.objects(RealmChoosenExercise.self).filter(NSPredicate(format: "id == %@", id))
+                let choosenExerciseToUpdate = localRealm.objects(ChoosenExercise.self).filter(NSPredicate(format: "id == %@", id))
                 guard !choosenExerciseToUpdate.isEmpty else {return}
                 
                 try localRealm.write {
@@ -177,10 +176,10 @@ class RealmManager: ObservableObject {
         }
     }
     
-    func deleteSet(id: ObjectId, choosenExercise: RealmChoosenExercise) {
+    func deleteSet(id: ObjectId, choosenExercise: ChoosenExercise) {
         if let localRealm = localRealm {
             do {
-                let choosenExerciseToUpdate = localRealm.objects(RealmChoosenExercise.self).filter(NSPredicate(format: "id == %@", id))
+                let choosenExerciseToUpdate = localRealm.objects(ChoosenExercise.self).filter(NSPredicate(format: "id == %@", id))
                 guard !choosenExerciseToUpdate.isEmpty else {return}
                 
                 try localRealm.write {

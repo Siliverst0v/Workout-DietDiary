@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PreviousExercisesView: View {
-    @State var previousExercises: [RealmChoosenExercise]
+    @State var previousExercises: [ChoosenExercise]
     @Environment(\.dismiss) var dismiss
     
     var body: some View {

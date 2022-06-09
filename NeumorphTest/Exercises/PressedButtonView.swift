@@ -15,9 +15,9 @@ struct PressedButtonView: View {
     @Binding var pressed: Bool    
     @Binding var exerciseAdded: Bool
     @Binding var sets: [Set]
-    @Binding var realmChoosenExerises: [RealmChoosenExercise]
+    @Binding var realmChoosenExerises: [ChoosenExercise]
     @State private var showingSheet = false
-    @State var previousExercises: [RealmChoosenExercise] = []
+    @State var previousExercises: [ChoosenExercise] = []
     @Binding var date: Date
     
     @Binding var image: String
@@ -230,7 +230,7 @@ extension PressedButtonView {
     private func addExercise() {
         exerciseAdded.toggle()
         
-        let choosenExerciseRealm = RealmChoosenExercise(icon: image, title: title, note: note, date: date)
+        let choosenExerciseRealm = ChoosenExercise(icon: image, title: title, note: note, date: date)
         sets.forEach { sett in
             choosenExerciseRealm.sets.append(RealmSet(id: sett.id, repeats: sett.repeats, weight: sett.weight))
         }

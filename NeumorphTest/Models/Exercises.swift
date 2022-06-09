@@ -12,8 +12,8 @@ class Exercises: ObservableObject {
     
     static let shared = Exercises()
     
-    func getMocExercise() -> RealmChoosenExercise {
-        let exercise = RealmChoosenExercise(icon: "chest", title: "Жим гантелей на наклонной скамье с супинацией (разворотом)", note: "...", date: Date())
+    func getMocExercise() -> ChoosenExercise {
+        let exercise = ChoosenExercise(icon: "chest", title: "Жим гантелей на наклонной скамье с супинацией (разворотом)", note: "...", date: Date())
         let sets = [RealmSet(id: 1, repeats: "", weight: ""),
                     RealmSet(id: 2, repeats: "", weight: ""),
                     RealmSet(id: 3, repeats: "", weight: "")

@@ -12,13 +12,13 @@ struct ChoosenExerciseButton: View {
     @EnvironmentObject var realmManager: RealmManager
     
     @State private var notTapped = true
-    @Binding var choosenExercise: RealmChoosenExercise
+    @Binding var choosenExercise: ChoosenExercise
     var action: () -> Void
-    @StateObject var testSets = TestSets()
+    @StateObject var testSets = MocSets()
     @State private var showingSheet = false
     @State private var showingNote = false
     @State private var showingAlert = false
-    @State var previousExercises: [RealmChoosenExercise] = []
+    @State var previousExercises: [ChoosenExercise] = []
     @Binding var deleteMode: Bool
     
     @State var backgroundHeight: CGFloat = 263
@@ -310,7 +310,7 @@ extension ChoosenExerciseButton {
     private func fetchSets() {
         testSets.sets = []
         choosenExercise.sets.forEach { sett in
-            let newTestSet = TestSet(id: sett.id,
+            let newTestSet = MocSet(id: sett.id,
                                      repeats: sett.repeats,
                                      weight: sett.weight)
                 testSets.sets.append(newTestSet)
@@ -318,7 +318,7 @@ extension ChoosenExerciseButton {
     }
     
     private func addSet() {
-        let newSet = TestSet(
+        let newSet = MocSet(
             id: choosenExercise.sets.count + 1,
                     repeats: "",
                     weight: "")

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DetailWorkoutView: View {
     @EnvironmentObject var realmManager: RealmManager
-    @Binding var choosenExercises: [RealmChoosenExercise]
+    @Binding var choosenExercises: [ChoosenExercise]
     @State private var icon: String = ""
     @State var deleteMode = false
     
