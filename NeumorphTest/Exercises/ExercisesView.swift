@@ -30,7 +30,6 @@ struct ExercisesView: View {
                         .foregroundColor(.customRed)
                         .disabled(true)
                         .padding()
-                    AddCustomExerciseButton(icon: exerciseGroup.icon)
 
                     ForEach(exerciseGroup.exercises, id: \.self) {exercise in
                         ExerciseButton(

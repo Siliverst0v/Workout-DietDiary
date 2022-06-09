@@ -30,6 +30,7 @@ struct DetailWorkoutView: View {
                                 deleteMode.toggle()
                             } label: {
                                 Image(systemName: "trash")
+                                    .foregroundColor(.customRed)
                         }
                     }
                 }
