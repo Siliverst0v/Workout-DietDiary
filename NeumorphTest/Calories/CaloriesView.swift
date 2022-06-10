@@ -42,6 +42,7 @@ struct CaloriesView: View {
                     }
                     .onDelete(perform: deleteFood)
                 }
+                .foregroundColor(.customBlue)
                 .listStyle(.plain)
             }
             .navigationTitle("Дневник калорий")
@@ -52,9 +53,6 @@ struct CaloriesView: View {
                     } label: {
                         Label("Добавить прием пищи", systemImage: "plus.circle")
                     }
-                }
-                ToolbarItem(placement: .navigationBarLeading) {
-                    EditButton()
                 }
             }
             .sheet(isPresented: $showingAddView) {
