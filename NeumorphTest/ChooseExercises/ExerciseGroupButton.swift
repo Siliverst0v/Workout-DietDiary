@@ -42,7 +42,7 @@ extension ExerciseGroupButton {
     }
 }
 
-struct test_Previews: PreviewProvider {
+struct ExerciseGroupButton_Previews: PreviewProvider {
     static var previews: some View {
         ExerciseGroupButton(
             exercises: .constant([]),

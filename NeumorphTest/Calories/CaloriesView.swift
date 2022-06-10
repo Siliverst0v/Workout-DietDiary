@@ -85,5 +85,6 @@ extension CaloriesView {
 struct CaloriesView_Previews: PreviewProvider {
     static var previews: some View {
         CaloriesView()
+            .environmentObject(RealmManager())
     }
 }

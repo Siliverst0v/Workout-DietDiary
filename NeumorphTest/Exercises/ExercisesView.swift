@@ -70,7 +70,7 @@ extension ExercisesView {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct ExercisesView_Previews: PreviewProvider {
     static var previews: some View {
         ExercisesView(
                 exercises: .constant(ExerciseGroup.getExercises()),

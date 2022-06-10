@@ -28,6 +28,7 @@
 		A4CECF172853E3C6007D0449 /* CaloriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CECF162853E3C6007D0449 /* CaloriesModel.swift */; };
 		A4CECF1A2853E8B3007D0449 /* TimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CECF192853E8B3007D0449 /* TimeFormatter.swift */; };
 		A4CECF1C2853F1DD007D0449 /* EditFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CECF1B2853F1DD007D0449 /* EditFoodView.swift */; };
+		A4CECF1E2853FE09007D0449 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CECF1D2853FE09007D0449 /* ContentView.swift */; };
 		A4DE42D02816E5A700F4D4DC /* ChooseExercisesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DE42CF2816E5A700F4D4DC /* ChooseExercisesView.swift */; };
 		A4E9374B27FE3BA0004A3650 /* NeumorphTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E9374A27FE3BA0004A3650 /* NeumorphTestApp.swift */; };
 		A4E9374D27FE3BA0004A3650 /* ExercisesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E9374C27FE3BA0004A3650 /* ExercisesView.swift */; };
@@ -58,6 +59,7 @@
 		A4CECF162853E3C6007D0449 /* CaloriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesModel.swift; sourceTree = "<group>"; };
 		A4CECF192853E8B3007D0449 /* TimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatter.swift; sourceTree = "<group>"; };
 		A4CECF1B2853F1DD007D0449 /* EditFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFoodView.swift; sourceTree = "<group>"; };
+		A4CECF1D2853FE09007D0449 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A4DE42CF2816E5A700F4D4DC /* ChooseExercisesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseExercisesView.swift; sourceTree = "<group>"; };
 		A4E9374727FE3BA0004A3650 /* NeumorphTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeumorphTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4E9374A27FE3BA0004A3650 /* NeumorphTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphTestApp.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				A4E9374A27FE3BA0004A3650 /* NeumorphTestApp.swift */,
+				A4CECF1D2853FE09007D0449 /* ContentView.swift */,
 				A4CECF0E2853E046007D0449 /* Calories */,
 				A42167C028208FC700DF1439 /* Workouts */,
 				A4BC7617281DE58300D55496 /* ChooseExercises */,
@@ -336,6 +339,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4CECF122853E077007D0449 /* AddFoodView.swift in Sources */,
+				A4CECF1E2853FE09007D0449 /* ContentView.swift in Sources */,
 				A498B3C92816066E00038BE9 /* CustomButtonStyles.swift in Sources */,
 				A4CECF1A2853E8B3007D0449 /* TimeFormatter.swift in Sources */,
 				A43908B42832BD9800AB29F0 /* Workout.swift in Sources */,

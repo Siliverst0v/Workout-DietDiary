@@ -48,5 +48,6 @@ struct EditFoodView: View {
 struct EditFoodView_Previews: PreviewProvider {
     static var previews: some View {
         EditFoodView( food: Food())
+            .environmentObject(RealmManager())
     }
 }
