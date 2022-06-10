@@ -11,8 +11,10 @@ import SwiftUI
 struct NeumorphTestApp: App {
     var body: some Scene {
         WindowGroup {
-            WorkoutsView()
+            CaloriesView()
                 .environmentObject(RealmManager())
+//            WorkoutsView()
+//                .environmentObject(RealmManager())
         }
     }
 }

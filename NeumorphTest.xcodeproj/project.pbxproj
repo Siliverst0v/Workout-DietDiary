@@ -23,6 +23,11 @@
 		A498B3C42816010A00038BE9 /* NotPressedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A498B3C32816010A00038BE9 /* NotPressedButtonView.swift */; };
 		A498B3C7281603C200038BE9 /* PressedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A498B3C6281603C200038BE9 /* PressedButtonView.swift */; };
 		A498B3C92816066E00038BE9 /* CustomButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A498B3C82816066E00038BE9 /* CustomButtonStyles.swift */; };
+		A4CECF122853E077007D0449 /* AddFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CECF112853E077007D0449 /* AddFoodView.swift */; };
+		A4CECF142853E2A4007D0449 /* CaloriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CECF132853E2A4007D0449 /* CaloriesView.swift */; };
+		A4CECF172853E3C6007D0449 /* CaloriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CECF162853E3C6007D0449 /* CaloriesModel.swift */; };
+		A4CECF1A2853E8B3007D0449 /* TimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CECF192853E8B3007D0449 /* TimeFormatter.swift */; };
+		A4CECF1C2853F1DD007D0449 /* EditFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CECF1B2853F1DD007D0449 /* EditFoodView.swift */; };
 		A4DE42D02816E5A700F4D4DC /* ChooseExercisesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DE42CF2816E5A700F4D4DC /* ChooseExercisesView.swift */; };
 		A4E9374B27FE3BA0004A3650 /* NeumorphTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E9374A27FE3BA0004A3650 /* NeumorphTestApp.swift */; };
 		A4E9374D27FE3BA0004A3650 /* ExercisesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E9374C27FE3BA0004A3650 /* ExercisesView.swift */; };
@@ -48,6 +53,11 @@
 		A498B3C32816010A00038BE9 /* NotPressedButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotPressedButtonView.swift; sourceTree = "<group>"; };
 		A498B3C6281603C200038BE9 /* PressedButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressedButtonView.swift; sourceTree = "<group>"; };
 		A498B3C82816066E00038BE9 /* CustomButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonStyles.swift; sourceTree = "<group>"; };
+		A4CECF112853E077007D0449 /* AddFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodView.swift; sourceTree = "<group>"; };
+		A4CECF132853E2A4007D0449 /* CaloriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesView.swift; sourceTree = "<group>"; };
+		A4CECF162853E3C6007D0449 /* CaloriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesModel.swift; sourceTree = "<group>"; };
+		A4CECF192853E8B3007D0449 /* TimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatter.swift; sourceTree = "<group>"; };
+		A4CECF1B2853F1DD007D0449 /* EditFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFoodView.swift; sourceTree = "<group>"; };
 		A4DE42CF2816E5A700F4D4DC /* ChooseExercisesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseExercisesView.swift; sourceTree = "<group>"; };
 		A4E9374727FE3BA0004A3650 /* NeumorphTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeumorphTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4E9374A27FE3BA0004A3650 /* NeumorphTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphTestApp.swift; sourceTree = "<group>"; };
@@ -132,6 +142,34 @@
 			path = ChooseExercises;
 			sourceTree = "<group>";
 		};
+		A4CECF0E2853E046007D0449 /* Calories */ = {
+			isa = PBXGroup;
+			children = (
+				A4CECF182853E898007D0449 /* Helpers */,
+				A4CECF112853E077007D0449 /* AddFoodView.swift */,
+				A4CECF132853E2A4007D0449 /* CaloriesView.swift */,
+				A4CECF1B2853F1DD007D0449 /* EditFoodView.swift */,
+				A4CECF152853E3AB007D0449 /* Model */,
+			);
+			path = Calories;
+			sourceTree = "<group>";
+		};
+		A4CECF152853E3AB007D0449 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A4CECF162853E3C6007D0449 /* CaloriesModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A4CECF182853E898007D0449 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A4CECF192853E8B3007D0449 /* TimeFormatter.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		A4E9373E27FE3BA0004A3650 = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				A4E9374A27FE3BA0004A3650 /* NeumorphTestApp.swift */,
+				A4CECF0E2853E046007D0449 /* Calories */,
 				A42167C028208FC700DF1439 /* Workouts */,
 				A4BC7617281DE58300D55496 /* ChooseExercises */,
 				A498B3C52816031F00038BE9 /* Exercises */,
@@ -296,16 +335,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4CECF122853E077007D0449 /* AddFoodView.swift in Sources */,
 				A498B3C92816066E00038BE9 /* CustomButtonStyles.swift in Sources */,
+				A4CECF1A2853E8B3007D0449 /* TimeFormatter.swift in Sources */,
 				A43908B42832BD9800AB29F0 /* Workout.swift in Sources */,
 				A498B3C42816010A00038BE9 /* NotPressedButtonView.swift in Sources */,
 				A487B87F2825D85700F9E852 /* BodyView.swift in Sources */,
 				A42167BF282089F900DF1439 /* WorkoutsView.swift in Sources */,
+				A4CECF142853E2A4007D0449 /* CaloriesView.swift in Sources */,
+				A4CECF172853E3C6007D0449 /* CaloriesModel.swift in Sources */,
 				A417B53D284651EC00B98881 /* PreviousExercisesButton.swift in Sources */,
 				A498B3C22815FB1700038BE9 /* Exercises.swift in Sources */,
 				A43908B22832BB1D00AB29F0 /* RealmManager.swift in Sources */,
 				A458AA8D28173C3E00618405 /* ExerciseGroupButton.swift in Sources */,
 				A417B53F284658A100B98881 /* PreviousExercisesView.swift in Sources */,
+				A4CECF1C2853F1DD007D0449 /* EditFoodView.swift in Sources */,
 				A498B3C02815F75D00038BE9 /* ExerciseGroup.swift in Sources */,
 				A404FFA2281F166300525B9D /* WorkoutButton.swift in Sources */,
 				A4F2F657280CAE7B00061441 /* ExerciseButton.swift in Sources */,

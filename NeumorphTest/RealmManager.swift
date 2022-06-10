@@ -13,6 +13,7 @@ class RealmManager: ObservableObject {
     @Published private(set) var workouts = RealmSwift.List<Workout>()
     @Published private(set) var choosenExercises = RealmSwift.List<ChoosenExercise>()
     @Published private(set) var sets = RealmSwift.List<RealmSet>()
+    @Published private(set) var foods = RealmSwift.List<Food>()
     
     init() {
         openRealm()
@@ -33,6 +34,18 @@ class RealmManager: ObservableObject {
         }
     }
     
+    //MARK: - Workout
+    
+    func getWorkouts() {
+        if let localRealm = localRealm {
+            let allWorkouts = localRealm.objects(Workout.self).sorted(byKeyPath: "date")
+            workouts.removeAll()
+            allWorkouts.forEach { workout in
+                workouts.append(workout)
+            }
+        }
+    }
+    
     func addWorkout(date: Date, exerciseGroups: List<String>, choosenExercises: List<ChoosenExercise>) {
         if let localRealm = localRealm {
             
@@ -47,15 +60,6 @@ class RealmManager: ObservableObject {
         }
     }
     
-    func getWorkouts() {
-        if let localRealm = localRealm {
-            let allWorkouts = localRealm.objects(Workout.self).sorted(byKeyPath: "date")
-            workouts.removeAll()
-            allWorkouts.forEach { workout in
-                workouts.append(workout)
-            }
-        }
-    }
     
     func updateWorkout(id: ObjectId, date: Date, exerciseGroups: List<String>) {
         if let localRealm = localRealm {
@@ -90,6 +94,7 @@ class RealmManager: ObservableObject {
         }
     }
     
+    //MARK: - ChoosenExercise
     func getChoosenExercises() {
         if let localRealm = localRealm {
             let allChoosenExercises = localRealm.objects(ChoosenExercise.self).sorted(byKeyPath: "icon")
@@ -149,6 +154,7 @@ class RealmManager: ObservableObject {
         }
     }
     
+    //MARK: - Sets
     func getSets() {
         if let localRealm = localRealm {
             let allSets = localRealm.objects(RealmSet.self).sorted(byKeyPath: "id")
@@ -204,4 +210,66 @@ class RealmManager: ObservableObject {
             }
         }
     }
+    
+    //MARK: - Food
+    
+    func getFoods() {
+        if let localRealm = localRealm {
+            let allFood = localRealm.objects(Food.self).sorted(byKeyPath: "date")
+            foods.removeAll()
+            allFood.forEach { food in
+                foods.append(food)
+            }
+        }
+    }
+    
+    func addFood(name: String, calories: Double) {
+        if let localRealm = localRealm {
+            
+        do {
+            try localRealm.write {
+                let newFood = Food(value: ["name" : name, "calories": calories ])
+                localRealm.add(newFood)
+                }
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    func deleteFood(id: ObjectId) {
+        if let localRealm = localRealm {
+            do {
+                let foodToDelete = localRealm.objects(Food.self).filter(NSPredicate(format: "id == %@", id))
+                guard !foodToDelete.isEmpty else {return}
+                
+                try localRealm.write {
+                    localRealm.delete(foodToDelete)
+                    getFoods()
+                }
+            } catch  {
+                print(error)
+            }
+        }
+    }
+    
+    func editFood(id: ObjectId, name: String, calories: Double) {
+        if let localRealm = localRealm {
+            do {
+                let foodToUpdate = localRealm.objects(Food.self).filter(NSPredicate(format: "id == %@", id))
+                guard !foodToUpdate.isEmpty else {return}
+                
+                try localRealm.write {
+                    foodToUpdate[0].name = name
+                    foodToUpdate[0].calories = calories
+                    getFoods()
+                }
+            } catch  {
+                print(error)
+            }
+        }
+    }
 }
+
+
+
