@@ -12,7 +12,6 @@ struct EditFoodView: View {
     
     @EnvironmentObject var realmManager: RealmManager
     @Environment(\.dismiss) var dismiss
-//    @Binding var food: Food
     var food: Results<Food>.Element
     
     @State private var name = ""

@@ -37,7 +37,7 @@ struct ChooseExercisesView: View {
                     .datePickerStyle(.compact)
                     .foregroundColor(.customRed)
                     .font(.headline)
-                    .padding(.horizontal)
+                    .padding()
                 Text("Выбери группу упражнений")
                     .foregroundColor(.customRed)
                     .fontWeight(.semibold)
@@ -153,6 +153,7 @@ struct ChooseExercisesView: View {
                          shouldersIsVisible: $shouldersIsVisible,
                          cardioIsVisible: $cardioIsVisible)
         }
+            .navigationBarTitleDisplayMode(.inline)
             .background(
                 NavigationLink(isActive: $chooseViewIsActive, destination: {
                     ExercisesView(

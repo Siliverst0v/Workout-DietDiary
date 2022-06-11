@@ -51,8 +51,7 @@ struct BodyView: View {
                 .opacity(cardioIsVisible ? 1 : 0)
         }
         .frame(width: UIScreen.main.bounds.size.width - 40, height: 314, alignment: .center)
-        .padding(50)
-
+        .padding(30)
     }
 }
 
