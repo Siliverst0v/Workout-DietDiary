@@ -23,7 +23,6 @@ struct WorkoutsView: View {
     var body: some View {
         NavigationView {
                 List {
-                    LazyVStack {
                         ForEach(workouts, id: \.id) {workout in
                         WorkoutButton(
                             workout: workout,
@@ -35,7 +34,6 @@ struct WorkoutsView: View {
                     .simultaneousGesture(TapGesture().onEnded({ _ in
                         self.selection = "DetailWorkoutView"
                 }))
-                    }
                 }
                 .navigationTitle("Дневник тренировок")
                 .listStyle(.plain)

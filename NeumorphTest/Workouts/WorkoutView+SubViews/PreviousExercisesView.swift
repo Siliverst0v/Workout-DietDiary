@@ -72,6 +72,7 @@ struct PreviousExercisesView: View {
                                 )
                         )
                 }
+                Spacer()
             }
         }
     }
