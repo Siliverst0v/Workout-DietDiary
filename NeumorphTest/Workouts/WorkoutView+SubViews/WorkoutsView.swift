@@ -23,17 +23,19 @@ struct WorkoutsView: View {
     var body: some View {
         NavigationView {
                 List {
-                    ForEach(workouts, id: \.id) {workout in
-                    WorkoutButton(
-                        workout: workout,
-                        choosenExercises: $choosenExercises)
-                    .environmentObject(realmManager)
-                    .listRowSeparator(.hidden)
-                }
-                .onDelete(perform: delete)
-                .simultaneousGesture(TapGesture().onEnded({ _ in
-                    self.selection = "DetailWorkoutView"
+                    LazyVStack {
+                        ForEach(workouts, id: \.id) {workout in
+                        WorkoutButton(
+                            workout: workout,
+                            choosenExercises: $choosenExercises)
+                        .environmentObject(realmManager)
+                        .listRowSeparator(.hidden)
+                    }
+                    .onDelete(perform: delete)
+                    .simultaneousGesture(TapGesture().onEnded({ _ in
+                        self.selection = "DetailWorkoutView"
                 }))
+                    }
                 }
                 .navigationTitle("Дневник тренировок")
                 .listStyle(.plain)
