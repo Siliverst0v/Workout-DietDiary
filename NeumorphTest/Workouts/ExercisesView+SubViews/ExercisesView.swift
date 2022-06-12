@@ -17,7 +17,7 @@ struct ExercisesView: View {
     @State var date: Date
     
     @Binding var exercises: [ExerciseGroup]
-    @Binding var exerciseGroupsNames: [String]
+//    @Binding var exerciseGroupsNames: [String]
     @Binding var workoutsIsActive: Bool
 
         
@@ -46,7 +46,7 @@ struct ExercisesView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
                     realmWorkout.exerciseGroups.append(
-                        objectsIn: exerciseGroupsNames)
+                        objectsIn: exercises.map {$0.exerciseGroupName})
                     
                     realmWorkout.choosenExercises.append(
                         objectsIn: realmChoosenExerises)
@@ -67,23 +67,23 @@ struct ExercisesView: View {
 }
 
 extension ExercisesView {
-    func addWorkout() {
-        realmWorkout.exerciseGroups.append(objectsIn: exerciseGroupsNames)
-        realmWorkout.choosenExercises.append(objectsIn: realmChoosenExerises)
-        realmManager.addWorkout(
-            date: date,
-            exerciseGroups: realmWorkout.exerciseGroups,
-            choosenExercises: realmWorkout.choosenExercises)
-        
-            workoutsIsActive = false
-    }
+//    func addWorkout() {
+//        realmWorkout.exerciseGroups.append(objectsIn: exerciseGroupsNames)
+//        realmWorkout.choosenExercises.append(objectsIn: realmChoosenExerises)
+//        realmManager.addWorkout(
+//            date: date,
+//            exerciseGroups: realmWorkout.exerciseGroups,
+//            choosenExercises: realmWorkout.choosenExercises)
+//
+//            workoutsIsActive = false
+//    }
 }
 
 struct ExercisesView_Previews: PreviewProvider {
     static var previews: some View {
         ExercisesView(
             date: Date(), exercises: .constant(ExerciseGroup.getMocExercises()),
-            exerciseGroupsNames: .constant([]),
+//            exerciseGroupsNames: .constant([]),
                 workoutsIsActive: .constant(false))
         .environmentObject(RealmManager())
     }

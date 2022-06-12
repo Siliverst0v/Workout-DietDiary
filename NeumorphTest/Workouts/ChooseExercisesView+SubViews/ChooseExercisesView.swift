@@ -20,8 +20,7 @@ struct ChooseExercisesView: View {
     @State private var shouldersIsVisible = false
     @State private var cardioIsVisible = false
     
-    @State var exercises: [ExerciseGroup] = []
-    @State var exerciseGroupNames: [String] = []
+    @State var exercisesToDisplay: [ExerciseGroup] = []
     @State var date: Date = Date()
     @State var chooseViewIsActive = false
     @State var muscleGroups = Exercises.shared
@@ -45,104 +44,86 @@ struct ChooseExercisesView: View {
                     .padding()
                 LazyVGrid(columns: columns, spacing: 30) {
                     ExerciseGroupButton(
-                        muscleGroups: $exercises,
+                        exercisesToDisplay: $exercisesToDisplay,
                         isPressed: $chestIsVisible,
-                        exerciseGroups: $exerciseGroupNames,
                         date: $date,
                         muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Грудь",
                             icon: "chest",
-                            exercises: muscleGroups.chest),
-                        title: "Грудь")
+                            exercises: muscleGroups.chest))
                     ExerciseGroupButton(
-                        muscleGroups: $exercises,
+                        exercisesToDisplay: $exercisesToDisplay,
                         isPressed: $shouldersIsVisible,
-                        exerciseGroups: $exerciseGroupNames,
                         date: $date,
                         muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Плечи",
                             icon: "shoulders",
-                            exercises: muscleGroups.shoulders),
-                        title: "Плечи")
+                            exercises: muscleGroups.shoulders))
                     ExerciseGroupButton(
-                        muscleGroups: $exercises,
+                        exercisesToDisplay: $exercisesToDisplay,
                         isPressed: $backIsVisible,
-                        exerciseGroups: $exerciseGroupNames,
                         date: $date,
                         muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Спина",
                             icon: "back",
-                            exercises: muscleGroups.back),
-                        title: "Спина")
+                            exercises: muscleGroups.back))
                     ExerciseGroupButton(
-                        muscleGroups: $exercises,
+                        exercisesToDisplay: $exercisesToDisplay,
                         isPressed: $bicepsIsVisible,
-                        exerciseGroups: $exerciseGroupNames,
                         date: $date,
                         muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Бицепс",
                             icon: "biceps",
-                            exercises: muscleGroups.biceps),
-                        title: "Бицепс")
+                            exercises: muscleGroups.biceps))
                     ExerciseGroupButton(
-                        muscleGroups: $exercises,
+                        exercisesToDisplay: $exercisesToDisplay,
                         isPressed: $tricepsIsVisible,
-                        exerciseGroups: $exerciseGroupNames,
                         date: $date,
                         muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Трицепс",
                             icon: "triceps",
-                            exercises: muscleGroups.triceps),
-                        title: "Трицепс")
+                            exercises: muscleGroups.triceps))
                     ExerciseGroupButton(
-                        muscleGroups: $exercises,
+                        exercisesToDisplay: $exercisesToDisplay,
                         isPressed: $legsIsVisible,
-                        exerciseGroups: $exerciseGroupNames,
                         date: $date,
                         muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Ноги",
                             icon: "legs",
-                            exercises: muscleGroups.legs),
-                        title: "Ноги")
+                            exercises: muscleGroups.legs))
                     ExerciseGroupButton(
-                        muscleGroups: $exercises,
+                        exercisesToDisplay: $exercisesToDisplay,
                         isPressed: $absIsVisible,
-                        exerciseGroups: $exerciseGroupNames,
                         date: $date,
                         muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Пресс",
                             icon: "abs",
-                            exercises: muscleGroups.abs),
-                        title: "Пресс")
+                            exercises: muscleGroups.abs))
                     ExerciseGroupButton(
-                        muscleGroups: $exercises,
+                        exercisesToDisplay: $exercisesToDisplay,
                         isPressed: $forearmsIsVisible,
-                        exerciseGroups: $exerciseGroupNames,
                         date: $date,
                         muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Предплечья",
                             icon: "forearms",
-                            exercises: muscleGroups.forearms),
-                        title: "Предплечья")
+                            exercises: muscleGroups.forearms))
                     ExerciseGroupButton(
-                        muscleGroups: $exercises,
+                        exercisesToDisplay: $exercisesToDisplay,
                         isPressed: $cardioIsVisible,
-                        exerciseGroups: $exerciseGroupNames,
                         date: $date,
                         muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Кардио",
                             icon: "cardio",
-                            exercises: muscleGroups.cardio),
-                        title: "Кардио")
+                            exercises: muscleGroups.cardio))
                 }
                 BodyView(backIsVisible: $backIsVisible,
                          chestIsVisible: $chestIsVisible,
@@ -158,8 +139,8 @@ struct ChooseExercisesView: View {
             .background(
                 NavigationLink(isActive: $chooseViewIsActive, destination: {
                     ExercisesView(
-                        date: date, exercises: $exercises,
-                        exerciseGroupsNames: $exerciseGroupNames,
+                        date: date,
+                        exercises: $exercisesToDisplay,
                         workoutsIsActive: $workoutsIsActive)
                     .environmentObject(realmManager)
                 }, label: {
@@ -173,8 +154,8 @@ struct ChooseExercisesView: View {
                 } label: {
                     Text("Далее")
                 }
-                .opacity(exercises.isEmpty ? 0 : 1)
-                .disabled(exercises.isEmpty)
+                .opacity(exercisesToDisplay.isEmpty ? 0 : 1)
+                .disabled(exercisesToDisplay.isEmpty)
             }
     }
 }
@@ -182,8 +163,7 @@ struct ChooseExercisesView: View {
 struct ChooseExercisesGroupView_Previews: PreviewProvider {
     static var previews: some View {
         ChooseExercisesView(
-            exercises: [],
-            exerciseGroupNames: [],
+            exercisesToDisplay: [],
             date: Date(),
             workoutsIsActive: .constant(false))
         .environmentObject(RealmManager())
