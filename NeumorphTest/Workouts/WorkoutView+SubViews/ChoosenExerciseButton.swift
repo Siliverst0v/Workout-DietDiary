@@ -79,10 +79,10 @@ struct ChoosenExerciseButton: View {
                             .fontWeight(.semibold)
                             .foregroundColor(.customRed)
                             .padding(.leading, 8)
-                        Text("Вес(Кг)")
+                        Text("Вес/Время")
                             .fontWeight(.semibold)
                             .foregroundColor(.customRed)
-                            .padding(.leading, 15)
+                            .padding(.leading, 5)
                     }
                     .font(.system(size: 14))
                     .padding(.top, 60)
@@ -319,14 +319,6 @@ extension ChoosenExerciseButton {
     }
 }
 
-struct ChoosenExerciseButton_Previews: PreviewProvider {
-    static var previews: some View {
-        ChoosenExerciseButton(choosenExercise: .constant(Exercises.shared.getMocExercise()),
-                              deleteMode: .constant(false), action: {})
-        .environmentObject(RealmManager())
-    }
-}
-
 struct NotPressedChoosenExerciseButton: View {
     @Binding var buttonIsNotPressed: Bool
     @Binding var deleteMode: Bool
@@ -379,3 +371,14 @@ struct NotPressedChoosenExerciseButton: View {
         }
     }
 }
+
+struct ChoosenExerciseButton_Previews: PreviewProvider {
+    static var previews: some View {
+        ChoosenExerciseButton(
+            choosenExercise: .constant(Exercises.shared.getMocExercise()),
+            deleteMode: .constant(false),
+            action: {})
+        .environmentObject(RealmManager())
+    }
+}
+

@@ -82,10 +82,10 @@ struct PressedButtonView: View {
                         .fontWeight(.semibold)
                         .foregroundColor(.customRed)
                         .padding(.leading, 8)
-                    Text("Вес(Кг)")
+                    Text("Вес/Время")
                         .fontWeight(.semibold)
                         .foregroundColor(.customRed)
-                        .padding(.leading, 15)
+                        .padding(.leading, 5)
                 }
                 .font(.system(size: 14))
                 .padding(.top, 60)
