@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct ExerciseGroupButton: View {
-    @Binding var exercises: [ExerciseGroup]
+    @Binding var muscleGroups: [ExerciseGroup]
     @Binding var isPressed: Bool
     @Binding var exerciseGroups: [String]
     @Binding var date: Date
 
-    let exercise: ExerciseGroup
+    let muscleGroup: ExerciseGroup
     let title: String
     
     var body: some View {
@@ -33,10 +33,10 @@ extension ExerciseGroupButton {
         
         isPressed.toggle()
         if isPressed {
-            exercises.append(exercise)
+            muscleGroups.append(muscleGroup)
             exerciseGroups.append(title)
         } else {
-            exercises.removeAll(where: {$0.exercises == exercise.exercises})
+            muscleGroups.removeAll(where: {$0.exercises == muscleGroup.exercises})
             exerciseGroups.removeAll(where: {$0 == title})
         }
     }
@@ -45,11 +45,11 @@ extension ExerciseGroupButton {
 struct ExerciseGroupButton_Previews: PreviewProvider {
     static var previews: some View {
         ExerciseGroupButton(
-            exercises: .constant([]),
+            muscleGroups: .constant([]),
             isPressed: .constant(false),
             exerciseGroups: .constant([]),
             date: .constant(Date()),
-            exercise: ExerciseGroup(
+            muscleGroup: ExerciseGroup(
                 date: Date(),
                 exerciseGroupName: "",
                 icon: "",

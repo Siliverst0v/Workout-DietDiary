@@ -45,99 +45,99 @@ struct ChooseExercisesView: View {
                     .padding()
                 LazyVGrid(columns: columns, spacing: 30) {
                     ExerciseGroupButton(
-                        exercises: $exercises,
+                        muscleGroups: $exercises,
                         isPressed: $chestIsVisible,
                         exerciseGroups: $exerciseGroupNames,
                         date: $date,
-                        exercise: ExerciseGroup(
+                        muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Грудь",
                             icon: "chest",
                             exercises: muscleGroups.chest),
                         title: "Грудь")
                     ExerciseGroupButton(
-                        exercises: $exercises,
+                        muscleGroups: $exercises,
                         isPressed: $shouldersIsVisible,
                         exerciseGroups: $exerciseGroupNames,
                         date: $date,
-                        exercise: ExerciseGroup(
+                        muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Плечи",
                             icon: "shoulders",
                             exercises: muscleGroups.shoulders),
                         title: "Плечи")
                     ExerciseGroupButton(
-                        exercises: $exercises,
+                        muscleGroups: $exercises,
                         isPressed: $backIsVisible,
                         exerciseGroups: $exerciseGroupNames,
                         date: $date,
-                        exercise: ExerciseGroup(
+                        muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Спина",
                             icon: "back",
                             exercises: muscleGroups.back),
                         title: "Спина")
                     ExerciseGroupButton(
-                        exercises: $exercises,
+                        muscleGroups: $exercises,
                         isPressed: $bicepsIsVisible,
                         exerciseGroups: $exerciseGroupNames,
                         date: $date,
-                        exercise: ExerciseGroup(
+                        muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Бицепс",
                             icon: "biceps",
                             exercises: muscleGroups.biceps),
                         title: "Бицепс")
                     ExerciseGroupButton(
-                        exercises: $exercises,
+                        muscleGroups: $exercises,
                         isPressed: $tricepsIsVisible,
                         exerciseGroups: $exerciseGroupNames,
                         date: $date,
-                        exercise: ExerciseGroup(
+                        muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Трицепс",
                             icon: "triceps",
                             exercises: muscleGroups.triceps),
                         title: "Трицепс")
                     ExerciseGroupButton(
-                        exercises: $exercises,
+                        muscleGroups: $exercises,
                         isPressed: $legsIsVisible,
                         exerciseGroups: $exerciseGroupNames,
                         date: $date,
-                        exercise: ExerciseGroup(
+                        muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Ноги",
                             icon: "legs",
                             exercises: muscleGroups.legs),
                         title: "Ноги")
                     ExerciseGroupButton(
-                        exercises: $exercises,
+                        muscleGroups: $exercises,
                         isPressed: $absIsVisible,
                         exerciseGroups: $exerciseGroupNames,
                         date: $date,
-                        exercise: ExerciseGroup(
+                        muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Пресс",
                             icon: "abs",
                             exercises: muscleGroups.abs),
                         title: "Пресс")
                     ExerciseGroupButton(
-                        exercises: $exercises,
+                        muscleGroups: $exercises,
                         isPressed: $forearmsIsVisible,
                         exerciseGroups: $exerciseGroupNames,
                         date: $date,
-                        exercise: ExerciseGroup(
+                        muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Предплечья",
                             icon: "forearms",
                             exercises: muscleGroups.forearms),
                         title: "Предплечья")
                     ExerciseGroupButton(
-                        exercises: $exercises,
+                        muscleGroups: $exercises,
                         isPressed: $cardioIsVisible,
                         exerciseGroups: $exerciseGroupNames,
                         date: $date,
-                        exercise: ExerciseGroup(
+                        muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Кардио",
                             icon: "cardio",
