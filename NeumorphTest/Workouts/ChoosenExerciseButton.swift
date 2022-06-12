@@ -205,11 +205,11 @@ struct ChoosenExerciseButton: View {
                                 .disabled(choosenExercise.sets.count <= 1)
                                 .padding(.trailing, 20)
                                 Button(action: { saveSets() }) {
-                                    Image(systemName: "chevron.up")
+                                    Text("Сохранить")
                                     .frame(width: 140,
                                            height: 28,
                                            alignment: .center )
-                                    .font(.system(size: 20))
+                                    .font(.system(size: 17))
                                     .foregroundColor(.customRed)
                                     .background(
                                         RoundedRectangle(cornerRadius: 11)

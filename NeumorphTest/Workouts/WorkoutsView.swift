@@ -33,6 +33,7 @@ struct WorkoutsView: View {
                     self.selection = "DetailWorkoutView"
                 }))
                 }
+                .navigationTitle("Дневник тренировок")
                 .listStyle(.plain)
                 .onAppear(perform: fetchWorkouts)
                 .background(
@@ -57,7 +58,7 @@ struct WorkoutsView: View {
                             workoutsIsActive = true
                             self.selection = "ChooseExerciseView"
                         } label: {
-                            Image(systemName: "plus")
+                            Image(systemName: "plus.circle")
                     }
                 }
             }
