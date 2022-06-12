@@ -88,7 +88,7 @@ extension WorkoutsView {
         result.forEach { workout in
             workouts.append(workout)
         }
-        workouts.sort(by: {$0.date.compare($1.date) == .orderedAscending})
+        workouts.sort(by: {$0.date.compare($1.date) == .orderedDescending})
     }
 }
 
