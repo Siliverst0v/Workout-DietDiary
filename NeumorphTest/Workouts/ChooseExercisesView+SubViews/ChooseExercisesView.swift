@@ -46,84 +46,75 @@ struct ChooseExercisesView: View {
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
                         isPressed: $chestIsVisible,
-                        date: $date,
                         muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Грудь",
                             icon: "chest",
-                            exercises: muscleGroups.chest))
+                            exercisesToDisplay: muscleGroups.chest))
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
                         isPressed: $shouldersIsVisible,
-                        date: $date,
                         muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Плечи",
                             icon: "shoulders",
-                            exercises: muscleGroups.shoulders))
+                            exercisesToDisplay: muscleGroups.shoulders))
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
                         isPressed: $backIsVisible,
-                        date: $date,
                         muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Спина",
                             icon: "back",
-                            exercises: muscleGroups.back))
+                            exercisesToDisplay: muscleGroups.back))
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
                         isPressed: $bicepsIsVisible,
-                        date: $date,
                         muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Бицепс",
                             icon: "biceps",
-                            exercises: muscleGroups.biceps))
+                            exercisesToDisplay: muscleGroups.biceps))
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
                         isPressed: $tricepsIsVisible,
-                        date: $date,
                         muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Трицепс",
                             icon: "triceps",
-                            exercises: muscleGroups.triceps))
+                            exercisesToDisplay: muscleGroups.triceps))
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
                         isPressed: $legsIsVisible,
-                        date: $date,
                         muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Ноги",
                             icon: "legs",
-                            exercises: muscleGroups.legs))
+                            exercisesToDisplay: muscleGroups.legs))
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
                         isPressed: $absIsVisible,
-                        date: $date,
                         muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Пресс",
                             icon: "abs",
-                            exercises: muscleGroups.abs))
+                            exercisesToDisplay: muscleGroups.abs))
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
                         isPressed: $forearmsIsVisible,
-                        date: $date,
                         muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Предплечья",
                             icon: "forearms",
-                            exercises: muscleGroups.forearms))
+                            exercisesToDisplay: muscleGroups.forearms))
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
                         isPressed: $cardioIsVisible,
-                        date: $date,
                         muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Кардио",
                             icon: "cardio",
-                            exercises: muscleGroups.cardio))
+                            exercisesToDisplay: muscleGroups.cardio))
                 }
                 BodyView(backIsVisible: $backIsVisible,
                          chestIsVisible: $chestIsVisible,

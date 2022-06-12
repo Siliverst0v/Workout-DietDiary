@@ -12,7 +12,7 @@ struct ExerciseGroup: Identifiable, Equatable, Hashable {
     var date: Date
     var exerciseGroupName: String
     var icon: String
-    var exercises: [String]
+    var exercisesToDisplay: [String]
 }
 
 extension ExerciseGroup {
@@ -22,13 +22,13 @@ extension ExerciseGroup {
                 date: Date(),
                 exerciseGroupName: "Грудь",
                 icon: "chest",
-                exercises: Exercises.shared.chest
+                exercisesToDisplay: Exercises.shared.chest
             ),
             ExerciseGroup(
                 date: Date(),
                 exerciseGroupName: "Спина",
                 icon: "back",
-                exercises: Exercises.shared.back
+                exercisesToDisplay: Exercises.shared.back
             )
         ]
     }

@@ -17,7 +17,6 @@ struct ExercisesView: View {
     @State var date: Date
     
     @Binding var exercises: [ExerciseGroup]
-//    @Binding var exerciseGroupsNames: [String]
     @Binding var workoutsIsActive: Bool
 
         
@@ -32,7 +31,7 @@ struct ExercisesView: View {
                         .disabled(true)
                         .padding()
 
-                    ForEach(exerciseGroup.exercises, id: \.self) {exercise in
+                    ForEach(exerciseGroup.exercisesToDisplay, id: \.self) {exercise in
                         ExerciseButton(
                             title: exercise,
                             image: exerciseGroup.icon,
@@ -44,20 +43,7 @@ struct ExercisesView: View {
             }
             .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button {
-                    realmWorkout.exerciseGroups.append(
-                        objectsIn: exercises.map {$0.exerciseGroupName})
-                    
-                    realmWorkout.choosenExercises.append(
-                        objectsIn: realmChoosenExerises)
-                    
-                    realmManager.addWorkout(
-                        date: date,
-                        exerciseGroups: realmWorkout.exerciseGroups,
-                        choosenExercises: realmWorkout.choosenExercises)
-                    
-                            workoutsIsActive = false
-                    } label: {
+                Button { addWorkout() } label: {
                         Text("Готово")
                     }
 
@@ -67,24 +53,28 @@ struct ExercisesView: View {
 }
 
 extension ExercisesView {
-//    func addWorkout() {
-//        realmWorkout.exerciseGroups.append(objectsIn: exerciseGroupsNames)
-//        realmWorkout.choosenExercises.append(objectsIn: realmChoosenExerises)
-//        realmManager.addWorkout(
-//            date: date,
-//            exerciseGroups: realmWorkout.exerciseGroups,
-//            choosenExercises: realmWorkout.choosenExercises)
-//
-//            workoutsIsActive = false
-//    }
+    func addWorkout() {
+        realmWorkout.exerciseGroups.append(
+            objectsIn: exercises.map {$0.exerciseGroupName})
+        
+        realmWorkout.choosenExercises.append(
+            objectsIn: realmChoosenExerises)
+        
+        realmManager.addWorkout(
+            date: date,
+            exerciseGroups: realmWorkout.exerciseGroups,
+            choosenExercises: realmWorkout.choosenExercises)
+        
+                workoutsIsActive = false
+    }
 }
 
 struct ExercisesView_Previews: PreviewProvider {
     static var previews: some View {
         ExercisesView(
-            date: Date(), exercises: .constant(ExerciseGroup.getMocExercises()),
-//            exerciseGroupsNames: .constant([]),
-                workoutsIsActive: .constant(false))
+            date: Date(),
+            exercises: .constant(ExerciseGroup.getMocExercises()),
+            workoutsIsActive: .constant(false))
         .environmentObject(RealmManager())
     }
 }
