@@ -87,7 +87,7 @@ struct ChoosenExerciseButton: View {
                     .font(.system(size: 14))
                     .padding(.top, 60)
                         ForEach($testSets.sets, id: \.id) { setNumber in
-                            HStack(alignment: .center) {
+                            HStack {
                                 if width < 370 {
                                     Text("\(setNumber.id.wrappedValue)")
                                     .fontWeight(.semibold)
@@ -108,19 +108,15 @@ struct ChoosenExerciseButton: View {
                                                        trailing: 30))
                                 }
                                 TextField("0", text: setNumber.repeats)
-                                    .frame(width: 84,
-                                           alignment: .center)
+                                    .frame(width: 84)
                                     .keyboardType(.decimalPad)
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
                                     .padding(.leading, 8)
-                                    .keyboardAdaptive()
                                 TextField("0", text: setNumber.weight)
-                                    .frame(width: 60,
-                                           alignment: .center)
+                                    .frame(width: 60)
                                     .keyboardType(.decimalPad)
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
                                     .padding(.leading, 10)
-                                    .keyboardAdaptive()
                             }
                         }
                         VStack(alignment: .leading) {
