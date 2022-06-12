@@ -12,12 +12,13 @@ import RealmSwift
 struct ExercisesView: View {
     @EnvironmentObject var realmManager: RealmManager
     
-    @Binding var exercises: [ExerciseGroup]
-    @Binding var exerciseGroupsNames: [String]
-    @State var date: Date
-    @Binding var workoutsIsActive: Bool
     @State var realmWorkout = Workout()
     @State var realmChoosenExerises: [ChoosenExercise] = []
+    @State var date: Date
+    
+    @Binding var exercises: [ExerciseGroup]
+    @Binding var exerciseGroupsNames: [String]
+    @Binding var workoutsIsActive: Bool
 
         
     var body: some View {
@@ -42,13 +43,19 @@ struct ExercisesView: View {
                 }
             }
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        realmWorkout.exerciseGroups.append(objectsIn: exerciseGroupsNames)
-                        realmWorkout.choosenExercises.append(objectsIn: realmChoosenExerises)
-                        realmManager.addWorkout(date: date,
-                                                exerciseGroups: realmWorkout.exerciseGroups,
-                                                choosenExercises: realmWorkout.choosenExercises)
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    realmWorkout.exerciseGroups.append(
+                        objectsIn: exerciseGroupsNames)
+                    
+                    realmWorkout.choosenExercises.append(
+                        objectsIn: realmChoosenExerises)
+                    
+                    realmManager.addWorkout(
+                        date: date,
+                        exerciseGroups: realmWorkout.exerciseGroups,
+                        choosenExercises: realmWorkout.choosenExercises)
+                    
                             workoutsIsActive = false
                     } label: {
                         Text("Готово")
@@ -63,9 +70,11 @@ extension ExercisesView {
     func addWorkout() {
         realmWorkout.exerciseGroups.append(objectsIn: exerciseGroupsNames)
         realmWorkout.choosenExercises.append(objectsIn: realmChoosenExerises)
-        realmManager.addWorkout(date: date,
-                                exerciseGroups: realmWorkout.exerciseGroups,
-                                choosenExercises: realmWorkout.choosenExercises)
+        realmManager.addWorkout(
+            date: date,
+            exerciseGroups: realmWorkout.exerciseGroups,
+            choosenExercises: realmWorkout.choosenExercises)
+        
             workoutsIsActive = false
     }
 }
@@ -73,9 +82,8 @@ extension ExercisesView {
 struct ExercisesView_Previews: PreviewProvider {
     static var previews: some View {
         ExercisesView(
-                exercises: .constant(ExerciseGroup.getExercises()),
-                exerciseGroupsNames: .constant([]),
-                date: Date(),
+            date: Date(), exercises: .constant(ExerciseGroup.getMocExercises()),
+            exerciseGroupsNames: .constant([]),
                 workoutsIsActive: .constant(false))
         .environmentObject(RealmManager())
     }

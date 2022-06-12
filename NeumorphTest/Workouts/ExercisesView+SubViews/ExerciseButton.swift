@@ -10,24 +10,24 @@ import SwiftUI
 struct ExerciseButton: View {
     @EnvironmentObject var realmManager: RealmManager
 
-    @State var notTapped = true
-    @Binding var title: String
-    @Binding var image: String
+    @State var buttonNotPressed = true
+    @State var note: String = "..."
+    @State var backgroundHeight: CGFloat = 263
     @State var changeColorButton = false
-    @Binding var realmChoosenExerises: [ChoosenExercise]
-    @Binding var date: Date
-
     @State var sets: [MocSet] = [MocSet(id: 1, repeats: "", weight: ""),
                                  MocSet(id: 2, repeats: "", weight: ""),
                                  MocSet(id: 3, repeats: "", weight: "")]
-    @State var note: String = "..."
     
-    @State var backgroundHeight: CGFloat = 263
+    @Binding var title: String
+    @Binding var image: String
+    @Binding var realmChoosenExerises: [ChoosenExercise]
+    @Binding var date: Date
+
     
     var body: some View {
-        if notTapped {
+        if buttonNotPressed {
                 NotPressedButtonView(
-                    pressed: $notTapped,
+                    buttonNotPressed: $buttonNotPressed,
                     exerciseAdded: $changeColorButton,
                     sets: $sets,
                     realmChoosenExerises: $realmChoosenExerises,
@@ -39,7 +39,7 @@ struct ExerciseButton: View {
         } else {
             PressedButtonView(
                 backgroundHeight: $backgroundHeight,
-                pressed: $notTapped,
+                buttonNotPressed: $buttonNotPressed,
                 exerciseAdded: $changeColorButton,
                 sets: $sets,
                 realmChoosenExerises: $realmChoosenExerises,

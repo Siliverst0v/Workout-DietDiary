@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct DetailWorkoutView: View {
+    
     @EnvironmentObject var realmManager: RealmManager
-    @Binding var choosenExercises: [ChoosenExercise]
+    
     @State private var icon: String = ""
     @State var deleteMode = false
+    
+    @Binding var choosenExercises: [ChoosenExercise]
     
     var body: some View {
 
@@ -19,8 +22,8 @@ struct DetailWorkoutView: View {
                 ForEach($choosenExercises.indices, id: \.self) {index in
                     ChoosenExerciseButton(
                         choosenExercise: $choosenExercises[index],
-                        action: {deleteChoosenExercise(index: index)},
-                        deleteMode: $deleteMode
+                        deleteMode: $deleteMode,
+                        action: {deleteChoosenExercise(index: index)}
                     )
                         .environmentObject(realmManager)
                 }
@@ -45,7 +48,7 @@ extension DetailWorkoutView {
         choosenExercises.remove(at: index)
         
         exerciseToDelete.sets.forEach { sett in
-            realmManager.delete(set: sett)
+            realmManager.deleteSet(set: sett)
         }
             realmManager.deleteChoosenExercise(id: exerciseToDelete.id)
     }

@@ -11,13 +11,14 @@ import RealmSwift
 struct PressedButtonView: View {
     @EnvironmentObject var realmManager: RealmManager
 
+    @State private var showingSheet = false
+    @State var previousExercises: [ChoosenExercise] = []
+    
     @Binding var backgroundHeight: CGFloat
-    @Binding var pressed: Bool    
+    @Binding var buttonNotPressed: Bool
     @Binding var exerciseAdded: Bool
     @Binding var sets: [MocSet]
     @Binding var realmChoosenExerises: [ChoosenExercise]
-    @State private var showingSheet = false
-    @State var previousExercises: [ChoosenExercise] = []
     @Binding var date: Date
     
     @Binding var image: String
@@ -160,7 +161,7 @@ struct PressedButtonView: View {
                             }
                             .disabled(sets.count <= 1)
                             .padding(.trailing, 20)
-                            Button(action: { pressed.toggle() }) {
+                            Button(action: { buttonNotPressed.toggle() }) {
                                 Image(systemName: "chevron.up")
                                     .frame(width: 140, height: 28, alignment: .center )
                                     .font(.system(size: 20))
@@ -281,7 +282,7 @@ struct PressedButtonView_Previews: PreviewProvider {
     static var previews: some View {
         PressedButtonView(
             backgroundHeight: .constant(270),
-            pressed: .constant(true),
+            buttonNotPressed: .constant(true),
             exerciseAdded: .constant(false),
             sets: .constant([MocSet(id: 1, repeats: "", weight: ""),
                              MocSet(id: 2, repeats: "", weight: ""),

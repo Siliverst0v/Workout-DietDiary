@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WorkoutButton: View {
     @State var workout: Workout
-    @Binding var output: [ChoosenExercise]
+    @Binding var choosenExercises: [ChoosenExercise]
 
     
     var body: some View {
@@ -68,9 +68,9 @@ struct WorkoutButton: View {
     }
     
     func replaceChoosenExercises() {
-        output = []
+        choosenExercises = []
         workout.choosenExercises.forEach { exercise in
-            output.append(exercise)
+            choosenExercises.append(exercise)
         }
     }
 }
@@ -79,7 +79,7 @@ struct WorkoutsView_Previews: PreviewProvider {
     static var previews: some View {
         WorkoutButton(
             workout: Workout(),
-            output: .constant([])
+            choosenExercises: .constant([])
         )
     }
 }

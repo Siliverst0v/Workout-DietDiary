@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct PreviousExercisesView: View {
-    @State var previousExercises: [ChoosenExercise]
     @Environment(\.dismiss) var dismiss
+    
+    @State var previousExercises: [ChoosenExercise]
     
     var body: some View {
         if !previousExercises.isEmpty {

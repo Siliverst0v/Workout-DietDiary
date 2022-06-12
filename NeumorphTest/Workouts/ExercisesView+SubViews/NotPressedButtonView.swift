@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct NotPressedButtonView: View {
-    @Binding var pressed: Bool
+    
+    @Binding var buttonNotPressed: Bool
     @Binding var exerciseAdded: Bool
     @Binding var sets: [MocSet]
     @Binding var realmChoosenExerises: [ChoosenExercise]
     @Binding var date: Date
-
     
     @Binding var image: String
     @Binding var title: String
@@ -21,7 +21,7 @@ struct NotPressedButtonView: View {
 
     var body: some View {
         ZStack{
-        Button( action: { pressed.toggle() } ) {
+        Button( action: { buttonNotPressed.toggle() } ) {
             GeometryReader { geometry in
                 let width = geometry.size.width
                 HStack {
@@ -58,17 +58,24 @@ struct NotPressedButtonView: View {
         }
     }
     
+}
+
+extension NotPressedButtonView {
     func addExercise() {
         exerciseAdded.toggle()
         
-        let choosenExercise = ChoosenExercise(icon: image,
-                                                        title: title,
-                                                        note: note,
-                                                        date: date)
+        let choosenExercise = ChoosenExercise(
+            icon: image,
+            title: title,
+            note: note,
+            date: date)
+        
         sets.forEach { sett in
-            choosenExercise.sets.append(RealmSet(id: sett.id,
-                                                      repeats: sett.repeats,
-                                                      weight: sett.weight))
+            choosenExercise.sets.append(
+                RealmSet(
+                    id: sett.id,
+                    repeats: sett.repeats,
+                    weight: sett.weight))
         }
         
         if exerciseAdded {
@@ -82,7 +89,7 @@ struct NotPressedButtonView: View {
 struct NotPressedButtonView_Previews: PreviewProvider {
     static var previews: some View {
         NotPressedButtonView(
-            pressed: .constant(true),
+            buttonNotPressed: .constant(true),
             exerciseAdded: .constant(true),
             sets: .constant([
                 MocSet(id: 1, repeats: "", weight: ""),

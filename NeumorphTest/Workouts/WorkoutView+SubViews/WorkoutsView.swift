@@ -12,7 +12,9 @@ struct WorkoutsView: View {
     init() {
         UITextView.appearance().backgroundColor = .clear
     }
+    
     @StateObject var realmManager = RealmManager()
+    
     @State private var workouts: [Workout] = []
     @State var choosenExercises: [ChoosenExercise] = []
     @State var workoutsIsActive = false
@@ -24,7 +26,7 @@ struct WorkoutsView: View {
                     ForEach(workouts, id: \.id) {workout in
                     WorkoutButton(
                         workout: workout,
-                        output: $choosenExercises)
+                        choosenExercises: $choosenExercises)
                     .environmentObject(realmManager)
                     .listRowSeparator(.hidden)
                 }
@@ -73,7 +75,7 @@ extension WorkoutsView {
         result.forEach { workout in
         workout.choosenExercises.forEach { exercise in
             exercise.sets.forEach { sett in
-                realmManager.delete(set: sett)
+                realmManager.deleteSet(set: sett)
             }
             realmManager.deleteChoosenExercise(id: exercise.id)
         }

@@ -11,17 +11,18 @@ import RealmSwift
 struct ChoosenExerciseButton: View {
     @EnvironmentObject var realmManager: RealmManager
     
-    @State private var notTapped = true
-    @Binding var choosenExercise: ChoosenExercise
-    var action: () -> Void
     @StateObject var testSets = MocSets()
+    
     @State private var showingSheet = false
-    @State private var showingNote = false
-    @State private var showingAlert = false
+    @State private var notTapped = true
+    @State private var backgroundHeight: CGFloat = 263
     @State var previousExercises: [ChoosenExercise] = []
+    
+    @Binding var choosenExercise: ChoosenExercise
     @Binding var deleteMode: Bool
     
-    @State var backgroundHeight: CGFloat = 263
+    var action: () -> Void
+    
     
     var body: some View {
         if notTapped {
@@ -295,7 +296,7 @@ extension ChoosenExerciseButton {
         notTapped.toggle()
         var test: [RealmSet] = []
             choosenExercise.sets.forEach { setToDelete in
-                        realmManager.delete(set: setToDelete)
+                        realmManager.deleteSet(set: setToDelete)
                 }
         testSets.sets.forEach { sett in
             let newRealmSet = RealmSet(id: sett.id,
@@ -333,7 +334,7 @@ extension ChoosenExerciseButton {
     private func deleteSet() {
         
         guard let setToDelete = choosenExercise.sets.last else {return}
-        realmManager.delete(set: setToDelete)
+        realmManager.deleteSet(set: setToDelete)
         testSets.sets.removeLast()
         
     }
@@ -362,7 +363,7 @@ extension ChoosenExerciseButton {
 struct ChoosenExerciseButton_Previews: PreviewProvider {
     static var previews: some View {
         ChoosenExerciseButton(choosenExercise: .constant(Exercises.shared.getMocExercise()),
-                              action: {}, deleteMode: .constant(false))
+                              deleteMode: .constant(false), action: {})
         .environmentObject(RealmManager())
     }
 }

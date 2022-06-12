@@ -23,10 +23,11 @@ struct ChooseExercisesView: View {
     @State var exercises: [ExerciseGroup] = []
     @State var exerciseGroupNames: [String] = []
     @State var date: Date = Date()
-    @Binding var workoutsIsActive: Bool
     @State var chooseViewIsActive = false
-        
     @State var muscleGroups = Exercises.shared
+    
+    @Binding var workoutsIsActive: Bool
+        
     let columns = [GridItem(.adaptive(minimum: 100))]
     
     var body: some View {
@@ -157,9 +158,8 @@ struct ChooseExercisesView: View {
             .background(
                 NavigationLink(isActive: $chooseViewIsActive, destination: {
                     ExercisesView(
-                        exercises: $exercises,
+                        date: date, exercises: $exercises,
                         exerciseGroupsNames: $exerciseGroupNames,
-                        date: date,
                         workoutsIsActive: $workoutsIsActive)
                     .environmentObject(realmManager)
                 }, label: {

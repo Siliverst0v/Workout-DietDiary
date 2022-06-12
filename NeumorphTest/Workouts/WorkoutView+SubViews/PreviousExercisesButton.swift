@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct PreviousExercisesButton: View {
+    
+    @State private var backgroundHeight: CGFloat = 238
+    
     @State var choosenExercise: ChoosenExercise
     
-    @State var backgroundHeight: CGFloat = 238
 
     var body: some View {
         ZStack {
@@ -117,6 +119,9 @@ struct PreviousExercisesButton: View {
                    height: backgroundHeight + CGFloat(((choosenExercise.sets.count - 1) * 42)))
         }
     }
+}
+
+extension PreviousExercisesButton {
     
     private func changeButtonSize() -> CGFloat {
         var buttonSize: CGFloat = 127

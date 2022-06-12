@@ -16,7 +16,7 @@ struct ExerciseGroup: Identifiable, Equatable, Hashable {
 }
 
 extension ExerciseGroup {
-    static func getExercises() -> [ExerciseGroup] {
+    static func getMocExercises() -> [ExerciseGroup] {
         return [
             ExerciseGroup(
                 date: Date(),
