@@ -271,12 +271,6 @@ struct ChoosenExerciseButton: View {
     }
 }
 
-//                    .confirmationDialog("", isPresented: $showingAlert, actions: {
-//                        Button("Delete all items?", role: .destructive) {
-//                            self.action()
-//                         }
-//                    })
-
 extension ChoosenExerciseButton {
     
     private func fetchPreviousExercises() {
@@ -310,10 +304,10 @@ extension ChoosenExerciseButton {
     
     private func fetchSets() {
         testSets.sets = []
-        choosenExercise.sets.forEach { sett in
-            let newTestSet = MocSet(id: sett.id,
-                                     repeats: sett.repeats,
-                                     weight: sett.weight)
+        choosenExercise.sets.forEach { setToFetch in
+            let newTestSet = MocSet(id: setToFetch.id,
+                                     repeats: setToFetch.repeats,
+                                     weight: setToFetch.weight)
                 testSets.sets.append(newTestSet)
         }
     }

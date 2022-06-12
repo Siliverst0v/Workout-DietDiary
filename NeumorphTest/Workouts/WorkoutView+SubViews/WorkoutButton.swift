@@ -66,6 +66,9 @@ struct WorkoutButton: View {
         }
         .buttonStyle(WorkoutButtonStyle())
     }
+}
+
+extension WorkoutButton {
     
     func replaceChoosenExercises() {
         choosenExercises = []
