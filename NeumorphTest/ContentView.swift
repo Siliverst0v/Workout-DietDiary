@@ -12,12 +12,12 @@ struct ContentView: View {
         TabView {
             WorkoutsView()
                 .tabItem {
-                    Image("muscle")
+                    Image(systemName: "stopwatch")
                     Text("Дневник тренировок")
                 }
             CaloriesView()
                 .tabItem {
-                    Image("diet")
+                    Image(systemName: "fork.knife.circle.fill")
                     Text("Дневник калорий")
 
                 }
