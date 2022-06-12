@@ -115,11 +115,13 @@ struct PressedButtonView: View {
                                 .keyboardType(.decimalPad)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .padding(.leading, 8)
+                                .keyboardAdaptive()
                             TextField("0", text: setNumber.weight)
                                 .frame(width: 60, alignment: .center)
                                 .keyboardType(.decimalPad)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .padding(.leading, 10)
+                                .keyboardAdaptive()
                         }
                     }
                     VStack(alignment: .leading) {
