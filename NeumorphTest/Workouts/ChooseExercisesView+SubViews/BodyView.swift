@@ -8,15 +8,7 @@
 import SwiftUI
 
 struct BodyView: View {
-    @Binding var backIsVisible: Bool
-    @Binding var chestIsVisible: Bool
-    @Binding var bicepsIsVisible: Bool
-    @Binding var tricepsIsVisible: Bool
-    @Binding var absIsVisible: Bool
-    @Binding var forearmsIsVisible: Bool
-    @Binding var legsIsVisible: Bool
-    @Binding var shouldersIsVisible: Bool
-    @Binding var cardioIsVisible: Bool
+    @Binding var exercisesToDisplay: [ExerciseGroup]
     
     var body: some View {
         ZStack {
@@ -24,47 +16,56 @@ struct BodyView: View {
                 .resizable()
             Image("BackBody")
                 .resizable()
-                .opacity(backIsVisible ? 1 : 0)
+                .opacity(showIcons(muscleGroupName: "Спина") ? 1 : 0)
             Image("ChestBody")
                 .resizable()
-                .opacity(chestIsVisible ? 1 : 0)
+                .opacity(showIcons(muscleGroupName: "Грудь") ? 1 : 0)
             Image("BicepsBody")
                 .resizable()
-                .opacity(bicepsIsVisible ? 1 : 0)
+                .opacity(showIcons(muscleGroupName: "Бицепс") ? 1 : 0)
             Image("TricepsBody")
                 .resizable()
-                .opacity(tricepsIsVisible ? 1 : 0)
+                .opacity(showIcons(muscleGroupName: "Трицепс") ? 1 : 0)
             Image("AbsBody")
                 .resizable()
-                .opacity(absIsVisible ? 1 : 0)
+                .opacity(showIcons(muscleGroupName: "Пресс") ? 1 : 0)
             Image("ForeArmsBody")
                 .resizable()
-                .opacity(forearmsIsVisible ? 1 : 0)
+                .opacity(showIcons(muscleGroupName: "Предплечья") ? 1 : 0)
             Image("LegsBody")
                 .resizable()
-                .opacity(legsIsVisible ? 1 : 0)
+                .opacity(showIcons(muscleGroupName: "Ноги") ? 1 : 0)
             Image("ShouldersBody")
                 .resizable()
-                .opacity(shouldersIsVisible ? 1 : 0)
+                .opacity(showIcons(muscleGroupName: "Плечи") ? 1 : 0)
             Image("CardioBody")
                 .resizable()
-                .opacity(cardioIsVisible ? 1 : 0)
+                .opacity(showIcons(muscleGroupName: "Кардио") ? 1 : 0)
         }
         .frame(width: UIScreen.main.bounds.size.width - 40, height: 314, alignment: .center)
         .padding(30)
     }
 }
 
+extension BodyView {
+    
+    func showIcons(muscleGroupName: String) -> Bool {
+        if exercisesToDisplay.filter({$0.exerciseGroupName == muscleGroupName}).first != nil {
+            return true
+        }
+        
+        return false
+    }
+}
+
 struct BodyView_Previews: PreviewProvider {
     static var previews: some View {
-        BodyView(backIsVisible: .constant(false),
-                 chestIsVisible: .constant(false),
-                 bicepsIsVisible: .constant(false),
-                 tricepsIsVisible: .constant(false),
-                 absIsVisible: .constant(false),
-                 forearmsIsVisible: .constant(false),
-                 legsIsVisible: .constant(false),
-                 shouldersIsVisible: .constant(false),
-                 cardioIsVisible: .constant(false))
+        BodyView(exercisesToDisplay: .constant([
+                ExerciseGroup(
+                    date: Date(),
+                    exerciseGroupName: "Кардио",
+                    icon: "cardio",
+                    exercisesToDisplay: Exercises.shared.cardio)])
+        )
     }
 }

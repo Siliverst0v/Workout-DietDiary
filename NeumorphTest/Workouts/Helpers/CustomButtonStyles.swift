@@ -59,7 +59,7 @@ struct ExerciseButtonStyle: ButtonStyle {
 }
 
 struct ExerciseGroupButtonStyle: ButtonStyle {
-    @Binding var isPressed: Bool
+    var isPressed: Bool
     
     func makeBody(configuration: Configuration) -> some View {
         configuration.label

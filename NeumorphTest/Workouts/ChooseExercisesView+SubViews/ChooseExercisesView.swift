@@ -9,16 +9,6 @@ import SwiftUI
 
 struct ChooseExercisesView: View {
     @EnvironmentObject var realmManager: RealmManager
-
-    @State private var backIsVisible = false
-    @State private var chestIsVisible = false
-    @State private var bicepsIsVisible = false
-    @State private var tricepsIsVisible = false
-    @State private var absIsVisible = false
-    @State private var forearmsIsVisible = false
-    @State private var legsIsVisible = false
-    @State private var shouldersIsVisible = false
-    @State private var cardioIsVisible = false
     
     @State var exercisesToDisplay: [ExerciseGroup] = []
     @State var date: Date = Date()
@@ -45,7 +35,6 @@ struct ChooseExercisesView: View {
                 LazyVGrid(columns: columns, spacing: 30) {
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
-                        isPressed: $chestIsVisible,
                         muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Грудь",
@@ -53,7 +42,6 @@ struct ChooseExercisesView: View {
                             exercisesToDisplay: muscleGroups.chest))
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
-                        isPressed: $shouldersIsVisible,
                         muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Плечи",
@@ -61,7 +49,6 @@ struct ChooseExercisesView: View {
                             exercisesToDisplay: muscleGroups.shoulders))
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
-                        isPressed: $backIsVisible,
                         muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Спина",
@@ -69,7 +56,6 @@ struct ChooseExercisesView: View {
                             exercisesToDisplay: muscleGroups.back))
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
-                        isPressed: $bicepsIsVisible,
                         muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Бицепс",
@@ -77,7 +63,6 @@ struct ChooseExercisesView: View {
                             exercisesToDisplay: muscleGroups.biceps))
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
-                        isPressed: $tricepsIsVisible,
                         muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Трицепс",
@@ -85,7 +70,6 @@ struct ChooseExercisesView: View {
                             exercisesToDisplay: muscleGroups.triceps))
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
-                        isPressed: $legsIsVisible,
                         muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Ноги",
@@ -93,7 +77,6 @@ struct ChooseExercisesView: View {
                             exercisesToDisplay: muscleGroups.legs))
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
-                        isPressed: $absIsVisible,
                         muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Пресс",
@@ -101,7 +84,6 @@ struct ChooseExercisesView: View {
                             exercisesToDisplay: muscleGroups.abs))
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
-                        isPressed: $forearmsIsVisible,
                         muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Предплечья",
@@ -109,22 +91,13 @@ struct ChooseExercisesView: View {
                             exercisesToDisplay: muscleGroups.forearms))
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
-                        isPressed: $cardioIsVisible,
                         muscleGroup: ExerciseGroup(
                             date: date,
                             exerciseGroupName: "Кардио",
                             icon: "cardio",
                             exercisesToDisplay: muscleGroups.cardio))
                 }
-                BodyView(backIsVisible: $backIsVisible,
-                         chestIsVisible: $chestIsVisible,
-                         bicepsIsVisible: $bicepsIsVisible,
-                         tricepsIsVisible: $tricepsIsVisible,
-                         absIsVisible: $absIsVisible,
-                         forearmsIsVisible: $forearmsIsVisible,
-                         legsIsVisible: $legsIsVisible,
-                         shouldersIsVisible: $shouldersIsVisible,
-                         cardioIsVisible: $cardioIsVisible)
+                BodyView(exercisesToDisplay: $exercisesToDisplay)
         }
             .navigationBarTitleDisplayMode(.inline)
             .background(
