@@ -36,63 +36,54 @@ struct ChooseExercisesView: View {
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
                         exerciseGroup: ExerciseGroup(
-                            date: date,
                             title: "Грудь",
                             icon: "chest",
                             exercisesToDisplay: muscleGroups.chest))
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
                         exerciseGroup: ExerciseGroup(
-                            date: date,
                             title: "Плечи",
                             icon: "shoulders",
                             exercisesToDisplay: muscleGroups.shoulders))
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
                         exerciseGroup: ExerciseGroup(
-                            date: date,
                             title: "Спина",
                             icon: "back",
                             exercisesToDisplay: muscleGroups.back))
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
                         exerciseGroup: ExerciseGroup(
-                            date: date,
                             title: "Бицепс",
                             icon: "biceps",
                             exercisesToDisplay: muscleGroups.biceps))
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
                         exerciseGroup: ExerciseGroup(
-                            date: date,
                             title: "Трицепс",
                             icon: "triceps",
                             exercisesToDisplay: muscleGroups.triceps))
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
                         exerciseGroup: ExerciseGroup(
-                            date: date,
                             title: "Ноги",
                             icon: "legs",
                             exercisesToDisplay: muscleGroups.legs))
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
                         exerciseGroup: ExerciseGroup(
-                            date: date,
                             title: "Пресс",
                             icon: "abs",
                             exercisesToDisplay: muscleGroups.abs))
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
                         exerciseGroup: ExerciseGroup(
-                            date: date,
                             title: "Предплечья",
                             icon: "forearms",
                             exercisesToDisplay: muscleGroups.forearms))
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
                         exerciseGroup: ExerciseGroup(
-                            date: date,
                             title: "Кардио",
                             icon: "cardio",
                             exercisesToDisplay: muscleGroups.cardio))
@@ -127,8 +118,6 @@ struct ChooseExercisesView: View {
 struct ChooseExercisesGroupView_Previews: PreviewProvider {
     static var previews: some View {
         ChooseExercisesView(
-            exercisesToDisplay: [],
-            date: Date(),
             workoutsIsActive: .constant(false))
         .environmentObject(RealmManager())
             .previewInterfaceOrientation(.portrait)

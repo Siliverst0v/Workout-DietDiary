@@ -48,7 +48,6 @@ struct ExerciseGroupButton_Previews: PreviewProvider {
         ExerciseGroupButton(
             exercisesToDisplay: .constant([]),
             exerciseGroup: ExerciseGroup(
-                date: Date(),
                 title: "",
                 icon: "",
                 exercisesToDisplay: []))

@@ -61,7 +61,6 @@ struct BodyView_Previews: PreviewProvider {
     static var previews: some View {
         BodyView(exercisesToDisplay: .constant([
                 ExerciseGroup(
-                    date: Date(),
                     title: "Кардио",
                     icon: "cardio",
                     exercisesToDisplay: Exercises.shared.cardio)])

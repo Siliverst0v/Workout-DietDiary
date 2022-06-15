@@ -9,15 +9,23 @@ import Foundation
 import RealmSwift
 
 class ChestExerciseGroup: Object {
-    @Persisted var title: String
-    @Persisted var icon: String
-    @Persisted var date: Date
+    @Persisted var title: String = "Грудь"
+    @Persisted var icon: String = "chest"
     @Persisted var exercises: List<String>
+    
+    convenience override init() {
+        self.init()
+        
+        fetchExercises()
+    }
+    
+    private func fetchExercises() {
+        if !self.exercises.isEmpty { self.exercises.append(objectsIn: Exercises.shared.chest) }
+    }
 }
 
 struct ExerciseGroup: Identifiable, Equatable, Hashable {
     let id = UUID()
-    var date: Date
     var title: String
     var icon: String
     var exercisesToDisplay: [String]
@@ -27,13 +35,11 @@ extension ExerciseGroup {
     static func getMocExercises() -> [ExerciseGroup] {
         return [
             ExerciseGroup(
-                date: Date(),
                 title: "Грудь",
                 icon: "chest",
                 exercisesToDisplay: Exercises.shared.chest
             ),
             ExerciseGroup(
-                date: Date(),
                 title: "Спина",
                 icon: "back",
                 exercisesToDisplay: Exercises.shared.back
