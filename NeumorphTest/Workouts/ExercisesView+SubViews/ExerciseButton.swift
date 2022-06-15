@@ -13,7 +13,7 @@ struct ExerciseButton: View {
     @State var buttonNotPressed = true
     @State var note: String = "..."
     @State var backgroundHeight: CGFloat = 263
-    @State var changeColorButton = false
+    @State var exerciseAdded = false
     @State var sets: [MocSet] = [MocSet(id: 1, repeats: "", weight: ""),
                                  MocSet(id: 2, repeats: "", weight: ""),
                                  MocSet(id: 3, repeats: "", weight: "")]
@@ -28,9 +28,9 @@ struct ExerciseButton: View {
         if buttonNotPressed {
                 NotPressedButtonView(
                     buttonNotPressed: $buttonNotPressed,
-                    exerciseAdded: $changeColorButton,
+                    exerciseAdded: $exerciseAdded,
                     sets: $sets,
-                    realmChoosenExerises: $choosenExercises,
+                    choosenExercises: $choosenExercises,
                     date: $date,
                     image: $image,
                     title: $title,
@@ -40,9 +40,9 @@ struct ExerciseButton: View {
             PressedButtonView(
                 backgroundHeight: $backgroundHeight,
                 buttonNotPressed: $buttonNotPressed,
-                exerciseAdded: $changeColorButton,
+                exerciseAdded: $exerciseAdded,
                 sets: $sets,
-                realmChoosenExerises: $choosenExercises,
+                choosenExercises: $choosenExercises,
                 date: $date,
                 image: $image,
                 title: $title,

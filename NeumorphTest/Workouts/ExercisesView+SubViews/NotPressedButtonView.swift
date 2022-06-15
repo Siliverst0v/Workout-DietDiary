@@ -12,7 +12,7 @@ struct NotPressedButtonView: View {
     @Binding var buttonNotPressed: Bool
     @Binding var exerciseAdded: Bool
     @Binding var sets: [MocSet]
-    @Binding var realmChoosenExerises: [ChoosenExercise]
+    @Binding var choosenExercises: [ChoosenExercise]
     @Binding var date: Date
     
     @Binding var image: String
@@ -79,9 +79,9 @@ extension NotPressedButtonView {
         }
         
         if exerciseAdded {
-            realmChoosenExerises.append(choosenExercise)
+            choosenExercises.append(choosenExercise)
         } else {
-            realmChoosenExerises.removeAll(where: {$0.title == choosenExercise.title})
+            choosenExercises.removeAll(where: {$0.title == choosenExercise.title})
         }
     }
 }
@@ -95,7 +95,7 @@ struct NotPressedButtonView_Previews: PreviewProvider {
                 MocSet(id: 1, repeats: "", weight: ""),
                 MocSet(id: 2, repeats: "", weight: ""),
                 MocSet(id: 3, repeats: "", weight: "")]),
-            realmChoosenExerises: .constant([]),
+            choosenExercises: .constant([]),
             date: .constant(Date()),
             image: .constant("chest"),
             title: .constant("Exercise"),

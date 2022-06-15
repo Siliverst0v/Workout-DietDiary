@@ -18,7 +18,7 @@ struct PressedButtonView: View {
     @Binding var buttonNotPressed: Bool
     @Binding var exerciseAdded: Bool
     @Binding var sets: [MocSet]
-    @Binding var realmChoosenExerises: [ChoosenExercise]
+    @Binding var choosenExercises: [ChoosenExercise]
     @Binding var date: Date
     
     @Binding var image: String
@@ -231,15 +231,15 @@ extension PressedButtonView {
     private func addExercise() {
         exerciseAdded.toggle()
         
-        let choosenExerciseRealm = ChoosenExercise(icon: image, title: title, note: note, date: date)
+        let choosenExercise = ChoosenExercise(icon: image, title: title, note: note, date: date)
         sets.forEach { setToAppend in
-            choosenExerciseRealm.sets.append(Set(id: setToAppend.id, repeats: setToAppend.repeats, weight: setToAppend.weight))
+            choosenExercise.sets.append(Set(id: setToAppend.id, repeats: setToAppend.repeats, weight: setToAppend.weight))
         }
         
         if exerciseAdded {
-            realmChoosenExerises.append(choosenExerciseRealm)
+            choosenExercises.append(choosenExercise)
         } else {
-            realmChoosenExerises.removeAll(where: {$0.title == choosenExerciseRealm.title})
+            choosenExercises.removeAll(where: {$0.title == choosenExercise.title})
         }
     }
     
@@ -287,7 +287,7 @@ struct PressedButtonView_Previews: PreviewProvider {
             sets: .constant([MocSet(id: 1, repeats: "", weight: ""),
                              MocSet(id: 2, repeats: "", weight: ""),
                              MocSet(id: 3, repeats: "", weight: "")]),
-            realmChoosenExerises: .constant([]),
+            choosenExercises: .constant([]),
             date: .constant(Date()),
             image: .constant("chest"),
             title: .constant("Exercise for example"),
