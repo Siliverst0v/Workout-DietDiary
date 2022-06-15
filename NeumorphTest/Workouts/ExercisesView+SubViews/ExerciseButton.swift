@@ -20,7 +20,7 @@ struct ExerciseButton: View {
     
     @Binding var title: String
     @Binding var image: String
-    @Binding var realmChoosenExerises: [ChoosenExercise]
+    @Binding var choosenExercises: [ChoosenExercise]
     @Binding var date: Date
 
     
@@ -30,7 +30,7 @@ struct ExerciseButton: View {
                     buttonNotPressed: $buttonNotPressed,
                     exerciseAdded: $changeColorButton,
                     sets: $sets,
-                    realmChoosenExerises: $realmChoosenExerises,
+                    realmChoosenExerises: $choosenExercises,
                     date: $date,
                     image: $image,
                     title: $title,
@@ -42,7 +42,7 @@ struct ExerciseButton: View {
                 buttonNotPressed: $buttonNotPressed,
                 exerciseAdded: $changeColorButton,
                 sets: $sets,
-                realmChoosenExerises: $realmChoosenExerises,
+                realmChoosenExerises: $choosenExercises,
                 date: $date,
                 image: $image,
                 title: $title,
@@ -58,7 +58,7 @@ struct ExerciseButton_Previews: PreviewProvider {
         ExerciseButton(
             title: .constant("Exercise for example"),
             image: .constant("legs"),
-            realmChoosenExerises: .constant([]),
+            choosenExercises: .constant([]),
             date: .constant(Date()))
     }
 }

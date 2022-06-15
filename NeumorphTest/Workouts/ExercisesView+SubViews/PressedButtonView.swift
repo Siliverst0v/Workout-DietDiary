@@ -233,7 +233,7 @@ extension PressedButtonView {
         
         let choosenExerciseRealm = ChoosenExercise(icon: image, title: title, note: note, date: date)
         sets.forEach { setToAppend in
-            choosenExerciseRealm.sets.append(RealmSet(id: setToAppend.id, repeats: setToAppend.repeats, weight: setToAppend.weight))
+            choosenExerciseRealm.sets.append(Set(id: setToAppend.id, repeats: setToAppend.repeats, weight: setToAppend.weight))
         }
         
         if exerciseAdded {

@@ -72,7 +72,7 @@ extension NotPressedButtonView {
         
         sets.forEach { sett in
             choosenExercise.sets.append(
-                RealmSet(
+                Set(
                     id: sett.id,
                     repeats: sett.repeats,
                     weight: sett.weight))

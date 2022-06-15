@@ -50,10 +50,9 @@ struct BodyView: View {
 extension BodyView {
     
     func showIcons(muscleGroupName: String) -> Bool {
-        if exercisesToDisplay.filter({$0.exerciseGroupName == muscleGroupName}).first != nil {
+        if exercisesToDisplay.filter({$0.title == muscleGroupName}).first != nil {
             return true
         }
-        
         return false
     }
 }
@@ -63,7 +62,7 @@ struct BodyView_Previews: PreviewProvider {
         BodyView(exercisesToDisplay: .constant([
                 ExerciseGroup(
                     date: Date(),
-                    exerciseGroupName: "Кардио",
+                    title: "Кардио",
                     icon: "cardio",
                     exercisesToDisplay: Exercises.shared.cardio)])
         )

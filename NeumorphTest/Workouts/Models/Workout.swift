@@ -27,7 +27,7 @@ class ChoosenExercise: Object, ObjectKeyIdentifiable {
     @Persisted var title: String
     @Persisted var note: String
     @Persisted var date: Date
-    @Persisted var sets: List<RealmSet>
+    @Persisted var sets: List<Set>
     @Persisted(originProperty: "choosenExercises") var realmWorkout: LinkingObjects<Workout>
     
     convenience init(icon: String, title: String, note: String, date: Date) {
@@ -41,7 +41,7 @@ class ChoosenExercise: Object, ObjectKeyIdentifiable {
 
 }
 
-class RealmSet: Object {
+class Set: Object {
     @Persisted var id: Int
     @Persisted var repeats: String
     @Persisted var weight: String

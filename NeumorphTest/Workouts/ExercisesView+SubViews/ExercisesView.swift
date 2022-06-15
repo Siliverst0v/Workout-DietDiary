@@ -12,20 +12,19 @@ import RealmSwift
 struct ExercisesView: View {
     @EnvironmentObject var realmManager: RealmManager
     
-    @State var realmWorkout = Workout()
-    @State var realmChoosenExerises: [ChoosenExercise] = []
+    @State var choosenExercises: [ChoosenExercise] = []
     @State var date: Date
     
-    @Binding var exercises: [ExerciseGroup]
+    @Binding var choosenExerciseGroups: [ExerciseGroup]
     @Binding var workoutsIsActive: Bool
 
         
     var body: some View {
 
             ScrollView(.vertical, showsIndicators: false) {
-                ForEach($exercises, id: \.id) {exerciseGroup in
+                ForEach($choosenExerciseGroups, id: \.id) {exerciseGroup in
 
-                    TextField("", text: exerciseGroup.exerciseGroupName)
+                    TextField("", text: exerciseGroup.title)
                         .font(.title)
                         .foregroundColor(.customRed)
                         .disabled(true)
@@ -35,7 +34,7 @@ struct ExercisesView: View {
                         ExerciseButton(
                             title: exercise,
                             image: exerciseGroup.icon,
-                            realmChoosenExerises: $realmChoosenExerises,
+                            choosenExercises: $choosenExercises,
                             date: $date)
                         .environmentObject(realmManager)
                     }
@@ -54,16 +53,11 @@ struct ExercisesView: View {
 
 extension ExercisesView {
     func addWorkout() {
-        realmWorkout.exerciseGroups.append(
-            objectsIn: exercises.map {$0.exerciseGroupName})
-        
-        realmWorkout.choosenExercises.append(
-            objectsIn: realmChoosenExerises)
         
         realmManager.addWorkout(
             date: date,
-            exerciseGroups: realmWorkout.exerciseGroups,
-            choosenExercises: realmWorkout.choosenExercises)
+            exerciseGroups: choosenExerciseGroups.map {$0.title},
+            choosenExercises: choosenExercises)
         
                 workoutsIsActive = false
     }
@@ -73,7 +67,7 @@ struct ExercisesView_Previews: PreviewProvider {
     static var previews: some View {
         ExercisesView(
             date: Date(),
-            exercises: .constant(ExerciseGroup.getMocExercises()),
+            choosenExerciseGroups: .constant(ExerciseGroup.getMocExercises()),
             workoutsIsActive: .constant(false))
         .environmentObject(RealmManager())
     }

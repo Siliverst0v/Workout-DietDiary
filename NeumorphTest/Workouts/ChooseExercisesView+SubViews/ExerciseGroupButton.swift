@@ -10,11 +10,11 @@ import SwiftUI
 struct ExerciseGroupButton: View {
     @Binding var exercisesToDisplay: [ExerciseGroup]
 
-    let muscleGroup: ExerciseGroup
+    let exerciseGroup: ExerciseGroup
     
     var body: some View {
         Button(action: { addingGroup() }) {
-            Text("\(muscleGroup.exerciseGroupName)")
+            Text("\(exerciseGroup.title)")
                 .foregroundColor(showIcon() ? Color.customRed : Color.customBlue)
                 .fontWeight(.medium)
                 .padding()
@@ -27,15 +27,15 @@ struct ExerciseGroupButton: View {
 extension ExerciseGroupButton {
     func addingGroup() {
         
-        if !exercisesToDisplay.contains(where: {$0.exerciseGroupName == muscleGroup.exerciseGroupName}) {
-            exercisesToDisplay.append(muscleGroup)
+        if !exercisesToDisplay.contains(where: {$0.title == exerciseGroup.title}) {
+            exercisesToDisplay.append(exerciseGroup)
         } else {
-            exercisesToDisplay.removeAll(where: {$0.exercisesToDisplay == muscleGroup.exercisesToDisplay})
+            exercisesToDisplay.removeAll(where: {$0.exercisesToDisplay == exerciseGroup.exercisesToDisplay})
         }
     }
     
     func showIcon() -> Bool {
-        if exercisesToDisplay.filter({$0.exerciseGroupName == muscleGroup.exerciseGroupName}).first != nil {
+        if exercisesToDisplay.filter({$0.title == exerciseGroup.title}).first != nil {
             return true
         }
         
@@ -47,9 +47,9 @@ struct ExerciseGroupButton_Previews: PreviewProvider {
     static var previews: some View {
         ExerciseGroupButton(
             exercisesToDisplay: .constant([]),
-            muscleGroup: ExerciseGroup(
+            exerciseGroup: ExerciseGroup(
                 date: Date(),
-                exerciseGroupName: "",
+                title: "",
                 icon: "",
                 exercisesToDisplay: []))
     }

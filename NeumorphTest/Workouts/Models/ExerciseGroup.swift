@@ -6,11 +6,19 @@
 //
 
 import Foundation
+import RealmSwift
+
+class ChestExerciseGroup: Object {
+    @Persisted var title: String
+    @Persisted var icon: String
+    @Persisted var date: Date
+    @Persisted var exercises: List<String>
+}
 
 struct ExerciseGroup: Identifiable, Equatable, Hashable {
     let id = UUID()
     var date: Date
-    var exerciseGroupName: String
+    var title: String
     var icon: String
     var exercisesToDisplay: [String]
 }
@@ -20,13 +28,13 @@ extension ExerciseGroup {
         return [
             ExerciseGroup(
                 date: Date(),
-                exerciseGroupName: "Грудь",
+                title: "Грудь",
                 icon: "chest",
                 exercisesToDisplay: Exercises.shared.chest
             ),
             ExerciseGroup(
                 date: Date(),
-                exerciseGroupName: "Спина",
+                title: "Спина",
                 icon: "back",
                 exercisesToDisplay: Exercises.shared.back
             )

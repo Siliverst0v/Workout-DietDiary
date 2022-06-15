@@ -35,65 +35,65 @@ struct ChooseExercisesView: View {
                 LazyVGrid(columns: columns, spacing: 30) {
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
-                        muscleGroup: ExerciseGroup(
+                        exerciseGroup: ExerciseGroup(
                             date: date,
-                            exerciseGroupName: "Грудь",
+                            title: "Грудь",
                             icon: "chest",
                             exercisesToDisplay: muscleGroups.chest))
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
-                        muscleGroup: ExerciseGroup(
+                        exerciseGroup: ExerciseGroup(
                             date: date,
-                            exerciseGroupName: "Плечи",
+                            title: "Плечи",
                             icon: "shoulders",
                             exercisesToDisplay: muscleGroups.shoulders))
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
-                        muscleGroup: ExerciseGroup(
+                        exerciseGroup: ExerciseGroup(
                             date: date,
-                            exerciseGroupName: "Спина",
+                            title: "Спина",
                             icon: "back",
                             exercisesToDisplay: muscleGroups.back))
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
-                        muscleGroup: ExerciseGroup(
+                        exerciseGroup: ExerciseGroup(
                             date: date,
-                            exerciseGroupName: "Бицепс",
+                            title: "Бицепс",
                             icon: "biceps",
                             exercisesToDisplay: muscleGroups.biceps))
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
-                        muscleGroup: ExerciseGroup(
+                        exerciseGroup: ExerciseGroup(
                             date: date,
-                            exerciseGroupName: "Трицепс",
+                            title: "Трицепс",
                             icon: "triceps",
                             exercisesToDisplay: muscleGroups.triceps))
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
-                        muscleGroup: ExerciseGroup(
+                        exerciseGroup: ExerciseGroup(
                             date: date,
-                            exerciseGroupName: "Ноги",
+                            title: "Ноги",
                             icon: "legs",
                             exercisesToDisplay: muscleGroups.legs))
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
-                        muscleGroup: ExerciseGroup(
+                        exerciseGroup: ExerciseGroup(
                             date: date,
-                            exerciseGroupName: "Пресс",
+                            title: "Пресс",
                             icon: "abs",
                             exercisesToDisplay: muscleGroups.abs))
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
-                        muscleGroup: ExerciseGroup(
+                        exerciseGroup: ExerciseGroup(
                             date: date,
-                            exerciseGroupName: "Предплечья",
+                            title: "Предплечья",
                             icon: "forearms",
                             exercisesToDisplay: muscleGroups.forearms))
                     ExerciseGroupButton(
                         exercisesToDisplay: $exercisesToDisplay,
-                        muscleGroup: ExerciseGroup(
+                        exerciseGroup: ExerciseGroup(
                             date: date,
-                            exerciseGroupName: "Кардио",
+                            title: "Кардио",
                             icon: "cardio",
                             exercisesToDisplay: muscleGroups.cardio))
                 }
@@ -104,7 +104,7 @@ struct ChooseExercisesView: View {
                 NavigationLink(isActive: $chooseViewIsActive, destination: {
                     ExercisesView(
                         date: date,
-                        exercises: $exercisesToDisplay,
+                        choosenExerciseGroups: $exercisesToDisplay,
                         workoutsIsActive: $workoutsIsActive)
                     .environmentObject(realmManager)
                 }, label: {

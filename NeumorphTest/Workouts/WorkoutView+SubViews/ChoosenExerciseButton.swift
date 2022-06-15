@@ -251,12 +251,12 @@ extension ChoosenExerciseButton {
     
     private func saveSets() {
         notTapped.toggle()
-        var test: [RealmSet] = []
+        var test: [Set] = []
             choosenExercise.sets.forEach { setToDelete in
                         realmManager.deleteSet(set: setToDelete)
                 }
         testSets.sets.forEach { sett in
-            let newRealmSet = RealmSet(id: sett.id,
+            let newRealmSet = Set(id: sett.id,
                                        repeats: sett.repeats,
                                        weight: sett.weight)
             test.append(newRealmSet)
