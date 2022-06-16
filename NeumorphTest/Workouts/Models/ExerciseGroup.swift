@@ -8,21 +8,21 @@
 import Foundation
 import RealmSwift
 
-class ChestExerciseGroup: Object {
-    @Persisted var title: String = "Грудь"
-    @Persisted var icon: String = "chest"
-    @Persisted var exercises: List<String>
-    
-    convenience override init() {
-        self.init()
-        
-        fetchExercises()
-    }
-    
-    private func fetchExercises() {
-        if !self.exercises.isEmpty { self.exercises.append(objectsIn: Exercises.shared.chest) }
-    }
-}
+//class ChestExerciseGroup: Object {
+//    @Persisted var title: String = "Грудь"
+//    @Persisted var icon: String = "chest"
+//    @Persisted var exercises: List<String>
+//    
+//    convenience override init() {
+//        self.init()
+//        
+//        fetchExercises()
+//    }
+//    
+//    private func fetchExercises() {
+//        if !self.exercises.isEmpty { self.exercises.append(objectsIn: Exercises.shared.chest) }
+//    }
+//}
 
 struct ExerciseGroup: Identifiable, Equatable, Hashable {
     let id = UUID()

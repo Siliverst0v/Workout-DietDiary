@@ -13,6 +13,7 @@ struct NeumorphTestApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(RealmManager())
+                .preferredColorScheme(.light)
         }
     }
 }
