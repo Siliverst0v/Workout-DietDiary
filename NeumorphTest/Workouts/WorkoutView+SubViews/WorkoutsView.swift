@@ -24,7 +24,7 @@ struct WorkoutsView: View {
         NavigationView {
                 List {
                         ForEach(workouts, id: \.id) {workout in
-                        WorkoutButton(
+                        WorkoutButtonView(
                             workout: workout,
                             choosenExercises: $choosenExercises)
                         .environmentObject(realmManager)

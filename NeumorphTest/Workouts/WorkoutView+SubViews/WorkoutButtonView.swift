@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct WorkoutButton: View {
+struct WorkoutButtonView: View {
     @State var workout: Workout
     @Binding var choosenExercises: [ChoosenExercise]
 
@@ -68,7 +68,7 @@ struct WorkoutButton: View {
     }
 }
 
-extension WorkoutButton {
+extension WorkoutButtonView {
     
     func replaceChoosenExercises() {
         choosenExercises = []
@@ -80,7 +80,7 @@ extension WorkoutButton {
 
 struct WorkoutsView_Previews: PreviewProvider {
     static var previews: some View {
-        WorkoutButton(
+        WorkoutButtonView(
             workout: Workout(),
             choosenExercises: .constant([])
         )

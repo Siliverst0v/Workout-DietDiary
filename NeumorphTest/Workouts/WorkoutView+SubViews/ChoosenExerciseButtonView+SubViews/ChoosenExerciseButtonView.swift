@@ -8,7 +8,7 @@
 import SwiftUI
 import RealmSwift
 
-struct ChoosenExerciseButton: View {
+struct ChoosenExerciseButtonView: View {
     @EnvironmentObject var realmManager: RealmManager
     
     @StateObject var testSets = MocSets()
@@ -26,7 +26,7 @@ struct ChoosenExerciseButton: View {
     
     var body: some View {
         if notTapped {
-            NotPressedChoosenExerciseButton(
+            NotPressedChoosenExerciseButtonView(
                 buttonIsNotPressed: $notTapped,
                 deleteMode: $deleteMode,
                 icon: choosenExercise.icon,
@@ -234,7 +234,7 @@ struct ChoosenExerciseButton: View {
     }
 }
 
-extension ChoosenExerciseButton {
+extension ChoosenExerciseButtonView {
     
     private func fetchPreviousExercises() {
         realmManager.getChoosenExercises()
@@ -317,62 +317,11 @@ extension ChoosenExerciseButton {
     }
 }
 
-struct NotPressedChoosenExerciseButton: View {
-    @Binding var buttonIsNotPressed: Bool
-    @Binding var deleteMode: Bool
-    var icon: String
-    var title: String
-    
-    var action: () -> Void
-    
-    var body: some View {
-        ZStack {
-            Button( action: { buttonIsNotPressed.toggle() } ) {
-                GeometryReader { geometry in
-                    let width = geometry.size.width
-                    HStack {
-                        Image(icon)
-                            .resizable()
-                            .frame(width: 70,
-                                   height: 40)
-                        Text(title)
-                            .fontWeight(.semibold)
-                            .lineLimit(3)
-                            .frame(width: width - 160,
-                                   height: 60,
-                                   alignment: .leading)
-                            .padding(.leading)
-                    }
-                    .padding(.init(top: 5,
-                                   leading: 16,
-                                   bottom: 0,
-                                   trailing: 0))
-                    
-                }
-                .frame(width: UIScreen.main.bounds.size.width - 40,
-                       height: 70, alignment: .center)
-            }
-            .disabled(deleteMode)
-            .buttonStyle(ExerciseButtonStyle())
-            Button(action: { self.action() }) {
-                Image(systemName: "trash")
-                    .font(.system(size: 20))
-                    .foregroundColor(.customRed)
-                    .frame(width: 40,
-                           height: 40,
-                           alignment: .center)
-            }
-            .opacity(deleteMode ? 1 : 0)
-            .disabled(!deleteMode)
-            .offset(x: 155,
-                    y: 0)
-        }
-    }
-}
+
 
 struct ChoosenExerciseButton_Previews: PreviewProvider {
     static var previews: some View {
-        ChoosenExerciseButton(
+        ChoosenExerciseButtonView(
             choosenExercise: .constant(Exercises.shared.getMocExercise()),
             deleteMode: .constant(false),
             action: {})

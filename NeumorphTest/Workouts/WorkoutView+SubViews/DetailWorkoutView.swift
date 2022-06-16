@@ -20,7 +20,7 @@ struct DetailWorkoutView: View {
 
             ScrollView {
                 ForEach($choosenExercises.indices, id: \.self) {index in
-                    ChoosenExerciseButton(
+                    ChoosenExerciseButtonView(
                         choosenExercise: $choosenExercises[index],
                         deleteMode: $deleteMode,
                         action: {deleteChoosenExercise(index: index)}

@@ -12,7 +12,7 @@ struct PressedButtonView: View {
     @EnvironmentObject var realmManager: RealmManager
 
     @State private var showingSheet = false
-    @State var previousExercises: [ChoosenExercise] = []
+    @State private var previousExercises: [ChoosenExercise] = []
     
     @Binding var backgroundHeight: CGFloat
     @Binding var buttonNotPressed: Bool

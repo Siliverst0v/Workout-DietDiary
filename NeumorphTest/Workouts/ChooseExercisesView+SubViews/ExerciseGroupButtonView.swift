@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ExerciseGroupButton: View {
+struct ExerciseGroupButtonView: View {
     @Binding var exercisesToDisplay: [ExerciseGroup]
 
     let exerciseGroup: ExerciseGroup
@@ -24,7 +24,7 @@ struct ExerciseGroupButton: View {
     }
 }
 
-extension ExerciseGroupButton {
+extension ExerciseGroupButtonView {
     func addingGroup() {
         
         if !exercisesToDisplay.contains(where: {$0.title == exerciseGroup.title}) {
@@ -45,7 +45,7 @@ extension ExerciseGroupButton {
 
 struct ExerciseGroupButton_Previews: PreviewProvider {
     static var previews: some View {
-        ExerciseGroupButton(
+        ExerciseGroupButtonView(
             exercisesToDisplay: .constant([]),
             exerciseGroup: ExerciseGroup(
                 title: "",
