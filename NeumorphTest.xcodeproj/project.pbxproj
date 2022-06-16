@@ -17,6 +17,7 @@
 		A43908B22832BB1D00AB29F0 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43908B12832BB1D00AB29F0 /* RealmManager.swift */; };
 		A43908B42832BD9800AB29F0 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43908B32832BD9800AB29F0 /* Workout.swift */; };
 		A458AA8D28173C3E00618405 /* ExerciseGroupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A458AA8C28173C3E00618405 /* ExerciseGroupButton.swift */; };
+		A47A19AB285BDD5C005C49D1 /* SetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47A19AA285BDD5C005C49D1 /* SetsView.swift */; };
 		A487B87F2825D85700F9E852 /* BodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A487B87E2825D85700F9E852 /* BodyView.swift */; };
 		A498B3C02815F75D00038BE9 /* ExerciseGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A498B3BF2815F75D00038BE9 /* ExerciseGroup.swift */; };
 		A498B3C22815FB1700038BE9 /* Exercises.swift in Sources */ = {isa = PBXBuildFile; fileRef = A498B3C12815FB1700038BE9 /* Exercises.swift */; };
@@ -48,6 +49,7 @@
 		A43908B12832BB1D00AB29F0 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		A43908B32832BD9800AB29F0 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		A458AA8C28173C3E00618405 /* ExerciseGroupButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseGroupButton.swift; sourceTree = "<group>"; };
+		A47A19AA285BDD5C005C49D1 /* SetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsView.swift; sourceTree = "<group>"; };
 		A487B87E2825D85700F9E852 /* BodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyView.swift; sourceTree = "<group>"; };
 		A498B3BF2815F75D00038BE9 /* ExerciseGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseGroup.swift; sourceTree = "<group>"; };
 		A498B3C12815FB1700038BE9 /* Exercises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercises.swift; sourceTree = "<group>"; };
@@ -104,13 +106,22 @@
 			path = Workouts;
 			sourceTree = "<group>";
 		};
+		A47A19A9285BDC3A005C49D1 /* PressedButton+Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				A498B3C6281603C200038BE9 /* PressedButtonView.swift */,
+				A47A19AA285BDD5C005C49D1 /* SetsView.swift */,
+			);
+			path = "PressedButton+Subviews";
+			sourceTree = "<group>";
+		};
 		A498B3C52816031F00038BE9 /* ExercisesView+SubViews */ = {
 			isa = PBXGroup;
 			children = (
 				A4E9374C27FE3BA0004A3650 /* ExercisesView.swift */,
 				A4F2F656280CAE7B00061441 /* ExerciseButton.swift */,
 				A498B3C32816010A00038BE9 /* NotPressedButtonView.swift */,
-				A498B3C6281603C200038BE9 /* PressedButtonView.swift */,
+				A47A19A9285BDC3A005C49D1 /* PressedButton+Subviews */,
 			);
 			path = "ExercisesView+SubViews";
 			sourceTree = "<group>";
@@ -351,6 +362,7 @@
 				A498B3C92816066E00038BE9 /* CustomButtonStyles.swift in Sources */,
 				A4CECF1A2853E8B3007D0449 /* TimeFormatter.swift in Sources */,
 				A43908B42832BD9800AB29F0 /* Workout.swift in Sources */,
+				A47A19AB285BDD5C005C49D1 /* SetsView.swift in Sources */,
 				A498B3C42816010A00038BE9 /* NotPressedButtonView.swift in Sources */,
 				A487B87F2825D85700F9E852 /* BodyView.swift in Sources */,
 				A42167BF282089F900DF1439 /* WorkoutsView.swift in Sources */,

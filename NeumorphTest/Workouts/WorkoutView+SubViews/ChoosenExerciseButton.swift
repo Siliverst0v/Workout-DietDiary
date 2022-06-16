@@ -170,10 +170,10 @@ struct ChoosenExerciseButton: View {
                                 .padding(.trailing, 20)
                                 Button(action: { saveSets() }) {
                                     Text("Сохранить")
+                                    .fontWeight(.semibold)
                                     .frame(width: 140,
                                            height: 28,
                                            alignment: .center )
-                                    .font(.system(size: 17))
                                     .foregroundColor(.customRed)
                                     .background(
                                         RoundedRectangle(cornerRadius: 11)
@@ -203,7 +203,7 @@ struct ChoosenExerciseButton: View {
                             Image(systemName: "memories")
                             .padding(.trailing, 1)
                             .frame(width: 30,
-                                   height: changeButtonSize(),
+                                   height: changeMemoryButtonSize(),
                                    alignment: .center )
                             .font(.system(size: 17))
                             .foregroundColor(.customBlue)
@@ -296,7 +296,7 @@ extension ChoosenExerciseButton {
         
     }
     
-    private func changeButtonSize() -> CGFloat {
+    private func changeMemoryButtonSize() -> CGFloat {
         var buttonSize: CGFloat = 127
         if choosenExercise.sets.count < 3 && choosenExercise.sets.count > 1 {
             buttonSize = 83
