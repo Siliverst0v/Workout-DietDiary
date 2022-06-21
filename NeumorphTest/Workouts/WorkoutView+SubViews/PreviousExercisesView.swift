@@ -59,6 +59,7 @@ struct PreviousExercisesView: View {
                 Button { dismiss() } label: {
                     Text("Назад")
                         .padding()
+                        .foregroundColor(Color.customBlue)
                         .background(
                             RoundedRectangle(cornerRadius: 11)
                                 .fill(.white)
