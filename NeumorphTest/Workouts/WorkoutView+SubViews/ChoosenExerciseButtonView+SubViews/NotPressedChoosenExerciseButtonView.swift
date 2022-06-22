@@ -14,6 +14,7 @@ struct NotPressedChoosenExerciseButtonView: View {
     var title: String
     
     var action: () -> Void
+    @Binding var showConfirm: Bool
     
     var body: some View {
         ZStack {
@@ -44,14 +45,19 @@ struct NotPressedChoosenExerciseButtonView: View {
             }
             .disabled(deleteMode)
             .buttonStyle(ExerciseButtonStyle())
-            Button(action: { self.action() }) {
-                Image(systemName: "trash")
-                    .font(.system(size: 20))
-                    .foregroundColor(.customRed)
-                    .frame(width: 40,
-                           height: 40,
-                           alignment: .center)
+            Button(action: { showConfirm = true }) {
+                    Image(systemName: "trash")
+                        .font(.system(size: 20))
+                        .foregroundColor(.customRed)
+                        .frame(width: 40,
+                               height: 40,
+                               alignment: .center)
             }
+                .confirmationDialog("Really?", isPresented: $showConfirm, actions: {
+                    Button("Delete", role: .destructive) {
+                        self.action()
+                    }
+                })
             .opacity(deleteMode ? 1 : 0)
             .disabled(!deleteMode)
             .offset(x: 155,

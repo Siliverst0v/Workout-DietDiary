@@ -10,19 +10,19 @@ import RealmSwift
 
 struct ChoosenExerciseButtonView: View {
     @EnvironmentObject var realmManager: RealmManager
-    
-    @StateObject var testSets = MocSets()
+    @FocusState var isFocused: Bool?
     
     @State private var showingSheet = false
     @State private var notTapped = true
     @State private var backgroundHeight: CGFloat = 263
     @State var previousExercises: [ChoosenExercise] = []
     
-    @Binding var choosenExercise: ChoosenExercise
+    @ObservedRealmObject var choosenExercise: ChoosenExercise
     @Binding var deleteMode: Bool
     
     var action: () -> Void
     
+    @State var showConfirm: Bool = false
     
     var body: some View {
         if notTapped {
@@ -31,7 +31,8 @@ struct ChoosenExerciseButtonView: View {
                 deleteMode: $deleteMode,
                 icon: choosenExercise.icon,
                 title: choosenExercise.title,
-                action: self.action)
+                action: self.action,
+                showConfirm: $showConfirm)
         } else {
             ZStack {
             Image("TappedCell")
@@ -86,7 +87,7 @@ struct ChoosenExerciseButtonView: View {
                     }
                     .font(.system(size: 14))
                     .padding(.top, 60)
-                        ForEach($testSets.sets, id: \.id) { setNumber in
+                        ForEach($choosenExercise.sets, id: \.self) { setNumber in
                             HStack {
                                 if width < 370 {
                                     Text("\(setNumber.id.wrappedValue)")
@@ -108,11 +109,13 @@ struct ChoosenExerciseButtonView: View {
                                                        trailing: 30))
                                 }
                                 TextField("0", text: setNumber.repeats)
+                                    .focused($isFocused, equals: true)
                                     .frame(width: 84)
                                     .keyboardType(.decimalPad)
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
                                     .padding(.leading, 8)
                                 TextField("0", text: setNumber.weight)
+                                    .focused($isFocused, equals: true)
                                     .frame(width: 60)
                                     .keyboardType(.decimalPad)
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -168,7 +171,7 @@ struct ChoosenExerciseButtonView: View {
                                 }
                                 .disabled(choosenExercise.sets.count <= 1)
                                 .padding(.trailing, 20)
-                                Button(action: { saveSets() }) {
+                                Button(action: { notTapped.toggle() }) {
                                     Text("Сохранить")
                                     .fontWeight(.semibold)
                                     .frame(width: 140,
@@ -229,7 +232,6 @@ struct ChoosenExerciseButtonView: View {
                 .frame(width: UIScreen.main.bounds.size.width - 40,
                        height: backgroundHeight + CGFloat(((choosenExercise.sets.count - 1) * 46)))
             }
-            .onAppear(perform: fetchSets)
         }
     }
 }
@@ -249,51 +251,15 @@ extension ChoosenExerciseButtonView {
         showingSheet.toggle()
     }
     
-    private func saveSets() {
-        notTapped.toggle()
-        var test: [Set] = []
-            choosenExercise.sets.forEach { setToDelete in
-                        realmManager.deleteSet(set: setToDelete)
-                }
-        testSets.sets.forEach { sett in
-            let newRealmSet = Set(id: sett.id,
-                                       repeats: sett.repeats,
-                                       weight: sett.weight)
-            test.append(newRealmSet)
-        }
-        realmManager.updateChoosenExercise(id: choosenExercise.id,
-                                           sets: test)
-    }
-    
-    private func fetchSets() {
-        testSets.sets = []
-        choosenExercise.sets.forEach { setToFetch in
-            let newTestSet = MocSet(id: setToFetch.id,
-                                     repeats: setToFetch.repeats,
-                                     weight: setToFetch.weight)
-                testSets.sets.append(newTestSet)
-        }
-    }
-    
     private func addSet() {
-        let newSet = MocSet(
-            id: choosenExercise.sets.count + 1,
-                    repeats: "",
-                    weight: "")
         if choosenExercise.sets.count <= 9 {
             realmManager.addSet(
-                id: choosenExercise.id,
-                choosenExercise: choosenExercise)
-            testSets.sets.append(newSet)
+                id: choosenExercise.id)
         }
     }
     
     private func deleteSet() {
-        
-        guard let setToDelete = choosenExercise.sets.last else {return}
-        realmManager.deleteSet(set: setToDelete)
-        testSets.sets.removeLast()
-        
+        realmManager.deleteLastSet(id: choosenExercise.id)
     }
     
     private func changeMemoryButtonSize() -> CGFloat {
@@ -322,7 +288,7 @@ extension ChoosenExerciseButtonView {
 struct ChoosenExerciseButton_Previews: PreviewProvider {
     static var previews: some View {
         ChoosenExerciseButtonView(
-            choosenExercise: .constant(Exercises.shared.getMocExercise()),
+            choosenExercise: Exercises.shared.getMocExercise(),
             deleteMode: .constant(false),
             action: {})
         .environmentObject(RealmManager())

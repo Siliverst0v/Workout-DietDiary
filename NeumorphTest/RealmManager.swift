@@ -120,24 +120,6 @@ class RealmManager: ObservableObject {
         }
     }
     
-    func updateChoosenExercise(id: ObjectId, sets: [Set]) {
-        if let localRealm = localRealm {
-            do {
-                let exerciseToUpdate = localRealm.objects(ChoosenExercise.self).filter(NSPredicate(format: "id == %@", id))
-                guard !exerciseToUpdate.isEmpty else {return}
-                
-                try localRealm.write {
-                    sets.forEach { newSet in
-                        exerciseToUpdate[0].sets.append(newSet)
-                    }
-                    getChoosenExercises()
-                }
-            } catch  {
-                print(error)
-            }
-        }
-    }
-    
     func deleteChoosenExercise(id: ObjectId) {
         if let localRealm = localRealm {
             do {
@@ -166,14 +148,16 @@ class RealmManager: ObservableObject {
     }
     
     
-    func addSet(id: ObjectId, choosenExercise: ChoosenExercise) {
+    func addSet(id: ObjectId) {
         if let localRealm = localRealm {
             do {
                 let choosenExerciseToUpdate = localRealm.objects(ChoosenExercise.self).filter(NSPredicate(format: "id == %@", id))
                 guard !choosenExerciseToUpdate.isEmpty else {return}
                 
                 try localRealm.write {
-                    choosenExercise.sets.append(Set(id: choosenExercise.sets.count + 1, repeats: "", weight: ""))
+                    let set = Set(id: choosenExerciseToUpdate[0].sets.count + 1, repeats: "", weight: "")
+                    localRealm.add(set)
+                    choosenExerciseToUpdate[0].sets.append(set)
                     getChoosenExercises()
                 }
             } catch  {
@@ -182,11 +166,48 @@ class RealmManager: ObservableObject {
         }
     }
     
+    func deleteLastSet(id: ObjectId) {
+        if let localRealm = localRealm {
+            do {
+                let exerciseToUpdate = localRealm.objects(ChoosenExercise.self).filter(NSPredicate(format: "id == %@", id))
+                guard !exerciseToUpdate.isEmpty else {return}
+                
+                try localRealm.write {
+                    guard let setToDelete = exerciseToUpdate[0].sets.last else {return}
+                    localRealm.delete(setToDelete)
+                    
+                    getChoosenExercises()
+                }
+            } catch  {
+                print(error)
+            }
+        }
+    }
+    
+    func deleteAllSets(choosenExerciseId: ObjectId) {
+        if let localRealm = localRealm {
+            do {
+                let exerciseToUpdate = localRealm.objects(ChoosenExercise.self).filter(NSPredicate(format: "id == %@", choosenExerciseId))
+                guard !exerciseToUpdate.isEmpty else {return}
+                
+                try localRealm.write {
+//                    guard let setToDelete = exerciseToUpdate[0].sets.last else {return}
+                    exerciseToUpdate[0].sets.forEach { setToDelete in
+                        
+                        localRealm.delete(setToDelete)
+                    }
+                    
+                    getChoosenExercises()
+                }
+            } catch  {
+                print(error)
+            }
+        }
+    }
     
     func deleteSet(set: Set) {
         if let localRealm = localRealm {
             do {
-
                 try localRealm.write {
                     localRealm.delete(set)
                     getSets()

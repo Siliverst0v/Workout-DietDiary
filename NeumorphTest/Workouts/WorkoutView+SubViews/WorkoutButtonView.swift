@@ -6,14 +6,15 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct WorkoutButtonView: View {
-    @State var workout: Workout
-    @Binding var choosenExercises: [ChoosenExercise]
-
     
+    @State var workout: Workout
+    @Binding var workoutSelection: ObjectId?
+
     var body: some View {
-        Button(action: { replaceChoosenExercises() }) {
+        Button(action: { workoutSelection = workout.id }) {
             HStack {
                 VStack{
                     Text(workout.date, style: .date)
@@ -68,21 +69,11 @@ struct WorkoutButtonView: View {
     }
 }
 
-extension WorkoutButtonView {
-    
-    func replaceChoosenExercises() {
-        choosenExercises = []
-        workout.choosenExercises.forEach { exercise in
-            choosenExercises.append(exercise)
-        }
-    }
-}
-
 struct WorkoutsView_Previews: PreviewProvider {
     static var previews: some View {
         WorkoutButtonView(
             workout: Workout(),
-            choosenExercises: .constant([])
+            workoutSelection: .constant(ObjectId())
         )
     }
 }

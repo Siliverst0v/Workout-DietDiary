@@ -41,7 +41,7 @@ class ChoosenExercise: Object, ObjectKeyIdentifiable {
 
 }
 
-class Set: Object {
+class Set: Object, ObjectKeyIdentifiable {
     @Persisted var id: Int
     @Persisted var repeats: String
     @Persisted var weight: String
