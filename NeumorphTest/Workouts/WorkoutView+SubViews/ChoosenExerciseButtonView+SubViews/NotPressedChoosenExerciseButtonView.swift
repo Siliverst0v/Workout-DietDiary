@@ -9,7 +9,6 @@ import SwiftUI
 
 struct NotPressedChoosenExerciseButtonView: View {
     @Binding var buttonIsNotPressed: Bool
-    @Binding var deleteMode: Bool
     var icon: String
     var title: String
     
@@ -43,23 +42,20 @@ struct NotPressedChoosenExerciseButtonView: View {
                 .frame(width: UIScreen.main.bounds.size.width - 40,
                        height: 70, alignment: .center)
             }
-            .disabled(deleteMode)
             .buttonStyle(ExerciseButtonStyle())
             Button(action: { showConfirm = true }) {
-                    Image(systemName: "trash")
+                    Image(systemName: "x.square")
                         .font(.system(size: 20))
                         .foregroundColor(.customRed)
                         .frame(width: 40,
                                height: 40,
                                alignment: .center)
             }
-                .confirmationDialog("Really?", isPresented: $showConfirm, actions: {
-                    Button("Delete", role: .destructive) {
+                .confirmationDialog("", isPresented: $showConfirm, actions: {
+                    Button("Удалить", role: .destructive) {
                         self.action()
                     }
                 })
-            .opacity(deleteMode ? 1 : 0)
-            .disabled(!deleteMode)
             .offset(x: 155,
                     y: 0)
         }

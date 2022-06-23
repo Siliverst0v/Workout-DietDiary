@@ -15,7 +15,6 @@ struct DetailWorkoutView: View {
     @FocusState var isFocused: Bool?
     
     @State private var icon: String = ""
-    @State var deleteMode = false
         
     var body: some View {
 
@@ -24,19 +23,10 @@ struct DetailWorkoutView: View {
                     ChoosenExerciseButtonView(
                         isFocused: _isFocused,
                         choosenExercise: choosenExercise,
-                        deleteMode: $deleteMode,
-                        action: {deleteChoosenExercise(choosenExerciseId: choosenExercise.id)})
+                        deleteAction: {deleteChoosenExercise(choosenExerciseId: choosenExercise.id)})
                         .environmentObject(realmManager)
                 }
                 .toolbar {
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            Button {
-                                deleteMode.toggle()
-                            } label: {
-                                Image(systemName: "trash")
-                                    .foregroundColor(.customRed)
-                        }
-                    }
                     ToolbarItemGroup(placement: .keyboard) {
                         HStack{
                             Spacer()
