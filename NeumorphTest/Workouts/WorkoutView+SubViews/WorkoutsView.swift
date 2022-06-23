@@ -27,6 +27,7 @@ struct WorkoutsView: View {
                             NavigationLink(tag: workout.id, selection: $workoutSelection) {
                                 
                                 DetailWorkoutView(workout: workout)
+                                    .environmentObject(realmManager)
                             } label: {
                     
                                 WorkoutButtonView(
@@ -56,14 +57,6 @@ struct WorkoutsView: View {
             }
         }
     }
-}
-
-extension WorkoutsView {
-    private func delete(at offsets: IndexSet) {
-
-        $workouts.remove(atOffsets: offsets)
-    }
-    
 }
 
 struct Workouts_Previews: PreviewProvider {

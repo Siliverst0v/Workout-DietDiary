@@ -9,8 +9,10 @@ import SwiftUI
 import RealmSwift
 
 struct WorkoutButtonView: View {
+    @EnvironmentObject var realmManager: RealmManager
+
     @State var showConfirm: Bool = false
-    @State var workout: Workout
+    @ObservedRealmObject var workout: Workout
     @Binding var workoutSelection: ObjectId?
     
     var body: some View {
@@ -31,7 +33,7 @@ struct WorkoutButtonView: View {
                 }
                 .padding()
                 ZStack{
-                    ExtractedView(workout: $workout)
+                    SecondBodyView(workout: workout)
                     Button(action: { showConfirm = true }) {
                         Image(systemName: "x.circle")
                             .font(.system(size: 20))
@@ -43,6 +45,7 @@ struct WorkoutButtonView: View {
                     .offset(x: 78, y: -78)
                     .confirmationDialog("", isPresented: $showConfirm, actions: {
                         Button("Удалить", role: .destructive) {
+                            deleteWorkout()
                         }
                     })
                 }
@@ -53,9 +56,19 @@ struct WorkoutButtonView: View {
     }
 }
 
+extension WorkoutButtonView {
+    private func deleteWorkout() {
+        workout.choosenExercises.forEach { exercise in
+            realmManager.deleteAllSets(choosenExerciseId: exercise.id)
+            realmManager.deleteChoosenExercise(id: exercise.id)
+        }
+        realmManager.deleteWorkout(id: workout.id)
+    }
+}
 
-struct ExtractedView: View {
-    @Binding var workout: Workout
+
+struct SecondBodyView: View {
+    @ObservedRealmObject var workout: Workout
     var body: some View {
         ZStack {
             Image("Body")
