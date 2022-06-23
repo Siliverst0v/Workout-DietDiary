@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ExerciseButton: View {
     @EnvironmentObject var realmManager: RealmManager
+    @FocusState var isFocused: Bool?
 
     @State var buttonNotPressed = true
     @State var note: String = "..."
@@ -38,6 +39,7 @@ struct ExerciseButton: View {
                 )
         } else {
             PressedButtonView(
+                isFocused: _isFocused,
                 backgroundHeight: $backgroundHeight,
                 buttonNotPressed: $buttonNotPressed,
                 exerciseAdded: $exerciseAdded,

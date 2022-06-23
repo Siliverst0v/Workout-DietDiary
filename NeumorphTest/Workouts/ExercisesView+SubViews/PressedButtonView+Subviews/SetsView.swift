@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SetsView: View {
+    @FocusState var isFocused: Bool?
     
     @Binding var sets: [MocSet]
     @Binding var note: String
@@ -65,11 +66,13 @@ struct SetsView: View {
                                            trailing: 30))
                     }
                     TextField("0", text: setNumber.repeats)
+                        .focused($isFocused, equals: true)
                         .frame(width: 84)
                         .keyboardType(.decimalPad)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.leading, 8)
                     TextField("0", text: setNumber.weight)
+                        .focused($isFocused, equals: true)
                         .frame(width: 60)
                         .keyboardType(.decimalPad)
                         .textFieldStyle(RoundedBorderTextFieldStyle())

@@ -11,7 +11,8 @@ import RealmSwift
 
 struct ExercisesView: View {
     @EnvironmentObject var realmManager: RealmManager
-    
+    @FocusState var isFocused: Bool?
+
     @State var choosenExercises: [ChoosenExercise] = []
     @State var date: Date
     
@@ -32,6 +33,7 @@ struct ExercisesView: View {
 
                     ForEach(exerciseGroup.exercisesToDisplay, id: \.self) {exercise in
                         ExerciseButton(
+                            isFocused: _isFocused,
                             title: exercise,
                             image: exerciseGroup.icon,
                             choosenExercises: $choosenExercises,
@@ -46,6 +48,16 @@ struct ExercisesView: View {
                         Text("Готово")
                     }
 
+                }
+                ToolbarItemGroup(placement: .keyboard) {
+                    HStack{
+                        Spacer()
+                        Button {
+                            isFocused = nil
+                        } label: {
+                            Text("Готово")
+                        }
+                    }
                 }
             }
     }

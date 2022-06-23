@@ -105,52 +105,6 @@ struct ExerciseGroupButtonStyle: ButtonStyle {
     }
 }
 
-struct SimpleButtonStyle: ButtonStyle {
-    
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .background(
-                Group {
-                    if configuration.isPressed {
-                        RoundedRectangle(cornerRadius: 11)
-                            .fill(.white)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 11)
-                                    .stroke(Color.gray, lineWidth: 3)
-                                    .blur(radius: 4)
-                                    .offset(x: 2, y: 2)
-                                    .mask(
-                                        RoundedRectangle(cornerRadius: 11)
-                                        .fill(LinearGradient(Color.black, Color.gray)))
-                            )
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 11)
-                                    .stroke(Color.white, lineWidth: 3)
-                                    .blur(radius: 4)
-                                    .offset(x: -2, y: -2)
-                                    .mask(
-                                        RoundedRectangle(cornerRadius: 11)
-                                            .fill(LinearGradient(Color.black, Color.gray)))
-                            )
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 11)
-                                    .stroke(Color.gray, lineWidth: 0.1)
-                            )
-                    } else {
-                        RoundedRectangle(cornerRadius: 11)
-                            .fill(.white)
-                            .shadow(color: .black.opacity(0.2), radius: 10, x: 5, y: 5)
-                            .shadow(color: .white.opacity(0.7), radius: 10, x: -5, y: -5)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 11)
-                                    .stroke(Color.gray, lineWidth: 0.1)
-                        )
-                    }
-                }
-            )
-    }
-}
-
 struct WorkoutButtonStyle: ButtonStyle {
     
     func makeBody(configuration: Configuration) -> some View {

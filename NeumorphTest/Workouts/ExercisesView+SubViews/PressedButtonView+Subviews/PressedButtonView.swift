@@ -10,6 +10,7 @@ import RealmSwift
 
 struct PressedButtonView: View {
     @EnvironmentObject var realmManager: RealmManager
+    @FocusState var isFocused: Bool?
 
     @State private var showingSheet = false
     @State private var previousExercises: [ChoosenExercise] = []
@@ -45,10 +46,12 @@ struct PressedButtonView: View {
                         .padding(.leading)
                     }
                     .padding(.init(top: 5, leading: 16, bottom: 0, trailing: 0))
-                SetsView(sets: $sets,
-                              note: $note,
-                              buttonNotPressed: $buttonNotPressed,
-                              width: width)
+                SetsView(
+                        isFocused: _isFocused,
+                        sets: $sets,
+                        note: $note,
+                        buttonNotPressed: $buttonNotPressed,
+                        width: width)
                 Button(action: { self.fetchPreviousExercises() }) {
                         Image(systemName: "memories")
                         .padding(.trailing, 1)

@@ -22,7 +22,7 @@ struct WorkoutsView: View {
         
     var body: some View {
         NavigationView {
-                List {
+                ScrollView {
                     ForEach(workouts.sorted(byKeyPath: "date"), id: \.id) {workout in
                             NavigationLink(tag: workout.id, selection: $workoutSelection) {
                                 
@@ -33,30 +33,24 @@ struct WorkoutsView: View {
                                     workout: workout,
                                     workoutSelection: $workoutSelection)
                                 .environmentObject(realmManager)
-                                .listRowSeparator(.hidden)
                             }
                     }
-                    .onDelete(perform: delete)
-                    .listRowSeparator(.hidden)
                 }
                 .navigationTitle("Дневник тренировок")
-                .listStyle(.plain)
-                .background(
-                    NavigationLink("",
-                                   tag: workoutsIsActive ? "ChooseExerciseView" : "",
-                                   selection: $selection) {
-                        ChooseExercisesView(workoutsIsActive: $workoutsIsActive)
-                            .environmentObject(realmManager)
-                    }
-                )
-            .toolbar {
+                .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        
                         Button {
                             workoutsIsActive = true
                             self.selection = "ChooseExerciseView"
+                            
                         } label: {
                             Image(systemName: "plus.circle")
+                            NavigationLink("",
+                                           tag: workoutsIsActive ? "ChooseExerciseView" : "",
+                                           selection: $selection) {
+                                ChooseExercisesView(workoutsIsActive: $workoutsIsActive)
+                                    .environmentObject(realmManager)
+                            }
                     }
                 }
             }
@@ -68,7 +62,6 @@ extension WorkoutsView {
     private func delete(at offsets: IndexSet) {
 
         $workouts.remove(atOffsets: offsets)
-        
     }
     
 }

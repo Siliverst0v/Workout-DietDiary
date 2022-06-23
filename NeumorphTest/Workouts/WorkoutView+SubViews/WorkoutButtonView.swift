@@ -66,6 +66,7 @@ struct WorkoutButtonView: View {
             }
         }
         .buttonStyle(WorkoutButtonStyle())
+        .padding(.horizontal)
     }
 }
 
