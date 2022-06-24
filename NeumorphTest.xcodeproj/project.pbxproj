@@ -25,6 +25,7 @@
 		A498B3C42816010A00038BE9 /* NotPressedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A498B3C32816010A00038BE9 /* NotPressedButtonView.swift */; };
 		A498B3C7281603C200038BE9 /* PressedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A498B3C6281603C200038BE9 /* PressedButtonView.swift */; };
 		A498B3C92816066E00038BE9 /* CustomButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A498B3C82816066E00038BE9 /* CustomButtonStyles.swift */; };
+		A4B37E7D28665B5500E33777 /* ChoosenSetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B37E7C28665B5500E33777 /* ChoosenSetsView.swift */; };
 		A4CECF122853E077007D0449 /* AddFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CECF112853E077007D0449 /* AddFoodView.swift */; };
 		A4CECF142853E2A4007D0449 /* CaloriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CECF132853E2A4007D0449 /* CaloriesView.swift */; };
 		A4CECF172853E3C6007D0449 /* CaloriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CECF162853E3C6007D0449 /* CaloriesModel.swift */; };
@@ -58,6 +59,7 @@
 		A498B3C32816010A00038BE9 /* NotPressedButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotPressedButtonView.swift; sourceTree = "<group>"; };
 		A498B3C6281603C200038BE9 /* PressedButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressedButtonView.swift; sourceTree = "<group>"; };
 		A498B3C82816066E00038BE9 /* CustomButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonStyles.swift; sourceTree = "<group>"; };
+		A4B37E7C28665B5500E33777 /* ChoosenSetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosenSetsView.swift; sourceTree = "<group>"; };
 		A4CECF112853E077007D0449 /* AddFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodView.swift; sourceTree = "<group>"; };
 		A4CECF132853E2A4007D0449 /* CaloriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesView.swift; sourceTree = "<group>"; };
 		A4CECF162853E3C6007D0449 /* CaloriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesModel.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				A427FF5E28280E5D00FD3648 /* ChoosenExerciseButtonView.swift */,
+				A4B37E7C28665B5500E33777 /* ChoosenSetsView.swift */,
 				A47A19AD285BE3FC005C49D1 /* NotPressedChoosenExerciseButtonView.swift */,
 			);
 			path = "ChoosenExerciseButtonView+SubViews";
@@ -389,6 +392,7 @@
 				A498B3C02815F75D00038BE9 /* ExerciseGroup.swift in Sources */,
 				A404FFA2281F166300525B9D /* WorkoutButtonView.swift in Sources */,
 				A4F2F657280CAE7B00061441 /* ExerciseButton.swift in Sources */,
+				A4B37E7D28665B5500E33777 /* ChoosenSetsView.swift in Sources */,
 				A4E9374D27FE3BA0004A3650 /* ExercisesView.swift in Sources */,
 				A42194002826A70F00E25015 /* DetailWorkoutView.swift in Sources */,
 				A4E9374B27FE3BA0004A3650 /* NeumorphTestApp.swift in Sources */,
