@@ -18,7 +18,7 @@ struct PressedButtonView: View {
     @Binding var backgroundHeight: CGFloat
     @Binding var buttonNotPressed: Bool
     @Binding var exerciseAdded: Bool
-    @Binding var sets: [MocSet]
+    @Binding var sets: [Set]
     @Binding var choosenExercises: [ChoosenExercise]
     @Binding var date: Date
     
@@ -135,9 +135,9 @@ struct PressedButtonView_Previews: PreviewProvider {
             backgroundHeight: .constant(270),
             buttonNotPressed: .constant(true),
             exerciseAdded: .constant(false),
-            sets: .constant([MocSet(id: 1, repeats: "", weight: ""),
-                             MocSet(id: 2, repeats: "", weight: ""),
-                             MocSet(id: 3, repeats: "", weight: "")]),
+            sets: .constant([Set(id: 1, repeats: "", weight: ""),
+                             Set(id: 2, repeats: "", weight: ""),
+                             Set(id: 3, repeats: "", weight: "")]),
             choosenExercises: .constant([]),
             date: .constant(Date()),
             image: .constant("chest"),

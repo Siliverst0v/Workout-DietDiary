@@ -15,9 +15,9 @@ struct ExerciseButton: View {
     @State var note: String = "..."
     @State var backgroundHeight: CGFloat = 263
     @State var exerciseAdded = false
-    @State var sets: [MocSet] = [MocSet(id: 1, repeats: "", weight: ""),
-                                 MocSet(id: 2, repeats: "", weight: ""),
-                                 MocSet(id: 3, repeats: "", weight: "")]
+    @State var sets: [Set] = [Set(id: 1, repeats: "", weight: ""),
+                              Set(id: 2, repeats: "", weight: ""),
+                              Set(id: 3, repeats: "", weight: "")]
     
     @Binding var title: String
     @Binding var image: String

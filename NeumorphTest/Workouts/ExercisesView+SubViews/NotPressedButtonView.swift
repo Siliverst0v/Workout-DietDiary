@@ -11,7 +11,7 @@ struct NotPressedButtonView: View {
     
     @Binding var buttonNotPressed: Bool
     @Binding var exerciseAdded: Bool
-    @Binding var sets: [MocSet]
+    @Binding var sets: [Set]
     @Binding var choosenExercises: [ChoosenExercise]
     @Binding var date: Date
     
@@ -92,9 +92,9 @@ struct NotPressedButtonView_Previews: PreviewProvider {
             buttonNotPressed: .constant(true),
             exerciseAdded: .constant(true),
             sets: .constant([
-                MocSet(id: 1, repeats: "", weight: ""),
-                MocSet(id: 2, repeats: "", weight: ""),
-                MocSet(id: 3, repeats: "", weight: "")]),
+                Set(id: 1, repeats: "", weight: ""),
+                Set(id: 2, repeats: "", weight: ""),
+                Set(id: 3, repeats: "", weight: "")]),
             choosenExercises: .constant([]),
             date: .constant(Date()),
             image: .constant("chest"),

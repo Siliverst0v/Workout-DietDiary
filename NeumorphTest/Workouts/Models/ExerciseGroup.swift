@@ -16,12 +16,8 @@ import RealmSwift
 //    convenience override init() {
 //        self.init()
 //        
-//        fetchExercises()
 //    }
-//    
-//    private func fetchExercises() {
-//        if !self.exercises.isEmpty { self.exercises.append(objectsIn: Exercises.shared.chest) }
-//    }
+//
 //}
 
 struct ExerciseGroup: Identifiable, Equatable, Hashable {

@@ -54,19 +54,3 @@ class Set: Object, ObjectKeyIdentifiable {
         self.weight = weight
     }
 }
-
-class MocSets: ObservableObject {
-    @Published var sets: [MocSet] = []
-    
-    init() {}
-    
-    init(sets: [MocSet]) {
-        self.sets = sets
-    }
-}
-
-struct MocSet: Equatable, Identifiable, Hashable {
-    var id: Int
-    var repeats: String
-    var weight: String
-}

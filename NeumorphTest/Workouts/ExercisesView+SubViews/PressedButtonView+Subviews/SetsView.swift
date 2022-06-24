@@ -10,7 +10,7 @@ import SwiftUI
 struct SetsView: View {
     @FocusState var isFocused: Bool?
     
-    @Binding var sets: [MocSet]
+    @Binding var sets: [Set]
     @Binding var note: String
     @Binding var buttonNotPressed: Bool
     
@@ -151,7 +151,7 @@ struct SetsView: View {
 extension SetsView {
     
     private func addSet() {
-        let newSet = MocSet(
+        let newSet = Set(
                     id: sets.count + 1,
                     repeats: "",
                     weight: "")
@@ -167,9 +167,9 @@ extension SetsView {
 
 struct SetsView_Previews: PreviewProvider {
     static var previews: some View {
-        SetsView(sets: .constant([MocSet(id: 1, repeats: "", weight: ""),
-                                  MocSet(id: 2, repeats: "", weight: ""),
-                                  MocSet(id: 3, repeats: "", weight: "")]),
+        SetsView(sets: .constant([Set(id: 1, repeats: "", weight: ""),
+                                  Set(id: 2, repeats: "", weight: ""),
+                                  Set(id: 3, repeats: "", weight: "")]),
                  note: .constant("..."),
                  buttonNotPressed: .constant(false),
                  width: 0)
