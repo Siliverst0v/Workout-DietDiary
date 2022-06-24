@@ -192,6 +192,7 @@ struct ChoosenExerciseButtonView: View {
                             }
                             .padding(.leading, 5)
                             TextEditor(text: $choosenExercise.note)
+                                .focused($isFocused, equals: true)
                                 .foregroundColor(.customBlue)
                                 .lineLimit(2)
                                 .frame(width: UIScreen.main.bounds.size.width - 60,

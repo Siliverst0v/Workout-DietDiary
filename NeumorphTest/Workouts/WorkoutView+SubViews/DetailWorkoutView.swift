@@ -13,9 +13,7 @@ struct DetailWorkoutView: View {
     @EnvironmentObject var realmManager: RealmManager
     @ObservedRealmObject var workout: Workout
     @FocusState var isFocused: Bool?
-    
-    @State private var icon: String = ""
-        
+            
     var body: some View {
 
             ScrollView {

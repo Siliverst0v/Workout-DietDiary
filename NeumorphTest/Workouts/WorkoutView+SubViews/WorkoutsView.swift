@@ -16,6 +16,7 @@ struct WorkoutsView: View {
     @StateObject var realmManager = RealmManager()
     
     @ObservedResults(Workout.self) var workouts
+    
     @State var workoutsIsActive = false
     @State var selection: String? = nil
     @State var workoutSelection: ObjectId? = ObjectId()

@@ -51,7 +51,7 @@ struct CaloriesView: View {
                     Button {
                         showingAddView.toggle()
                     } label: {
-                        Label("Добавить прием пищи", systemImage: "plus.circle")
+                        Image(systemName: "plus.circle")
                     }
                 }
             }
