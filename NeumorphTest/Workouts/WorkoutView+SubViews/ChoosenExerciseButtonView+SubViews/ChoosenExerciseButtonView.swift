@@ -134,7 +134,7 @@ extension ChoosenExerciseButtonView {
 struct ChoosenExerciseButton_Previews: PreviewProvider {
     static var previews: some View {
         ChoosenExerciseButtonView(
-            choosenExercise: Exercises.shared.getMocExercise(),
+            choosenExercise: Exercises.shared.getMocExercise().choosenExercises.first!,
             deleteAction: {})
         .environmentObject(RealmManager())
     }

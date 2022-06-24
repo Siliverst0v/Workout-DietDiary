@@ -30,13 +30,16 @@ class Exercises: ObservableObject {
     
     var forearms = ["Подьем груза на вращающейся балке", "Разгибание кисти в блоке", "Сгибание и разгибание кистей с гантелями хватом Молот стоя", "Сгибание кистей со штангой за спиной стоя", "Сгибание кистей в упоре на скамье"]
     
-    func getMocExercise() -> ChoosenExercise {
+    func getMocExercise() -> Workout {
+        let workout = Workout()
         let exercise = ChoosenExercise(icon: "chest", title: "Жим гантелей на наклонной скамье с супинацией (разворотом)", note: "...", date: Date())
         let sets = [Set(id: 1, repeats: "", weight: ""),
                     Set(id: 2, repeats: "", weight: ""),
                     Set(id: 3, repeats: "", weight: "")
         ]
         exercise.sets.append(objectsIn: sets)
-        return exercise
+        workout.choosenExercises.append(exercise)
+        workout.exerciseGroups.append("Грудь")
+        return workout
     }
 }

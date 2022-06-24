@@ -15,9 +15,11 @@ class Workout: Object, ObjectKeyIdentifiable {
     @Persisted var choosenExercises: List<ChoosenExercise>
     
     
-    convenience init(date: Date) {
+    convenience init(date: Date, exerciseGroups: List<String>, choosenExercises: List<ChoosenExercise>) {
         self.init()
         self.date = date
+        self.exerciseGroups = exerciseGroups
+        self.choosenExercises = choosenExercises
     }
 }
 

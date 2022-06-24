@@ -62,8 +62,8 @@ struct NotPressedChoosenExerciseButtonView: View {
     }
 }
 
-//struct NotPressedChoosenExerciseButton_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NotPressedChoosenExerciseButton(buttonIsNotPressed: .constant(false), deleteMode: .constant(false), icon: "chest", title: "Some title", action: )
-//    }
-//}
+struct NotPressedChoosenExerciseButtonView_Previews: PreviewProvider {
+    static var previews: some View {
+        NotPressedChoosenExerciseButtonView(buttonIsNotPressed: .constant(false), icon: "chest", title: "Exercise for example", action: {}, showConfirm: .constant(false))
+    }
+}

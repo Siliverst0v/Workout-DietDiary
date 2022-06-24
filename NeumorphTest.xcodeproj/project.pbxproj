@@ -150,6 +150,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		A4B37E7E28665C8D00E33777 /* PreviousExercisesView+SubView */ = {
+			isa = PBXGroup;
+			children = (
+				A417B53E284658A100B98881 /* PreviousExercisesView.swift */,
+				A417B53C284651EC00B98881 /* PreviousExercisesButtonView.swift */,
+			);
+			path = "PreviousExercisesView+SubView";
+			sourceTree = "<group>";
+		};
 		A4BC7616281DE56500D55496 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,8 +212,7 @@
 				A42167BE282089F900DF1439 /* WorkoutsView.swift */,
 				A42193FF2826A70F00E25015 /* DetailWorkoutView.swift */,
 				A47A19AC285BE399005C49D1 /* ChoosenExerciseButtonView+SubViews */,
-				A417B53E284658A100B98881 /* PreviousExercisesView.swift */,
-				A417B53C284651EC00B98881 /* PreviousExercisesButtonView.swift */,
+				A4B37E7E28665C8D00E33777 /* PreviousExercisesView+SubView */,
 			);
 			path = "WorkoutView+SubViews";
 			sourceTree = "<group>";

@@ -51,6 +51,7 @@ extension DetailWorkoutView {
 
 struct DetailWorkoutView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailWorkoutView(workout: Workout())
+        DetailWorkoutView(workout: Exercises.shared.getMocExercise())
+            .environmentObject(RealmManager())
     }
 }

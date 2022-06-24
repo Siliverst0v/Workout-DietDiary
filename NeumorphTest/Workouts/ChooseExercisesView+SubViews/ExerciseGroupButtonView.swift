@@ -48,8 +48,8 @@ struct ExerciseGroupButton_Previews: PreviewProvider {
         ExerciseGroupButtonView(
             exercisesToDisplay: .constant([]),
             exerciseGroup: ExerciseGroup(
-                title: "",
-                icon: "",
+                title: "Грудь",
+                icon: "chest",
                 exercisesToDisplay: []))
     }
 }

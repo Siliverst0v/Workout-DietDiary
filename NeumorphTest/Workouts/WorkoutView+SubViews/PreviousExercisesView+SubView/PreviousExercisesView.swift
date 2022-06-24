@@ -81,6 +81,6 @@ struct PreviousExercisesView: View {
 
 struct PreviousExercises_Previews: PreviewProvider {
     static var previews: some View {
-        PreviousExercisesView(previousExercises: [Exercises.shared.getMocExercise()])
+        PreviousExercisesView(previousExercises: [Exercises.shared.getMocExercise().choosenExercises.first!])
     }
 }

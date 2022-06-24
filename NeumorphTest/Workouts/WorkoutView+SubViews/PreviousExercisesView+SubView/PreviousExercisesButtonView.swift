@@ -136,6 +136,6 @@ extension PreviousExercisesButton {
 
 struct PreviousExercisesButton_Previews: PreviewProvider {
     static var previews: some View {
-        PreviousExercisesButton(choosenExercise: Exercises.shared.getMocExercise())
+        PreviousExercisesButton(choosenExercise: Exercises.shared.getMocExercise().choosenExercises.first!)
     }
 }
