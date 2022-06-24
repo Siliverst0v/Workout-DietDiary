@@ -22,7 +22,7 @@ class RealmManager: ObservableObject {
     
     func openRealm() {
         do {
-            let config = Realm.Configuration(schemaVersion: 7) { migration, oldSchemaVersion in
+            let config = Realm.Configuration(schemaVersion: 10) { migration, oldSchemaVersion in
 
             }
             Realm.Configuration.defaultConfiguration = config

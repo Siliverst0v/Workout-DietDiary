@@ -6,19 +6,6 @@
 //
 
 import Foundation
-import RealmSwift
-
-//class ChestExerciseGroup: Object {
-//    @Persisted var title: String = "Грудь"
-//    @Persisted var icon: String = "chest"
-//    @Persisted var exercises: List<String>
-//    
-//    convenience override init() {
-//        self.init()
-//        
-//    }
-//
-//}
 
 struct ExerciseGroup: Identifiable, Equatable, Hashable {
     let id = UUID()
