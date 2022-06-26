@@ -82,7 +82,7 @@ struct ChoosenExerciseButtonView: View {
                             )
                     }
                     .sheet(isPresented: $showingSheet, content: {
-                        PreviousExercisesView(previousExercises: previousExercises)
+                        PreviousExercisesView(previousExercises: $previousExercises)
                     })
                     .offset(x: width - 40, y: changeMemoryButtonPosition())
                 }
@@ -105,6 +105,7 @@ extension ChoosenExerciseButtonView {
                 previousExercises.append(exercise)
             }
         }
+        print(previousExercises)
         showingSheet.toggle()
     }
     

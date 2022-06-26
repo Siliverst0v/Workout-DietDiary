@@ -70,7 +70,7 @@ struct PressedButtonView: View {
                             )
                 }
                 .sheet(isPresented: $showingSheet, content: {
-                    PreviousExercisesView(previousExercises: previousExercises)
+                    PreviousExercisesView(previousExercises: $previousExercises)
                 })
                 .offset(x: width - 40, y: changeMemoryButtonPosition())
             }

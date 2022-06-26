@@ -10,7 +10,7 @@ import SwiftUI
 struct PreviousExercisesView: View {
     @Environment(\.dismiss) var dismiss
     
-    @State var previousExercises: [ChoosenExercise]
+    @Binding var previousExercises: [ChoosenExercise]
     
     var body: some View {
         if !previousExercises.isEmpty {
@@ -33,7 +33,7 @@ struct PreviousExercisesView: View {
                     PreviousExercisesButton(choosenExercise: exercise)
                         }
                     }
-            .padding()
+                    .padding()
         }
         else {
             VStack {
@@ -81,6 +81,6 @@ struct PreviousExercisesView: View {
 
 struct PreviousExercises_Previews: PreviewProvider {
     static var previews: some View {
-        PreviousExercisesView(previousExercises: [Exercises.shared.getMocExercise().choosenExercises.first!])
+        PreviousExercisesView(previousExercises: .constant( [Exercises.shared.getMocExercise().choosenExercises.first!]))
     }
 }

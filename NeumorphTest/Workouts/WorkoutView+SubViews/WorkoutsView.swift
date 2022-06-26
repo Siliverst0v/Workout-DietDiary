@@ -24,7 +24,7 @@ struct WorkoutsView: View {
     var body: some View {
         NavigationView {
                 ScrollView {
-                    ForEach(workouts.sorted(byKeyPath: "date"), id: \.id) {workout in
+                    ForEach(workouts.sorted(byKeyPath: "date", ascending: false), id: \.id) {workout in
                             NavigationLink(tag: workout.id, selection: $workoutSelection) {
                                 
                                 DetailWorkoutView(workout: workout)
