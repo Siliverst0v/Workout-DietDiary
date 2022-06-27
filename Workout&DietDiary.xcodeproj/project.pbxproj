@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		11622056258442A2F6E20202 /* Pods_NeumorphTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A451299760B43F99279351 /* Pods_NeumorphTest.framework */; };
+		36061D5124F5B47C3BF0F49C /* Pods_Workout_DietDiary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40A146ED51F344665283685C /* Pods_Workout_DietDiary.framework */; };
 		A404FFA2281F166300525B9D /* WorkoutButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A404FFA1281F166300525B9D /* WorkoutButtonView.swift */; };
 		A417B53D284651EC00B98881 /* PreviousExercisesButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A417B53C284651EC00B98881 /* PreviousExercisesButtonView.swift */; };
 		A417B53F284658A100B98881 /* PreviousExercisesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A417B53E284658A100B98881 /* PreviousExercisesView.swift */; };
@@ -33,7 +33,7 @@
 		A4CECF1C2853F1DD007D0449 /* EditFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CECF1B2853F1DD007D0449 /* EditFoodView.swift */; };
 		A4CECF1E2853FE09007D0449 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CECF1D2853FE09007D0449 /* ContentView.swift */; };
 		A4DE42D02816E5A700F4D4DC /* ChooseExercisesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DE42CF2816E5A700F4D4DC /* ChooseExercisesView.swift */; };
-		A4E9374B27FE3BA0004A3650 /* NeumorphTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E9374A27FE3BA0004A3650 /* NeumorphTestApp.swift */; };
+		A4E9374B27FE3BA0004A3650 /* Workout&DietDiaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E9374A27FE3BA0004A3650 /* Workout&DietDiaryApp.swift */; };
 		A4E9374D27FE3BA0004A3650 /* ExercisesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E9374C27FE3BA0004A3650 /* ExercisesView.swift */; };
 		A4E9374F27FE3BA1004A3650 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4E9374E27FE3BA1004A3650 /* Assets.xcassets */; };
 		A4E9375227FE3BA1004A3650 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4E9375127FE3BA1004A3650 /* Preview Assets.xcassets */; };
@@ -41,7 +41,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4C3A2D25F77345B11F6B90F6 /* Pods-NeumorphTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeumorphTest.debug.xcconfig"; path = "Target Support Files/Pods-NeumorphTest/Pods-NeumorphTest.debug.xcconfig"; sourceTree = "<group>"; };
+		19B3256C9D93D25B374DA9AB /* Pods-Workout&DietDiary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Workout&DietDiary.release.xcconfig"; path = "Target Support Files/Pods-Workout&DietDiary/Pods-Workout&DietDiary.release.xcconfig"; sourceTree = "<group>"; };
+		40A146ED51F344665283685C /* Pods_Workout_DietDiary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Workout_DietDiary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0584B91C4D3B4DBBAFCB959 /* Pods-Workout&DietDiary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Workout&DietDiary.debug.xcconfig"; path = "Target Support Files/Pods-Workout&DietDiary/Pods-Workout&DietDiary.debug.xcconfig"; sourceTree = "<group>"; };
 		A404FFA1281F166300525B9D /* WorkoutButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutButtonView.swift; sourceTree = "<group>"; };
 		A417B53C284651EC00B98881 /* PreviousExercisesButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousExercisesButtonView.swift; sourceTree = "<group>"; };
 		A417B53E284658A100B98881 /* PreviousExercisesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousExercisesView.swift; sourceTree = "<group>"; };
@@ -67,14 +69,12 @@
 		A4CECF1B2853F1DD007D0449 /* EditFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFoodView.swift; sourceTree = "<group>"; };
 		A4CECF1D2853FE09007D0449 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A4DE42CF2816E5A700F4D4DC /* ChooseExercisesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseExercisesView.swift; sourceTree = "<group>"; };
-		A4E9374727FE3BA0004A3650 /* NeumorphTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeumorphTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A4E9374A27FE3BA0004A3650 /* NeumorphTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphTestApp.swift; sourceTree = "<group>"; };
+		A4E9374727FE3BA0004A3650 /* Workout&DietDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Workout&DietDiary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4E9374A27FE3BA0004A3650 /* Workout&DietDiaryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Workout&DietDiaryApp.swift"; sourceTree = "<group>"; };
 		A4E9374C27FE3BA0004A3650 /* ExercisesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesView.swift; sourceTree = "<group>"; };
 		A4E9374E27FE3BA1004A3650 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A4E9375127FE3BA1004A3650 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A4F2F656280CAE7B00061441 /* ExerciseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseButton.swift; sourceTree = "<group>"; };
-		F1A451299760B43F99279351 /* Pods_NeumorphTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NeumorphTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F456916E6F73EB8BCCF5C082 /* Pods-NeumorphTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeumorphTest.release.xcconfig"; path = "Target Support Files/Pods-NeumorphTest/Pods-NeumorphTest.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11622056258442A2F6E20202 /* Pods_NeumorphTest.framework in Frameworks */,
+				36061D5124F5B47C3BF0F49C /* Pods_Workout_DietDiary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,10 +92,18 @@
 		6EF6ABB74D13A02ED5242128 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4C3A2D25F77345B11F6B90F6 /* Pods-NeumorphTest.debug.xcconfig */,
-				F456916E6F73EB8BCCF5C082 /* Pods-NeumorphTest.release.xcconfig */,
+				A0584B91C4D3B4DBBAFCB959 /* Pods-Workout&DietDiary.debug.xcconfig */,
+				19B3256C9D93D25B374DA9AB /* Pods-Workout&DietDiary.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		757B132268CB2F38FA5A0A61 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				40A146ED51F344665283685C /* Pods_Workout_DietDiary.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		A42167C028208FC700DF1439 /* Workouts */ = {
@@ -220,25 +228,25 @@
 		A4E9373E27FE3BA0004A3650 = {
 			isa = PBXGroup;
 			children = (
-				A4E9374927FE3BA0004A3650 /* NeumorphTest */,
+				A4E9374927FE3BA0004A3650 /* Workout&DietDiary */,
 				A4E9374827FE3BA0004A3650 /* Products */,
 				6EF6ABB74D13A02ED5242128 /* Pods */,
-				CDBC15A4B6BF9C0016311EAB /* Frameworks */,
+				757B132268CB2F38FA5A0A61 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		A4E9374827FE3BA0004A3650 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A4E9374727FE3BA0004A3650 /* NeumorphTest.app */,
+				A4E9374727FE3BA0004A3650 /* Workout&DietDiary.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A4E9374927FE3BA0004A3650 /* NeumorphTest */ = {
+		A4E9374927FE3BA0004A3650 /* Workout&DietDiary */ = {
 			isa = PBXGroup;
 			children = (
-				A4E9374A27FE3BA0004A3650 /* NeumorphTestApp.swift */,
+				A4E9374A27FE3BA0004A3650 /* Workout&DietDiaryApp.swift */,
 				A4CECF1D2853FE09007D0449 /* ContentView.swift */,
 				A43908B12832BB1D00AB29F0 /* RealmManager.swift */,
 				A4CECF0E2853E046007D0449 /* Calories */,
@@ -246,7 +254,7 @@
 				A4E9374E27FE3BA1004A3650 /* Assets.xcassets */,
 				A4E9375027FE3BA1004A3650 /* Preview Content */,
 			);
-			path = NeumorphTest;
+			path = "Workout&DietDiary";
 			sourceTree = "<group>";
 		};
 		A4E9375027FE3BA1004A3650 /* Preview Content */ = {
@@ -257,34 +265,26 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		CDBC15A4B6BF9C0016311EAB /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				F1A451299760B43F99279351 /* Pods_NeumorphTest.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A4E9374627FE3BA0004A3650 /* NeumorphTest */ = {
+		A4E9374627FE3BA0004A3650 /* Workout&DietDiary */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A4E9375527FE3BA1004A3650 /* Build configuration list for PBXNativeTarget "NeumorphTest" */;
+			buildConfigurationList = A4E9375527FE3BA1004A3650 /* Build configuration list for PBXNativeTarget "Workout&DietDiary" */;
 			buildPhases = (
-				719D0F024A3DE7664EE31521 /* [CP] Check Pods Manifest.lock */,
+				300C1A0B2DB3B4568484EE5C /* [CP] Check Pods Manifest.lock */,
 				A4E9374327FE3BA0004A3650 /* Sources */,
 				A4E9374427FE3BA0004A3650 /* Frameworks */,
 				A4E9374527FE3BA0004A3650 /* Resources */,
-				306F29D07303C461CAA7AD46 /* [CP] Embed Pods Frameworks */,
+				C5B2B2794780BF42A245D491 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = NeumorphTest;
+			name = "Workout&DietDiary";
 			productName = NeumorphTest;
-			productReference = A4E9374727FE3BA0004A3650 /* NeumorphTest.app */;
+			productReference = A4E9374727FE3BA0004A3650 /* Workout&DietDiary.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -302,7 +302,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A4E9374227FE3BA0004A3650 /* Build configuration list for PBXProject "NeumorphTest" */;
+			buildConfigurationList = A4E9374227FE3BA0004A3650 /* Build configuration list for PBXProject "Workout&DietDiary" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -315,7 +315,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A4E9374627FE3BA0004A3650 /* NeumorphTest */,
+				A4E9374627FE3BA0004A3650 /* Workout&DietDiary */,
 			);
 		};
 /* End PBXProject section */
@@ -333,24 +333,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		306F29D07303C461CAA7AD46 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NeumorphTest/Pods-NeumorphTest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NeumorphTest/Pods-NeumorphTest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NeumorphTest/Pods-NeumorphTest-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		719D0F024A3DE7664EE31521 /* [CP] Check Pods Manifest.lock */ = {
+		300C1A0B2DB3B4568484EE5C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -365,11 +348,28 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-NeumorphTest-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Workout&DietDiary-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C5B2B2794780BF42A245D491 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Workout&DietDiary/Pods-Workout&DietDiary-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Workout&DietDiary/Pods-Workout&DietDiary-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Workout&DietDiary/Pods-Workout&DietDiary-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -403,7 +403,7 @@
 				A4B37E7D28665B5500E33777 /* ChoosenSetsView.swift in Sources */,
 				A4E9374D27FE3BA0004A3650 /* ExercisesView.swift in Sources */,
 				A42194002826A70F00E25015 /* DetailWorkoutView.swift in Sources */,
-				A4E9374B27FE3BA0004A3650 /* NeumorphTestApp.swift in Sources */,
+				A4E9374B27FE3BA0004A3650 /* Workout&DietDiaryApp.swift in Sources */,
 				A4DE42D02816E5A700F4D4DC /* ChooseExercisesView.swift in Sources */,
 				A427FF5F28280E5D00FD3648 /* ChoosenExerciseButtonView.swift in Sources */,
 				A498B3C7281603C200038BE9 /* PressedButtonView.swift in Sources */,
@@ -531,16 +531,17 @@
 		};
 		A4E9375627FE3BA1004A3650 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4C3A2D25F77345B11F6B90F6 /* Pods-NeumorphTest.debug.xcconfig */;
+			baseConfigurationReference = A0584B91C4D3B4DBBAFCB959 /* Pods-Workout&DietDiary.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"NeumorphTest/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Workout&DietDiary/Preview Content\"";
 				DEVELOPMENT_TEAM = QK4FM8H5KR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Workout&DietDiary/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -551,7 +552,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = None.NeumorphTest;
+				PRODUCT_BUNDLE_IDENTIFIER = "None.Workout-DietDiary";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -561,16 +562,17 @@
 		};
 		A4E9375727FE3BA1004A3650 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F456916E6F73EB8BCCF5C082 /* Pods-NeumorphTest.release.xcconfig */;
+			baseConfigurationReference = 19B3256C9D93D25B374DA9AB /* Pods-Workout&DietDiary.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"NeumorphTest/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Workout&DietDiary/Preview Content\"";
 				DEVELOPMENT_TEAM = QK4FM8H5KR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Workout&DietDiary/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -581,7 +583,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = None.NeumorphTest;
+				PRODUCT_BUNDLE_IDENTIFIER = "None.Workout-DietDiary";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -592,7 +594,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A4E9374227FE3BA0004A3650 /* Build configuration list for PBXProject "NeumorphTest" */ = {
+		A4E9374227FE3BA0004A3650 /* Build configuration list for PBXProject "Workout&DietDiary" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A4E9375327FE3BA1004A3650 /* Debug */,
@@ -601,7 +603,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A4E9375527FE3BA1004A3650 /* Build configuration list for PBXNativeTarget "NeumorphTest" */ = {
+		A4E9375527FE3BA1004A3650 /* Build configuration list for PBXNativeTarget "Workout&DietDiary" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A4E9375627FE3BA1004A3650 /* Debug */,
