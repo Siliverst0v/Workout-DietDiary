@@ -29,7 +29,7 @@ When the workout is created, it will appear on the main screen.
 
 The second part of the application is a calorie diary.
 
-I took it from the code palace channel: https://youtu.be/O0FSDNOXCl0 and changed to Realm from CoreData.
+Based from the code palace channel tutorial: https://youtu.be/O0FSDNOXCl0 and changed to Realm from CoreData.
 
     * Just add a meal, fill in the name and number of calories, 
     and the application calculates the calories for the day.
